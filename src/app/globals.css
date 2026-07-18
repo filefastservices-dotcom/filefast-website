@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #0A1F3D;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
+
+.gold-rule {
+  @apply h-px w-16 bg-gold;
+}
+
+.btn-gold {
+  @apply inline-flex items-center justify-center rounded-sm bg-gold px-6 py-3 text-sm font-semibold tracking-wide text-navy-dark transition hover:bg-gold-light;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-sm border border-silver-dark/40 px-6 py-3 text-sm font-semibold tracking-wide text-white transition hover:border-gold hover:text-gold;
+}
+
+.btn-navy-outline {
+  @apply inline-flex items-center justify-center rounded-sm border border-navy/30 px-6 py-3 text-sm font-semibold tracking-wide text-navy transition hover:border-gold hover:text-gold-dark;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
