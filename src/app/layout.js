@@ -1,22 +1,7 @@
-import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-fraunces",
-  display: "swap"
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
-  display: "swap"
-});
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://filefast.in"),
@@ -25,16 +10,20 @@ export const metadata = {
     template: "%s | FileFast"
   },
   description:
-    "FileFast helps individuals, startups and businesses across India with GST, Income Tax, Business Registration, MSME, FSSAI, Compliance and Accounting services.",
+    "FileFast provides GST, income tax, business registration, accounting and compliance support for Indian businesses and globally expanding founders.",
+  keywords: ["GST registration Chennai", "GST return filing", "ITR filing", "business registration India", "global tax coordination", "FSSAI registration", "FileFast"],
   openGraph: {
     siteName: "FileFast",
-    type: "website"
-  }
+    type: "website",
+    title: "FileFast | Tax, Compliance & Global Business Support",
+    description: "Practical tax and compliance support for India and cross-border business."
+  },
+  robots: { index: true, follow: true }
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en">
       <body className="font-body antialiased">
         <Header />
         <main>{children}</main>
