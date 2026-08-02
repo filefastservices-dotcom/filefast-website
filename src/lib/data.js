@@ -46,7 +46,10 @@ export async function getTestimonials() {
       .sort({ createdAt: -1 })
       .lean();
     const result = JSON.parse(JSON.stringify(testimonials));
-    return result.length ? result : starterTestimonials;
+    const verified = result.filter((item) =>
+      item.clientName?.toLowerCase() !== "sample client" && !item.quote?.startsWith("Example feedback:")
+    );
+    return verified.length ? verified : starterTestimonials;
   } catch (err) {
     console.error("getTestimonials failed:", err.message);
     return starterTestimonials;
@@ -57,10 +60,11 @@ export async function getBlogPosts({ limit } = {}) {
   try {
     await connectDB();
     let q = Blog.find({ isPublished: true }).sort({ createdAt: -1 });
-    if (limit) q = q.limit(limit);
     const posts = await q.lean();
     const result = JSON.parse(JSON.stringify(posts));
-    return result.length ? result : (limit ? starterBlogPosts.slice(0, limit) : starterBlogPosts);
+    const slugs = new Set(result.map((post) => post.slug));
+    const merged = [...result, ...starterBlogPosts.filter((post) => !slugs.has(post.slug))];
+    return limit ? merged.slice(0, limit) : merged;
   } catch (err) {
     console.error("getBlogPosts failed:", err.message);
     return limit ? starterBlogPosts.slice(0, limit) : starterBlogPosts;
