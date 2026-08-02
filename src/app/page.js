@@ -23,6 +23,8 @@ const CATEGORIES = [
   "Digital Business Services"
 ];
 
+const PROOF_POINTS = ["GST & tax compliance", "Business registrations", "Global expansion support", "WhatsApp-first assistance"];
+
 const FAQS = [
   {
     q: "How long does GST registration take?",
@@ -46,17 +48,16 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* HERO — certificate / official-document motif framed in a gold hairline */}
       <section className="relative overflow-hidden bg-navy text-white">
+        <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_15%_20%,#d3aa45_0,transparent_24%),radial-gradient(circle_at_85%_80%,#1d5d9b_0,transparent_30%)]" />
         <div className="container-page relative py-20 sm:py-28">
-          <div className="mx-auto max-w-3xl rounded-sm border border-gold/30 p-8 text-center sm:p-12">
-            <p className="eyebrow text-gold">GST · Income Tax · MSME · FSSAI · Compliance</p>
+          <div className="mx-auto max-w-4xl rounded-sm border border-gold/30 bg-navy/55 p-8 text-center shadow-2xl shadow-black/20 sm:p-12">
+            <p className="eyebrow text-gold">India tax compliance · global business coordination</p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-              Tax, Compliance &amp; Business Growth Solutions
+              Clearer compliance. Confident growth.
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base text-silver/90">
-              Helping businesses and individuals across India with GST, Income Tax,
-              Registration, Accounting and Compliance Services.
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-silver/90">
+              FileFast helps individuals, founders and growing businesses manage GST, income tax, registrations and compliance in India—then organise the right support for cross-border growth.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
@@ -65,16 +66,27 @@ export default async function HomePage() {
                 rel="noopener noreferrer"
                 className="btn-gold"
               >
-                WhatsApp Now
+                Start on WhatsApp
               </a>
               <a href="tel:+919444614182" className="btn-outline">
                 Call Now
               </a>
               <a href="#consultation" className="btn-outline">
-                Get Free Consultation
+                Book a consultation
               </a>
             </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium text-silver/80">
+              {PROOF_POINTS.map((point) => <span key={point}>✓ {point}</span>)}
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-silver/70 bg-white">
+        <div className="container-page grid gap-5 py-6 text-center sm:grid-cols-3 sm:text-left">
+          <div><p className="text-sm font-semibold text-navy">Transparent next steps</p><p className="mt-1 text-xs leading-5 text-navy/65">Know your documents, scope and timeline before we begin.</p></div>
+          <div className="border-silver/70 sm:border-x sm:px-8"><p className="text-sm font-semibold text-navy">One practical point of contact</p><p className="mt-1 text-xs leading-5 text-navy/65">Message, call or email—choose the channel that works for you.</p></div>
+          <div className="sm:pl-8"><p className="text-sm font-semibold text-navy">Built for founders everywhere</p><p className="mt-1 text-xs leading-5 text-navy/65">India compliance expertise with global expansion coordination.</p></div>
         </div>
       </section>
 
