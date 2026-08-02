@@ -2,8 +2,8 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { getTestimonials } from "@/lib/data";
 
 export const metadata = {
-  title: "Client Testimonials",
-  description: "See what FileFast clients say about our GST, Income Tax and Business Registration services."
+  title: "Verified Client Reviews | FileFast",
+  description: "Read public Google reviews from FileFast clients for GST, tax filing and business compliance support."
 };
 
 export default async function TestimonialsPage() {
@@ -13,8 +13,11 @@ export default async function TestimonialsPage() {
     <section className="container-page py-14 sm:py-20">
       <p className="eyebrow text-center">Testimonials</p>
       <h1 className="mt-2 text-center font-display text-4xl font-semibold text-navy">
-        What Our Clients Say
+        Trusted by Clients, Reviewed Publicly
       </h1>
+      <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-6 text-navy/70">
+        These testimonials are public Google reviews, displayed with reviewer attribution. We never create or publish invented client feedback.
+      </p>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {testimonials.length > 0 ? (
