@@ -13,6 +13,9 @@ export default function AppointmentBookingPage() {
     notes: ""
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const appointmentMessage = encodeURIComponent(
+    `Hello FileFast, I would like to book a consultation.\n\nName: ${form.clientName}\nPhone: ${form.clientPhone}\nEmail: ${form.clientEmail}\nService: ${form.serviceRequired || "Not specified"}\nPreferred date: ${form.preferredDate || "Not specified"}\nPreferred time: ${form.preferredTime || "Not specified"}\nNotes: ${form.notes || "Not specified"}`
+  );
 
   function update(field, value) {
     setForm((f) => ({ ...f, [field]: value }));
@@ -29,15 +32,6 @@ export default function AppointmentBookingPage() {
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
-      setForm({
-        clientName: "",
-        clientEmail: "",
-        clientPhone: "",
-        serviceRequired: "",
-        preferredDate: "",
-        preferredTime: "",
-        notes: ""
-      });
     } catch {
       setStatus("error");
     }
@@ -49,8 +43,12 @@ export default function AppointmentBookingPage() {
         <div className="mx-auto max-w-2xl rounded-sm border border-gold/40 bg-gold/10 p-8 text-center">
           <p className="font-display text-lg font-semibold text-navy">Appointment Booked!</p>
           <p className="mt-2 text-sm text-navy/70">
-            Thank you! We've received your appointment request. Our team will contact you soon to confirm.
+            Thank you! We've received your appointment request. For the fastest confirmation, send the same details to our team directly.
           </p>
+          <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+            <a className="btn-gold" href={`https://wa.me/919444614182?text=${appointmentMessage}`}>Confirm on WhatsApp</a>
+            <a className="btn-outline" href={`mailto:filefast.services@gmail.com?subject=${encodeURIComponent("FileFast appointment request")}&body=${appointmentMessage}`}>Send by email</a>
+          </div>
         </div>
       </section>
     );
@@ -61,8 +59,11 @@ export default function AppointmentBookingPage() {
       <div className="mx-auto max-w-2xl">
         <p className="eyebrow text-center">Schedule a Meeting</p>
         <h1 className="mt-2 text-center font-display text-3xl font-semibold text-navy">
-          Book Your Free Consultation
+          Book a Focused Consultation
         </h1>
+        <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-6 text-navy/70">
+          Tell us what you need and a preferred time. We will confirm scope, availability and the next steps before the meeting.
+        </p>
 
         <form onSubmit={handleSubmit} className="mt-10 space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -75,6 +76,7 @@ export default function AppointmentBookingPage() {
             />
             <input
               type="email"
+              required
               placeholder="Email Address"
               value={form.clientEmail}
               onChange={(e) => update("clientEmail", e.target.value)}
@@ -90,13 +92,20 @@ export default function AppointmentBookingPage() {
             className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
           />
 
-          <input
+          <select
             required
-            placeholder="Service Required"
             value={form.serviceRequired}
             onChange={(e) => update("serviceRequired", e.target.value)}
-            className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
-          />
+            className="w-full rounded-sm border border-silver-dark/40 bg-white px-4 py-3 text-sm focus:border-gold focus:outline-none"
+          >
+            <option value="">Select the service you need</option>
+            <option>GST registration or return filing</option>
+            <option>Income tax / ITR filing</option>
+            <option>Business registration or licence</option>
+            <option>Accounting & compliance</option>
+            <option>Global tax coordination</option>
+            <option>Other / not sure</option>
+          </select>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <input
@@ -115,6 +124,8 @@ export default function AppointmentBookingPage() {
             />
           </div>
 
+          <p className="-mt-1 text-xs text-navy/60">Preferred times are in India Standard Time (IST). We will confirm the meeting before it is booked.</p>
+
           <textarea
             placeholder="Additional Notes (optional)"
             rows={4}
@@ -124,11 +135,13 @@ export default function AppointmentBookingPage() {
           />
 
           <button type="submit" disabled={status === "sending"} className="btn-gold w-full">
-            {status === "sending" ? "Booking..." : "Book Appointment"}
+            {status === "sending" ? "Sending..." : "Request appointment"}
           </button>
 
           {status === "error" && (
-            <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+            <div className="text-sm text-red-600">
+              Something went wrong. <a className="font-semibold underline" href={`https://wa.me/919444614182?text=${appointmentMessage}`}>Book on WhatsApp instead.</a>
+            </div>
           )}
         </form>
       </div>
