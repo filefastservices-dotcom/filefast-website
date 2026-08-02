@@ -1,19 +1,8 @@
 import { notFound } from "next/navigation";
-import { connectDB } from "@/lib/mongodb";
-import Blog from "@/models/Blog";
-
-async function getPost(slug) {
-  try {
-    await connectDB();
-    const post = await Blog.findOne({ slug, isPublished: true }).lean();
-    return post ? JSON.parse(JSON.stringify(post)) : null;
-  } catch {
-    return null;
-  }
-}
+import { getBlogPostBySlug } from "@/lib/data";
 
 export async function generateMetadata({ params }) {
-  const post = await getPost(params.slug);
+  const post = await getBlogPostBySlug(params.slug);
   if (!post) return {};
   return {
     title: post.metaTitle || post.title,
@@ -22,7 +11,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPostPage({ params }) {
-  const post = await getPost(params.slug);
+  const post = await getBlogPostBySlug(params.slug);
   if (!post) notFound();
 
   return (
