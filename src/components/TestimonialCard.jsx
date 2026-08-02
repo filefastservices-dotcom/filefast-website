@@ -15,6 +15,16 @@ export default function TestimonialCard({ testimonial }) {
           {testimonial.clientRole}
           {testimonial.serviceUsed ? ` · ${testimonial.serviceUsed}` : ""}
         </p>
+        {testimonial.sourceUrl && (
+          <a
+            href={testimonial.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-block text-xs font-semibold text-gold-dark hover:underline"
+          >
+            Verified Google review ↗
+          </a>
+        )}
       </div>
     </div>
   );
