@@ -20,7 +20,8 @@ const organizationSchema = {
 };
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://filefast.in"),
+ metadataBase: new URL(
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com"),
   title: {
     default: "FileFast Global – Tax, VAT & Compliance Services",
     template: "%s | FileFast Global"
@@ -35,7 +36,14 @@ export const metadata = {
     description: "Practical GST, tax, VAT and compliance support for India and cross-border business.",
   },
   twitter: { card: "summary_large_image", title: "FileFast Global | Tax, VAT & Compliance Services", description: "Practical tax and compliance support for India and international growth." },
-  robots: { index: true, follow: true }
+  robots: {
+  index: true,
+  follow: true
+},
+
+alternates: {
+  canonical: "/"
+}
 };
 
 export default function RootLayout({ children }) {
