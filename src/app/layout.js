@@ -20,26 +20,67 @@ const organizationSchema = {
 };
 
 export const metadata = {
- metadataBase: new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com"
+  ),
+
   title: {
     default: "FileFast Global – Tax, VAT & Compliance Services",
-    template: "%s | FileFast Global"
+    template: "%s | FileFast Global",
   },
+
   description:
     "FileFast Global provides GST, income tax, VAT coordination, business registration, accounting and compliance support for Indian businesses and internationally expanding founders.",
-  keywords: ["global tax consultant", "international tax consultant", "GST registration Chennai", "GST return filing", "ITR filing India", "UK VAT registration support", "EU VAT compliance coordination", "UAE VAT registration support", "US tax filing coordination", "business registration India", "FileFast Global"],
+
+  keywords: [
+    "global tax consultant",
+    "international tax consultant",
+    "GST registration Chennai",
+    "GST return filing",
+    "ITR filing India",
+    "UK VAT registration support",
+    "EU VAT compliance coordination",
+    "UAE VAT registration support",
+    "US tax filing coordination",
+    "business registration India",
+    "FileFast Global"
+  ],
+
+  alternates: {
+    canonical: "/",
+  },
+
   openGraph: {
     siteName: "FileFast Global",
     type: "website",
+    url: "https://www.filefastglobal.com",
     title: "FileFast Global | Tax, VAT & Compliance Services",
-    description: "Practical GST, tax, VAT and compliance support for India and cross-border business.",
+    description:
+      "Practical GST, tax, VAT and compliance support for India and cross-border business.",
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FileFast Global",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image", title: "FileFast Global | Tax, VAT & Compliance Services", description: "Practical tax and compliance support for India and international growth." },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "FileFast Global | Tax, VAT & Compliance Services",
+    description:
+      "Practical tax and compliance support for India and international growth.",
+    images: ["/og-image.png"],
+  },
+
   robots: {
-  index: true,
-  follow: true
-},
+    index: true,
+    follow: true,
+  },
+};
 
 alternates: {
   canonical: "/"
