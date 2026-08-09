@@ -6,17 +6,44 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+
   name: "FileFast Global",
-  description: "Tax, VAT and compliance support for Indian businesses and internationally expanding founders.",
-  telephone: "+91 94446 14182",
+
+  url: "https://www.filefastglobal.com",
+
+  logo: "https://www.filefastglobal.com/logo.png",
+
+  image: "https://www.filefastglobal.com/og-image.png",
+
+  description:
+    "Tax, VAT and compliance support for Indian businesses and internationally expanding founders.",
+
+  telephone: "+91 9444614182",
+
   email: "filefast.services@gmail.com",
-  areaServed: ["India", "United Kingdom", "European Union", "United Arab Emirates", "United States"],
+
+  priceRange: "₹199 - ₹9,999",
+
+  areaServed: [
+    "India",
+    "United Kingdom",
+    "European Union",
+    "United Arab Emirates",
+    "United States"
+  ],
+
   address: {
     "@type": "PostalAddress",
+    streetAddress: "122-72, RA Puram, Thideer Nagar, Kotturpuram",
     addressLocality: "Chennai",
     addressRegion: "Tamil Nadu",
+    postalCode: "600028",
     addressCountry: "IN"
-  }
+  },
+
+  sameAs: [
+    "https://www.instagram.com/filefastglobal"
+  ]
 };
 
 export const metadata = {
