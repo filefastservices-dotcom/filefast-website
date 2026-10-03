@@ -12,29 +12,24 @@ export async function generateMetadata({ params }) {
 }
 
 function renderContent(content) {
-  const parts = content.split(/(\[[^\]]+\]\([^)]+\))/g);
+  const phrase = "GST Registration service";
+  const parts = content.split(phrase);
 
-  return parts.map((part, index) => {
-    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-
-    if (!match) {
-      return <span key={index}>{part}</span>;
-    }
-
-    const [, label, href] = match;
-
-    return (
-      <a
-        key={index}
-        href={href}
-        className="font-medium text-blue-700 underline underline-offset-2"
-      >
-        {label}
-      </a>
-    );
-  });
+  return parts.map((part, index) => (
+    <span key={index}>
+      {part}
+      {index < parts.length - 1 && (
+        <a
+          href="/services/gst-registration"
+          className="font-medium text-blue-700 underline underline-offset-2"
+        >
+          {phrase}
+        </a>
+      )}
+    </span>
+  ));
 }
-
+ 
 export default async function BlogPostPage({ params }) {
   const post = await getBlogPostBySlug(params.slug);
   if (!post) notFound();
