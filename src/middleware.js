@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyAdminToken } from "@/lib/auth";
 
-export function middleware(req) {
+export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
   if (pathname.startsWith("/admin/login")) {
@@ -9,7 +9,7 @@ export function middleware(req) {
   }
 
   const token = req.cookies.get("ff_admin_token")?.value;
-  const payload = token ? verifyAdminToken(token) : null;
+  const payload = token ? await verifyAdminToken(token) : null;
 
   if (!payload) {
     const loginUrl = new URL("/admin/login", req.url);
