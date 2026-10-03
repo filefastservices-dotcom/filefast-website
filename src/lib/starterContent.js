@@ -20,7 +20,11 @@ export const starterServices = [
     shortDescription: "Get your business GST registered quickly and correctly.",
     fullDescription: "GST registration helps eligible businesses collect GST, issue tax invoices and claim input tax credit. FileFast reviews your details, prepares the application and supports you until your GSTIN is issued.",
     benefits: ["Legally collect GST from customers", "Claim eligible input tax credit", "Sell through e-commerce marketplaces"],
-    relatedServiceSlugs: ["gstr-1-filing", "gstr-3b-filing"] }),
+    relatedServiceSlugs: ["gstr-1-filing", "gstr-3b-filing"],
+metaTitle: "GST Registration in Chennai | FileFast Global",
+metaDescription: "Get GST registration support in Chennai. FileFast helps with documents, application preparation and GSTIN registration.",
+seoKeywords: "GST registration Chennai, GST registration, GST registration online, GSTIN registration"
+}),
   baseService({ name: "GSTR-1 Filing", slug: "gstr-1-filing", category: "GST Services", sortOrder: 2,
     shortDescription: "Accurate monthly or quarterly filing of outward supplies.",
     fullDescription: "GSTR-1 reports sales and outward supplies. We reconcile invoices, prepare the return and file it within the applicable due date.",
