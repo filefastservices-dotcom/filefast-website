@@ -18,7 +18,7 @@ export async function POST(req) {
     return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
   }
 
-  const token = signAdminToken({ email, role: "admin" });
+  const token = await signAdminToken({ email, role: "admin" });
 
   const res = NextResponse.json({ success: true });
   res.cookies.set("ff_admin_token", token, {
