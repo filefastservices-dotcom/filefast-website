@@ -58,14 +58,36 @@ export async function getTestimonials() {
   }
 }
 
+function mergeEditorialBlogContent(databasePosts) {
+  const editorialBySlug = new Map(starterBlogPosts.map((post) => [post.slug, post]));
+  const merged = databasePosts.map((post) => {
+    const editorial = editorialBySlug.get(post.slug);
+    if (!editorial) return post;
+    // Prefer the more complete editorial fallback when the database copy is shorter.
+    // Keep database identity and timestamps for existing published records.
+    if ((editorial.content || "").length > (post.content || "").length) {
+      return {
+        ...post,
+        title: editorial.title,
+        category: editorial.category,
+        excerpt: editorial.excerpt,
+        content: editorial.content,
+        metaTitle: editorial.metaTitle,
+        metaDescription: editorial.metaDescription
+      };
+    }
+    return post;
+  });
+  const existingSlugs = new Set(merged.map((post) => post.slug));
+  return [...merged, ...starterBlogPosts.filter((post) => !existingSlugs.has(post.slug))];
+}
+
 export async function getBlogPosts({ limit } = {}) {
   try {
     await connectDB();
-    let q = Blog.find({ isPublished: true }).sort({ createdAt: -1 });
-    const posts = await q.lean();
+    const posts = await Blog.find({ isPublished: true }).sort({ createdAt: -1 }).lean();
     const result = JSON.parse(JSON.stringify(posts));
-    const slugs = new Set(result.map((post) => post.slug));
-    const merged = [...result, ...starterBlogPosts.filter((post) => !slugs.has(post.slug))];
+    const merged = mergeEditorialBlogContent(result);
     return limit ? merged.slice(0, limit) : merged;
   } catch (err) {
     console.error("getBlogPosts failed:", err.message);
@@ -77,7 +99,9 @@ export async function getBlogPostBySlug(slug) {
   try {
     await connectDB();
     const post = await Blog.findOne({ slug, isPublished: true }).lean();
-    return post ? JSON.parse(JSON.stringify(post)) : starterBlogPosts.find((item) => item.slug === slug) || null;
+    if (!post) return starterBlogPosts.find((item) => item.slug === slug) || null;
+    const result = JSON.parse(JSON.stringify(post));
+    return mergeEditorialBlogContent([result])[0] || result;
   } catch (err) {
     console.error("getBlogPostBySlug failed:", err.message);
     return starterBlogPosts.find((item) => item.slug === slug) || null;
