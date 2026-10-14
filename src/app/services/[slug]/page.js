@@ -11,6 +11,9 @@ export async function generateMetadata({ params }) {
     title: service.metaTitle || service.name,
     description: service.metaDescription || service.shortDescription,
     keywords: service.seoKeywords || undefined,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
     openGraph: {
       title: service.metaTitle || service.name,
       description: service.metaDescription || service.shortDescription,
