@@ -24,7 +24,8 @@ const MARKETS = [
   },
   {
     name: "United States",
-    services: ["Sales-tax readiness", "Federal and state filing coordination", "Business formation guidance"]
+    services: ["Sales-tax readiness", "Federal and state filing coordination", "Business formation guidance"],
+    links: [{ label: "US tax and sales-tax support", href: "/services/us-tax-sales-tax" }]
   },
   {
     name: "United Arab Emirates",

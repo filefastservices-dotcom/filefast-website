@@ -19,7 +19,8 @@ const CATEGORIES = [
   "Licenses",
   "Compliance Services",
   "Accounting Services",
-  "Digital Business Services"
+  "Digital Business Services",
+  "Global Tax & VAT"
 ];
 
 export default async function ServicesPage({ searchParams }) {
