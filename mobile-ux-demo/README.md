@@ -1,6 +1,6 @@
 # FileFast Global Mobile UX Demo
 
-Standalone staging prototype for the mobile-first GST hero, accessible tabs, lead modal, reduced-motion handling, placeholder Lottie animations, Docker, and CI.
+Standalone staging prototype for the mobile-first GST hero, accessible tabs, lead modal, reduced-motion handling, SVG fallbacks, Docker, and CI.
 
 ## Run
 Node.js 20+ required.
@@ -22,4 +22,6 @@ docker build -t filefast-mobile-ux-demo .
 docker run --rm -p 8080:80 filefast-mobile-ux-demo
 ```
 
-**Safety:** This is a staging demo. The form validates inputs locally but does not transmit or persist leads. Lottie JSONs are static placeholders, not final motion assets. After Effects sources are not included. The experiment assignment is client-side for demonstration only; production experiments should be assigned server-side to avoid flicker.
+**Lead form:** Submits to the existing same-origin `POST /api/leads` route. That route requires the site's MongoDB environment to be configured; submissions are real lead records, so only submit genuine enquiries during testing. The form includes a honeypot, client-side validation, server error handling, and does not ask for PAN, Aadhaar, or bank details. The backend route is the production app's existing lead API; do not merge or deploy this demo until the preview environment's database scope and access controls are verified.
+
+**Animation assets:** The supplied Lottie JSON files are placeholders, not finished animations. The SVG fallback is used until a motion designer provides optimized Lottie JSON and source files. The experiment assignment is client-side for demonstration only; production experiments should be assigned server-side to avoid flicker.
