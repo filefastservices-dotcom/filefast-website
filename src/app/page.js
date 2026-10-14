@@ -5,6 +5,13 @@ import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
 export const metadata = {
+  title: "GST Registration & GST Filing in Chennai",
+  description: "Need GST registration, GST return filing or ITR filing in Chennai? FileFast Global helps individuals and businesses prepare documents and manage tax compliance online across India.",
+  openGraph: {
+    url: "https://www.filefastglobal.com/",
+    title: "GST Registration & GST Filing in Chennai | FileFast Global",
+    description: "GST registration, GSTR-1 and GSTR-3B filing, ITR filing and business compliance support in Chennai and across India.",
+  },
   alternates: { canonical: "/" },
 };
 
@@ -32,7 +39,7 @@ const PROOF_POINTS = ["GST & tax compliance", "Business registrations", "Global 
 const FAQS = [
   {
     q: "How long does GST registration take?",
-    a: "Typically 3–7 working days once all required documents are submitted correctly."
+    a: "Processing time varies based on complete documents, portal checks and any clarification requested by the GST department."
   },
   {
     q: "Do you serve clients outside Tamil Nadu?",
@@ -58,10 +65,10 @@ export default async function HomePage() {
           <div className="mx-auto max-w-4xl rounded-sm border border-gold/30 bg-navy/55 p-8 text-center shadow-2xl shadow-black/20 sm:p-12">
             <p className="eyebrow text-gold">India tax compliance · global business coordination</p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-              Clearer compliance. Confident growth.
+              GST Registration, GST Return Filing & Income Tax Services
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-silver/90">
-              FileFast helps individuals, founders and growing businesses manage GST, income tax, registrations and compliance in India—then organise the right support for cross-border growth.
+              Get help with GST registration, GSTR-1 and GSTR-3B filing, income-tax returns and business registrations. Serving Chennai clients and businesses across India online.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
@@ -194,10 +201,10 @@ export default async function HomePage() {
           <div>
             <p className="eyebrow">Get Started</p>
             <h2 className="mt-2 font-display text-3xl font-semibold text-navy">
-              Get Your Free Consultation Today
+              Request a Consultation
             </h2>
             <p className="mt-3 text-sm text-navy/70">
-              Tell us what you need and our team will get back to you the same day.
+              Tell us what you need. We’ll review your request and contact you about the next steps.
             </p>
             <div className="mt-6 flex gap-3">
               <a

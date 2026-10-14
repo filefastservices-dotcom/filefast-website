@@ -11,6 +11,7 @@ export default function LeadForm({ defaultService = "" }) {
     message: ""
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [submitError, setSubmitError] = useState("");
   const contactMessage = encodeURIComponent(
     `Hello FileFast, I would like a consultation.\n\nName: ${form.name}\nMobile: ${form.mobile}\nEmail: ${form.email}\nService: ${form.serviceInterested || "Not specified"}\nMessage: ${form.message || "Not specified"}`
   );
@@ -21,16 +22,22 @@ export default function LeadForm({ defaultService = "" }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setSubmitError("");
     setStatus("sending");
     try {
+      const honeypot = new FormData(e.currentTarget).get("website") || "";
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify({ ...form, website: honeypot })
       });
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        const result = await res.json().catch(() => ({}));
+        throw new Error(result.error || "We could not send your request.");
+      }
       setStatus("success");
-    } catch {
+    } catch (error) {
+      setSubmitError(error.message || "Please try again or contact us on WhatsApp.");
       setStatus("error");
     }
   }
@@ -52,6 +59,10 @@ export default function LeadForm({ defaultService = "" }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+        <label htmlFor="website">Leave this field empty</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <input
           required
@@ -118,12 +129,13 @@ export default function LeadForm({ defaultService = "" }) {
         onChange={(e) => update("message", e.target.value)}
         className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
       />
+      <p className="text-xs leading-5 text-navy/60">By submitting, you agree that FileFast may use these details to respond to your enquiry. Please do not send passwords, OTPs or sensitive account credentials. See our <a className="underline underline-offset-2" href="/privacy-policy">Privacy Policy</a>.</p>
       <button type="submit" disabled={status === "sending"} className="btn-gold w-full sm:w-auto">
         {status === "sending" ? "Sending..." : "Request a consultation"}
       </button>
       {status === "error" && (
         <div className="text-sm text-red-600">
-          Something went wrong. <a className="font-semibold underline" href={`https://wa.me/919444614182?text=${contactMessage}`}>Send your request on WhatsApp instead.</a>
+          {submitError || "Something went wrong."} <a className="font-semibold underline" href={`https://wa.me/919444614182?text=${contactMessage}`}>Send your request on WhatsApp instead.</a>
         </div>
       )}
     </form>
