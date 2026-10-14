@@ -83,6 +83,17 @@ export default function LeadForm({ defaultService = "" }) {
         className="w-full rounded-sm border border-silver-dark/40 bg-white px-4 py-3 text-sm focus:border-gold focus:outline-none"
       >
         <option value="">Select the service you need</option>
+        {form.serviceInterested &&
+          ![
+            "GST registration or return filing",
+            "Income tax / ITR filing",
+            "Business registration or licence",
+            "Accounting & compliance",
+            "Global tax coordination",
+            "Other / not sure"
+          ].includes(form.serviceInterested) && (
+            <option value={form.serviceInterested}>{form.serviceInterested}</option>
+          )}
         <option>GST registration or return filing</option>
         <option>Income tax / ITR filing</option>
         <option>Business registration or licence</option>
