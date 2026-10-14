@@ -16,27 +16,167 @@ const baseService = (data) => ({
 });
 
 export const starterServices = [
-  baseService({ name: "GST Registration", slug: "gst-registration", category: "GST Services", isFeatured: true, sortOrder: 1,
-    shortDescription: "Get your business GST registered quickly and correctly.",
-    fullDescription: "GST registration helps eligible businesses collect GST, issue tax invoices and claim input tax credit. FileFast reviews your details, prepares the application and supports you until your GSTIN is issued.",
-    benefits: ["Legally collect GST from customers", "Claim eligible input tax credit", "Sell through e-commerce marketplaces"],
+  baseService({
+    name: "GST Registration",
+    slug: "gst-registration",
+    category: "GST Services",
+    isFeatured: true,
+    sortOrder: 1,
+    shortDescription: "GST registration support for eligible businesses in Chennai and across India.",
+    fullDescription: "GST registration gives eligible businesses a GST Identification Number (GSTIN) and supports compliance such as issuing GST tax invoices and reporting taxable supplies. FileFast helps you identify the appropriate registration route, prepare the application details, check supporting documents and respond to routine application requirements. Approval timelines and document requirements depend on the facts of the business and any GST department verification.",
+    benefits: [
+      "Understand whether GST registration applies to your business",
+      "Prepare the application and supporting documents",
+      "Get help with address proof and rented-premises documents",
+      "Prepare for e-commerce seller and B2B compliance needs"
+    ],
+    eligibility: [
+      "Businesses whose turnover or activity requires GST registration",
+      "Certain e-commerce sellers and other persons required to register under GST law",
+      "Businesses applying voluntarily after reviewing the implications"
+    ],
+    requiredDocuments: [
+      "PAN details of the proprietor or business entity",
+      "Aadhaar and contact details of the proprietor or authorised signatory, as applicable",
+      "Business constitution proof, where applicable",
+      "Principal place of business address proof",
+      "Rent or lease agreement and owner consent/supporting proof, where applicable",
+      "Bank account details or supporting proof when required",
+      "Photograph and authorised signatory details, as applicable"
+    ],
+    processFlow: [
+      { title: "Check eligibility and registration type", description: "Review the business activity, turnover, state and registration requirement." },
+      { title: "Prepare the documents", description: "Check PAN, contact details, business address proof and entity documents." },
+      { title: "Submit and track the application", description: "Prepare the portal application and assist with clarification or verification steps if requested." }
+    ],
+    pricingInfo: "Contact FileFast for the current professional fee and scope. Government fees, if applicable, and any separate statutory or third-party charges will be explained before work begins.",
+    faqs: [
+      { question: "What documents are required for GST registration?", answer: "Common documents include PAN, identity and contact details, business address proof, entity documents where applicable, and authorised signatory information. The exact list depends on the business type and premises." },
+      { question: "What address proof is accepted for GST registration?", answer: "The appropriate proof depends on whether the premises are owned, rented, leased or used with consent. Keep the relevant ownership or occupancy document and supporting utility or property records available for review." },
+      { question: "How long does GST registration take?", answer: "There is no guaranteed approval time. Processing depends on complete and consistent information, portal checks, verification and whether the department requests clarification." },
+      { question: "Can an online seller apply for GST registration?", answer: "Some e-commerce and interstate business activities can trigger specific registration requirements. The correct position depends on the sales model, goods or services and applicable GST rules." }
+    ],
     relatedServiceSlugs: ["gstr-1-filing", "gstr-3b-filing"],
-metaTitle: "GST Registration in Chennai | FileFast Global",
-metaDescription: "Get GST registration support in Chennai. FileFast helps with documents, application preparation and GSTIN registration.",
-seoKeywords: "GST registration Chennai, GST registration, GST registration online, GSTIN registration"
-}),
-  baseService({ name: "GSTR-1 Filing", slug: "gstr-1-filing", category: "GST Services", sortOrder: 2,
-    shortDescription: "Accurate monthly or quarterly filing of outward supplies.",
-    fullDescription: "GSTR-1 reports sales and outward supplies. We reconcile invoices, prepare the return and file it within the applicable due date.",
-    benefits: ["Timely return filing", "Clear invoice reporting", "Reduced risk of late fees"], relatedServiceSlugs: ["gstr-3b-filing", "gst-registration"] }),
-  baseService({ name: "GSTR-3B Filing", slug: "gstr-3b-filing", category: "GST Services", sortOrder: 3,
-    shortDescription: "Monthly summary GST return preparation and filing.",
-    fullDescription: "GSTR-3B is the summary return used to declare GST liability and make payment. FileFast helps review your data and file the return accurately.",
-    benefits: ["Stay GST compliant", "Track tax liability", "Avoid avoidable interest and penalties"], relatedServiceSlugs: ["gstr-1-filing", "gst-registration"] }),
-  baseService({ name: "ITR Filing", slug: "itr-filing", category: "Income Tax Services", isFeatured: true, sortOrder: 4,
-    shortDescription: "Accurate income-tax return filing for individuals and businesses.",
-    fullDescription: "We prepare income-tax returns based on your income sources, deductions and supporting documents, then help you complete filing and verification.",
-    benefits: ["Claim eligible deductions", "Meet filing deadlines", "Useful for loans and visa applications"], relatedServiceSlugs: ["tds-return-filing"] }),
+    metaTitle: "GST Registration in Chennai",
+    metaDescription: "Need GST registration in Chennai or elsewhere in India? Check common documents, business address proof and application steps with FileFast Global.",
+    seoKeywords: "GST registration Chennai, documents required for GST registration, GST address proof, GSTIN registration online"
+  }),
+  baseService({
+    name: "GSTR-1 Filing",
+    slug: "gstr-1-filing",
+    category: "GST Services",
+    sortOrder: 2,
+    shortDescription: "GSTR-1 sales return preparation and filing for monthly and QRMP taxpayers.",
+    fullDescription: "GSTR-1 reports outward supplies such as B2B and B2C sales, exports, credit notes and applicable amendments. FileFast helps organise sales data, review invoice classifications and prepare the return for the applicable monthly or quarterly filing period. Final entries depend on your records and GST portal validations.",
+    benefits: [
+      "Organise B2B, B2C and export sales data",
+      "Review credit notes, debit notes and amendments",
+      "Prepare applicable HSN and e-commerce reporting",
+      "Reduce avoidable errors before submission"
+    ],
+    eligibility: ["Registered taxpayers required to report outward supplies, subject to the applicable return scheme and exemptions"],
+    requiredDocuments: [
+      "GSTIN and return period",
+      "Sales register and tax invoices",
+      "Credit notes, debit notes and amendment details",
+      "HSN summary and applicable e-invoice data",
+      "E-commerce marketplace reports, where applicable",
+      "Previous GSTR-1 and reconciliation notes"
+    ],
+    processFlow: [
+      { title: "Collect sales records", description: "Gather invoices, credit/debit notes and marketplace or export reports." },
+      { title: "Reconcile and prepare", description: "Review customer GSTINs, tax rates, invoice values and applicable reporting tables." },
+      { title: "Review and file", description: "Confirm the prepared summary with you before submission and share the acknowledgement." }
+    ],
+    pricingInfo: "Nil GSTR-1 filing starts at ₹199. Returns with transactions generally start at ₹499; the final fee depends on invoice volume, complexity and the filing period. Confirm the fee before work begins.",
+    faqs: [
+      { question: "What documents are required for GSTR-1 filing?", answer: "Usually the sales register, tax invoices, credit/debit notes, export and e-commerce reports where applicable, HSN summary and previous return details are needed." },
+      { question: "What is the GSTR-1 due date?", answer: "Monthly filers generally have a due date on the 11th of the following month, while QRMP quarterly filers generally have a quarterly due date on the 13th. Extensions and special cases can apply, so check the current GST portal due date for your period." },
+      { question: "Can GSTR-1 be filed with no sales?", answer: "A Nil return may be appropriate when there are no reportable outward supplies or other entries for the period. Check the full facts, including credit notes, amendments and other reportable transactions, before filing Nil." }
+    ],
+    relatedServiceSlugs: ["gst-registration", "gstr-3b-filing"],
+    metaTitle: "GSTR-1 Return Filing Services",
+    metaDescription: "Get help preparing and filing GSTR-1. FileFast reviews sales invoices, credit notes, HSN and marketplace data for monthly or QRMP returns.",
+    seoKeywords: "GSTR-1 filing, GSTR-1 return filing, GST sales return, GSTR-1 documents required"
+  }),
+  baseService({
+    name: "GSTR-3B Filing",
+    slug: "gstr-3b-filing",
+    category: "GST Services",
+    sortOrder: 3,
+    shortDescription: "GST liability, eligible input tax credit and GSTR-3B return filing support.",
+    fullDescription: "GSTR-3B is the summary return used by applicable taxpayers to report GST liability, eligible input tax credit and the resulting payment or other adjustments. FileFast helps reconcile sales summaries, purchase records and GSTR-2B before preparing the return. Tax liability and credit claims must be checked against the underlying documents and current rules.",
+    benefits: [
+      "Review output tax liability and tax-period figures",
+      "Reconcile purchase records with GSTR-2B",
+      "Review eligible input tax credit before reporting",
+      "Prepare return figures and payment summary for review"
+    ],
+    eligibility: ["GST-registered taxpayers required to file GSTR-3B for the relevant tax period, subject to applicable rules"],
+    requiredDocuments: [
+      "GSTIN and return period",
+      "Sales register and output tax summary",
+      "Purchase register and expense invoices relevant to ITC",
+      "GSTR-2B and previous GSTR-3B",
+      "Credit/debit notes and adjustment details",
+      "GST portal liability, cash ledger and credit ledger details"
+    ],
+    processFlow: [
+      { title: "Collect sales and purchase data", description: "Gather sales, purchase, credit-note and portal reconciliation reports." },
+      { title: "Reconcile liability and ITC", description: "Check output tax and review input tax credit eligibility against available records." },
+      { title: "Confirm figures and file", description: "Review the liability and payment summary with you before filing." }
+    ],
+    pricingInfo: "Nil GST return filing starts at ₹199. Returns with transactions generally start at ₹499; the final fee depends on transaction volume, reconciliation requirements and the filing period. Confirm the fee before work begins.",
+    faqs: [
+      { question: "What documents are needed for GSTR-3B?", answer: "Common records include the sales and purchase registers, GSTR-2B, relevant invoices and credit notes, the previous GSTR-3B, and GST portal liability and ledger details." },
+      { question: "Can I claim all ITC shown in GSTR-2B?", answer: "No. GSTR-2B is an important reconciliation source, but eligibility, restrictions, business use and other applicable conditions still need to be checked before claiming credit." },
+      { question: "Can GSTR-3B be filed as Nil?", answer: "Only use a Nil return when the facts and portal rules support it. Check output liability, inward supplies, ITC, adjustments and any other reportable amounts for the period first." }
+    ],
+    relatedServiceSlugs: ["gst-registration", "gstr-1-filing"],
+    metaTitle: "GSTR-3B Filing & GST Return Support",
+    metaDescription: "Get GSTR-3B filing support with GST liability review, GSTR-2B reconciliation and input tax credit checks from FileFast Global.",
+    seoKeywords: "GSTR-3B filing, GST return filing, GSTR-3B documents required, GST ITC reconciliation"
+  }),
+  baseService({
+    name: "ITR Filing",
+    slug: "itr-filing",
+    category: "Income Tax Services",
+    isFeatured: true,
+    sortOrder: 4,
+    shortDescription: "Online income-tax return filing support for salaried individuals, freelancers and eligible businesses.",
+    fullDescription: "The correct income-tax return depends on your taxpayer category, income sources and applicable filing rules. FileFast helps organise income information, review tax statements and supporting documents, identify the relevant return preparation route and guide you through filing and verification. Complex business, capital-gains or international-income cases may need additional review.",
+    benefits: [
+      "Organise income and tax deduction records",
+      "Review AIS, TIS and Form 26AS information",
+      "Identify documents relevant to deductions and tax credits",
+      "Keep the filed return and acknowledgement for your records"
+    ],
+    eligibility: ["Individuals and eligible taxpayers who need assistance preparing and filing an income-tax return"],
+    requiredDocuments: [
+      "PAN and Aadhaar details, as applicable",
+      "Form 16 and salary details, where applicable",
+      "Annual Information Statement (AIS), TIS and Form 26AS",
+      "Bank interest and other income statements",
+      "Capital gains, securities or property transaction statements, if applicable",
+      "Proofs for eligible deductions and tax-saving claims",
+      "Business or professional income records, where applicable"
+    ],
+    processFlow: [
+      { title: "Understand your income sources", description: "Identify salary, interest, capital gains, business or other income." },
+      { title: "Review documents and tax details", description: "Compare your records with AIS, TIS, Form 26AS and supporting statements." },
+      { title: "Prepare, review and file", description: "Confirm the return details, complete filing and follow the applicable verification steps." }
+    ],
+    pricingInfo: "The professional fee depends on your income sources, return type and complexity. FileFast will confirm the scope and fee before starting.",
+    faqs: [
+      { question: "What documents are required for ITR filing?", answer: "The list depends on your income sources. Common records include PAN, Form 16 where applicable, AIS, TIS, Form 26AS, bank interest statements, capital-gains statements and proofs for eligible deductions." },
+      { question: "Which ITR form should I use?", answer: "The appropriate form depends on your taxpayer status and income sources, including business or professional income, capital gains and other conditions. Review the current income-tax department instructions before selecting a form." },
+      { question: "Do I need to verify my ITR after filing?", answer: "Yes, where verification is required, complete it within the applicable deadline and keep the acknowledgement for your records." }
+    ],
+    relatedServiceSlugs: ["tds-return-filing"],
+    metaTitle: "ITR Filing Services in Chennai",
+    metaDescription: "Get online ITR filing help in Chennai and across India. Organise Form 16, AIS, Form 26AS, bank interest and deduction documents with FileFast Global.",
+    seoKeywords: "ITR filing Chennai, income tax return filing, documents required for ITR filing, online ITR filing help"
+  }),
   baseService({ name: "MSME Registration", slug: "msme-registration", category: "Business Registration", isFeatured: true, sortOrder: 5,
     shortDescription: "Udyam registration for small and medium enterprises.",
     fullDescription: "Udyam registration formally recognises eligible micro, small and medium enterprises and can help them access applicable schemes and benefits.",
