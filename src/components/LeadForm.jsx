@@ -26,10 +26,19 @@ export default function LeadForm({ defaultService = "" }) {
     setStatus("sending");
     try {
       const honeypot = new FormData(e.currentTarget).get("website") || "";
+      const params = new URLSearchParams(window.location.search);
+      const campaign = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
+        .map((key) => [key, params.get(key)])
+        .filter(([, value]) => value)
+        .map(([key, value]) => `${key}=${value}`);
+      let source = campaign.length ? campaign.join(" | ") : "direct / website";
+      if (!campaign.length && document.referrer) {
+        try { source = new URL(document.referrer).hostname || source; } catch {}
+      }
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, website: honeypot })
+        body: JSON.stringify({ ...form, website: honeypot, source })
       });
       if (!res.ok) {
         const result = await res.json().catch(() => ({}));

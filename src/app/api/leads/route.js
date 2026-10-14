@@ -32,6 +32,7 @@ export async function POST(req) {
   const email = cleanText(body?.email, MAX_EMAIL_LENGTH);
   const serviceInterested = cleanText(body?.serviceInterested, MAX_SERVICE_LENGTH);
   const message = cleanText(body?.message, MAX_MESSAGE_LENGTH);
+  const source = cleanText(body?.source, 300) || "website";
   const mobileDigits = mobile.replace(/\D/g, "");
 
   if (name.length < 2) return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
@@ -40,7 +41,7 @@ export async function POST(req) {
 
   try {
     await connectDB();
-    await Lead.create({ name, mobile, email, serviceInterested, message, source: "website" });
+    await Lead.create({ name, mobile, email, serviceInterested, message, source });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error?.message || "Unknown error");

@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
       <p className="mt-4 text-sm leading-6 text-navy/70">This page explains how FileFast Global handles information you submit through this website. It is a practical summary for website enquiries and does not replace any separate engagement terms that may apply when you become a client.</p>
       <section className="mt-10 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Information you provide</h2>
-        <p className="text-sm leading-6 text-navy/75">When you use an enquiry form, we may collect your name, phone number, email address, the service you are asking about and the message you choose to send.</p>
+        <p className="text-sm leading-6 text-navy/75">When you use an enquiry form, we may collect your name, phone number, email address, the service you are asking about and the message you choose to send. We may also record basic referral or campaign information, such as the website that referred you or campaign tags included in the page link, to understand which channels generate enquiries.</p>
       </section>
       <section className="mt-7 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">How we use it</h2>

@@ -6,13 +6,22 @@ export default function AdminLeadsPage() {
   const [leads, setLeads] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   async function load(q = "") {
     setLoading(true);
-    const res = await fetch(`/api/leads${q ? `?search=${encodeURIComponent(q)}` : ""}`);
-    const data = await res.json();
-    setLeads(data.leads || []);
-    setLoading(false);
+    setError("");
+    try {
+      const res = await fetch(`/api/leads${q ? `?search=${encodeURIComponent(q)}` : ""}`);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Unable to load leads.");
+      setLeads(data.leads || []);
+    } catch {
+      setError("Unable to load leads. Refresh the page or sign in again.");
+      setLeads([]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -43,16 +52,19 @@ export default function AdminLeadsPage() {
         <button type="submit" className="btn-navy-outline text-xs">Search</button>
       </form>
 
+      {error && <p role="alert" className="mt-6 text-sm text-red-600">{error}</p>}
       {loading ? (
         <p className="mt-6 text-sm text-navy/60">Loading...</p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-sm border border-silver/70 bg-white">
-          <table className="w-full min-w-[640px] text-left text-sm">
+          <table className="w-full min-w-[900px] text-left text-sm">
             <thead className="border-b border-silver/70 bg-silver-light text-xs uppercase tracking-wide text-navy/60">
               <tr>
                 <th className="px-4 py-3">Name</th>
                 <th className="px-4 py-3">Mobile</th>
+                <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Service</th>
+                <th className="px-4 py-3">Source</th>
                 <th className="px-4 py-3">Message</th>
                 <th className="px-4 py-3">Date</th>
               </tr>
@@ -64,7 +76,9 @@ export default function AdminLeadsPage() {
                   <td className="px-4 py-3 text-navy/70">
                     <a href={`tel:${l.mobile}`} className="hover:text-gold-dark">{l.mobile}</a>
                   </td>
+                  <td className="px-4 py-3 text-navy/70">{l.email || "—"}</td>
                   <td className="px-4 py-3 text-navy/70">{l.serviceInterested || "—"}</td>
+                  <td className="px-4 py-3 text-navy/70">{l.source || "website"}</td>
                   <td className="px-4 py-3 text-navy/70">{l.message || "—"}</td>
                   <td className="px-4 py-3 text-navy/60">
                     {new Date(l.createdAt).toLocaleDateString("en-IN")}
@@ -73,7 +87,7 @@ export default function AdminLeadsPage() {
               ))}
               {leads.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-4 py-6 text-center text-navy/60">
+                  <td colSpan={7} className="px-4 py-6 text-center text-navy/60">
                     No leads found.
                   </td>
                 </tr>
