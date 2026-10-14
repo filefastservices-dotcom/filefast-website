@@ -40,7 +40,7 @@ export function registerUnsubscribeEndpoint(app: Express, secret: string, leads:
       if (suppressionCollection) {
         await suppressionCollection.updateOne({ email }, { $set: { email, suppressedAt: new Date(), source: "unsubscribe-link" } }, { upsert: true });
       }
-      await leads.updateOne({ _id: isObjectId(result.claims.leadId) ? toObjectId(result.claims.leadId) : result.claims.leadId }, { $set: { email_unsubscribed: true, email_unsubscribed_at: new Date() } });
+      await leads.updateOne({ _id: isObjectId(result.claims.leadId) ? toObjectId(result.claims.leadId) : new ObjectId("000000000000000000000000") }, { $set: { email_unsubscribed: true, email_unsubscribed_at: new Date() } });
       res.status(200).send("You have been unsubscribed from further email updates.");
     } catch {
       res.status(503).send("We could not process this request right now. Please try again later.");
