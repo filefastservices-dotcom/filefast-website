@@ -2,6 +2,11 @@ import Link from "next/link";
 import { getBlogPosts } from "@/lib/data";
 
 export const metadata = {
+  openGraph: {
+    url: "https://www.filefastglobal.com/blog",
+    title: "Blog | FileFast Global",
+    description: "Latest articles on GST, Income Tax, MSME, FSSAI, Compliance and Accounting from FileFast.",
+  },
   alternates: { canonical: "/blog" },
   title: "Blog",
   description: "Latest articles on GST, Income Tax, MSME, FSSAI, Compliance and Accounting from FileFast."
