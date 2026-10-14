@@ -1,6 +1,11 @@
 import Link from "next/link";
 
 export const metadata = {
+  openGraph: {
+    url: "https://www.filefastglobal.com/global",
+    title: "Global Tax & Compliance Support | FileFast Global",
+    description: "Global tax, VAT and compliance coordination for Indian businesses and founders expanding to the UK, EU, UAE and US markets.",
+  },
   alternates: { canonical: "/global" },
   title: "Global Tax & Compliance Support",
   description:
