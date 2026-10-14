@@ -13,3 +13,16 @@ jobs:
           node-version: 20
       - run: cd mobile-ux-demo && npm install && npm run lint && npm test
       - run: cd mobile-ux-demo && docker build -t filefast-mobile-ux-demo:ci .
+  validate-lottie:
+    name: Validate Lottie sizes
+    runs-on: ubuntu-latest
+    needs: checks
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run Lottie size validator
+        run: cd mobile-ux-demo && npm install && npm run validate:lottie
