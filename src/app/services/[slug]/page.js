@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
       canonical: `/services/${service.slug}`,
     },
     openGraph: {
+      url: "https://www.filefastglobal.com/services/" + service.slug,
       title: service.metaTitle || service.name,
       description: service.metaDescription || service.shortDescription,
       images: service.ogImage ? [service.ogImage] : undefined
