@@ -1,6 +1,11 @@
 import LeadForm from "@/components/LeadForm";
 
 export const metadata = {
+  openGraph: {
+    url: "https://www.filefastglobal.com/contact",
+    title: "Contact Us | FileFast Global",
+    description: "Get in touch with FileFast for GST, Income Tax, Business Registration and Compliance services.",
+  },
   alternates: { canonical: "/contact" },
   title: "Contact Us",
   description: "Get in touch with FileFast for GST, Income Tax, Business Registration and Compliance services."
