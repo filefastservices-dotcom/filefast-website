@@ -316,7 +316,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="rounded-sm border border-silver/70 bg-white p-6 sm:p-8">
-            <LeadForm />
+            <LeadForm defaultService="GST registration or return filing" />
           </div>
         </div>
       </section>
