@@ -1,0 +1,28 @@
+name: Lead Emailer CI
+on:
+  push:
+    paths:
+      - "lead-emailer/**"
+      - ".github/workflows/lead-emailer-ci.yml"
+  pull_request:
+    paths:
+      - "lead-emailer/**"
+      - ".github/workflows/lead-emailer-ci.yml"
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lead-emailer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: lead-emailer/package.json
+      - run: npm install --no-audit --no-fund
+      - run: npm run lint
+      - run: npm test
+      - run: docker build -t filefast-lead-emailer:test .
