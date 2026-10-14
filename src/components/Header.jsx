@@ -34,13 +34,6 @@ export default function Header() {
         <a href="tel:+919444614182" className="btn-gold hidden sm:inline-flex">
           Call Now
         </a>
-
-        {/* Mobile nav: simple horizontal scroll strip under header on small screens */}
-        <details className="md:hidden">
-          <summary className="list-none cursor-pointer rounded-sm border border-silver-dark/40 px-3 py-2 text-sm text-navy">
-            Menu
-          </summary>
-        </details>
       </div>
 
       <nav className="container-page flex gap-5 overflow-x-auto pb-3 md:hidden">
