@@ -2,6 +2,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { getServices } from "@/lib/data";
 
 export const metadata = {
+  alternates: { canonical: "/services" },
   title: "All Services",
   description: "Browse all GST, Income Tax, Registration, Compliance and Accounting services offered by FileFast."
 };
