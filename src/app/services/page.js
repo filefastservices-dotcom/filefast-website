@@ -2,6 +2,11 @@ import ServiceCard from "@/components/ServiceCard";
 import { getServices } from "@/lib/data";
 
 export const metadata = {
+  openGraph: {
+    url: "https://www.filefastglobal.com/services",
+    title: "All Services | FileFast Global",
+    description: "Browse all GST, Income Tax, Registration, Compliance and Accounting services offered by FileFast.",
+  },
   alternates: { canonical: "/services" },
   title: "All Services",
   description: "Browse all GST, Income Tax, Registration, Compliance and Accounting services offered by FileFast."
