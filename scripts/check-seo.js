@@ -44,7 +44,7 @@ const checks = [
     test: (content) => {
       const serviceContent = content.split("export const starterBlogPosts")[0];
       const serviceSlugs = new Set(
-        [...serviceContent.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((match) => match[1])
+        [...serviceContent.matchAll(/["']?slug["']?\s*:\s*["']([^"']+)["']/g)].map((match) => match[1])
       );
       const references = [...serviceContent.matchAll(/relatedServiceSlugs:\s*\[([\s\S]*?)\]/g)];
       return serviceSlugs.size > 0 && references.every((reference) =>
@@ -59,8 +59,8 @@ const checks = [
       const starter = fs.readFileSync(path.join(root, "src/lib/starterContent.js"), "utf8");
       const serviceSection = starter.split("export const starterBlogPosts")[0];
       const blogSection = starter.split("export const starterBlogPosts")[1] || "";
-      const serviceSlugs = new Set([...serviceSection.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
-      const blogSlugs = new Set([...blogSection.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+      const serviceSlugs = new Set([...serviceSection.matchAll(/["']?slug["']?\s*:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+      const blogSlugs = new Set([...blogSection.matchAll(/["']?slug["']?\s*:\s*["']([^"']+)["']/g)].map((m) => m[1]));
       const linksBlock = content.match(/const INTERNAL_LINKS = \[([\s\S]*?)\];/);
       if (!linksBlock || serviceSlugs.size === 0 || blogSlugs.size === 0) return false;
       const hrefs = [...linksBlock[1].matchAll(/href:\s*["']([^"']+)["']/g)].map((m) => m[1]);
