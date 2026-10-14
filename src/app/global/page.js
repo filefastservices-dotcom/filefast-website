@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
+  alternates: { canonical: "/global" },
   title: "Global Tax & Compliance Support",
   description:
     "Global tax, VAT and compliance coordination for Indian businesses and founders expanding to the UK, EU, UAE and US markets."
