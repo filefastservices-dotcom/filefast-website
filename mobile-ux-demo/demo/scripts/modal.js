@@ -20,38 +20,19 @@ document.addEventListener('keydown', event => {
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   }
 });
-form.addEventListener('submit', async event => {
+form.addEventListener('submit', event => {
   event.preventDefault();
   if (!form.reportValidity()) return;
+  // This is a UI prototype: intentionally do not transmit, store, or track entered details.
   error.hidden = true;
   submitButton.disabled = true;
-  submitButton.textContent = 'Sending…';
-  try {
-    const response = await fetch('/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: document.getElementById('leadName').value.trim(),
-        email: email.value.trim(),
-        mobile: document.getElementById('leadMobile').value.trim(),
-        serviceInterested: document.getElementById('leadService').value,
-        source: 'mobile-ux-demo',
-        website: document.getElementById('leadWebsite').value
-      })
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || result.success !== true) throw new Error(result.error || 'We could not send your enquiry. Please try again or contact us by phone/WhatsApp.');
-    form.hidden = true;
-    success.hidden = false;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'lead_submitted', service: document.getElementById('leadService').value, source: 'mobile-ux-demo' });
-  } catch (err) {
-    error.textContent = err.message || 'Connection error. Please try again or contact us by phone/WhatsApp.';
-    error.hidden = false;
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = 'Send enquiry';
-  }
+  submitButton.textContent = 'Checking…';
+  form.hidden = true;
+  success.hidden = false;
+  success.querySelector('h3').textContent = 'Demo completed';
+  success.querySelector('p').textContent = 'This is a preview only. No enquiry was sent and no details were saved.';
+  submitButton.disabled = false;
+  submitButton.textContent = 'Send enquiry';
 });
 document.getElementById('dismissSticky').addEventListener('click', () => { stickyDismissed = true; document.getElementById('stickyCta').hidden = true; });
 window.addEventListener('scroll', () => { const sticky = document.getElementById('stickyCta'); sticky.hidden = stickyDismissed || window.scrollY <= 420; }, {passive:true});
