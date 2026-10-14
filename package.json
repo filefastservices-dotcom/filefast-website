@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "check:seo": "node scripts/check-seo.js"
   },
   "dependencies": {
     "next": "14.2.5",
