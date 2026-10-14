@@ -48,56 +48,69 @@ export default async function ServiceDetailPage({ params }) {
   const whatsappMsg = `Hi FileFast, I'm interested in ${service.name}`;
   const serviceUrl = "https://www.filefastglobal.com/services/" + service.slug;
   const internationalService = service.category === "Global Tax & VAT";
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.name,
-    description: service.shortDescription,
-    url: serviceUrl,
-    serviceType: service.category,
-    areaServed: internationalService
-      ? [
-          { "@type": "Country", name: "India" },
-          { "@type": "Country", name: "United Kingdom" },
-          { "@type": "Place", name: "European Union" },
-          { "@type": "Country", name: "United Arab Emirates" },
-          { "@type": "Country", name: "United States" }
-        ]
-      : { "@type": "Country", name: "India" },
-    provider: {
-      "@type": "ProfessionalService",
-      name: "FileFast Global",
-      url: "https://www.filefastglobal.com",
-      telephone: "+91 9444614182",
-      email: "filefast.services@gmail.com"
-    }
-  };
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.filefastglobal.com/" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://www.filefastglobal.com/services" },
-      { "@type": "ListItem", position: 3, name: service.name, item: serviceUrl }
-    ]
-  };
-  const faqSchema = service.faqs?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: service.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer }
-        }))
+  const faqItems = service.faqs?.length
+    ? service.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer }
+      }))
+    : [];
+
+  const schemaGraph = [
+    {
+      "@type": "Service",
+      "@id": serviceUrl + "#service",
+      name: service.name,
+      description: service.shortDescription,
+      url: serviceUrl,
+      serviceType: service.category,
+      areaServed: internationalService
+        ? [
+            { "@type": "Country", name: "India" },
+            { "@type": "Country", name: "United Kingdom" },
+            { "@type": "Place", name: "European Union" },
+            { "@type": "Country", name: "United Arab Emirates" },
+            { "@type": "Country", name: "United States" }
+          ]
+        : { "@type": "Country", name: "India" },
+      provider: {
+        "@type": "ProfessionalService",
+        name: "FileFast Global",
+        url: "https://www.filefastglobal.com",
+        telephone: "+91 9444614182",
+        email: "filefast.services@gmail.com"
       }
-    : null;
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": serviceUrl + "#breadcrumb",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.filefastglobal.com/" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.filefastglobal.com/services" },
+        { "@type": "ListItem", position: 3, name: service.name, item: serviceUrl }
+      ]
+    },
+    ...(faqItems.length
+      ? [{
+          "@type": "FAQPage",
+          "@id": serviceUrl + "#faq",
+          mainEntity: faqItems
+        }]
+      : [])
+  ];
+
+  // Escape HTML-significant characters so CMS text cannot close the script element.
+  const serializedSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": schemaGraph
+  })
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializedSchema }} />
       {/* Hero */}
       <section className="bg-navy py-14 text-white sm:py-20">
         <div className="container-page">
