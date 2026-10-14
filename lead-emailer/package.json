@@ -1,34 +1,43 @@
 {
   "name": "filefast-lead-emailer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Idempotent MongoDB lead email notification worker for FileFast Global",
-  "main": "src/index.js",
+  "description": "TypeScript MongoDB lead email worker for FileFast Global",
+  "type": "module",
   "scripts": {
-    "start": "node src/index.js --cron",
-    "once": "node src/index.js --once",
-    "dry-run": "node src/index.js --once --dry-run",
-    "resend": "node scripts/resend.js",
-    "lint": "eslint src scripts tests",
-    "test": "node --test tests/*.test.js",
-    "test:integration": "node --test tests/integration.test.js",
+    "start": "tsx src/index.ts",
+    "start:once": "tsx src/index.ts --once",
+    "dry-run": "tsx src/index.ts --dry-run --once",
+    "resend": "tsx scripts/resend.ts",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "RUN_INTEGRATION=true vitest run tests/integration.test.ts",
+    "build": "tsc",
     "check": "npm run lint && npm test"
   },
-  "engines": {
-    "node": ">=20"
-  },
+  "engines": { "node": ">=20" },
   "dependencies": {
     "@sendgrid/mail": "^8.1.4",
+    "cron-parser": "^5.3.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "handlebars": "^4.7.8",
     "mongodb": "^6.13.0",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0",
-    "prom-client": "^15.1.3"
+    "prom-client": "^15.1.3",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
-    "eslint": "^9.20.1",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "@types/nodemailer": "^6.4.17",
+    "@types/node-cron": "^3.0.11",
+    "mongodb-memory-server": "^10.1.4",
     "smtp-server": "^3.13.6",
-    "globals": "^15.14.0"
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.3",
+    "vitest": "^3.0.5"
   }
 }

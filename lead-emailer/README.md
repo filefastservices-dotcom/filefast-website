@@ -1,53 +1,67 @@
-# FileFast Global Lead Emailer
+# FileFast Global Lead Emailer (TypeScript)
 
-A separate Node.js worker that watches a MongoDB `leads` collection and sends a **transactional enquiry acknowledgement** through SMTP or SendGrid. It is isolated from the Next.js app so it can be deployed as a worker without changing the website runtime.
+MongoDB-backed worker for sending transactional acknowledgement emails to people who submit a FileFast Global enquiry. SMTP (Nodemailer) and SendGrid are supported. This is a separate worker; it does not alter the Next.js website.
 
-> Do not use this worker for unsolicited marketing campaigns. Only send to people who submitted an enquiry and are eligible to receive a service response. Confirm your privacy notice and email practices before production use.
+**Important:** only send service-related messages to leads who submitted an enquiry and are eligible to receive them. The sample unsubscribe endpoint records opt-out on the lead and optionally writes a suppression collection; ensure all outbound workflows check that suppression list.
 
-## 1. Requirements and setup
-
-- Node.js 20+
-- MongoDB reachable by the worker
-- SMTP credentials **or** a SendGrid API key and a verified sender identity
-- Docker + Docker Compose for the container option
+## Quick start
 
 ```sh
 cd lead-emailer
 cp .env.example .env
-# Edit .env with your own local/test values; never commit real credentials.
 npm install
+npm run lint
+npm test
+npm run start -- --dry-run --once --limit=10
 ```
 
-Use a secret of at least 32 characters for `UNSUBSCRIBE_SECRET`; generate one with `openssl rand -hex 32`. The app fails at startup if required configuration is missing or invalid.
+For local mock email, start MongoDB and Mailpit:
 
-## 2. Environment variables
+```sh
+docker compose --profile dev up -d mongo mailpit
+# Mailpit inbox: http://localhost:8025
+# For Compose app, use MONGODB_URI=mongodb://mongo:27017 and SMTP_HOST=mailpit.
+```
 
-| Variable | Required | Meaning |
-|---|---|---|
-| `MONGODB_URI` | Yes | MongoDB connection string |
-| `MONGODB_DB` | Yes | Database name |
-| `MONGODB_COLLECTION` | Yes | Collection; defaults to `leads` |
-| `EMAIL_PROVIDER` | Yes | `smtp` or `sendgrid` |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | SMTP | TLS SMTP settings |
-| `SENDGRID_API_KEY` | SendGrid | API key from secret manager |
-| `FROM_EMAIL`, `FROM_NAME` | Yes | Verified sender identity |
-| `UNSUBSCRIBE_BASE_URL` | Yes | HTTPS unsubscribe endpoint base URL |
-| `UNSUBSCRIBE_SECRET` | Yes | HMAC secret; keep stable and private |
-| `BATCH_SIZE` | No | Max leads claimed per poll (25) |
-| `MAX_PER_MINUTE` | No | Per-process send limit (30) |
-| `MAX_RETRIES` | No | In-process retries after transient errors (3) |
-| `RETRY_BASE_DELAY_MS` | No | Exponential backoff base (1000 ms) |
-| `POLL_INTERVAL_MS` | No | Worker interval (300000 ms) |
-| `MAX_LEAD_AGE_DAYS` | No | Reserved for retention/eligibility policy (30) |
-| `MONGODB_MAX_POOL_SIZE` | No | MongoDB pool size (10) |
-| `HEALTH_PORT` | No | Health/metrics listener port (8080) |
-| `DRY_RUN` | No | Log only, do not send (false) |
+## Environment
 
-SMTP port 465 uses implicit TLS. Other ports require STARTTLS; in production use 587 with a provider that supports STARTTLS. TLS certificate verification is enabled. Local Mailpit uses port 1025 and is only for development.
+| Variable | Purpose |
+|---|---|
+| MONGODB_URI | MongoDB connection URI |
+| MONGODB_DB | Database name |
+| MONGODB_COLLECTION | Collection; defaults to `leads` |
+| EMAIL_PROVIDER | `smtp` or `sendgrid` |
+| SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS | SMTP credentials and TLS transport |
+| SENDGRID_API_KEY | SendGrid API key |
+| FROM_EMAIL, FROM_NAME | Verified sender identity |
+| UNSUBSCRIBE_BASE_URL | Absolute base URL for unsubscribe route |
+| HMAC_SECRET | HMAC-SHA256 signing secret, 32+ characters |
+| BATCH_SIZE | Leads claimed per batch (default 25) |
+| MAX_PER_MINUTE | Per-process send cap (default 30) |
+| MAX_RETRIES | Retry count for transient provider errors (default 3) |
+| NODE_ENV | development/test/production |
+| MONGODB_MAX_POOL_SIZE, PORT, DRY_RUN | Operational options |
 
-## 3. Lead document shape
+All config is validated at startup. For production SMTP, use port 465 (implicit TLS) or 587 (STARTTLS); certificate verification remains enabled. Never commit .env or print secrets in logs.
 
-The worker selects `email_status: "new"`, `email_status: "retry"`, or legacy records with no `email_status` and `email_sent !== true`.
+## CLI
+
+```sh
+npm run start -- --once
+npm run start -- --cron "*/5 * * * *"
+npm run start -- --dry-run
+npm run start -- --once --dry-run --limit=10
+npm run resend -- --id <leadId> --dry-run
+npm run resend -- --id <leadId>
+```
+
+Cron expression runs in the worker process; keep one instance per queue partition and monitor /health. For OS cron every five minutes:
+
+```cron
+*/5 * * * * cd /opt/filefast/lead-emailer && /usr/bin/npm run start -- --once >> /var/log/filefast-lead-emailer.log 2>&1
+```
+
+## Lead schema
 
 ```js
 {
@@ -55,123 +69,91 @@ The worker selects `email_status: "new"`, `email_status: "retry"`, or legacy rec
   name: "Example Client",
   email: "client@example.com",
   service: "GST registration",
-  email_status: "new",
+  source: "website-contact-form",
+  created_at: ISODate("2026-10-14T10:00:00Z"),
+  email_status: "new", // new | pending | sent | failed | retry
   attempts: 0,
-  createdAt: new Date(),
-  // Optional source/form fields can remain on the document.
+  last_attempt_at: null,
+  email_response: null
 }
 ```
 
-State transitions: `new/retry -> pending -> sent` or `new/retry -> pending -> retry/failed`. Claiming uses an atomic MongoDB update. A pending claim older than 15 minutes can be recovered after a worker crash. The worker is at-least-once, not mathematically exactly-once: if a provider accepts an email and the process crashes before MongoDB records `sent`, a retry can send a duplicate. Keep provider response IDs for audits.
+State transitions: `new/retry -> pending -> sent` or `pending -> retry/failed`. Claiming is atomic and records worker_id. The worker reclaims stale pending claims older than 15 minutes. Delivery is at-least-once: if provider acceptance succeeds and MongoDB acknowledgement fails, duplicates remain possible. Audit provider message IDs.
 
-### Example MongoDB queries
+Queries:
 
 ```js
-// Pending eligible leads
-db.leads.find({ $or: [
-  { email_status: { $in: ["new", "retry"] } },
-  { email_status: { $exists: false }, email_sent: { $ne: true } }
-] });
-
-// Re-queue failed leads after correcting the cause
-db.leads.updateMany(
-  { email_status: "failed", attempts: { $lt: 5 } },
-  { $set: { email_status: "retry" }, $unset: { email_error: "" } }
-);
-
-// Audit sends
-db.leads.find(
-  { email_status: "sent" },
-  { email: 1, email_sent_at: 1, email_response: 1, attempts: 1 }
-).sort({ email_sent_at: -1 }).limit(100);
-
-// Manually mark one record as eligible (check consent and history first)
-db.leads.updateOne({ _id: ObjectId("REPLACE_ID") }, { $set: { email_status: "retry" } });
+// Queue
+db.leads.find({ email_status: { $in: ["new", "retry"] }, email_unsubscribed: { $ne: true } }).sort({ created_at: 1 });
+// Requeue failed leads only after inspecting and fixing the cause
+db.leads.updateMany({ email_status: "failed", attempts: { $lt: 5 } }, { $set: { email_status: "retry" } });
+// Audit recent successful sends
+db.leads.find({ email_status: "sent" }, { email: 1, email_response: 1, last_attempt_at: 1, attempts: 1 }).sort({ last_attempt_at: -1 }).limit(100);
 ```
 
-## 4. Run commands
+## Templates and unsubscribe
+
+Templates live in `src/templates/email.html.hbs` and `email.txt.hbs`, with `name`, `service`, `lead_id`, and `unsubscribe_url`. Handlebars escapes HTML by default. The HMAC token is signed and expiry-checked. Register `registerUnsubscribeEndpoint(app, secret, leads, suppressionCollection)` from `src/unsubscribe.ts` in your public web server or a dedicated HTTPS Express service; the worker health server does not expose it by default. Production must persist suppression and check it before every email send.
+
+## Health and metrics
+
+`GET /health` returns DB and provider health. `GET /metrics` exposes Prometheus metrics, including:
+
+```text
+emails_sent_total 42
+emails_failed_total 2
+emails_in_flight 0
+```
+
+Example Grafana/Prometheus alert rule:
+
+```yaml
+groups:
+  - name: filefast-lead-emailer
+    rules:
+      - alert: LeadEmailFailures
+        expr: increase(emails_failed_total[10m]) >= 5
+        for: 2m
+        labels: { severity: warning }
+        annotations:
+          summary: "FileFast lead email failures are elevated"
+```
+
+Optional Slack alerting: set `SLACK_WEBHOOK_URL` via your secret manager. The worker emits a JSON payload after repeated failures in a batch. Alert independently if MongoDB is unavailable; do not rely only on the email provider that may be failing.
+
+## Docker and CI
 
 ```sh
-# One batch; do not send while validating
-npm run dry-run
-node src/index.js --once --dry-run --limit=10
-
-# Send one batch after configuration is tested
-node src/index.js --once --limit=10
-
-# Poll every POLL_INTERVAL_MS (default 5 minutes) and expose /health + /metrics
-node src/index.js --cron
-
-# Resend one specific lead (use only after checking previous attempts)
-node scripts/resend.js REPLACE_LEAD_ID --dry-run
-node scripts/resend.js REPLACE_LEAD_ID
-```
-
-Cron alternative (runs one batch every five minutes; add a lock if multiple hosts share the same collection):
-
-```cron
-*/5 * * * * cd /opt/filefast/lead-emailer && /usr/bin/node src/index.js --once >> /var/log/filefast-lead-emailer.log 2>&1
-```
-
-Avoid running both cron and `--cron` at the same time unless that is intentional.
-
-## 5. Local Docker Compose
-
-```sh
-cp .env.example .env
-# For compose, set MONGODB_URI=mongodb://mongo:27017 and SMTP_HOST=mailpit in .env.
 docker compose --profile dev up --build
+docker compose logs -f app
+docker compose down
 ```
 
-Mailpit UI is available at http://localhost:8025. The Compose profile starts Mailpit; set `EMAIL_PROVIDER=smtp`, `SMTP_USER=local`, `SMTP_PASS=local`, and `SMTP_PORT=1025`. Do not expose Mailpit publicly.
+GitHub Actions type-checks, tests and builds on changes. Pushing a tag such as `lead-emailer-v2.0.0` triggers the publish job; configure a protected GitHub Environment named `production` with required reviewers for the manual approval gate. Image registry: `ghcr.io/<owner>/filefast-lead-emailer`.
 
-## 6. Unsubscribe token handling
+## Migration note
 
-The worker signs `leadId.email.expiry` claims in a compact HMAC-SHA256 token. Verify tokens with `src/unsubscribe.js` before changing a subscription state. **This project does not implement a public unsubscribe endpoint.** Wire the URL to an HTTPS endpoint that verifies the token, records an opt-out in a durable suppression collection, and returns a neutral confirmation page. Never expose raw lead data. Do not claim one-click unsubscribe support until the endpoint is implemented and tested.
+Back up first. For existing leads, initialize state without overwriting known sends:
 
-## 7. Health, metrics and logs
-
-- `GET /health`: database ping and provider configuration/health status.
-- `GET /metrics`: Prometheus metrics including `emails_sent_total`, `emails_failed_total`, `emails_in_flight`.
-- Logs are one JSON object per line; do not log message body, SMTP password, API key or unsubscribe token.
-- Alert when multiple batches fail, DB is unavailable, failure ratio rises, or retry backlog grows. Send alerts through a separate incident path, not the failing provider alone.
-
-## 8. Tests
-
-```sh
-npm install
-npm run lint
-npm test
-# Optional integration test against a disposable MongoDB; starts a mock SMTP listener.
-MONGODB_TEST_URI=mongodb://localhost:27017 npm run test:integration
+```js
+db.leads.updateMany({ email_status: { $exists: false }, email_sent: { $ne: true } }, { $set: { email_status: "new", attempts: 0, last_attempt_at: null, email_response: null } });
+db.leads.updateMany({ email_sent: true, email_status: { $exists: false } }, { $set: { email_status: "sent", attempts: 1 } });
 ```
 
-The integration test writes a test database named `filefast_emailer_test`; never point it at production. Unit tests cover env validation, template escaping, HMAC tokens and a mocked send function.
+## Rollout checklist
 
-## 9. Docker deployment
-
-```sh
-docker build -t filefast-lead-emailer:staging .
-docker run --rm --env-file .env -p 8080:8080 filefast-lead-emailer:staging
-```
-
-Use a secret manager for production environment variables. Restrict MongoDB network access to the worker, require TLS for managed MongoDB, use least-privilege database credentials, pin container image digests in production, and set a restart policy. The sample Compose file is for local development, not a hardened public production cluster.
-
-## 10. CI and rollout
-
-GitHub Actions runs lint, unit tests, and a Docker build when `lead-emailer/**` changes. Production deployment should be a separate environment with a protected manual approval gate.
-
-1. Deploy to staging with test MongoDB and Mailpit or provider sandbox.
-2. Verify schema/state transitions, missing-email handling, template placeholders and valid JSON logs.
-3. Run unit and integration tests; verify /health and /metrics.
-4. Verify unsubscribe-token validation and the actual HTTPS unsubscribe endpoint before enabling live sends.
-5. Confirm sender authentication (SPF/DKIM/DMARC as applicable), rate limits, retry policy, suppression/consent rules and rollback.
-6. Approve production deployment manually, then send to an internal test lead before opening the queue.
+1. Deploy to staging using a disposable database and Mailpit/provider sandbox.
+2. Run `npm run lint`, `npm test`, and `npm run test:integration`; validate schema fields, placeholders and JSON logs.
+3. Verify HTTPS unsubscribe route, expiry/signature handling, suppression persistence and send eligibility.
+4. Validate /health, /metrics, alert thresholds, provider authentication and rate limits.
+5. Run remote JSON-LD and Rich Results tests only if website structured data changed; they are not relevant to this worker-only release.
+6. Create a version tag and use the protected production environment's manual approval gate.
+7. Send one internal test enquiry, verify provider response and Mongo status, then gradually enable the queue.
 
 ## Troubleshooting
 
-- **MongoDB connection errors:** check URI, DNS, IP allowlist, TLS and DB user permissions; verify `MONGODB_DB` and collection.
-- **SMTP authentication/TLS errors:** use port 465 with implicit TLS or 587 with STARTTLS; confirm SMTP credentials and sender policy. Local Mailpit is not a production SMTP relay.
-- **SendGrid 401/403:** verify API key permissions and that the sender identity/domain is authenticated.
-- **Rate limits / 429:** lower `MAX_PER_MINUTE`, keep retries bounded and increase the backoff; inspect provider quotas.
-- **Repeated failed leads:** inspect `email_error` and `email_response`, fix the underlying issue, then explicitly re-queue selected records.
+- **MongoDB connection:** check URI, DNS/IP allowlist, TLS, database user permissions and selected database/collection.
+- **SMTP authentication/TLS:** use 465 implicit TLS or 587 STARTTLS; confirm sender authorization and provider credentials. Mailpit is local-only.
+- **SendGrid 401/403:** verify API key permissions and sender/domain authentication.
+- **429 / rate limiting:** lower MAX_PER_MINUTE, keep bounded retries and inspect provider quotas.
+- **Repeated failures:** inspect email_error/email_response and requeue only after correcting the cause.

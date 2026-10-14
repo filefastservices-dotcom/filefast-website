@@ -1,0 +1,3 @@
+# Mirrors the repository workflow at .github/workflows/lead-emailer-ci.yml.
+# The workflow type-checks, tests, builds the Docker image, and publishes only from version tags
+# after the protected production GitHub Environment's required reviewers approve.
