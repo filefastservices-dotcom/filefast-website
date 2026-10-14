@@ -31,5 +31,8 @@ jobs:
       - name: Check internal routes
         run: npm run check:routes
 
+      - name: Check public image size budgets
+        run: npm run check:image-sizes
+
       - name: Build Next.js website
         run: npm run build
