@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://filefast.in";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com";
 
 export default function robots() {
   return {
