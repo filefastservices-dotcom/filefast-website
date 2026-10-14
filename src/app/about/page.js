@@ -1,4 +1,9 @@
 export const metadata = {
+  openGraph: {
+    url: "https://www.filefastglobal.com/about",
+    title: "About Founder | FileFast Global",
+    description: "Meet Gnanavel M, founder of FileFast — Tax, Compliance and Business Services.",
+  },
   alternates: { canonical: "/about" },
   title: "About Founder",
   description: "Meet Gnanavel M, founder of FileFast — Tax, Compliance and Business Services."
