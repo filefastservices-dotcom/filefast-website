@@ -2,6 +2,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { getTestimonials } from "@/lib/data";
 
 export const metadata = {
+  alternates: { canonical: "/testimonials" },
   title: "Verified Client Reviews | FileFast",
   description: "Read public Google reviews from FileFast clients for GST, tax filing and business compliance support."
 };
