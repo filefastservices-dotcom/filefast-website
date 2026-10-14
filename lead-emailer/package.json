@@ -14,7 +14,9 @@
     "test:integration": "node --test tests/integration.test.js",
     "check": "npm run lint && npm test"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@sendgrid/mail": "^8.1.4",
     "dotenv": "^16.4.7",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "eslint": "^9.20.1",
-    "smtp-server": "^3.13.6"
+    "smtp-server": "^3.13.6",
+    "globals": "^15.14.0"
   }
 }
