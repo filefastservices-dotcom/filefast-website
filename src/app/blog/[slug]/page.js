@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   const post = await getBlogPostBySlug(params.slug);
   if (!post) return {};
   const rawTitle = post.metaTitle || post.title;
-  const pageTitle = rawTitle.replace(/\\s*\\|\\s*FileFast(?: Global)?$/i, "");
+  const pageTitle = rawTitle.replace(/\s*\|\s*FileFast(?: Global)?$/i, "");
 
   return {
     title: pageTitle,
