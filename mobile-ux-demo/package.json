@@ -7,7 +7,8 @@
     "lint": "eslint demo/scripts tests --ext .js",
     "test": "jest --runInBand",
     "validate:lottie": "node tools/validate-lottie-sizes.js",
-    "validate:lottie-sync": "node tools/validate-lottie-sync.js"
+    "validate:lottie-sync": "node tools/validate-lottie-sync.js",
+    "check:a11y": "node tools/check-demo-accessibility.js"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
