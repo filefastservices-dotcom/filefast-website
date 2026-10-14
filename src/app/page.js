@@ -5,12 +5,12 @@ import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
 export const metadata = {
-  title: "Tax & Compliance Services in India and Worldwide",
-  description: "FileFast Global supports GST, ITR, accounting and business compliance in India, with UK and EU VAT, UAE VAT, US tax and cross-border support.",
+  title: "GST Filing & Tax Compliance in Chennai, India",
+  description: "Get practical support for GST returns, income tax, business registrations and compliance from Chennai, India, with coordination for selected international VAT and tax requirements.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
-    title: "Global Tax, VAT & GST Compliance | FileFast Global",
-    description: "India GST and income tax services alongside UK VAT, EU VAT, UAE VAT, US tax and cross-border compliance coordination for growing businesses.",
+    title: "GST Filing & Tax Compliance in Chennai | FileFast Global",
+    description: "Practical support for GST returns, income tax, registrations and business compliance in India, plus coordination for selected international VAT requirements.",
   },
   alternates: { canonical: "/" },
 };
