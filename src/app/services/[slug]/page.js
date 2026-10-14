@@ -43,9 +43,26 @@ export default async function ServiceDetailPage({ params }) {
   }
 
   const whatsappMsg = `Hi FileFast, I'm interested in ${service.name}`;
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.shortDescription,
+    url: "https://www.filefastglobal.com/services/" + service.slug,
+    serviceType: service.category,
+    areaServed: { "@type": "Country", name: "India" },
+    provider: {
+      "@type": "ProfessionalService",
+      name: "FileFast Global",
+      url: "https://www.filefastglobal.com",
+      telephone: "+91 9444614182",
+      email: "filefast.services@gmail.com"
+    }
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       {/* Hero */}
       <section className="bg-navy py-14 text-white sm:py-20">
         <div className="container-page">
