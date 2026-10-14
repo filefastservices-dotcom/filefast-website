@@ -21,7 +21,9 @@ export async function getServices({ category, featured } = {}) {
     if (featured) query.isFeatured = true;
     const services = await Service.find(query).sort({ sortOrder: 1, createdAt: -1 }).lean();
     const result = JSON.parse(JSON.stringify(services));
-    return result.length ? result : filterServices(starterServices, { category, featured });
+    const existingSlugs = new Set(result.map((service) => service.slug));
+    const missingStarterServices = starterServices.filter((service) => !existingSlugs.has(service.slug));
+    return filterServices([...result, ...missingStarterServices], { category, featured });
   } catch (err) {
     console.error("getServices failed:", err.message);
     return filterServices(starterServices, { category, featured });
