@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   const service = await getServiceBySlug(params.slug);
   if (!service) return {};
   const rawTitle = service.metaTitle || service.name;
-  const pageTitle = rawTitle.replace(/\\s*\\|\\s*FileFast(?: Global)?$/i, "");
+  const pageTitle = rawTitle.replace(/\s*\|\s*FileFast(?: Global)?$/i, "");
   return {
     title: pageTitle,
     description: service.metaDescription || service.shortDescription,
