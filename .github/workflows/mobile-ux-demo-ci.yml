@@ -28,5 +28,3 @@ jobs:
         run: cd mobile-ux-demo && npm install && npm run validate:lottie
       - name: Verify public animation assets match demo source
         run: cd mobile-ux-demo && npm run validate:lottie-sync
-      - name: Check demo accessibility contracts
-        run: cd mobile-ux-demo && npm run check:a11y

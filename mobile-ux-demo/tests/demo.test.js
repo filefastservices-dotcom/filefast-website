@@ -22,3 +22,13 @@ test('lead form is demo-only and does not post to a server', () => {
   expect(html).toContain('this form does not send or store your details');
   expect(html).not.toMatch(/action=["'][^"']+["']/i);
 });
+
+
+test('demo-only submit action is clearly labelled as a preview', () => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const modal = fs.readFileSync(path.join(root, 'scripts/modal.js'), 'utf8');
+  expect(html).toContain('Preview form');
+  expect(modal).toContain("'Preview form'");
+  expect(html).not.toMatch(/>Send enquiry</i);
+  expect(modal).not.toContain("'Send enquiry'");
+});
