@@ -4,9 +4,11 @@ import { getBlogPostBySlug } from "@/lib/data";
 export async function generateMetadata({ params }) {
   const post = await getBlogPostBySlug(params.slug);
   if (!post) return {};
+  const rawTitle = post.metaTitle || post.title;
+  const pageTitle = rawTitle.replace(/\\s*\\|\\s*FileFast(?: Global)?$/i, "");
 
   return {
-    title: post.metaTitle || post.title,
+    title: pageTitle,
     description: post.metaDescription || post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -14,7 +16,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       type: "article",
       url: "https://www.filefastglobal.com/blog/" + post.slug,
-      title: post.metaTitle || post.title,
+      title: pageTitle,
       description: post.metaDescription || post.excerpt,
     }
   };
