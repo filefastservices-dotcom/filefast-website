@@ -4,6 +4,10 @@ import TestimonialCard from "@/components/TestimonialCard";
 import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 const WHY = [
   { title: "Professional Service", text: "Work handled by experienced tax and compliance professionals." },
   { title: "Reasonable Pricing", text: "Transparent, fair pricing with no hidden charges." },
