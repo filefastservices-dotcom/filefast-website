@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/about" },
   title: "About Founder",
   description: "Meet Gnanavel M, founder of FileFast — Tax, Compliance and Business Services."
 };
