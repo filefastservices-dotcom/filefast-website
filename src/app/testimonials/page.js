@@ -2,6 +2,11 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { getTestimonials } from "@/lib/data";
 
 export const metadata = {
+  openGraph: {
+    url: "https://www.filefastglobal.com/testimonials",
+    title: "Verified Client Reviews | FileFast Global",
+    description: "Read public Google reviews from FileFast clients for GST, tax filing and business compliance support.",
+  },
   alternates: { canonical: "/testimonials" },
   title: "Verified Client Reviews | FileFast",
   description: "Read public Google reviews from FileFast clients for GST, tax filing and business compliance support."
