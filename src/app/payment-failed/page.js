@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
+  robots: { index: false, follow: false },
   title: "Payment Failed - FileFast",
   description: "Your payment could not be processed."
 };
