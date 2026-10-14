@@ -1,6 +1,6 @@
 import { getServices, getBlogPosts } from "@/lib/data";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://filefast.in";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com";
 
 export default async function sitemap() {
   const [services, posts] = await Promise.all([getServices({}), getBlogPosts({})]);
