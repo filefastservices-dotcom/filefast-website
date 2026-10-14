@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { Express, Request, Response } from "express";
-import type { Collection, ObjectId } from "mongodb";
+import { ObjectId, type Collection } from "mongodb";
 
 export interface UnsubscribeClaims { leadId: string; email: string; exp: number; }
 export function generateUnsubscribeToken(leadId: string, email: string, secret: string, ttlSeconds = 31536000): string {
@@ -48,8 +48,4 @@ export function registerUnsubscribeEndpoint(app: Express, secret: string, leads:
   });
 }
 function isObjectId(value: string): boolean { return /^[a-f\d]{24}$/i.test(value); }
-function toObjectId(value: string): ObjectId {
-  // Dynamic require avoids a value import only being used by this endpoint helper.
-  const { ObjectId: Id } = require("mongodb") as typeof import("mongodb");
-  return new Id(value);
-}
+function toObjectId(value: string): ObjectId { return new ObjectId(value); }
