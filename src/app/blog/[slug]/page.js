@@ -10,6 +10,12 @@ export async function generateMetadata({ params }) {
     description: post.metaDescription || post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      url: "https://www.filefastglobal.com/blog/" + post.slug,
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
     }
   };
 }
