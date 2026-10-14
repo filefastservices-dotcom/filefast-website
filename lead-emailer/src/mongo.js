@@ -33,9 +33,9 @@ function createMongo(config, { MongoClientClass = MongoClient } = {}) {
             $and: [
               { $or: [
                 { email_status: { $in: ["new", "retry"] } },
-                { email_status: { $exists: false }, email_sent: { $ne: true } }
-              ] },
-              { $or: [{ email_status: { $ne: "pending" } }, { last_attempt_at: { $lt: new Date(Date.now() - 15 * 60 * 1000) } }] }
+                { email_status: { $exists: false }, email_sent: { $ne: true } },
+                { email_status: "pending", last_attempt_at: { $lt: new Date(Date.now() - 15 * 60 * 1000) } }
+              ] }
             ]
           },
           { $set: { email_status: "pending", last_attempt_at: now }, $inc: { attempts: 1 } },
@@ -46,6 +46,11 @@ function createMongo(config, { MongoClientClass = MongoClient } = {}) {
         claimed.push(doc);
       }
       return claimed;
+    },
+    async releaseClaim(id) {
+      return this.collection.updateOne({ _id: id, email_status: "pending" }, {
+        $set: { email_status: "retry", updatedAt: new Date() }
+      });
     },
     async markSent(id, response) {
       return this.collection.updateOne({ _id: id, email_status: "pending" }, {
