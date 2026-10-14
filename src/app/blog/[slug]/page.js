@@ -7,7 +7,10 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post.metaTitle || post.title,
-    description: post.metaDescription || post.excerpt
+    description: post.metaDescription || post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    }
   };
 }
 
