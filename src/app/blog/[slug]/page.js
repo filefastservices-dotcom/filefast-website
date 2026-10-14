@@ -22,23 +22,31 @@ export async function generateMetadata({ params }) {
   };
 }
 
-function renderContent(content) {
-  const phrase = "GST Registration service";
-  const parts = content.split(phrase);
+const INTERNAL_LINKS = [
+  { phrase: "GST Registration service", href: "/services/gst-registration" },
+  { phrase: "GST registration documents checklist", href: "/blog/gst-registration-documents-checklist" },
+  { phrase: "GST registration address proof", href: "/blog/gst-registration-address-proof" },
+  { phrase: "documents required for GST return filing", href: "/blog/documents-required-for-gst-return-filing" },
+  { phrase: "GSTR-1 filing", href: "/services/gstr-1-filing" },
+  { phrase: "GSTR-3B filing", href: "/services/gstr-3b-filing" },
+  { phrase: "ITR filing", href: "/services/itr-filing" }
+];
 
-  return parts.map((part, index) => (
-    <span key={index}>
-      {part}
-      {index < parts.length - 1 && (
-        <a
-          href="/services/gst-registration"
-          className="font-medium text-blue-700 underline underline-offset-2"
-        >
-          {phrase}
-        </a>
-      )}
-    </span>
-  ));
+function renderContent(content) {
+  const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GSTR-1 filing|GSTR-3B filing|ITR filing)/gi;
+  return content.split(phrasePattern).map((part, index) => {
+    const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
+    if (!link) return <span key={index}>{part}</span>;
+    return (
+      <a
+        key={index}
+        href={link.href}
+        className="font-medium text-blue-700 underline underline-offset-2"
+      >
+        {part}
+      </a>
+    );
+  });
 }
  
 export default async function BlogPostPage({ params }) {
