@@ -5,12 +5,12 @@ import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
 export const metadata = {
-  title: "GST Filing & Tax Compliance in Chennai, India",
-  description: "Get practical support for GST returns, income tax, business registrations and compliance from Chennai, India, with coordination for selected international VAT and tax requirements.",
+  title: "GST Registration & Tax Compliance in Chennai | FileFast Global",
+  description: "Get support with GST registration, document checks, GST returns and business compliance from Chennai, serving businesses across India.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
-    title: "GST Filing & Tax Compliance in Chennai | FileFast Global",
-    description: "Practical support for GST returns, income tax, registrations and business compliance in India, plus coordination for selected international VAT requirements.",
+    title: "GST Registration & Tax Compliance in Chennai | FileFast Global",
+    description: "Practical support for GST registration, document checks, GST returns and ongoing business compliance across India.",
   },
   alternates: { canonical: "/" },
 };
@@ -78,27 +78,27 @@ export default async function HomePage() {
           <div className="hero-copy relative z-10">
             <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/80 px-4 py-2 text-gold-dark">
               <span className="hero-live-dot" aria-hidden="true" />
-              Tax &amp; compliance, made clearer
+              GST registration & business compliance
             </p>
             <h1 className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.12] tracking-tight text-navy sm:text-5xl lg:text-[3.65rem]">
-              GST Filing &amp; Tax Compliance for Growing Businesses
+              GST Registration Support for Startups &amp; SMEs
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-navy/75 sm:text-lg sm:leading-8">
-              From GST returns and income tax to registrations and ongoing compliance, get practical support for your business in India.
+              Get help with document checks, application preparation and GST portal submission from Chennai-based compliance support.
             </p>
             <p className="mt-3 max-w-xl text-sm leading-7 text-navy/65 sm:text-base">
-              Expanding overseas? Explore VAT and tax-compliance support for selected international markets, with local specialist coordination where required.
+              Share your requirements to receive a relevant document checklist and clear next steps. Registration timelines depend on document completeness and GST department processing.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="#consultation" className="hero-primary-cta">
-                Get Expert Assistance <span aria-hidden="true">→</span>
+              <a href="#consultation" className="hero-primary-cta" data-track="cta-start">
+                Get GST Registration Help <span aria-hidden="true">→</span>
               </a>
-              <Link href="/services" className="hero-secondary-cta">
-                Explore Our Services
+              <Link href="/services/gst-registration" className="hero-secondary-cta" data-track="cta-learn">
+                How It Works
               </Link>
             </div>
             <p className="mt-5 text-xs leading-6 text-navy/60">
-              Chennai-based support <span aria-hidden="true">·</span> Services across India <span aria-hidden="true">·</span> International compliance assistance
+              Chennai-based support <span aria-hidden="true">·</span> Services across India <span aria-hidden="true">·</span> Clear document and process guidance
             </p>
           </div>
 
@@ -111,11 +111,11 @@ export default async function HomePage() {
                 <div className="flex items-center gap-3">
                   <div className="hero-doc-icon"><span /></div>
                   <div>
-                    <p className="text-sm font-semibold text-navy">Your compliance overview</p>
+                    <p className="text-sm font-semibold text-navy">GST registration checklist</p>
                     <p className="mt-1 text-xs text-slate-500">A clear place to start</p>
                   </div>
                 </div>
-                <span className="hero-panel-dots">•••</span>
+                <span className="hero-panel-dots" aria-hidden="true">•••</span>
               </div>
               <div className="space-y-3 p-5 sm:p-6">
                 <div className="hero-task">
@@ -129,31 +129,31 @@ export default async function HomePage() {
                 <div className="hero-task hero-task--float">
                   <span className="hero-task__icon hero-task__icon--gold"><span /></span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-navy">Review the requirements</p>
-                    <p className="mt-1 text-xs text-slate-500">Documents and next steps</p>
+                    <p className="text-sm font-semibold text-navy">Check your documents</p>
+                    <p className="mt-1 text-xs text-slate-500">Identify the relevant requirements</p>
                   </div>
                   <span className="hero-task__tag">Step 2</span>
                 </div>
                 <div className="hero-task">
                   <span className="hero-task__icon hero-task__icon--teal"><span /></span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-navy">Get a clear action plan</p>
-                    <p className="mt-1 text-xs text-slate-500">Scope explained before work begins</p>
+                    <p className="text-sm font-semibold text-navy">Prepare the next steps</p>
+                    <p className="mt-1 text-xs text-slate-500">Understand the scope before work begins</p>
                   </div>
                   <span className="hero-task__tag">Step 3</span>
                 </div>
               </div>
               <div className="mx-5 mb-5 flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 sm:mx-6">
                 <span className="hero-secure-mark" />
-                <p className="text-xs leading-5 text-slate-600">Practical guidance, clear scope and next steps.</p>
+                <p className="text-xs leading-5 text-slate-600">Document guidance and clear next steps.</p>
               </div>
             </div>
             <div className="hero-floating-note hero-floating-note--top">
-              <span className="hero-note-icon">₹</span>
-              <span><strong>India compliance</strong><small>GST · ITR · TDS</small></span>
+              <span className="hero-note-icon" aria-hidden="true">₹</span>
+              <span><strong>GST &amp; tax support</strong><small>GST · ITR · TDS</small></span>
             </div>
             <div className="hero-floating-note hero-floating-note--bottom">
-              <span className="hero-globe-icon">◎</span>
+              <span className="hero-globe-icon" aria-hidden="true">◎</span>
               <span><strong>Cross-border support</strong><small>VAT · Global workflows</small></span>
             </div>
             <div className="hero-visual-caption">Illustrative workflow · Actual scope depends on your requirements</div>
