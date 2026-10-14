@@ -302,7 +302,320 @@ export const starterServices = [
     metaDescription: "Prepare for US tax and sales-tax obligations with record organisation and e-commerce compliance coordination through FileFast Global and local specialists.",
     seoKeywords: "US sales tax support, sales tax for international sellers, US tax compliance coordination, e-commerce sales tax"
   })
-
+,
+  baseService({
+  name: "Company Registration",
+  slug: "company-registration",
+  category: "Business Registration",
+  sortOrder: 10,
+  isFeatured: true,
+  shortDescription: "Company and LLP registration guidance for founders and small businesses in India.",
+  fullDescription: "Company registration in India starts with choosing a structure that fits the founders, ownership plan, funding needs and ongoing compliance capacity. FileFast Global helps founders prepare the information and documents needed for a company or LLP registration workflow and understand the next steps after incorporation. The appropriate route, forms and approvals depend on the entity type and current requirements of the Ministry of Corporate Affairs and other relevant authorities.\\n\\nOur support can include an initial requirements discussion, a document checklist, coordination of the application workflow and a practical overview of post-registration tasks such as PAN/TAN, bank-account preparation, accounting setup and recurring compliance. Professional and government charges are explained separately before work begins. Processing depends on complete information and authority review; approval dates cannot be guaranteed.",
+  benefits: [
+    "Compare common business structures before applying",
+    "Prepare founder, director and registered-office information",
+    "Coordinate registration documents and application steps",
+    "Understand post-incorporation compliance tasks"
+  ],
+  eligibility: [
+    "Founders planning a private limited company or LLP",
+    "Small businesses formalising an existing operation",
+    "Entrepreneurs needing a registration checklist"
+  ],
+  requiredDocuments: [
+    "PAN and identity proof of proposed directors or partners",
+    "Address proof and contact details",
+    "Proposed business name and activity",
+    "Registered-office proof and owner consent where applicable",
+    "Ownership and capital/partner details"
+  ],
+  processFlow: [
+    {
+      title: "Choose the structure",
+      description: "Discuss ownership, activity and compliance needs."
+    },
+    {
+      title: "Prepare documents",
+      description: "Compile identity, address, office and business details."
+    },
+    {
+      title: "Coordinate filing",
+      description: "Prepare the agreed application workflow and respond to document clarifications."
+    },
+    {
+      title: "Plan next steps",
+      description: "Review banking, accounting, tax registrations and recurring compliance."
+    }
+  ],
+  pricingInfo: "Professional fees depend on entity type and scope. Government fees, stamp duty, digital signatures and third-party charges may be separate; these should be identified before starting.",
+  faqs: [
+    {
+      question: "Should I register a private limited company or an LLP?",
+      answer: "The right structure depends on ownership, fundraising plans, liability, tax and ongoing compliance. Discuss your business model before choosing."
+    },
+    {
+      question: "What documents are commonly required?",
+      answer: "Founder identity and address proof, proposed name and activity, contact details and registered-office documents are common starting points."
+    },
+    {
+      question: "How long does company registration take?",
+      answer: "Timing depends on document accuracy, application checks and government processing. A fixed approval date cannot be guaranteed."
+    },
+    {
+      question: "Are government charges included in the professional fee?",
+      answer: "Not necessarily. Government fees, stamp duty, digital signature and third-party charges should be identified separately."
+    },
+    {
+      question: "What happens after incorporation?",
+      answer: "You may need banking, accounting, tax registrations and ongoing statutory filings based on your entity and activities."
+    }
+  ],
+  relatedServiceSlugs: [
+    "gst-registration",
+    "msme-registration",
+    "tds-return-filing"
+  ],
+  metaTitle: "Company Registration in India | FileFast Global",
+  metaDescription: "Plan company or LLP registration in India with a clear document checklist, application guidance and post-incorporation compliance support from FileFast Global.",
+  seoKeywords: "company registration India, private limited company registration, LLP registration India, company registration Chennai, startup registration"
+}),
+  baseService({
+  name: "Tax & Compliance Services",
+  slug: "compliance-services",
+  category: "Compliance Services",
+  sortOrder: 11,
+  isFeatured: true,
+  shortDescription: "Recurring GST, income-tax, TDS and business compliance support for SMEs and growing teams.",
+  fullDescription: "Keeping up with tax and business compliance can be difficult when invoices, purchase records, payroll information and filing deadlines are managed across different systems. FileFast Global helps small businesses organise recurring compliance work, prepare filing information and identify missing records before deadlines.\\n\\nDepending on the engagement, support may cover GST returns, TDS return preparation, income-tax return coordination, accounting records and reconciliation, and business registration or licence requirements. We start by understanding the legal entity, registrations, transaction volume, filing frequency and current backlog. We then agree a practical scope, document checklist and communication process.\\n\\nObligations differ by business type and activity, so not every service is required for every business. We confirm the applicable work and professional fee before starting and flag cases that need specialist review.",
+  benefits: [
+    "Map recurring filing responsibilities and deadlines",
+    "Organise documents before each reporting period",
+    "Coordinate GST, TDS and income-tax tasks",
+    "Identify reconciliation gaps and missing information early"
+  ],
+  eligibility: [
+    "SMEs needing recurring filing support",
+    "Founders who want a compliance calendar",
+    "Businesses with multiple registrations or pending returns"
+  ],
+  requiredDocuments: [
+    "Business PAN and relevant GSTINs",
+    "Sales and purchase registers",
+    "Previous returns and filing acknowledgements",
+    "Bank statements and accounting summaries",
+    "TDS deduction and challan records where applicable",
+    "Notices or portal communications requiring attention"
+  ],
+  processFlow: [
+    {
+      title: "Scope requirements",
+      description: "Review entity type, registrations, filing periods and pending tasks."
+    },
+    {
+      title: "Build the checklist",
+      description: "Agree documents, owners and cut-off dates."
+    },
+    {
+      title: "Prepare and reconcile",
+      description: "Review records and identify missing data or mismatches."
+    },
+    {
+      title: "File and track",
+      description: "Complete agreed work and share acknowledgements or next steps."
+    }
+  ],
+  pricingInfo: "Fees depend on registrations, return types, transaction volume and backlog. Request a monthly or per-filing quote with statutory charges clearly separated.",
+  faqs: [
+    {
+      question: "What is included in compliance services?",
+      answer: "The scope can include GST returns, TDS returns, ITR support, accounting and registration tasks. We confirm what your business needs before engagement."
+    },
+    {
+      question: "Can you help with overdue returns?",
+      answer: "We can review pending periods, records and portal status, then confirm the scope. Late fees and interest depend on the facts and applicable rules."
+    },
+    {
+      question: "How should I send documents?",
+      answer: "We provide a checklist and agree a suitable channel. Do not send passwords or OTPs."
+    },
+    {
+      question: "Do you offer monthly support?",
+      answer: "Recurring arrangements may be available depending on registrations, transaction volume and work required."
+    },
+    {
+      question: "Can you guarantee no notices or penalties?",
+      answer: "No provider can guarantee that. Accurate records and timely filing help manage risk, but outcomes depend on the facts and authority decisions."
+    }
+  ],
+  relatedServiceSlugs: [
+    "gstr-1-filing",
+    "gstr-3b-filing",
+    "itr-filing",
+    "tds-return-filing"
+  ],
+  metaTitle: "Tax & Compliance Services for SMEs | FileFast Global",
+  metaDescription: "Organise recurring GST, TDS, ITR and business compliance with document checklists, filing coordination and clear scope from FileFast Global.",
+  seoKeywords: "tax compliance services India, GST compliance services, TDS return filing, compliance services for small businesses, outsourced tax compliance"
+}),
+  baseService({
+  name: "Global Expansion Advisory",
+  slug: "global-expansion-advisory",
+  category: "Global Tax & VAT",
+  sortOrder: 12,
+  isFeatured: true,
+  shortDescription: "Cross-border tax readiness and country-specific compliance coordination for Indian businesses expanding overseas.",
+  fullDescription: "Expanding into another country can affect tax registration, indirect tax, invoicing, marketplace reporting, business structure and record-keeping. Requirements depend on where the business is established, where customers are located, whether goods cross borders, where inventory is stored and how sales are made.\\n\\nFileFast Global helps Indian founders prepare by mapping the proposed market, business model and transaction flows. We can organise company and ownership records, expected turnover, sample invoices, marketplace reports and current tax registrations, then coordinate next steps for India-side compliance and international VAT or tax workflows.\\n\\nCountry-specific tax advice, regulated filings or representation may require a qualified local professional. We clarify that boundary before engagement and do not present general information as a substitute for jurisdiction-specific advice.",
+  benefits: [
+    "Map target markets and cross-border transaction flows",
+    "Prepare records for country-specific tax assessment",
+    "Coordinate UK, EU, UAE and US tax/VAT workstreams",
+    "Connect international planning with India-side compliance"
+  ],
+  eligibility: [
+    "Indian businesses planning to sell goods or services overseas",
+    "E-commerce sellers entering new markets",
+    "Founders preparing for a local tax-adviser consultation"
+  ],
+  requiredDocuments: [
+    "Company and ownership information",
+    "Target countries and planned launch dates",
+    "Product or service descriptions",
+    "Expected sales, customer types and turnover",
+    "Sample invoices, contracts and marketplace reports",
+    "Current tax registrations"
+  ],
+  processFlow: [
+    {
+      title: "Define the expansion plan",
+      description: "Identify target markets, products, sales channels and expected activity."
+    },
+    {
+      title: "Map transaction flows",
+      description: "Record customer location, inventory, fulfilment, payments and contracting entity."
+    },
+    {
+      title: "Prepare a document pack",
+      description: "Organise evidence for country-specific tax and legal review."
+    },
+    {
+      title: "Coordinate next steps",
+      description: "Agree India-side tasks and any local professional support."
+    }
+  ],
+  pricingInfo: "Fees depend on countries involved, entities, transaction complexity and local adviser requirements. Scope and quote are agreed after an initial review.",
+  faqs: [
+    {
+      question: "Can an Indian company sell internationally without setting up a foreign company?",
+      answer: "It depends on the market, product, sales model and local rules. Cross-border selling and establishing locally are different questions."
+    },
+    {
+      question: "Which countries can you help coordinate?",
+      answer: "The website covers UK, EU, UAE and US tax/VAT workstreams alongside India compliance. Local professional involvement may be needed."
+    },
+    {
+      question: "What should I prepare before expanding?",
+      answer: "Prepare company documents, product details, target markets, expected sales, invoices, marketplace reports and inventory/fulfilment information."
+    },
+    {
+      question: "Do tax rules work the same in every country?",
+      answer: "No. Registration, thresholds and reporting rules differ by jurisdiction and can change."
+    },
+    {
+      question: "Is the initial discussion a formal tax opinion?",
+      answer: "No. It helps scope the facts and next steps. Formal jurisdiction-specific advice must be agreed with an appropriately qualified professional."
+    }
+  ],
+  relatedServiceSlugs: [
+    "uk-vat-compliance",
+    "eu-vat-oss-ioss",
+    "uae-vat-compliance",
+    "us-tax-sales-tax",
+    "gst-registration"
+  ],
+  metaTitle: "Global Expansion & International Tax Support",
+  metaDescription: "Prepare for overseas growth with cross-border tax readiness, VAT coordination and a clear document plan for India-based businesses.",
+  seoKeywords: "international tax advisory India, cross-border tax compliance, global tax services, overseas expansion tax, international business compliance"
+}),
+  baseService({
+  name: "E-commerce Tax Compliance",
+  slug: "ecommerce-tax-compliance",
+  category: "Global Tax & VAT",
+  sortOrder: 13,
+  isFeatured: true,
+  shortDescription: "GST and marketplace reconciliation support for online sellers across sales channels.",
+  fullDescription: "E-commerce sellers often need to reconcile orders, cancellations, returns, marketplace fees, settlement reports, tax collected at source and GST return figures. Records may arrive in different formats from each platform, so a consistent reconciliation process is important before filing.\\n\\nFileFast Global helps sellers organise marketplace reports, sales registers, credit notes, returns and tax summaries. Depending on the engagement, work can include checking sales classifications, comparing platform settlements with books, preparing data for GSTR-1 and GSTR-3B, and identifying TCS or return adjustments that need to be matched against source records.\\n\\nThe correct treatment depends on the platform, transaction type, seller registrations and current GST rules. We review the available evidence and confirm scope before preparing filing entries. This service is designed for sellers who need a clearer record trail and repeatable month-end workflow.",
+  benefits: [
+    "Consolidate marketplace sales and settlement reports",
+    "Reconcile cancellations, refunds and credit notes",
+    "Review TCS and GST reporting data",
+    "Prepare a repeatable month-end document workflow"
+  ],
+  eligibility: [
+    "Sellers using marketplaces or direct e-commerce channels",
+    "Businesses with multiple platforms or high invoice volumes",
+    "Sellers reconciling GST returns with marketplace records"
+  ],
+  requiredDocuments: [
+    "Platform sales and order reports",
+    "Settlement and payment statements",
+    "Returns, refunds and credit-note reports",
+    "GSTIN and tax-period details",
+    "TCS statements and portal records",
+    "Sales and purchase registers",
+    "Previous GSTR-1 and GSTR-3B"
+  ],
+  processFlow: [
+    {
+      title: "Collect platform reports",
+      description: "Gather sales, settlement, returns and TCS reports."
+    },
+    {
+      title: "Reconcile sales and adjustments",
+      description: "Match orders, refunds, credit notes and settlements to records."
+    },
+    {
+      title: "Prepare GST return data",
+      description: "Organise reviewed figures for relevant return tables."
+    },
+    {
+      title: "Share the review summary",
+      description: "Document assumptions, missing evidence and next filing steps."
+    }
+  ],
+  pricingInfo: "Pricing depends on platforms, order volume, tax periods and reconciliation complexity. Share sample reports for a scope and fee estimate.",
+  faqs: [
+    {
+      question: "Can you help with Amazon, Flipkart and Meesho reports?",
+      answer: "We can review supported marketplace reports and agree a workflow based on available files and your reporting needs."
+    },
+    {
+      question: "Why can marketplace sales differ from bank settlements?",
+      answer: "Settlements may reflect fees, refunds, reserves, adjustments and timing differences. Reconcile each component to platform reports and accounting records."
+    },
+    {
+      question: "What is TCS in e-commerce GST reconciliation?",
+      answer: "TCS is a tax-collection mechanism under applicable GST provisions. Reconcile it with relevant statements and portal records."
+    },
+    {
+      question: "Can I file Nil if the marketplace had no payout?",
+      answer: "A lack of payout does not prove there were no reportable transactions. Review orders, invoices, returns and adjustments first."
+    },
+    {
+      question: "What files should I send for a quote?",
+      answer: "Share tax period, platform names, approximate order count and sample sales, settlement, returns and TCS reports. Do not include passwords or OTPs."
+    }
+  ],
+  relatedServiceSlugs: [
+    "gst-registration",
+    "gstr-1-filing",
+    "gstr-3b-filing",
+    "uk-vat-compliance",
+    "eu-vat-oss-ioss"
+  ],
+  metaTitle: "E-commerce GST & Marketplace Tax Compliance",
+  metaDescription: "Reconcile marketplace sales, refunds, settlements and TCS with GST return preparation support for Indian e-commerce sellers.",
+  seoKeywords: "GST for e-commerce sellers, e-commerce GST compliance India, Amazon seller GST returns, Flipkart GST filing, Meesho TCS reconciliation"
+})
 ];
 
 // Public reviews transcribed from FileFast's Google Business Profile (August 2026).

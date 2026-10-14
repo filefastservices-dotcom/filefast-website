@@ -117,7 +117,7 @@ export default async function HomePage() {
       <section className="container-page py-16 sm:py-20">
         <p className="eyebrow text-center">Why Choose FileFast</p>
         <h2 className="mt-2 text-center font-display text-3xl font-semibold text-navy">
-          Built On Trust, Run With Precision
+          Tax, VAT and Compliance Support Built Around Your Business
         </h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {WHY.map((item) => (
@@ -164,7 +164,7 @@ export default async function HomePage() {
             <div>
               <p className="eyebrow">Featured Services</p>
               <h2 className="mt-2 font-display text-3xl font-semibold text-navy">
-                Popular With Our Clients
+                GST, ITR, Business and Global Tax Services
               </h2>
             </div>
             <Link href="/services" className="hidden text-sm font-semibold text-gold-dark sm:block">
@@ -188,7 +188,7 @@ export default async function HomePage() {
       <section className="container-page py-16 sm:py-20">
         <p className="eyebrow text-center">Service Categories</p>
         <h2 className="mt-2 text-center font-display text-3xl font-semibold text-navy">
-          Everything Under One Roof
+          Explore Our Tax and Business Compliance Services
         </h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map((cat) => (
@@ -243,7 +243,7 @@ export default async function HomePage() {
               Request a Consultation
             </h2>
             <p className="mt-3 text-sm text-navy/70">
-              Tell us what you need. We’ll review your request and contact you about the next steps.
+              Tell us your business type, country and compliance requirement. We’ll review your request and explain the next steps.
             </p>
             <div className="mt-6 flex gap-3">
               <a
