@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B63D6">
+<title>FileFast Global — Mobile UX Demo</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main>
+<header class="hero">
+<p class="eyebrow">FILEFAST GLOBAL · CHENNAI</p>
+<h1>GST Registration Made Fast for Startups &amp; SMEs</h1>
+<p class="lead">Complete online GST registration, document checks and portal filing — handled by Chennai experts.</p>
+<div class="actions"><button class="button primary" id="openLeadModal" data-track="cta-start">Get Started — Free Check</button><a class="button ghost" href="#how-it-works">How it works</a></div>
+<div id="hero-lottie" class="hero-visual" role="img" aria-label="Illustration of a GST registration document being checked" data-lottie-src="/assets/hero.json"><img class="fallback" src="/assets/hero-fallback.svg" alt="" width="800" height="480"></div>
+<div class="metrics"><div><strong>Online</strong><span>Document review</span></div><div><strong>Guided</strong><span>Filing support</span></div><div><strong>Clear</strong><span>Next steps</span></div></div>
+</header>
+<section class="section" id="how-it-works"><p class="eyebrow">A SIMPLE PROCESS</p><h2>Know what happens next</h2>
+<div class="tabs" role="tablist" aria-label="How it works"><button class="tab" role="tab" id="tab-docs" aria-selected="true" aria-controls="panel-docs" tabindex="0">Documents</button><button class="tab" role="tab" id="tab-review" aria-selected="false" aria-controls="panel-review" tabindex="-1">Review</button><button class="tab" role="tab" id="tab-filing" aria-selected="false" aria-controls="panel-filing" tabindex="-1">Filing</button></div>
+<div class="panel" id="panel-docs" role="tabpanel" aria-labelledby="tab-docs" tabindex="0"><h3>Prepare your documents</h3><p>Get a practical checklist for your business and address proof.</p></div>
+<div class="panel" id="panel-review" role="tabpanel" aria-labelledby="tab-review" tabindex="0" hidden><h3>Review the details</h3><p>Check the information before proceeding with the application.</p></div>
+<div class="panel" id="panel-filing" role="tabpanel" aria-labelledby="tab-filing" tabindex="0" hidden><h3>Proceed with filing</h3><p>Understand the next steps and information needed from you.</p></div>
+</section>
+<section class="section" id="services"><p class="eyebrow">SERVICES</p><h2>Compliance support for your business</h2>
+<article class="service-card"><span class="service-icon" aria-hidden="true">✓</span><div><h3>GST Registration</h3><p>Get a clear document checklist and guided application support.</p></div><button data-open-lead class="text-cta">Start check →</button></article>
+<article class="service-card"><span class="service-icon" aria-hidden="true">▤</span><div><h3>GST Return Filing</h3><p>Organize sales, purchase and return information for filing.</p></div><button data-open-lead class="text-cta">Start check →</button></article>
+<article class="service-card"><span class="service-icon" aria-hidden="true">◎</span><div><h3>Business Compliance</h3><p>Explore registration and recurring compliance requirements.</p></div><button data-open-lead class="text-cta">Start check →</button></article>
+</section>
+</main>
+<div class="sticky-cta" id="stickyCta" hidden><button class="button primary" data-open-lead>Get Started — Free Check</button><button class="dismiss" id="dismissSticky" aria-label="Dismiss sticky call to action">×</button></div>
+<nav class="bottom-nav" aria-label="Primary navigation"><a href="#how-it-works" aria-current="page"><span>⌂</span><span>Process</span></a><a href="#services"><span>▤</span><span>Services</span></a><button data-open-lead><span>＋</span><span>Get started</span></button></nav>
+<div class="backdrop" id="leadModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><p class="eyebrow">GET STARTED</p><h2 id="modalTitle">Start your 2-minute GST check</h2><p id="modalDescription">Share two details so we can understand what you need.</p>
+<form id="leadForm"><label for="leadEmail">Email address</label><input id="leadEmail" name="email" type="email" autocomplete="email" required><label for="leadService">Service</label><select id="leadService" name="service" required><option value="gst-registration" selected>GST Registration</option><option value="gst-return-filing">GST Return Filing</option><option value="company-registration">Company Registration</option><option value="other-compliance">Other compliance</option></select><p class="note">Demo only: this form does not send or store your details.</p><button class="button primary submit" type="submit">Continue</button></form>
+<div id="formSuccess" aria-live="polite" hidden><div class="success-icon" aria-hidden="true">✓</div><h3>Demo submission complete</h3><p>Your inputs passed browser validation. No lead was sent or saved.</p></div></section></div>
+<script type="module" src="/scripts/lazy-lottie.js"></script><script type="module" src="/scripts/experiments.js"></script><script type="module" src="/scripts/tabs.js"></script><script type="module" src="/scripts/modal.js"></script>
+</body></html>
