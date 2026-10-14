@@ -197,6 +197,112 @@ export const starterServices = [
     shortDescription: "Register your business on the Government e-Marketplace.",
     fullDescription: "GeM registration helps eligible sellers participate in government procurement opportunities. FileFast supports profile setup and document preparation.",
     benefits: ["Reach government buyers", "Assistance with seller registration", "Guidance through the onboarding process"], relatedServiceSlugs: ["msme-registration"] })
+
+  baseService({
+    name: "UK VAT Registration & Returns Support",
+    slug: "uk-vat-compliance",
+    category: "Global Tax & VAT",
+    sortOrder: 20,
+    shortDescription: "UK VAT registration readiness, return preparation support and compliance coordination for businesses selling into the United Kingdom.",
+    fullDescription: "UK VAT obligations depend on the business establishment, goods and services supplied, where goods are located, sales channels and customer type. FileFast Global helps organise transaction records, assess the questions to review, prepare a document pack and coordinate with an appropriately qualified UK VAT professional where registration, advice or filing requires local expertise. We do not promise that every business must register or that a particular threshold applies to every case.",
+    benefits: ["Organise UK sales and marketplace records", "Prepare information for a VAT registration assessment", "Support VAT return data preparation and reconciliations", "Coordinate specialist review for UK-specific questions"],
+    eligibility: ["Indian and international businesses selling goods or services connected with the UK", "E-commerce sellers who need to assess UK VAT obligations", "Businesses seeking help organising VAT records before speaking with a UK specialist"],
+    requiredDocuments: ["Business incorporation and ownership details", "UK and overseas VAT numbers, if already registered", "Sales invoices and credit notes", "Marketplace statements and payment reports", "Goods location, import and fulfilment information", "Customer location and transaction summaries", "Prior VAT returns and HMRC correspondence, if applicable"],
+    processFlow: [
+      { title: "Map the business activity", description: "Identify establishment, customer locations, goods movement, marketplace use and current registrations." },
+      { title: "Prepare the records", description: "Organise invoices, sales summaries, marketplace reports and import or fulfilment records." },
+      { title: "Coordinate local review", description: "Confirm the appropriate registration or filing route with a qualified UK professional where required." }
+    ],
+    pricingInfo: "Fees depend on the country-specific scope, transaction volume and whether local professional representation or filing is required. Request a case-specific quote before work begins; government or adviser fees may be separate.",
+    faqs: [
+      { question: "Does every overseas seller need UK VAT registration?", answer: "No single answer applies to every seller. The position can depend on where goods are located, how sales are made, the seller's establishment and the type of supply. Get the facts reviewed before deciding." },
+      { question: "Can FileFast help with UK VAT returns?", answer: "We can help organise transaction data and coordinate preparation or local professional review. The precise filing and representation scope will be confirmed for your case." },
+      { question: "What records should an online seller prepare?", answer: "Prepare order-level sales, refunds, marketplace fees, customer and delivery locations, import information, inventory location and any prior VAT records." }
+    ],
+    relatedServiceSlugs: ["eu-vat-oss-ioss", "us-tax-sales-tax"],
+    metaTitle: "UK VAT Registration & Returns Support",
+    metaDescription: "UK VAT compliance support for international and e-commerce businesses. Organise records and coordinate registration or return review with FileFast Global.",
+    seoKeywords: "UK VAT registration support, UK VAT returns, UK VAT for overseas sellers, UK e-commerce VAT compliance"
+  }),
+  baseService({
+    name: "EU VAT, OSS & IOSS Compliance Support",
+    slug: "eu-vat-oss-ioss",
+    category: "Global Tax & VAT",
+    sortOrder: 21,
+    shortDescription: "EU VAT readiness and OSS/IOSS workflow coordination for cross-border and e-commerce sellers.",
+    fullDescription: "European Union VAT treatment can vary by the seller's establishment, goods location, customer type, sales channel and route used to deliver goods. OSS and IOSS are specific schemes with eligibility and process requirements; they are not interchangeable with a general VAT registration. FileFast Global helps map the sales model, organise records and coordinate review with an appropriate EU-country tax professional where local advice, registration or filing is required.",
+    benefits: ["Map cross-border sales and fulfilment flows", "Organise marketplace and order-level records", "Prepare information for OSS/IOSS eligibility review", "Coordinate country-specific VAT registration and reporting questions"],
+    eligibility: ["Businesses selling to EU customers across borders", "Online sellers using marketplaces or fulfilment centres", "Businesses assessing whether an OSS or IOSS scheme may be relevant"],
+    requiredDocuments: ["Business and ownership details", "Countries where goods are stored or dispatched", "Order-level sales and refund reports", "Customer country and VAT ID data where applicable", "Marketplace and payment processor statements", "Import and customs records where applicable", "Existing EU VAT registrations and prior returns"],
+    processFlow: [
+      { title: "Map the EU sales model", description: "Review where goods start and end, the customer type, sales channel and business establishment." },
+      { title: "Prepare transaction evidence", description: "Organise country-level sales, refunds, marketplace reports and import records." },
+      { title: "Confirm the right scheme", description: "Coordinate eligibility and registration questions with an appropriate local professional before filing." }
+    ],
+    pricingInfo: "Pricing depends on the number of countries, registrations, transaction volume, reporting frequency and local adviser involvement. Request a tailored quote after the business model is reviewed.",
+    faqs: [
+      { question: "What is the difference between OSS and IOSS?", answer: "They are different EU VAT schemes designed for particular types of supplies. Eligibility and reporting depend on the transaction and seller circumstances, so confirm the correct scheme before using it." },
+      { question: "Does an OSS registration replace every local VAT registration?", answer: "No. OSS does not automatically remove all domestic or other country-specific registration obligations, for example where goods are stored or other transactions occur." },
+      { question: "What records should an EU e-commerce seller keep?", answer: "Keep order-level transactions, customer country, goods dispatch and destination, refunds, marketplace reports, import records and relevant VAT registration details." }
+    ],
+    relatedServiceSlugs: ["uk-vat-compliance", "uae-vat-compliance"],
+    metaTitle: "EU VAT, OSS & IOSS Compliance Support",
+    metaDescription: "EU VAT and OSS/IOSS support for cross-border e-commerce businesses. Prepare sales records and coordinate local specialist review with FileFast Global.",
+    seoKeywords: "EU VAT compliance, OSS registration support, IOSS support, EU VAT for e-commerce sellers, cross-border VAT"
+  }),
+  baseService({
+    name: "UAE VAT Registration & Returns Support",
+    slug: "uae-vat-compliance",
+    category: "Global Tax & VAT",
+    sortOrder: 22,
+    shortDescription: "UAE VAT registration readiness, records preparation and return coordination for eligible businesses.",
+    fullDescription: "UAE VAT obligations depend on the business, taxable supplies, turnover, place of establishment and applicable Federal Tax Authority rules. FileFast Global helps organise sales and purchase records, identify information needed for an assessment and coordinate with an appropriately qualified UAE tax professional where local advice, registration or filing is required. Registration thresholds and deadlines should be confirmed against current rules and the facts of the business.",
+    benefits: ["Organise sales, purchase and expense records", "Prepare information for a UAE VAT registration assessment", "Support return-data reconciliation", "Coordinate UAE-specific professional review where needed"],
+    eligibility: ["Businesses operating in or supplying into the UAE", "E-commerce sellers reviewing UAE VAT exposure", "Businesses seeking a clear records checklist before local tax review"],
+    requiredDocuments: ["Trade licence and entity documents", "Ownership and authorised signatory details", "Sales and purchase invoices", "Revenue summaries and bank records", "Import/export and customs documents, where applicable", "Existing TRN and prior VAT returns, if registered", "Business activity and customer/supplier details"],
+    processFlow: [
+      { title: "Review business facts", description: "Identify entity status, business activities, supplies and relevant turnover information." },
+      { title: "Prepare documents and figures", description: "Organise invoices, sales summaries, purchases and import/export records." },
+      { title: "Coordinate registration or filing", description: "Confirm the applicable route and any local adviser involvement before submission." }
+    ],
+    pricingInfo: "Fees depend on registration or return scope, record volume and local professional involvement. Request a tailored quote; any government charges or third-party adviser fees will be clarified separately.",
+    faqs: [
+      { question: "Can any business register for UAE VAT?", answer: "Eligibility and whether registration is mandatory or voluntary depend on the business facts and current UAE rules. Confirm the position with a qualified UAE professional." },
+      { question: "What records are useful for a UAE VAT return?", answer: "Typically, sales and purchase invoices, credit notes, import/export records, accounting summaries and prior return information are relevant. The final checklist depends on the business." },
+      { question: "Can an overseas business have UAE VAT obligations?", answer: "Some overseas businesses may have UAE VAT considerations depending on the supplies and circumstances. A fact-specific review is important before assuming that registration is or is not required." }
+    ],
+    relatedServiceSlugs: ["uk-vat-compliance", "eu-vat-oss-ioss"],
+    metaTitle: "UAE VAT Registration & Returns Support",
+    metaDescription: "UAE VAT compliance support for businesses. Prepare records and coordinate registration or return review with FileFast Global.",
+    seoKeywords: "UAE VAT registration support, UAE VAT returns, UAE VAT compliance, VAT for overseas businesses UAE"
+  }),
+  baseService({
+    name: "US Tax & Sales Tax Compliance Coordination",
+    slug: "us-tax-sales-tax",
+    category: "Global Tax & VAT",
+    sortOrder: 23,
+    shortDescription: "US tax and state sales-tax readiness support for international businesses and online sellers.",
+    fullDescription: "The United States has federal, state and local tax rules, and sales-tax obligations can vary by state, nexus, product or service, marketplace activity and business structure. FileFast Global helps businesses organise transaction and entity information, map questions for review and coordinate with an appropriately qualified US tax professional where advice, registration or filing requires local expertise. This service is not a substitute for individual US tax advice.",
+    benefits: ["Organise US marketplace and direct-sales records", "Prepare information for state sales-tax nexus review", "Collect entity and transaction data for adviser review", "Coordinate federal and state filing questions with local specialists"],
+    eligibility: ["Non-US businesses selling to US customers", "E-commerce sellers using marketplaces or direct-to-consumer channels", "Founders assessing US business and tax compliance requirements"],
+    requiredDocuments: ["Entity formation and ownership records", "US and non-US tax identification numbers, if any", "Sales by state and sales channel", "Marketplace facilitator reports and settlement statements", "Product/service descriptions and refund data", "Inventory or fulfilment locations", "Prior federal/state returns and tax notices, if applicable"],
+    processFlow: [
+      { title: "Map the US activity", description: "Review entity structure, sales channels, states served, inventory and marketplace involvement." },
+      { title: "Organise state-level records", description: "Prepare sales, refunds, marketplace collections and other relevant transaction information." },
+      { title: "Coordinate specialist assessment", description: "Refer federal, state and local tax questions for appropriate US professional review before any filing." }
+    ],
+    pricingInfo: "Pricing depends on entity structure, number of states, return types, transaction volume and the local professional scope. Request a tailored quote after an initial review; government and third-party fees may be separate.",
+    faqs: [
+      { question: "Is US sales tax the same in every state?", answer: "No. Rules, rates, thresholds and filing requirements vary by state and sometimes by locality. The business facts and current state rules need to be reviewed." },
+      { question: "Do marketplaces collect all sales tax for a seller?", answer: "Marketplace collection rules can cover some transactions, but they do not automatically resolve every seller obligation or every tax type. Keep marketplace and direct-sale records separate for review." },
+      { question: "Can FileFast file US tax returns directly?", answer: "We help organise records and coordinate with an appropriately qualified US tax professional where local advice or filing is required. The scope and responsible filer must be confirmed for each case." }
+    ],
+    relatedServiceSlugs: ["uk-vat-compliance", "eu-vat-oss-ioss"],
+    metaTitle: "US Tax & Sales Tax Compliance Support",
+    metaDescription: "US tax and sales-tax readiness support for international and e-commerce businesses. Organise records and coordinate specialist review with FileFast Global.",
+    seoKeywords: "US sales tax support, sales tax for international sellers, US tax compliance coordination, e-commerce sales tax"
+  })
+
 ];
 
 // Public reviews transcribed from FileFast's Google Business Profile (August 2026).
