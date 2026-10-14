@@ -18,8 +18,8 @@ export const metadata = {
 const WHY = [
   { title: "Professional Service", text: "Work handled by experienced tax and compliance professionals." },
   { title: "Reasonable Pricing", text: "Transparent, fair pricing with no hidden charges." },
-  { title: "Complete Satisfaction", text: "We stay with you until your filing is fully resolved." },
-  { title: "Fast Processing", text: "Streamlined process that respects your deadlines." },
+  { title: "Clear Follow-through", text: "We explain next steps and help you track the work within the agreed scope." },
+  { title: "Deadline-aware Workflow", text: "We organise documents and plan the work around applicable filing deadlines." },
   { title: "Secure Documentation", text: "Your documents are handled with strict confidentiality." },
   { title: "India + Global Coordination", text: "India tax compliance and cross-border support, with country-specific specialist review where required." }
 ];

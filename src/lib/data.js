@@ -2,7 +2,7 @@ import { connectDB } from "@/lib/mongodb";
 import Service from "@/models/Service";
 import Testimonial from "@/models/Testimonial";
 import Blog from "@/models/Blog";
-import { starterBlogPosts, starterServices, starterTestimonials } from "@/lib/starterContent";
+import { starterBlogPosts, starterServices } from "@/lib/starterContent";
 
 function filterServices(services, { category, featured } = {}) {
   return services.filter((service) =>
@@ -51,10 +51,10 @@ export async function getTestimonials() {
     const verified = result.filter((item) =>
       item.clientName?.toLowerCase() !== "sample client" && !item.quote?.startsWith("Example feedback:")
     );
-    return verified.length ? verified : starterTestimonials;
+    return verified;
   } catch (err) {
     console.error("getTestimonials failed:", err.message);
-    return starterTestimonials;
+    return [];
   }
 }
 
