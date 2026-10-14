@@ -1,6 +1,6 @@
 import { getServices, getBlogPosts } from "@/lib/data";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com").replace(/\/+$/, "");
+const SITE_URL = "https://www.filefastglobal.com";
 
 function lastModified(value) {
   if (!value) return undefined;
