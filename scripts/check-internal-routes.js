@@ -24,7 +24,8 @@ function walk(dir) {
 
 const appRoutes = new Set(["/"]);
 for (const file of walk(appRoot)) {
-  if (!/page\.(js|jsx|ts|tsx)$/.test(file)) continue;
+  // Next.js App Router endpoints are valid internal routes too, even without a page component.
+  if (!/(?:page|route)\.(js|jsx|ts|tsx)$/.test(file)) continue;
   let route = path.relative(appRoot, path.dirname(file)).split(path.sep).filter(Boolean)
     .filter((segment) => !/^\(.+\)$/.test(segment) && !segment.startsWith("@"));
   if (route.some((segment) => segment.startsWith("["))) continue;
