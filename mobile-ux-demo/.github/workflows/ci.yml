@@ -1,0 +1,43 @@
+name: Mobile UX Demo CI
+on:
+  push:
+    branches: [main, master]
+    paths: ['mobile-ux-demo/**']
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile-ux-demo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run lint
+      - run: npm test
+      - name: Validate Lottie JSON and size budgets
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const limits = { hero: 120*1024, process: 30*1024, success: 20*1024 };
+          for (const [name, limit] of Object.entries(limits)) {
+            const file = `demo/assets/${name}.json`;
+            JSON.parse(fs.readFileSync(file, 'utf8'));
+            const bytes = fs.statSync(file).size;
+            if (bytes > limit) throw new Error(`${file} exceeds ${limit} bytes`);
+            console.log(`${file}: ${bytes} bytes`);
+          }
+          NODE
+      - run: docker build -t filefast-mobile-ux-demo:ci .
+      - run: zip -r ffg-mobile-demo.zip demo README.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ffg-mobile-demo
+          path: mobile-ux-demo/ffg-mobile-demo.zip
