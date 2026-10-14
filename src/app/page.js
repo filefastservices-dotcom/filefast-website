@@ -5,12 +5,12 @@ import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
 export const metadata = {
-  title: "GST Registration & GST Filing in Chennai",
-  description: "Need GST registration, GST return filing or ITR filing in Chennai? FileFast Global helps individuals and businesses prepare documents and manage tax compliance online across India.",
+  title: "Global Tax, VAT & GST Compliance Services",
+  description: "FileFast Global supports GST, income tax, accounting and business compliance in India, plus UK and EU VAT, UAE VAT, US tax and cross-border compliance coordination.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
-    title: "GST Registration & GST Filing in Chennai | FileFast Global",
-    description: "GST registration, GSTR-1 and GSTR-3B filing, ITR filing and business compliance support in Chennai and across India.",
+    title: "Global Tax, VAT & GST Compliance | FileFast Global",
+    description: "India GST and income tax services alongside UK VAT, EU VAT, UAE VAT, US tax and cross-border compliance coordination for growing businesses.",
   },
   alternates: { canonical: "/" },
 };
@@ -21,7 +21,7 @@ const WHY = [
   { title: "Complete Satisfaction", text: "We stay with you until your filing is fully resolved." },
   { title: "Fast Processing", text: "Streamlined process that respects your deadlines." },
   { title: "Secure Documentation", text: "Your documents are handled with strict confidentiality." },
-  { title: "Pan India Service", text: "Serving individuals and businesses across India, online." }
+  { title: "India + Global Coordination", text: "India tax compliance and cross-border support, with country-specific specialist review where required." }
 ];
 
 const CATEGORIES = [
@@ -31,10 +31,11 @@ const CATEGORIES = [
   "Licenses",
   "Compliance Services",
   "Accounting Services",
-  "Digital Business Services"
+  "Digital Business Services",
+  "Global Tax & VAT"
 ];
 
-const PROOF_POINTS = ["GST & tax compliance", "Business registrations", "Global expansion support", "WhatsApp-first assistance"];
+const PROOF_POINTS = ["India GST & income tax", "UK / EU / UAE VAT support", "US tax coordination", "Cross-border compliance"];
 
 const FAQS = [
   {
@@ -43,7 +44,7 @@ const FAQS = [
   },
   {
     q: "Do you serve clients outside Tamil Nadu?",
-    a: "Yes, FileFast serves individuals and businesses across India entirely online."
+    a: "Yes. We support India-side compliance online and help coordinate international tax and VAT workflows for businesses dealing with the UK, EU, UAE and US. Local professional review may be required depending on the service."
   },
   {
     q: "What documents do I need to get started?",
@@ -63,12 +64,12 @@ export default async function HomePage() {
         <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_15%_20%,#d3aa45_0,transparent_24%),radial-gradient(circle_at_85%_80%,#1d5d9b_0,transparent_30%)]" />
         <div className="container-page relative py-20 sm:py-28">
           <div className="mx-auto max-w-4xl rounded-sm border border-gold/30 bg-navy/55 p-8 text-center shadow-2xl shadow-black/20 sm:p-12">
-            <p className="eyebrow text-gold">India tax compliance · global business coordination</p>
+            <p className="eyebrow text-gold">India tax, accounting & global VAT compliance</p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-              GST Registration, GST Return Filing & Income Tax Services
+              Global Tax, VAT, GST & Accounting Compliance
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-silver/90">
-              Get help with GST registration, GSTR-1 and GSTR-3B filing, income-tax returns and business registrations. Serving Chennai clients and businesses across India online.
+              From GST registration, GSTR-1/GSTR-3B and income-tax returns in India to UK/EU VAT, UAE VAT, US tax coordination and cross-border e-commerce compliance, get a clear starting point for your business. Country-specific advice or filings are coordinated with qualified local professionals where required.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
@@ -115,6 +116,33 @@ export default async function HomePage() {
               <p className="mt-2 text-sm text-navy/70">{item.text}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="border-y border-silver/70 bg-white py-16 sm:py-20">
+        <div className="container-page grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="eyebrow">Global Tax & VAT</p>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-navy">Compliance support across borders</h2>
+            <p className="mt-4 text-sm leading-7 text-navy/70">For businesses selling internationally, tax obligations can depend on customer location, goods movement, marketplace activity and business structure. FileFast helps organise the facts and coordinate the next steps for UK VAT, EU VAT and OSS/IOSS, UAE VAT, US tax and sales-tax workflows, alongside India GST and income-tax compliance.</p>
+            <p className="mt-3 text-sm leading-7 text-navy/70">The exact scope depends on your case. Where local registration, tax advice or filing requires country-specific expertise, we help identify the need for an appropriate local professional.</p>
+            <Link href="/global" className="btn-navy-outline mt-6 inline-flex">Explore Global Tax Support</Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              ["India", "GST, ITR, TDS & business compliance"],
+              ["United Kingdom", "VAT readiness & filing coordination"],
+              ["European Union", "VAT, OSS/IOSS & cross-border records"],
+              ["United Arab Emirates", "VAT readiness & return coordination"],
+              ["United States", "Tax and sales-tax workflow coordination"],
+              ["E-commerce", "Marketplace and multi-country tax records"]
+            ].map(([title, body]) => (
+              <div key={title} className="rounded-sm border border-silver/70 p-5">
+                <h3 className="font-display text-lg font-semibold text-navy">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-navy/70">{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
