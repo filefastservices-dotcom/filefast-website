@@ -38,5 +38,4 @@ if (failed) {
   console.error("Lottie validation failed. Optimize the listed assets before merging.");
   process.exit(1);
 }
-
 console.log("All Lottie JSON files are valid and within raw-size targets.");
