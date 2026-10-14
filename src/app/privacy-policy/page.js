@@ -14,6 +14,7 @@ export default function PrivacyPolicyPage() {
     <article className="container-page max-w-3xl py-14 sm:py-20">
       <p className="eyebrow">Privacy</p>
       <h1 className="mt-2 font-display text-4xl font-semibold text-navy">Privacy Policy</h1>
+      <p className="mt-2 text-xs text-navy/50">Last updated: October 14, 2026</p>
       <p className="mt-4 text-sm leading-6 text-navy/70">This page explains how FileFast Global handles information you submit through this website. It is a practical summary for website enquiries and does not replace any separate engagement terms that may apply when you become a client.</p>
       <section className="mt-10 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Information you provide</h2>
