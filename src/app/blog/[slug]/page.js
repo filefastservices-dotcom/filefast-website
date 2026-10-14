@@ -32,6 +32,12 @@ const INTERNAL_LINKS = [
   { phrase: "ITR filing", href: "/services/itr-filing" }
 ];
 
+function toValidIsoDate(value) {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}
+
 function renderContent(content) {
   const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GSTR-1 filing|GSTR-3B filing|ITR filing)/gi;
   return content.split(phrasePattern).map((part, index) => {
@@ -72,8 +78,8 @@ export default async function BlogPostPage({ params }) {
         url: "https://www.filefastglobal.com/logo.png"
       }
     },
-    datePublished: post.createdAt ? new Date(post.createdAt).toISOString() : undefined,
-    dateModified: post.updatedAt ? new Date(post.updatedAt).toISOString() : undefined
+    datePublished: toValidIsoDate(post.createdAt),
+    dateModified: toValidIsoDate(post.updatedAt)
   };
 
   return (
