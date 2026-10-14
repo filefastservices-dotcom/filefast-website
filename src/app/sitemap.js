@@ -5,7 +5,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal
 export default async function sitemap() {
   const [services, posts] = await Promise.all([getServices({}), getBlogPosts({})]);
 
-  const staticRoutes = ["", "/services", "/about", "/testimonials", "/blog", "/contact"].map(
+  const staticRoutes = ["", "/services", "/about", "/testimonials", "/blog", "/contact", "/global", "/appointments"].map(
     (path) => ({
       url: `${SITE_URL}${path}`,
       lastModified: new Date()
