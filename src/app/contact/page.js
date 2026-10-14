@@ -1,6 +1,7 @@
 import LeadForm from "@/components/LeadForm";
 
 export const metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact Us",
   description: "Get in touch with FileFast for GST, Income Tax, Business Registration and Compliance services."
 };
