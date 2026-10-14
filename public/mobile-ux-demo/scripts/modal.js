@@ -32,7 +32,7 @@ form.addEventListener('submit', event => {
   success.querySelector('h3').textContent = 'Demo completed';
   success.querySelector('p').textContent = 'This is a preview only. No enquiry was sent and no details were saved.';
   submitButton.disabled = false;
-  submitButton.textContent = 'Send enquiry';
+  submitButton.textContent = 'Preview form';
 });
 document.getElementById('dismissSticky').addEventListener('click', () => { stickyDismissed = true; document.getElementById('stickyCta').hidden = true; });
 window.addEventListener('scroll', () => { const sticky = document.getElementById('stickyCta'); sticky.hidden = stickyDismissed || window.scrollY <= 420; }, {passive:true});
