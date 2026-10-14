@@ -19,8 +19,11 @@ export default async function BlogPage() {
     <section className="container-page py-14 sm:py-20">
       <p className="eyebrow text-center">Blog</p>
       <h1 className="mt-2 text-center font-display text-4xl font-semibold text-navy">
-        Insights &amp; Updates
+        Tax, GST &amp; Business Compliance Guides
       </h1>
+      <p className="mx-auto mt-4 max-w-3xl text-center leading-relaxed text-navy/70">
+        Practical checklists and step-by-step explainers for GST registration, GST returns, input tax credit, income-tax return preparation, food-business compliance and cross-border expansion. Use each guide to organise your records and identify questions to verify against current official requirements.
+      </p>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.length > 0 ? (
@@ -32,7 +35,8 @@ export default async function BlogPage() {
             >
               <p className="eyebrow">{post.category}</p>
               <h2 className="mt-2 font-display text-lg font-semibold text-navy">{post.title}</h2>
-              <p className="mt-2 text-sm text-navy/70">{post.excerpt}</p>
+              <p className="mt-2 text-sm leading-relaxed text-navy/70">{post.excerpt}</p>
+              <span className="mt-4 inline-block text-sm font-medium text-blue-700 underline underline-offset-2">Read guide →</span>
             </Link>
           ))
         ) : (

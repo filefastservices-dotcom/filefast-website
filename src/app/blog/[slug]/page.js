@@ -27,6 +27,9 @@ const INTERNAL_LINKS = [
   { phrase: "GST registration documents checklist", href: "/blog/gst-registration-documents-checklist" },
   { phrase: "GST registration address proof", href: "/blog/gst-registration-address-proof" },
   { phrase: "documents required for GST return filing", href: "/blog/documents-required-for-gst-return-filing" },
+  { phrase: "GST for e-commerce sellers", href: "/blog/gst-registration-for-ecommerce-sellers" },
+  { phrase: "GSTR-1 vs GSTR-3B", href: "/blog/gstr-1-vs-gstr-3b" },
+  { phrase: "GST input tax credit checklist", href: "/blog/gst-input-tax-credit-checklist" },
   { phrase: "GSTR-1 filing", href: "/services/gstr-1-filing" },
   { phrase: "GSTR-3B filing", href: "/services/gstr-3b-filing" },
   { phrase: "ITR filing", href: "/services/itr-filing" }
@@ -39,7 +42,7 @@ function toValidIsoDate(value) {
 }
 
 function renderContent(content) {
-  const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GSTR-1 filing|GSTR-3B filing|ITR filing)/gi;
+  const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing)/gi;
   return content.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={index}>{part}</span>;
