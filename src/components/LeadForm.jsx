@@ -56,6 +56,8 @@ export default function LeadForm({ defaultService = "" }) {
         <input
           required
           placeholder="Your Name"
+          aria-label="Your name"
+          autoComplete="name"
           value={form.name}
           onChange={(e) => update("name", e.target.value)}
           className="rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
@@ -63,6 +65,10 @@ export default function LeadForm({ defaultService = "" }) {
         <input
           required
           placeholder="Mobile Number"
+          aria-label="Mobile number"
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
           value={form.mobile}
           onChange={(e) => update("mobile", e.target.value)}
           className="rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
@@ -72,11 +78,14 @@ export default function LeadForm({ defaultService = "" }) {
         type="email"
         required
         placeholder="Email Address"
+        aria-label="Email address"
+        autoComplete="email"
         value={form.email}
         onChange={(e) => update("email", e.target.value)}
         className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
       />
       <select
+        aria-label="Service you need"
         required
         value={form.serviceInterested}
         onChange={(e) => update("serviceInterested", e.target.value)}
@@ -103,6 +112,7 @@ export default function LeadForm({ defaultService = "" }) {
       </select>
       <textarea
         placeholder="Message"
+        aria-label="Message"
         rows={4}
         value={form.message}
         onChange={(e) => update("message", e.target.value)}
