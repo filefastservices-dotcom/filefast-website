@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
+  robots: { index: false, follow: false },
   title: "Client Portal - FileFast",
   description: "Track your filings and payments with FileFast."
 };
