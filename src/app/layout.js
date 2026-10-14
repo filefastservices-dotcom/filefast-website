@@ -47,9 +47,9 @@ const organizationSchema = {
 };
 
 export const metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.filefastglobal.com"
-  ),
+  // Keep metadata URLs anchored to the one canonical production domain,
+  // including when Vercel builds preview deployments.
+  metadataBase: new URL("https://www.filefastglobal.com"),
 
   title: {
     default: "FileFast Global – Tax, VAT & Compliance Services",
