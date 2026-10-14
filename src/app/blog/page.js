@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getBlogPosts } from "@/lib/data";
 
 export const metadata = {
+  alternates: { canonical: "/blog" },
   title: "Blog",
   description: "Latest articles on GST, Income Tax, MSME, FSSAI, Compliance and Accounting from FileFast."
 };
