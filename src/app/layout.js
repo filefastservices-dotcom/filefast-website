@@ -73,10 +73,6 @@ export const metadata = {
     "FileFast Global"
   ],
 
-  alternates: {
-    canonical: "/",
-  },
-
   openGraph: {
     siteName: "FileFast Global",
     type: "website",
