@@ -71,36 +71,92 @@ export default async function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_15%_20%,#d3aa45_0,transparent_24%),radial-gradient(circle_at_85%_80%,#1d5d9b_0,transparent_30%)]" />
-        <div className="container-page relative py-20 sm:py-28">
-          <div className="mx-auto max-w-4xl rounded-sm border border-gold/30 bg-navy/55 p-8 text-center shadow-2xl shadow-black/20 sm:p-12">
-            <p className="eyebrow text-gold">India tax, accounting & global VAT compliance</p>
-            <h1 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-              Global Tax, VAT, GST & Accounting Compliance
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-silver/90">
-              From GST registration, GSTR-1/GSTR-3B and income-tax returns in India to UK/EU VAT, UAE VAT, US tax coordination and cross-border e-commerce compliance, get a clear starting point for your business. Country-specific advice or filings are coordinated with qualified local professionals where required.
+      <section className="hero-section relative overflow-hidden">
+        <div className="hero-orb hero-orb--one" aria-hidden="true" />
+        <div className="hero-orb hero-orb--two" aria-hidden="true" />
+        <div className="container-page relative grid min-h-[620px] items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-8 lg:py-24">
+          <div className="hero-copy relative z-10">
+            <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/80 px-4 py-2 text-gold-dark">
+              <span className="hero-live-dot" aria-hidden="true" />
+              Tax &amp; compliance, made clearer
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="https://wa.me/919444614182"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold"
-              >
-                Start on WhatsApp
+            <h1 className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.12] tracking-tight text-navy sm:text-5xl lg:text-[3.65rem]">
+              GST Filing &amp; Tax Compliance for Growing Businesses
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-navy/75 sm:text-lg sm:leading-8">
+              From GST returns and income tax to registrations and ongoing compliance, get practical support for your business in India.
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-navy/65 sm:text-base">
+              Expanding overseas? Explore VAT and tax-compliance support for selected international markets, with local specialist coordination where required.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a href="#consultation" className="hero-primary-cta">
+                Get Expert Assistance <span aria-hidden="true">→</span>
               </a>
-              <a href="tel:+919444614182" className="btn-outline">
-                Call Now
-              </a>
-              <a href="#consultation" className="btn-outline">
-                Book a consultation
-              </a>
+              <Link href="/services" className="hero-secondary-cta">
+                Explore Our Services
+              </Link>
             </div>
-            <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium text-silver/80">
-              {PROOF_POINTS.map((point) => <span key={point}>✓ {point}</span>)}
+            <p className="mt-5 text-xs leading-6 text-navy/60">
+              Chennai-based support <span aria-hidden="true">·</span> Services across India <span aria-hidden="true">·</span> International compliance assistance
+            </p>
+          </div>
+
+          <div className="hero-visual mx-auto w-full max-w-[540px]" aria-hidden="true">
+            <div className="hero-visual__halo" />
+            <div className="hero-orbit hero-orbit--outer" />
+            <div className="hero-orbit hero-orbit--inner" />
+            <div className="hero-panel hero-panel--main">
+              <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="hero-doc-icon"><span /></div>
+                  <div>
+                    <p className="text-sm font-semibold text-navy">Your compliance overview</p>
+                    <p className="mt-1 text-xs text-slate-500">A clear place to start</p>
+                  </div>
+                </div>
+                <span className="hero-panel-dots">•••</span>
+              </div>
+              <div className="space-y-3 p-5 sm:p-6">
+                <div className="hero-task">
+                  <span className="hero-task__icon hero-task__icon--blue"><span /></span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-navy">Share your requirements</p>
+                    <p className="mt-1 text-xs text-slate-500">Tell us about your business</p>
+                  </div>
+                  <span className="hero-task__tag">Step 1</span>
+                </div>
+                <div className="hero-task hero-task--float">
+                  <span className="hero-task__icon hero-task__icon--gold"><span /></span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-navy">Review the requirements</p>
+                    <p className="mt-1 text-xs text-slate-500">Documents and next steps</p>
+                  </div>
+                  <span className="hero-task__tag">Step 2</span>
+                </div>
+                <div className="hero-task">
+                  <span className="hero-task__icon hero-task__icon--teal"><span /></span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-navy">Get a clear action plan</p>
+                    <p className="mt-1 text-xs text-slate-500">Scope explained before work begins</p>
+                  </div>
+                  <span className="hero-task__tag">Step 3</span>
+                </div>
+              </div>
+              <div className="mx-5 mb-5 flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 sm:mx-6">
+                <span className="hero-secure-mark" />
+                <p className="text-xs leading-5 text-slate-600">Practical guidance, clear scope and next steps.</p>
+              </div>
             </div>
+            <div className="hero-floating-note hero-floating-note--top">
+              <span className="hero-note-icon">₹</span>
+              <span><strong>India compliance</strong><small>GST · ITR · TDS</small></span>
+            </div>
+            <div className="hero-floating-note hero-floating-note--bottom">
+              <span className="hero-globe-icon">◎</span>
+              <span><strong>Cross-border support</strong><small>VAT · Global workflows</small></span>
+            </div>
+            <div className="hero-visual-caption">Illustrative workflow · Actual scope depends on your requirements</div>
           </div>
         </div>
       </section>
