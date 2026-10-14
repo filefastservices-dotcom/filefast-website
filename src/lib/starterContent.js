@@ -57,8 +57,8 @@ export const starterServices = [
       { question: "Can an online seller apply for GST registration?", answer: "Some e-commerce and interstate business activities can trigger specific registration requirements. The correct position depends on the sales model, goods or services and applicable GST rules." }
     ],
     relatedServiceSlugs: ["gstr-1-filing", "gstr-3b-filing"],
-    metaTitle: "GST Registration in Chennai",
-    metaDescription: "Need GST registration in Chennai or elsewhere in India? Check common documents, business address proof and application steps with FileFast Global.",
+    metaTitle: "GST Registration Online in Chennai & India",
+    metaDescription: "Get GST registration support in Chennai and across India. Check eligibility, address proof and required documents with FileFast Global before applying.",
     seoKeywords: "GST registration Chennai, documents required for GST registration, GST address proof, GSTIN registration online"
   }),
   baseService({
@@ -95,8 +95,8 @@ export const starterServices = [
       { question: "Can GSTR-1 be filed with no sales?", answer: "A Nil return may be appropriate when there are no reportable outward supplies or other entries for the period. Check the full facts, including credit notes, amendments and other reportable transactions, before filing Nil." }
     ],
     relatedServiceSlugs: ["gst-registration", "gstr-3b-filing"],
-    metaTitle: "GSTR-1 Return Filing Services",
-    metaDescription: "Get help preparing and filing GSTR-1. FileFast reviews sales invoices, credit notes, HSN and marketplace data for monthly or QRMP returns.",
+    metaTitle: "GSTR-1 Filing Services for GST Returns",
+    metaDescription: "Get GSTR-1 filing support for monthly or QRMP returns. Organise sales invoices, credit notes, HSN and marketplace data with FileFast Global.",
     seoKeywords: "GSTR-1 filing, GSTR-1 return filing, GST sales return, GSTR-1 documents required"
   }),
   baseService({
@@ -134,7 +134,7 @@ export const starterServices = [
     ],
     relatedServiceSlugs: ["gst-registration", "gstr-1-filing"],
     metaTitle: "GSTR-3B Filing & GST Return Support",
-    metaDescription: "Get GSTR-3B filing support with GST liability review, GSTR-2B reconciliation and input tax credit checks from FileFast Global.",
+    metaDescription: "Get GSTR-3B filing support with GST liability review, GSTR-2B reconciliation and eligible input tax credit checks from FileFast Global.",
     seoKeywords: "GSTR-3B filing, GST return filing, GSTR-3B documents required, GST ITC reconciliation"
   }),
   baseService({
@@ -173,8 +173,8 @@ export const starterServices = [
       { question: "Do I need to verify my ITR after filing?", answer: "Yes, where verification is required, complete it within the applicable deadline and keep the acknowledgement for your records." }
     ],
     relatedServiceSlugs: ["tds-return-filing"],
-    metaTitle: "ITR Filing Services in Chennai",
-    metaDescription: "Get online ITR filing help in Chennai and across India. Organise Form 16, AIS, Form 26AS, bank interest and deduction documents with FileFast Global.",
+    metaTitle: "Income Tax Return Filing in Chennai & India",
+    metaDescription: "Get income-tax return filing support in Chennai and across India. Organise Form 16, AIS, Form 26AS, interest and deduction documents with FileFast Global.",
     seoKeywords: "ITR filing Chennai, income tax return filing, documents required for ITR filing, online ITR filing help"
   }),
   baseService({ name: "MSME Registration", slug: "msme-registration", category: "Business Registration", isFeatured: true, sortOrder: 5,
@@ -221,7 +221,7 @@ export const starterServices = [
     ],
     relatedServiceSlugs: ["eu-vat-oss-ioss", "us-tax-sales-tax"],
     metaTitle: "UK VAT Registration & Returns Support",
-    metaDescription: "UK VAT compliance support for international and e-commerce businesses. Organise records and coordinate registration or return review with FileFast Global.",
+    metaDescription: "UK VAT registration and return support for cross-border businesses. Prepare sales records and coordinate country-specific specialist review with FileFast Global.",
     seoKeywords: "UK VAT registration support, UK VAT returns, UK VAT for overseas sellers, UK e-commerce VAT compliance"
   }),
   baseService({
@@ -247,7 +247,7 @@ export const starterServices = [
     ],
     relatedServiceSlugs: ["uk-vat-compliance", "uae-vat-compliance"],
     metaTitle: "EU VAT, OSS & IOSS Compliance Support",
-    metaDescription: "EU VAT and OSS/IOSS support for cross-border e-commerce businesses. Prepare sales records and coordinate local specialist review with FileFast Global.",
+    metaDescription: "Prepare for EU VAT, OSS and IOSS compliance with sales-record checks and cross-border e-commerce support coordinated by FileFast Global and local specialists.",
     seoKeywords: "EU VAT compliance, OSS registration support, IOSS support, EU VAT for e-commerce sellers, cross-border VAT"
   }),
   baseService({
@@ -273,7 +273,7 @@ export const starterServices = [
     ],
     relatedServiceSlugs: ["uk-vat-compliance", "eu-vat-oss-ioss"],
     metaTitle: "UAE VAT Registration & Returns Support",
-    metaDescription: "UAE VAT compliance support for businesses. Prepare records and coordinate registration or return review with FileFast Global.",
+    metaDescription: "Get UAE VAT registration and return coordination support. Organise business records and prepare for country-specific tax review with FileFast Global.",
     seoKeywords: "UAE VAT registration support, UAE VAT returns, UAE VAT compliance, VAT for overseas businesses UAE"
   }),
   baseService({
@@ -299,7 +299,7 @@ export const starterServices = [
     ],
     relatedServiceSlugs: ["uk-vat-compliance", "eu-vat-oss-ioss"],
     metaTitle: "US Tax & Sales Tax Compliance Support",
-    metaDescription: "US tax and sales-tax readiness support for international and e-commerce businesses. Organise records and coordinate specialist review with FileFast Global.",
+    metaDescription: "Prepare for US tax and sales-tax obligations with record organisation and e-commerce compliance coordination through FileFast Global and local specialists.",
     seoKeywords: "US sales tax support, sales tax for international sellers, US tax compliance coordination, e-commerce sales tax"
   })
 

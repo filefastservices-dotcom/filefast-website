@@ -5,8 +5,8 @@ import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
 export const metadata = {
-  title: "Global Tax, VAT & GST Compliance Services",
-  description: "FileFast Global supports GST, income tax, accounting and business compliance in India, plus UK and EU VAT, UAE VAT, US tax and cross-border compliance coordination.",
+  title: "Tax & Compliance Services in India and Worldwide",
+  description: "FileFast Global supports GST, ITR, accounting and business compliance in India, with UK and EU VAT, UAE VAT, US tax and cross-border support.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
     title: "Global Tax, VAT & GST Compliance | FileFast Global",
@@ -52,6 +52,16 @@ const FAQS = [
   }
 ];
 
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a }
+  }))
+};
+
 export default async function HomePage() {
   const [featuredServices, testimonials] = await Promise.all([
     getServices({ featured: true }),
@@ -60,6 +70,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
       <section className="relative overflow-hidden bg-navy text-white">
         <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_15%_20%,#d3aa45_0,transparent_24%),radial-gradient(circle_at_85%_80%,#1d5d9b_0,transparent_30%)]" />
         <div className="container-page relative py-20 sm:py-28">

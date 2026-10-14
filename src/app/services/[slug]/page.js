@@ -46,14 +46,24 @@ export default async function ServiceDetailPage({ params }) {
   }
 
   const whatsappMsg = `Hi FileFast, I'm interested in ${service.name}`;
+  const serviceUrl = "https://www.filefastglobal.com/services/" + service.slug;
+  const internationalService = service.category === "Global Tax & VAT";
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.name,
     description: service.shortDescription,
-    url: "https://www.filefastglobal.com/services/" + service.slug,
+    url: serviceUrl,
     serviceType: service.category,
-    areaServed: { "@type": "Country", name: "India" },
+    areaServed: internationalService
+      ? [
+          { "@type": "Country", name: "India" },
+          { "@type": "Country", name: "United Kingdom" },
+          { "@type": "Place", name: "European Union" },
+          { "@type": "Country", name: "United Arab Emirates" },
+          { "@type": "Country", name: "United States" }
+        ]
+      : { "@type": "Country", name: "India" },
     provider: {
       "@type": "ProfessionalService",
       name: "FileFast Global",
@@ -62,10 +72,32 @@ export default async function ServiceDetailPage({ params }) {
       email: "filefast.services@gmail.com"
     }
   };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.filefastglobal.com/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://www.filefastglobal.com/services" },
+      { "@type": "ListItem", position: 3, name: service.name, item: serviceUrl }
+    ]
+  };
+  const faqSchema = service.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: service.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer }
+        }))
+      }
+    : null;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
       {/* Hero */}
       <section className="bg-navy py-14 text-white sm:py-20">
         <div className="container-page">
