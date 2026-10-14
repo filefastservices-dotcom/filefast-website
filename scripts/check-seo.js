@@ -37,6 +37,20 @@ const checks = [
     file: "src/app/testimonials/page.js",
     description: "Testimonials page does not promise fabricated review verification",
     test: (content) => !/verified Google reviews|100% genuine reviews|guaranteed reviews/i.test(content)
+  },
+  {
+    file: "src/lib/starterContent.js",
+    description: "Every related-service reference points to an existing service slug",
+    test: (content) => {
+      const serviceContent = content.split("export const starterBlogPosts")[0];
+      const serviceSlugs = new Set(
+        [...serviceContent.matchAll(/\\bslug:\\s*["']([^"']+)["']/g)].map((match) => match[1])
+      );
+      const references = [...serviceContent.matchAll(/relatedServiceSlugs:\\s*\\[([\\s\\S]*?)\\]/g)];
+      return serviceSlugs.size > 0 && references.every((reference) =>
+        [...reference[1].matchAll(/["']([^"']+)["']/g)].every((match) => serviceSlugs.has(match[1]))
+      );
+    }
   }
 ];
 
