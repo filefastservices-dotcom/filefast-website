@@ -7,8 +7,10 @@ import { getServiceBySlug, getServices } from "@/lib/data";
 export async function generateMetadata({ params }) {
   const service = await getServiceBySlug(params.slug);
   if (!service) return {};
+  const rawTitle = service.metaTitle || service.name;
+  const pageTitle = rawTitle.replace(/\\s*\\|\\s*FileFast(?: Global)?$/i, "");
   return {
-    title: service.metaTitle || service.name,
+    title: pageTitle,
     description: service.metaDescription || service.shortDescription,
     keywords: service.seoKeywords || undefined,
     alternates: {
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }) {
     },
     openGraph: {
       url: "https://www.filefastglobal.com/services/" + service.slug,
-      title: service.metaTitle || service.name,
+      title: pageTitle,
       description: service.metaDescription || service.shortDescription,
       images: service.ogImage ? [service.ogImage] : undefined
     }
