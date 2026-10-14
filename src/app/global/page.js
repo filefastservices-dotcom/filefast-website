@@ -19,7 +19,8 @@ const MARKETS = [
   },
   {
     name: "United Kingdom",
-    services: ["VAT registration support", "Self Assessment coordination", "Company compliance guidance"]
+    services: ["VAT registration support", "VAT return workflow coordination", "Company compliance guidance"],
+    links: [{ label: "UK VAT compliance support", href: "/services/uk-vat-compliance" }]
   },
   {
     name: "United States",
@@ -27,11 +28,13 @@ const MARKETS = [
   },
   {
     name: "United Arab Emirates",
-    services: ["VAT registration readiness", "VAT return coordination", "Business documentation support"]
+    services: ["VAT registration readiness", "VAT return coordination", "Business documentation support"],
+    links: [{ label: "UAE VAT compliance support", href: "/services/uae-vat-compliance" }]
   },
   {
     name: "European Union",
-    services: ["VAT and OSS readiness", "Cross-border invoicing support", "Local compliance coordination"]
+    services: ["VAT and OSS readiness", "Cross-border invoicing support", "Local compliance coordination"],
+    links: [{ label: "EU VAT, OSS & IOSS support", href: "/services/eu-vat-oss-ioss" }]
   }
 ];
 
@@ -86,6 +89,7 @@ export default function GlobalTaxPage() {
                   <li key={service} className="flex gap-2"><span className="text-gold-dark">✓</span>{service}</li>
                 ))}
               </ul>
+              {market.links?.length > 0 && <div className="mt-5 border-t border-silver/70 pt-4">{market.links.map((item) => <Link key={item.href} href={item.href} className="text-sm font-semibold text-gold-dark underline-offset-4 hover:underline">{item.label} →</Link>)}</div>}
             </article>
           ))}
         </div>
