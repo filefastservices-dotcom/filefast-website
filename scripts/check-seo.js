@@ -44,12 +44,33 @@ const checks = [
     test: (content) => {
       const serviceContent = content.split("export const starterBlogPosts")[0];
       const serviceSlugs = new Set(
-        [...serviceContent.matchAll(/\\bslug:\\s*["']([^"']+)["']/g)].map((match) => match[1])
+        [...serviceContent.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((match) => match[1])
       );
-      const references = [...serviceContent.matchAll(/relatedServiceSlugs:\\s*\\[([\\s\\S]*?)\\]/g)];
+      const references = [...serviceContent.matchAll(/relatedServiceSlugs:\s*\[([\s\S]*?)\]/g)];
       return serviceSlugs.size > 0 && references.every((reference) =>
         [...reference[1].matchAll(/["']([^"']+)["']/g)].every((match) => serviceSlugs.has(match[1]))
       );
+    }
+  },
+  {
+    file: "src/app/blog/[slug]/page.js",
+    description: "Every hard-coded blog internal link points to a known service or article",
+    test: (content) => {
+      const starter = fs.readFileSync(path.join(root, "src/lib/starterContent.js"), "utf8");
+      const serviceSection = starter.split("export const starterBlogPosts")[0];
+      const blogSection = starter.split("export const starterBlogPosts")[1] || "";
+      const serviceSlugs = new Set([...serviceSection.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+      const blogSlugs = new Set([...blogSection.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+      const linksBlock = content.match(/const INTERNAL_LINKS = \[([\s\S]*?)\];/);
+      if (!linksBlock || serviceSlugs.size === 0 || blogSlugs.size === 0) return false;
+      const hrefs = [...linksBlock[1].matchAll(/href:\s*["']([^"']+)["']/g)].map((m) => m[1]);
+      return hrefs.length > 0 && hrefs.every((href) => {
+        const serviceMatch = href.match(/^\/services\/([^/?#]+)$/);
+        const blogMatch = href.match(/^\/blog\/([^/?#]+)$/);
+        if (serviceMatch) return serviceSlugs.has(serviceMatch[1]);
+        if (blogMatch) return blogSlugs.has(blogMatch[1]);
+        return false;
+      });
     }
   }
 ];
