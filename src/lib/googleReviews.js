@@ -39,7 +39,7 @@ export const googleReviewFallbacks = [
     clientRole: "Google review highlight",
     serviceUsed: "GST return filing",
     rating: 5,
-    quote: "My GST filing was completed accurately and on time. The process was smooth, and my queries were answered clearly and professionally.",
+    quote: "Excellent service! My GST filing was completed accurately and on time. The entire process was smooth, and all my queries were answered clearly and professionally.",
     sourceUrl: googleReviewUrl,
     source: "Google"
   },
@@ -49,7 +49,7 @@ export const googleReviewFallbacks = [
     clientRole: "Google review highlight",
     serviceUsed: "GST registration",
     rating: 5,
-    quote: "They guided me through GST registration for my new business and made the process very simple. Good consultancy and affordable fees.",
+    quote: "They guided me through GST registration for my new business and made the whole process very simple. Good consultancy and affordable fees.",
     sourceUrl: googleReviewUrl,
     source: "Google"
   },
