@@ -12,7 +12,7 @@ const HomepageContentSchema = new mongoose.Schema(
     secondaryCtaLabel: { type: String, default: "Discuss your requirement", maxlength: 40 },
     announcementEnabled: { type: Boolean, default: false },
     announcementText: { type: String, default: "", maxlength: 180 },
-    metaTitle: { type: String, default: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global", maxlength: 60 },
+    metaTitle: { type: String, default: "GST, ITR & Global Tax Compliance | FileFast Global", maxlength: 60 },
     metaDescription: { type: String, default: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.", maxlength: 160 }
   },
   { timestamps: true }
