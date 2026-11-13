@@ -47,6 +47,17 @@ const INTERNAL_LINKS = [
   { phrase: "accounting and bookkeeping", href: "/services/accounting-bookkeeping" }
 ];
 
+function toPublicImageUrl(value) {
+  if (typeof value !== "string" || !value.trim()) return undefined;
+  try {
+    const url = new URL(value, "https://www.filefastglobal.com");
+    if (url.protocol !== "https:" && url.protocol !== "http:") return undefined;
+    return url.toString();
+  } catch {
+    return undefined;
+  }
+}
+
 function toValidIsoDate(value) {
   if (!value) return undefined;
   const date = new Date(value);
@@ -94,6 +105,9 @@ export default async function BlogPostPage({ params }) {
   const relatedPosts = allPosts.filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
 
   const postUrl = "https://www.filefastglobal.com/blog/" + post.slug;
+  const articleImage = toPublicImageUrl(post.featuredImageUrl);
+  const publishedAt = toValidIsoDate(post.createdAt);
+  const modifiedAt = toValidIsoDate(post.updatedAt);
   const articleSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -103,7 +117,7 @@ export default async function BlogPostPage({ params }) {
         headline: post.title,
         description: post.metaDescription || post.excerpt,
         mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
-        image: "https://www.filefastglobal.com/og-image.png",
+        ...(articleImage ? { image: articleImage } : {}),
         author: {
           "@type": "Organization",
           name: "FileFast Global",
@@ -118,8 +132,8 @@ export default async function BlogPostPage({ params }) {
             url: "https://www.filefastglobal.com/logo.png"
           }
         },
-        ...(toValidIsoDate(post.createdAt) ? { datePublished: toValidIsoDate(post.createdAt) } : {}),
-        ...(toValidIsoDate(post.updatedAt) ? { dateModified: toValidIsoDate(post.updatedAt) } : {}),
+        ...(publishedAt ? { datePublished: publishedAt } : {}),
+        ...(modifiedAt ? { dateModified: modifiedAt } : {}),
         inLanguage: "en-IN"
       },
       {
@@ -149,6 +163,7 @@ export default async function BlogPostPage({ params }) {
         <span aria-current="page" className="text-navy/80">{post.title}</span>
       </nav>
       <p className="eyebrow">{post.category}</p>
+      <p className="mt-2 text-xs text-navy/55">Prepared by FileFast Global</p>
 
       <h1 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
         {post.title}
