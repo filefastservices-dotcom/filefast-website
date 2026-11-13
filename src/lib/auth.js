@@ -1,4 +1,6 @@
 const encoder = new TextEncoder();
+const MAX_TOKEN_LENGTH = 4096;
+const CLOCK_SKEW_SECONDS = 60;
 
 function base64UrlEncode(value) {
   return btoa(value)
@@ -8,6 +10,10 @@ function base64UrlEncode(value) {
 }
 
 function base64UrlDecode(value) {
+  if (!/^[A-Za-z0-9_-]+$/.test(value)) {
+    throw new Error("Invalid base64url segment");
+  }
+
   const padded =
     value.replace(/-/g, "+").replace(/_/g, "/") +
     "===".slice((value.length + 3) % 4);
@@ -67,17 +73,26 @@ export async function signAdminToken(payload) {
 
 export async function verifyAdminToken(token) {
   try {
-    if (!token) return null;
+    if (
+      typeof token !== "string" ||
+      token.length === 0 ||
+      token.length > MAX_TOKEN_LENGTH
+    ) {
+      return null;
+    }
 
     const parts = token.split(".");
+    if (parts.length !== 3 || parts.some((part) => !part)) return null;
 
-    if (parts.length !== 3) return null;
+    const [encodedHeader, encodedPayload, encodedSignature] = parts;
+    const header = JSON.parse(base64UrlDecode(encodedHeader));
 
-    const [header, body, signature] = parts;
+    // Accept only the algorithm and token type issued by signAdminToken.
+    if (header.alg !== "HS256" || header.typ !== "JWT") return null;
+
     const key = await getSigningKey();
-
     const signatureBytes = Uint8Array.from(
-      base64UrlDecode(signature),
+      base64UrlDecode(encodedSignature),
       (char) => char.charCodeAt(0)
     );
 
@@ -85,16 +100,23 @@ export async function verifyAdminToken(token) {
       "HMAC",
       key,
       signatureBytes,
-      encoder.encode(`${header}.${body}`)
+      encoder.encode(`${encodedHeader}.${encodedPayload}`)
     );
 
     if (!valid) return null;
 
-    const payload = JSON.parse(base64UrlDecode(body));
+    const payload = JSON.parse(base64UrlDecode(encodedPayload));
+    const now = Math.floor(Date.now() / 1000);
 
+    // Admin sessions must always have a valid, finite expiry.
     if (
-      payload.exp &&
-      payload.exp < Math.floor(Date.now() / 1000)
+      !payload ||
+      typeof payload !== "object" ||
+      !Number.isFinite(payload.exp) ||
+      payload.exp <= now ||
+      !Number.isFinite(payload.iat) ||
+      payload.iat > now + CLOCK_SKEW_SECONDS ||
+      payload.exp <= payload.iat
     ) {
       return null;
     }
