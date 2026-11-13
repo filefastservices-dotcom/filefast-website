@@ -10,16 +10,17 @@ function csvCell(value) {
 }
 
 function toCSV(leads) {
-  const headers = ["Name", "Mobile", "Email", "Service Interested", "Message", "Source", "Date"];
+  const headers = ["Name", "Mobile", "Email", "Service Interested", "Message", "Source", "Status", "Internal Notes", "Follow-up Date", "Estimated Value (INR)", "Date"];
   const rows = leads.map((l) => [
-    l.name, l.mobile, l.email, l.serviceInterested, l.message, l.source,
+    l.name, l.mobile, l.email, l.serviceInterested, l.message, l.source, l.status || "new", l.internalNotes,
+    l.followUpAt ? new Date(l.followUpAt).toLocaleDateString("en-IN") : "", l.estimatedValue || 0,
     new Date(l.createdAt).toLocaleString("en-IN")
   ]);
   return [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
 }
 
 export async function GET(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
   try {
     await connectDB();

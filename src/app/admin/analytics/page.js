@@ -81,6 +81,8 @@ export default function AdminAnalyticsPage() {
             <Metric label="Last 30 days" value={data.leads.last30Days} note="New enquiries" />
             <Metric label="Last 90 days" value={data.leads.last90Days} note="New enquiries" />
             <Metric label="Published blogs" value={data.blogs.published} note={`${data.blogs.total} total articles`} />
+            <Metric label="Follow-ups due" value={data.followUpsDue} note="Due or overdue open leads" />
+            <Metric label="Qualified pipeline" value={`₹${Number(data.estimatedPipelineValue || 0).toLocaleString("en-IN")}`} note="Estimated value of qualified and converted leads" />
           </div>
 
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
@@ -101,11 +103,12 @@ export default function AdminAnalyticsPage() {
                 </div>
               ) : <p className="mt-5 text-sm text-navy/50">No lead history available yet.</p>}
             </section>
+            <Breakdown title="Lead pipeline" rows={(data.pipeline || []).map((item) => ({ label: item.status.charAt(0).toUpperCase() + item.status.slice(1), count: item.count }))} empty="No leads have been assigned a status yet." />
             <Breakdown title="Enquiries by service" rows={data.byService} />
             <Breakdown title="Enquiries by source" rows={data.bySource} />
             <section className="rounded-sm border border-silver/70 bg-white p-5">
               <h2 className="font-semibold text-navy">Next steps</h2>
-              <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which service categories are generating interest. Update lead source values consistently on website forms and record qualified and converted outcomes before calculating conversion rates.</p>
+              <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which service categories are generating interest. Update each enquiry status, add private notes, set a follow-up date and record an estimated value. The pipeline and due follow-up metrics update from these CRM records.</p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link href="/admin/leads" className="btn-gold text-xs">Review leads</Link>
                 <Link href="/admin/blog" className="btn-navy-outline text-xs">Manage blogs</Link>

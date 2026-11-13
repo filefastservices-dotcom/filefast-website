@@ -20,7 +20,7 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
