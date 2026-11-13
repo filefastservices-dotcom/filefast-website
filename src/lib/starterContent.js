@@ -1170,32 +1170,32 @@ const starterPricing = {
     "pricingNote": "Basic seller profile assistance only. Product catalogue, category approvals, OEM authorisation and ongoing bid support are separate."
   },
   "uk-vat-compliance": {
-    "regularPrice": "",
-    "offerPrice": "",
-    "pricingUnit": "",
-    "offerLabel": "",
-    "pricingNote": "Custom quote after reviewing goods location, fulfilment, marketplace model, customer type, registration position and filing frequency."
+    "regularPrice": "9999",
+    "offerPrice": "7999",
+    "pricingUnit": "per registration-readiness engagement",
+    "offerLabel": "International launch price",
+    "pricingNote": "Includes business-model and document review plus coordination with a UK VAT specialist. UK local-agent fees, HMRC representation, registration submissions, VAT return preparation/filing, software and disbursements are quoted separately and paid at cost. UK VAT registration for overseas businesses can require specialist local representation; scope is confirmed before engagement."
   },
   "eu-vat-oss-ioss": {
-    "regularPrice": "",
-    "offerPrice": "",
-    "pricingUnit": "",
-    "offerLabel": "",
-    "pricingNote": "Custom quote after reviewing countries, goods movement, marketplace role, OSS/IOSS eligibility and local representative requirements."
+    "regularPrice": "9999",
+    "offerPrice": "6999",
+    "pricingUnit": "per scheme/country assessment",
+    "offerLabel": "International launch price",
+    "pricingNote": "Starting professional fee for one-country or one-scheme eligibility and records assessment. OSS/IOSS registration, quarterly/monthly return preparation, EU fiscal representation, IOSS intermediary, local agents and country registrations are separate and quoted after reviewing countries and sales flows. Published providers list OSS at about €400/year and IOSS at about €500/year, before any additional representation or local costs."
   },
   "uae-vat-compliance": {
-    "regularPrice": "",
-    "offerPrice": "",
-    "pricingUnit": "",
-    "offerLabel": "",
-    "pricingNote": "Custom quote after reviewing UAE taxable supplies, registration position, tax periods and local representation requirements."
+    "regularPrice": "6999",
+    "offerPrice": "4999",
+    "pricingUnit": "per registration-readiness engagement",
+    "offerLabel": "International launch price",
+    "pricingNote": "Includes document and transaction review plus coordination with a UAE VAT specialist. UAE local-agent fees, FTA submissions, return preparation/filing, accounting clean-up and disbursements are separate where applicable. Standalone UAE providers publish VAT registration prices around AED 350–750 and quarterly returns from AED 350–750; final scope is confirmed in writing."
   },
   "us-tax-sales-tax": {
-    "regularPrice": "",
-    "offerPrice": "",
-    "pricingUnit": "",
-    "offerLabel": "",
-    "pricingNote": "Custom quote based on states, nexus, entity type, federal/state filings and required licensed local tax support."
+    "regularPrice": "12999",
+    "offerPrice": "7999",
+    "pricingUnit": "per initial nexus review",
+    "offerLabel": "International launch price",
+    "pricingNote": "Starting fee for an initial US state-by-state sales-tax nexus and records review. State registrations, federal/state income-tax returns, ongoing sales-tax returns, notices and US-licensed preparer/agent fees are separate. Ongoing state filing scope is quoted by state and frequency; no US tax return or representation is included in this assessment."
   },
   "company-registration": {
     "regularPrice": "4999",
@@ -1205,18 +1205,18 @@ const starterPricing = {
     "pricingNote": "Government/MCA fees, stamp duty, DSC, name reservation and other statutory or third-party costs are additional. Final fee depends on entity type and authorised capital."
   },
   "compliance-services": {
-    "regularPrice": "",
-    "offerPrice": "",
-    "pricingUnit": "",
-    "offerLabel": "",
-    "pricingNote": "Scope-based quotation after reviewing the notice, return period, entity type, records and deadlines."
+    "regularPrice": "4999",
+    "offerPrice": "2999",
+    "pricingUnit": "per month, basic compliance coordination",
+    "offerLabel": "Starter monthly package",
+    "pricingNote": "For a small business with one agreed entity and limited routine compliance tasks. GST/TDS/ITR filings, transaction volume, bookkeeping, notices, payroll, statutory fees and specialist work depend on the final written scope; not an all-inclusive unlimited package."
   },
   "global-expansion-advisory": {
-    "regularPrice": "",
-    "offerPrice": "",
-    "pricingUnit": "",
-    "offerLabel": "",
-    "pricingNote": "Custom scope and fee after a discovery call. Country-specific tax/legal opinions and local filing fees are separately agreed."
+    "regularPrice": "14999",
+    "offerPrice": "7999",
+    "pricingUnit": "per market-entry planning engagement",
+    "offerLabel": "International launch price",
+    "pricingNote": "Includes an initial discovery session and a scoped market-entry tax/compliance action checklist for one target market. Legal opinions, transfer pricing, entity formation, local registrations, licensed advice and third-party specialist fees are separate. Multi-country or implementation projects receive a written proposal."
   },
   "ecommerce-tax-compliance": {
     "regularPrice": "1499",
