@@ -170,7 +170,7 @@ export default async function HomePage() {
       </section>
 
       {/* SERVICE DIRECTORY — visible immediately after the hero */}
-      <section id="all-services" className="bg-white py-14 sm:py-18">
+      <section id="service-categories" className="bg-white py-14 sm:py-18">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow">Explore FileFast Services</p>
