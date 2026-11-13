@@ -59,6 +59,6 @@ export function validateBlogPayload(input, { partial = false } = {}) {
     payload.isPublished = input.isPublished;
   }
 
-  if (!partial && !("isPublished" in payload)) payload.isPublished = true;
+  if (!partial && !("isPublished" in payload)) payload.isPublished = false;
   return { payload };
 }
