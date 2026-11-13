@@ -61,6 +61,8 @@ const checks = [
       const blogSection = starter.split("export const starterBlogPosts")[1] || "";
       const serviceSlugs = new Set([...serviceSection.matchAll(/["']?slug["']?\s*:\s*["']([^"']+)["']/g)].map((m) => m[1]));
       const blogSlugs = new Set([...blogSection.matchAll(/["']?slug["']?\s*:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+      const expansion = fs.readFileSync(path.join(root, "src/lib/seoEditorialExpansion.js"), "utf8");
+      for (const match of expansion.matchAll(/"slug":\\s*"([^"]+)"/g)) blogSlugs.add(match[1]);
       const linksBlock = content.match(/const INTERNAL_LINKS = \[([\s\S]*?)\];/);
       if (!linksBlock || serviceSlugs.size === 0 || blogSlugs.size === 0) return false;
       const hrefs = [...linksBlock[1].matchAll(/href:\s*["']([^"']+)["']/g)].map((m) => m[1]);
