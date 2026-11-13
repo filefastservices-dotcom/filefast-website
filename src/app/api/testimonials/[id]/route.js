@@ -4,22 +4,24 @@ import Testimonial from "@/models/Testimonial";
 import { requireAdmin } from "@/lib/requireAdmin";
 
 export async function PUT(req, { params }) {
+  const { id } = await params;
   const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
   const body = await req.json();
-  const testimonial = await Testimonial.findByIdAndUpdate(params.id, body, { new: true });
+  const testimonial = await Testimonial.findByIdAndUpdate(id, body, { new: true });
   if (!testimonial) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json({ testimonial });
 }
 
 export async function DELETE(req, { params }) {
+  const { id } = await params;
   const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
-  const testimonial = await Testimonial.findByIdAndDelete(params.id);
+  const testimonial = await Testimonial.findByIdAndDelete(id);
   if (!testimonial) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json({ success: true });
 }
