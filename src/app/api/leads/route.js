@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import mongoose from "mongoose";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
 import { requireAdmin } from "@/lib/requireAdmin";
@@ -7,6 +8,7 @@ const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_SERVICE_LENGTH = 120;
 const MAX_MESSAGE_LENGTH = 2000;
+const LEAD_STATUSES = ["new", "contacted", "qualified", "converted", "lost"];
 
 function cleanText(value, maxLength) {
   if (typeof value !== "string") return "";
@@ -22,7 +24,6 @@ export async function POST(req) {
     return NextResponse.json({ error: "Please submit a valid form." }, { status: 400 });
   }
 
-  // Hidden honeypot helps filter simple automated spam submissions.
   if (cleanText(body?.website, 200)) {
     return NextResponse.json({ success: true }, { status: 201 });
   }
@@ -41,7 +42,7 @@ export async function POST(req) {
 
   try {
     await connectDB();
-    await Lead.create({ name, mobile, email, serviceInterested, message, source });
+    await Lead.create({ name, mobile, email, serviceInterested, message, source, status: "new" });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error?.message || "Unknown error");
@@ -49,17 +50,19 @@ export async function POST(req) {
   }
 }
 
-// Admin only: view leads, with simple search + filter.
+// Admin only: view leads with simple search + filter.
 export async function GET(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
     const search = (searchParams.get("search") || "").slice(0, 100);
     const service = (searchParams.get("service") || "").slice(0, MAX_SERVICE_LENGTH);
+    const status = (searchParams.get("status") || "").slice(0, 20);
     const query = {};
     if (service) query.serviceInterested = service;
+    if (LEAD_STATUSES.includes(status)) query.status = status;
     if (search) {
       const safeSearch = search.replace(/[^a-zA-Z0-9 @+._-]/g, "").replace(/[.+]/g, "\\$&");
       query.$or = [
@@ -73,5 +76,45 @@ export async function GET(req) {
   } catch (error) {
     console.error("Lead list failed:", error?.message || "Unknown error");
     return NextResponse.json({ error: "Unable to load leads." }, { status: 503 });
+  }
+}
+
+// Admin only: update the CRM stage and internal note for one lead.
+export async function PATCH(req) {
+  const unauthorized = await requireAdmin(req);
+  if (unauthorized) return unauthorized;
+
+  let body;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Please submit valid lead details." }, { status: 400 });
+  }
+
+  const id = cleanText(body?.id, 40);
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return NextResponse.json({ error: "Invalid lead reference." }, { status: 400 });
+  }
+
+  const updates = {};
+  if (typeof body.status === "string") {
+    if (!LEAD_STATUSES.includes(body.status)) {
+      return NextResponse.json({ error: "Invalid lead status." }, { status: 400 });
+    }
+    updates.status = body.status;
+  }
+  if (typeof body.adminNote === "string") updates.adminNote = cleanText(body.adminNote, 1000);
+  if (!Object.keys(updates).length) {
+    return NextResponse.json({ error: "No valid lead changes supplied." }, { status: 400 });
+  }
+
+  try {
+    await connectDB();
+    const lead = await Lead.findByIdAndUpdate(id, { $set: updates }, { new: true, runValidators: true }).lean();
+    if (!lead) return NextResponse.json({ error: "Lead not found." }, { status: 404 });
+    return NextResponse.json({ lead });
+  } catch (error) {
+    console.error("Lead update failed:", error?.message || "Unknown error");
+    return NextResponse.json({ error: "Unable to update this lead." }, { status: 503 });
   }
 }

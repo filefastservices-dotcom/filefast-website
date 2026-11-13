@@ -10,7 +10,7 @@ export async function GET(req) {
   const all = searchParams.get("all") === "true";
   // Draft and unpublished editorial content must only be visible to admins.
   if (all) {
-    const unauthorized = requireAdmin(req);
+    const unauthorized = await requireAdmin(req);
     if (unauthorized) return unauthorized;
   }
 
@@ -21,7 +21,7 @@ export async function GET(req) {
 
 // Admin only: create blog post
 export async function POST(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
