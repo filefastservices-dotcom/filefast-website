@@ -1,7 +1,21 @@
 import { NextResponse } from "next/server";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { signAdminToken } from "@/lib/auth";
 
 const MAX_LOGIN_BODY_BYTES = 8 * 1024;
+
+function safeCredentialMatch(received, expected) {
+  const receivedDigest = createHash("sha256").update(received, "utf8").digest();
+  const expectedDigest = createHash("sha256").update(expected, "utf8").digest();
+  return timingSafeEqual(receivedDigest, expectedDigest);
+}
+
+function jsonResponse(payload, status) {
+  const response = NextResponse.json(payload, { status });
+  response.headers.set("Cache-Control", "no-store, max-age=0");
+  response.headers.set("Pragma", "no-cache");
+  return response;
+}
 
 async function readLimitedBody(request) {
   const declaredLength = Number(request.headers.get("content-length"));
@@ -45,17 +59,17 @@ export async function POST(req) {
   const contentType = (req.headers.get("content-type") || "")
     .split(";")[0].trim().toLowerCase();
   if (contentType !== "application/json") {
-    return NextResponse.json({ error: "Invalid request" }, { status: 415 });
+    return jsonResponse({ error: "Invalid request" }, 415);
   }
 
   let limitedBody;
   try {
     limitedBody = await readLimitedBody(req);
   } catch {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    return jsonResponse({ error: "Invalid request" }, 400);
   }
   if (limitedBody.tooLarge) {
-    return NextResponse.json({ error: "Request too large" }, { status: 413 });
+    return jsonResponse({ error: "Request too large" }, 413);
   }
   if (limitedBody.invalidEncoding) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
@@ -68,7 +82,7 @@ export async function POST(req) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
   if (!body || typeof body !== "object" || Array.isArray(body)) {
-    return NextResponse.json({ error: "Invalid email or password" }, { status: 400 });
+    return jsonResponse({ error: "Invalid email or password" }, 400);
   }
 
   const { email, password } = body;
@@ -86,17 +100,17 @@ export async function POST(req) {
   const validEmail = process.env.ADMIN_EMAIL;
   const validPassword = process.env.ADMIN_PASSWORD;
   if (!validEmail || !validPassword) {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "Admin authentication is temporarily unavailable" },
-      { status: 503 }
+      503
     );
   }
-  if (email !== validEmail || password !== validPassword) {
-    return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+  if (!safeCredentialMatch(email, validEmail) || !safeCredentialMatch(password, validPassword)) {
+    return jsonResponse({ error: "Invalid email or password" }, 401);
   }
 
   const token = await signAdminToken({ email, role: "admin" });
-  const res = NextResponse.json({ success: true });
+  const res = jsonResponse({ success: true }, 200);
   res.cookies.set("ff_admin_token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
