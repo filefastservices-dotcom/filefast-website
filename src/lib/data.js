@@ -110,10 +110,16 @@ function mergeEditorialBlogContent(databasePosts) {
 export async function getBlogPosts({ limit } = {}) {
   try {
     await connectDB();
-    const posts = await Blog.find({ isPublished: true }).sort({ createdAt: -1 }).lean();
+    const [posts, knownPosts] = await Promise.all([
+      Blog.find({ isPublished: true }).sort({ createdAt: -1 }).lean(),
+      Blog.find({}, { slug: 1 }).lean()
+    ]);
     const result = JSON.parse(JSON.stringify(posts));
     const merged = mergeEditorialBlogContent(result);
-    return limit ? merged.slice(0, limit) : merged;
+    // Do not reintroduce a starter article that an admin has deliberately unpublished.
+    const knownSlugs = new Set(knownPosts.map((post) => post.slug));
+    const visiblePosts = merged.filter((post) => !knownSlugs.has(post.slug) || result.some((stored) => stored.slug === post.slug));
+    return limit ? visiblePosts.slice(0, limit) : visiblePosts;
   } catch (err) {
     console.error("getBlogPosts failed:", err.message);
     return limit ? starterBlogPosts.slice(0, limit) : starterBlogPosts;
@@ -123,10 +129,13 @@ export async function getBlogPosts({ limit } = {}) {
 export async function getBlogPostBySlug(slug) {
   try {
     await connectDB();
-    const post = await Blog.findOne({ slug, isPublished: true }).lean();
-    if (!post) return starterBlogPosts.find((item) => item.slug === slug) || null;
-    const result = JSON.parse(JSON.stringify(post));
-    return mergeEditorialBlogContent([result])[0] || result;
+    const storedPost = await Blog.findOne({ slug }).lean();
+    if (storedPost) {
+      if (!storedPost.isPublished) return null;
+      const result = JSON.parse(JSON.stringify(storedPost));
+      return mergeEditorialBlogContent([result])[0] || result;
+    }
+    return starterBlogPosts.find((item) => item.slug === slug) || null;
   } catch (err) {
     console.error("getBlogPostBySlug failed:", err.message);
     return starterBlogPosts.find((item) => item.slug === slug) || null;
