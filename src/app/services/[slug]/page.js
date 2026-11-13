@@ -89,7 +89,19 @@ export default async function ServiceDetailPage({ params }) {
         { "@type": "ListItem", position: 2, name: "Services", item: "https://www.filefastglobal.com/services" },
         { "@type": "ListItem", position: 3, name: service.name, item: serviceUrl }
       ]
-    }
+    },
+    ...(service.faqs?.length ? [{
+      "@type": "FAQPage",
+      "@id": serviceUrl + "#faq",
+      mainEntity: service.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer
+        }
+      }))
+    }] : [])
   ];
 
   // Escape HTML-significant characters so CMS text cannot close the script element.
