@@ -37,7 +37,7 @@ export async function POST(req) {
 
   if (name.length < 2) return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
   if (mobileDigits.length < 7 || mobileDigits.length > 15) return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Please enter a valid email address or leave it blank." }, { status: 400 });
 
   try {
     await connectDB();
