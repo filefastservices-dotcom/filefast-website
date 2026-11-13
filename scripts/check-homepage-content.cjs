@@ -8,6 +8,11 @@ const checks = [
   ["src/app/admin/homepage/page.js", ["Save Homepage Changes", "/api/admin/homepage", "announcementEnabled", "metaDescription"]],
   ["src/app/page.js", ["export const dynamic = \"force-dynamic\"", "getHomepageContent()", "homeContent.heroTitle", "homeContent.heroHighlight", "homeContent.announcementEnabled"]],
   ["src/app/admin/layout.js", ["/admin/homepage", "Homepage"]],
+  ["src/app/services/page.js", ["export const dynamic = \"force-dynamic\""]],
+  ["src/app/services/[slug]/page.js", ["export const dynamic = \"force-dynamic\""]],
+  ["src/app/blog/page.js", ["export const dynamic = \"force-dynamic\""]],
+  ["src/app/blog/[slug]/page.js", ["export const dynamic = \"force-dynamic\""]],
+  ["src/app/testimonials/page.js", ["export const dynamic = \"force-dynamic\""]],
   ["src/app/admin/services/page.js", ["toggleFeatured", "Add to homepage"]],
   ["src/app/api/blog/import-editorial/route.js", ["editorialSlugs", "$setOnInsert", "isPublished: true"]]
 ];
