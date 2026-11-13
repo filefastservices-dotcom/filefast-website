@@ -34,6 +34,9 @@ jobs:
       - name: Check SEO safeguards
         run: pnpm run check:seo
 
+      - name: Test blog payload validation
+        run: pnpm run test:blog-validation
+
       - name: Check internal routes
         run: pnpm run check:routes
 
