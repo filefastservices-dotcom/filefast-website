@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://www.filefastglobal.com/#business",
 
   name: "FileFast Global",
 
@@ -22,7 +23,26 @@ const organizationSchema = {
 
   email: "filefast.services@gmail.com",
 
-  priceRange: "₹199 - ₹9,999",
+  knowsAbout: [
+    "Goods and Services Tax (GST) compliance in India",
+    "Income tax return preparation and filing in India",
+    "Tax Deducted at Source (TDS) and Tax Collected at Source (TCS)",
+    "Business registrations and licensing in India",
+    "Bookkeeping and accounting support",
+    "International VAT compliance coordination",
+    "Cross-border business compliance"
+  ],
+
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+91 9444614182",
+    email: "filefast.services@gmail.com",
+    contactType: "customer support",
+    areaServed: ["IN", "GB", "EU", "AE", "US"],
+    availableLanguage: ["English", "Tamil"]
+  },
+
+  hasMap: "https://www.google.com/maps/search/?api=1&query=FileFast&query_place_id=ChIJ_fs-e95nUjoRqme2a-4Babg",
 
   areaServed: [
     "India",
@@ -94,9 +114,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "FileFast Global | Tax, VAT & Compliance Services",
+    title: "FileFast Global | GST, Income Tax, Accounting & Global Tax Compliance",
     description:
-      "Practical tax and compliance support for India and international growth.",
+      "GST, income tax, business registrations, accounting and cross-border tax coordination from Chennai, India.",
     images: ["/og-image.png"],
   },
 
