@@ -55,7 +55,7 @@ export async function getTestimonials() {
     return verified.length ? verified : googleReviewFallbacks;
   } catch (err) {
     console.error("getTestimonials failed:", err.message);
-    return [];
+    return googleReviewFallbacks;
   }
 }
 
