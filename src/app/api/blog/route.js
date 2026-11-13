@@ -8,6 +8,11 @@ export async function GET(req) {
   await connectDB();
   const { searchParams } = new URL(req.url);
   const all = searchParams.get("all") === "true";
+  // Draft and unpublished editorial content must only be visible to admins.
+  if (all) {
+    const unauthorized = requireAdmin(req);
+    if (unauthorized) return unauthorized;
+  }
 
   const query = all ? {} : { isPublished: true };
   const posts = await Blog.find(query).sort({ createdAt: -1 }).lean();
