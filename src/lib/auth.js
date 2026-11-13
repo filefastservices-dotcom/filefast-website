@@ -4,8 +4,8 @@ const CLOCK_SKEW_SECONDS = 60;
 
 function base64UrlEncode(value) {
   return btoa(value)
-    .replace(/\\+/g, "-")
-    .replace(/\\//g, "_")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
     .replace(/=+$/, "");
 }
 
