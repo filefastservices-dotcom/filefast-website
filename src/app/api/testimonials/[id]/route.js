@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Testimonial from "@/models/Testimonial";
 import { requireAdmin } from "@/lib/requireAdmin";
+import { validateTestimonialPayload } from "@/lib/testimonialValidation";
 
 export async function PUT(req, { params }) {
   const { id } = await params;
@@ -9,8 +10,16 @@ export async function PUT(req, { params }) {
   if (unauthorized) return unauthorized;
 
   await connectDB();
-  const body = await req.json();
-  const testimonial = await Testimonial.findByIdAndUpdate(id, body, { new: true });
+  let body;
+  try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
+  const validation = validateTestimonialPayload(body, { partial: true });
+  if (validation.error) return NextResponse.json({ error: validation.error }, { status: 400 });
+  const existing = await Testimonial.findById(id);
+  if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (validation.payload.isPublished === true && existing.publicationConsent !== true && validation.payload.publicationConsent !== true) {
+    return NextResponse.json({ error: "Publication is blocked until client consent is recorded" }, { status: 400 });
+  }
+  const testimonial = await Testimonial.findByIdAndUpdate(id, validation.payload, { new: true, runValidators: true });
   if (!testimonial) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json({ testimonial });
 }
