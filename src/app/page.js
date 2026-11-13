@@ -228,9 +228,14 @@ export default async function HomePage() {
           <p className="eyebrow text-gold">Client Testimonials</p>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
-            <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10">
-              Read all Google reviews ↗
-            </a>
+            <div className="flex flex-wrap gap-2">
+              <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10">
+                Read all Google reviews ↗
+              </a>
+              <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-sm border border-[#e8c77c]/70 px-4 py-2 text-sm font-semibold text-[#e8c77c] transition hover:bg-[#e8c77c] hover:text-[#081b35]">
+                Leave honest feedback ↗
+              </a>
+            </div>
           </div>
           <p className="mt-3 text-sm text-white/65">Selected Google review highlights and published client feedback. Each Google excerpt links to the original listing.</p>
           <p className="mt-2 text-xs text-white/55">These are selected excerpts, not a complete copy of every Google review.</p>
