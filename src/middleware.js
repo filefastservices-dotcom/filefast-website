@@ -11,7 +11,7 @@ export async function middleware(req) {
   const token = req.cookies.get("ff_admin_token")?.value;
   const payload = token ? await verifyAdminToken(token) : null;
 
-  if (!payload) {
+  if (!payload || payload.role !== "admin") {
     const loginUrl = new URL("/admin/login", req.url);
     return NextResponse.redirect(loginUrl);
   }
