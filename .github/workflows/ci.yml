@@ -37,6 +37,9 @@ jobs:
       - name: Check editorial content quality
         run: pnpm run check:editorial-content
 
+      - name: Check lead attribution tracking
+        run: pnpm run check:lead-attribution
+
       - name: Test blog payload validation
         run: pnpm run test:blog-validation
 
