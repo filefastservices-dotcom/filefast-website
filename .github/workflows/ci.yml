@@ -46,6 +46,9 @@ jobs:
       - name: Check admin middleware security
         run: pnpm run check:admin-middleware
 
+      - name: Check admin login security
+        run: pnpm run check:admin-login-security
+
       - name: Check public image size budgets
         run: pnpm run check:image-sizes
 
