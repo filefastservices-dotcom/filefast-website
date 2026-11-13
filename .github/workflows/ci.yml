@@ -34,6 +34,9 @@ jobs:
       - name: Check SEO safeguards
         run: pnpm run check:seo
 
+      - name: Check editorial content quality
+        run: pnpm run check:editorial-content
+
       - name: Test blog payload validation
         run: pnpm run test:blog-validation
 
