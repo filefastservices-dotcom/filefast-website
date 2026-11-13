@@ -12,7 +12,8 @@
     "check:image-sizes": "node scripts/check-image-sizes.js",
     "test:blog-validation": "node --test scripts/blog-validation.test.cjs",
     "check:async-route-params": "node scripts/check-async-route-params.cjs",
-    "check:admin-middleware": "node scripts/check-admin-middleware.cjs"
+    "check:admin-middleware": "node scripts/check-admin-middleware.cjs",
+    "check:admin-login-security": "node scripts/check-admin-login-security.cjs"
   },
   "dependencies": {
     "next": "14.2.5",
