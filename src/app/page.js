@@ -90,7 +90,7 @@ export default async function HomePage() {
               Serving businesses across India from Chennai, with cross-border coordination for founders operating in the UK, EU, UAE and US.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="#all-services" className="hero-primary-cta" data-track="cta-start">
+              <a href="#service-categories" className="hero-primary-cta" data-track="cta-start">
                 Explore All Services <span aria-hidden="true">→</span>
               </a>
               <Link href="/services" className="hero-secondary-cta" data-track="cta-learn">
