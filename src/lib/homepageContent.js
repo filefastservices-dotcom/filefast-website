@@ -11,7 +11,7 @@ export const DEFAULT_HOMEPAGE_CONTENT = {
   secondaryCtaLabel: "Discuss your requirement",
   announcementEnabled: false,
   announcementText: "",
-  metaTitle: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
+  metaTitle: "GST, ITR & Global Tax Compliance | FileFast Global",
   metaDescription: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global."
 };
 
