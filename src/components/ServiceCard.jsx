@@ -13,8 +13,14 @@ export default function ServiceCard({ service }) {
       <p className="mt-2 text-sm leading-relaxed text-navy/70">
         {service.shortDescription}
       </p>
-      <span className="mt-4 inline-block text-sm font-semibold text-gold-dark">
-        View Details →
+      {service.offerPrice ? (
+        <div className="mt-4 flex items-baseline gap-2">
+          <span className="text-lg font-semibold text-navy">From ₹{Number(service.offerPrice).toLocaleString("en-IN")}</span>
+          {service.regularPrice ? <span className="text-xs text-navy/45 line-through">₹{Number(service.regularPrice).toLocaleString("en-IN")}</span> : null}
+        </div>
+      ) : <p className="mt-4 text-sm font-semibold text-navy">Custom quotation</p>}
+      <span className="mt-2 inline-block text-sm font-semibold text-gold-dark">
+        View scope & pricing →
       </span>
     </Link>
   );
