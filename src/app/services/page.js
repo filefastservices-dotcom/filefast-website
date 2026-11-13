@@ -4,12 +4,12 @@ import { getServices } from "@/lib/data";
 export const metadata = {
   openGraph: {
     url: "https://www.filefastglobal.com/services",
-    title: "All Services | FileFast Global",
-    description: "Browse all GST, Income Tax, Registration, Compliance and Accounting services offered by FileFast.",
+    title: "GST, Income Tax, Accounting & Business Compliance Services | FileFast Global",
+    description: "Explore GST filing, income tax returns, business registration, licensing, accounting, TDS/TCS and global VAT coordination from FileFast Global in Chennai, India.",
   },
   alternates: { canonical: "/services" },
-  title: "All Services",
-  description: "Browse all GST, Income Tax, Registration, Compliance and Accounting services offered by FileFast."
+  title: "GST, Income Tax, Accounting & Business Compliance Services",
+  description: "Explore GST filing, income tax returns, business registration, licensing, accounting, TDS/TCS and global VAT coordination from FileFast Global in Chennai, India."
 };
 
 const CATEGORIES = [
@@ -34,7 +34,10 @@ export default async function ServicesPage({ searchParams }) {
         {activeCategory || "All Services"}
       </h1>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <p className="mt-4 max-w-3xl text-sm leading-7 text-navy/70">Choose a service category to explore the support available for individuals, startups, online sellers and established businesses. FileFast provides India-focused tax and compliance services from Chennai, with cross-border VAT coordination for eligible business requirements.</p>
+
+      <h2 className="mt-8 font-display text-xl font-semibold text-navy">Browse services by category</h2>
+      <div className="mt-4 flex flex-wrap gap-2">
         <a
           href="/services"
           className={`rounded-sm border px-4 py-2 text-xs font-semibold ${
