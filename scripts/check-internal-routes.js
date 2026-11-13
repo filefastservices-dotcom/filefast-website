@@ -13,6 +13,8 @@ const serviceSection = starter.split("export const starterBlogPosts")[0];
 const blogSection = starter.split("export const starterBlogPosts")[1] || "";
 const serviceSlugs = new Set([...serviceSection.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
 const blogSlugs = new Set([...blogSection.matchAll(/\bslug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
+const editorialExpansion = fs.readFileSync(path.join(root, "src", "lib", "seoEditorialExpansion.js"), "utf8");
+for (const match of editorialExpansion.matchAll(/"slug":\s*"([^"]+)"/g)) blogSlugs.add(match[1]);
 
 function walk(dir) {
   if (!fs.existsSync(dir)) return [];
