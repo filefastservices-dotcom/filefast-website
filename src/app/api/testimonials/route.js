@@ -8,7 +8,7 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const all = searchParams.get("all") === "true";
   if (all) {
-    const unauthorized = requireAdmin(req);
+    const unauthorized = await requireAdmin(req);
     if (unauthorized) return unauthorized;
   }
 
@@ -18,7 +18,7 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
