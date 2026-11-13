@@ -183,16 +183,17 @@ export default async function HomePage() {
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {[
-              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, monthly and quarterly returns, annual returns, ITC review, GST notices and cancellation." },
-              { name: "Income Tax & TDS", intro: "For individuals, freelancers, professionals and businesses.", examples: "Income tax return (ITR) filing, capital gains reporting, tax notices, TDS and TCS returns." },
-              { name: "Start or Register a Business", intro: "For new businesses, founders, sellers and entrepreneurs.", examples: "MSME/Udyam registration, business setup support and other applicable registrations." },
-              { name: "Business Licences", intro: "For businesses that need operating permissions or product licences.", examples: "FSSAI registration, trade licence, Import Export Code (IEC) and other licence application support." },
-              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial information.", examples: "Bookkeeping, accounting support, transaction review and financial reporting assistance." },
-              { name: "Business & Marketplace Support", intro: "For online sellers and businesses building their digital presence.", examples: "Marketplace onboarding support, seller compliance and e-commerce tax reporting." },
-              { name: "Trademark & Brand Protection", intro: "For businesses and founders protecting a brand name or identity.", examples: "Trademark application preparation and filing coordination." },
-              { name: "International Tax & VAT Support", intro: "For businesses selling or operating across borders.", examples: "UK and EU VAT workflow coordination, UAE VAT support and US tax compliance coordination, subject to local specialist requirements." }
+              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, GSTR-1 sales returns and GSTR-3B summary returns.", slugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing"], filter: "GST Services" },
+              { name: "Income Tax & TDS", intro: "For individuals, freelancers, professionals and businesses.", examples: "Income Tax Return filing and TDS return filing.", slugs: ["itr-filing", "tds-return-filing"], filter: "Income Tax Services" },
+              { name: "Start or Register a Business", intro: "For founders, new businesses and entrepreneurs.", examples: "Company registration and MSME/Udyam registration.", slugs: ["company-registration", "msme-registration"], filter: "Business Registration" },
+              { name: "Business Licences", intro: "For businesses that need licences or import-export permissions.", examples: "FSSAI registration and Import Export Code (IEC).", slugs: ["fssai-registration", "iec-registration"], filter: "Licenses" },
+              { name: "Online Seller & Marketplace Support", intro: "For sellers joining online marketplaces or managing e-commerce compliance.", examples: "GeM registration and e-commerce tax compliance.", slugs: ["gem-registration", "ecommerce-tax-compliance"], filter: "Digital Business Services" },
+              { name: "International Tax & VAT", intro: "For businesses operating or selling across borders.", examples: "UK VAT, EU VAT/OSS/IOSS, UAE VAT, US tax coordination and global expansion advisory.", slugs: ["uk-vat-compliance", "eu-vat-oss-ioss", "uae-vat-compliance", "us-tax-sales-tax", "global-expansion-advisory"], filter: "Global Tax & VAT" },
+              { name: "Other Tax & Compliance Support", intro: "For businesses that need help understanding ongoing compliance requirements.", examples: "General tax and compliance support.", slugs: ["compliance-services"], filter: "Compliance Services" },
+              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial records.", examples: "Contact FileFast to confirm the accounting scope available for your business.", slugs: [], filter: "Accounting Services" },
+              { name: "Trademark & Brand Protection", intro: "For businesses looking to protect their brand identity.", examples: "Contact FileFast to confirm trademark application support and scope.", slugs: [], filter: "Licenses" }
             ].map((category) => {
-              const categoryServices = allServices.filter((service) => service.category === category.name || (category.name === "Income Tax & TDS" && ["Income Tax Services", "Compliance Services"].includes(service.category)) || (category.name === "Business & Marketplace Support" && service.category === "Digital Business Services") || (category.name === "Trademark & Brand Protection" && ["Licenses", "Business Registration"].includes(service.category)) || (category.name === "Business Licences" && service.category === "Licenses") || (category.name === "Start or Register a Business" && service.category === "Business Registration") || (category.name === "Accounting & Bookkeeping" && service.category === "Accounting Services") || (category.name === "International Tax & VAT Support" && service.category === "Global Tax & VAT"));
+              const categoryServices = allServices.filter((service) => category.slugs.includes(service.slug));
               return (
                 <div key={category.name} className="rounded-lg border border-silver bg-white p-5 shadow-sm sm:p-6">
                   <h3 className="font-display text-xl font-semibold text-navy">{category.name}</h3>
@@ -212,7 +213,7 @@ export default async function HomePage() {
                   ) : (
                     <p className="mt-4 border-t border-silver/70 pt-4 text-xs leading-5 text-navy/55">Contact us to discuss availability and the right professional support for this requirement.</p>
                   )}
-                  <Link href={`/services?category=${encodeURIComponent(category.name === "Income Tax & TDS" ? "Income Tax Services" : category.name === "Start or Register a Business" ? "Business Registration" : category.name === "Business Licences" ? "Licenses" : category.name === "Accounting & Bookkeeping" ? "Accounting Services" : category.name === "Business & Marketplace Support" ? "Digital Business Services" : category.name === "International Tax & VAT Support" ? "Global Tax & VAT" : category.name === "Trademark & Brand Protection" ? "Licenses" : category.name)}`} className="mt-5 inline-flex text-xs font-semibold text-gold-dark hover:underline">View category details →</Link>
+                  <Link href={`/services?category=${encodeURIComponent(category.filter)}`} className="mt-5 inline-flex text-xs font-semibold text-gold-dark hover:underline">View category details →</Link>
                 </div>
               );
             })}
