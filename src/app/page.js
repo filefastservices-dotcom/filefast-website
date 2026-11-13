@@ -123,6 +123,7 @@ export default async function HomePage() {
             <p className="mt-4 text-sm leading-7 text-navy/70 sm:text-base">
               Browse the services below in simple categories. Select a service to understand what it includes, who it is for and how to get started. Not sure what you need? Contact us and explain your situation.
             </p>
+            <p className="mt-3 text-sm text-navy/70">Looking for local support? <Link href="/chennai-tax-compliance" className="font-semibold text-gold-dark underline underline-offset-4">Explore GST, ITR and business compliance services in Chennai</Link>.</p>
           </div>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
