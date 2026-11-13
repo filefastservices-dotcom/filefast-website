@@ -58,8 +58,10 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const search = (searchParams.get("search") || "").slice(0, 100);
     const service = (searchParams.get("service") || "").slice(0, MAX_SERVICE_LENGTH);
+    const status = (searchParams.get("status") || "").slice(0, 20);
     const query = {};
     if (service) query.serviceInterested = service;
+    if (["new", "contacted", "qualified", "converted", "lost"].includes(status)) query.status = status;
     if (search) {
       const safeSearch = search.replace(/[^a-zA-Z0-9 @+._-]/g, "").replace(/[.+]/g, "\\$&");
       query.$or = [
