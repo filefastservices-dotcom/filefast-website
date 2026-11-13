@@ -213,7 +213,6 @@ export default async function ServiceDetailPage({ params }) {
                 <p className="text-xs font-bold uppercase tracking-wide text-gold-dark">{service.offerLabel || "Introductory professional fee"}</p>
                 <div className="mt-2 flex flex-wrap items-baseline gap-3">
                   <span className="font-display text-3xl font-semibold text-navy">₹{Number(service.offerPrice).toLocaleString("en-IN")}</span>
-                  {service.regularPrice ? <span className="text-sm text-navy/45 line-through">₹{Number(service.regularPrice).toLocaleString("en-IN")}</span> : null}
                   {service.pricingUnit ? <span className="text-xs text-navy/60">{service.pricingUnit}</span> : null}
                 </div>
                 {service.pricingNote ? <p className="mt-3 text-sm leading-6 text-navy/70">{service.pricingNote}</p> : null}
