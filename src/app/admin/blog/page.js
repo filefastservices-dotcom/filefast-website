@@ -6,6 +6,8 @@ import Link from "next/link";
 export default function AdminBlogPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [notice, setNotice] = useState("");
+  const [importing, setImporting] = useState(false);
 
   async function load() {
     setLoading(true);
@@ -18,6 +20,22 @@ export default function AdminBlogPage() {
   useEffect(() => {
     load();
   }, []);
+
+  async function importEditorialPosts() {
+    setImporting(true);
+    setNotice("");
+    try {
+      const res = await fetch("/api/blog/import-editorial", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Could not import editorial posts.");
+      setNotice(`${data.created} new articles added; ${data.existing} were already in the blog database.`);
+      await load();
+    } catch (error) {
+      setNotice(error.message || "Could not import editorial posts.");
+    } finally {
+      setImporting(false);
+    }
+  }
 
   async function togglePublish(post) {
     await fetch(`/api/blog/${post._id}`, {
@@ -43,7 +61,7 @@ export default function AdminBlogPage() {
         </Link>
       </div>
 
-      {loading ? (
+      {notice && <p role="status" className="mt-4 rounded-sm bg-silver-light p-3 text-sm text-navy">{notice}</p>}\n\n      {loading ? (
         <p className="mt-6 text-sm text-navy/60">Loading...</p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-sm border border-silver/70 bg-white">
