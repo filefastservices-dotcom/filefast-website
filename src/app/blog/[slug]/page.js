@@ -42,20 +42,37 @@ function toValidIsoDate(value) {
   return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 }
 
-function renderContent(content) {
+function renderInline(text, keyPrefix) {
   const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing)/gi;
-  return content.split(phrasePattern).map((part, index) => {
+  return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
-    if (!link) return <span key={index}>{part}</span>;
+    if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
     return (
-      <a
-        key={index}
-        href={link.href}
-        className="font-medium text-blue-700 underline underline-offset-2"
-      >
+      <a key={`${keyPrefix}-${index}`} href={link.href} className="font-medium text-blue-700 underline underline-offset-2">
         {part}
       </a>
     );
+  });
+}
+
+function renderContent(content) {
+  return content.split(/\\r?\\n/).map((line, index) => {
+    const value = line.trim();
+    if (!value) return null;
+    if (value.startsWith("### ")) {
+      return <h3 key={index} className="mb-2 mt-6 font-display text-lg font-semibold text-navy">{renderInline(value.slice(4), `h3-${index}`)}</h3>;
+    }
+    if (value.startsWith("## ")) {
+      return <h2 key={index} className="mb-3 mt-9 font-display text-2xl font-semibold text-navy">{renderInline(value.slice(3), `h2-${index}`)}</h2>;
+    }
+    if (value.startsWith("- ")) {
+      return <div key={index} className="ml-5 flex gap-2 text-sm leading-7 text-navy/80"><span aria-hidden="true">•</span><span>{renderInline(value.slice(2), `li-${index}`)}</span></div>;
+    }
+    const numbered = value.match(/^\\d+\\.\\s+(.*)$/);
+    if (numbered) {
+      return <div key={index} className="ml-5 flex gap-2 text-sm leading-7 text-navy/80"><span className="font-semibold">{value.match(/^\\d+/)[0]}.</span><span>{renderInline(numbered[1], `ol-${index}`)}</span></div>;
+    }
+    return <p key={index} className="mb-4 text-sm leading-7 text-navy/80">{renderInline(value, `p-${index}`)}</p>;
   });
 }
  
@@ -124,7 +141,7 @@ export default async function BlogPostPage({ params }) {
         {post.title}
       </h1>
 
-      <div className="mt-8 whitespace-pre-line text-sm leading-relaxed text-navy/80">
+      <div className="mt-8">
         {renderContent(post.content)}
       </div>
     </article>
