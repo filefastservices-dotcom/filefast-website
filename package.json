@@ -9,7 +9,9 @@
     "seed": "node scripts/seed.js",
     "check:seo": "node scripts/check-seo.js",
     "check:routes": "node scripts/check-internal-routes.js",
-    "check:image-sizes": "node scripts/check-image-sizes.js"
+    "check:image-sizes": "node scripts/check-image-sizes.js",
+    "check:quality": "npm run check:seo && npm run check:routes && npm run check:image-sizes",
+    "prebuild": "npm run check:quality"
   },
   "dependencies": {
     "next": "14.2.5",
