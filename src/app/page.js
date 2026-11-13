@@ -205,7 +205,6 @@ export default async function HomePage() {
                         <p className="text-xs font-semibold uppercase tracking-wide text-green-700">{service.offerLabel || "Introductory professional fee"}</p>
                         <div className="mt-1 flex flex-wrap items-baseline gap-2">
                           <span className="font-display text-3xl font-semibold text-navy">₹{Number(service.offerPrice).toLocaleString("en-IN")}</span>
-                          {service.regularPrice ? <span className="text-sm text-navy/45 line-through">₹{Number(service.regularPrice).toLocaleString("en-IN")}</span> : null}
                         </div>
                         {service.pricingUnit ? <p className="mt-1 text-xs text-navy/60">{service.pricingUnit}</p> : null}
                       </>
