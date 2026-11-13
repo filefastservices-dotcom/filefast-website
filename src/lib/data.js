@@ -88,20 +88,18 @@ function mergeEditorialBlogContent(databasePosts) {
   const merged = databasePosts.map((post) => {
     const editorial = editorialBySlug.get(post.slug);
     if (!editorial) return post;
-    // Prefer the more complete editorial fallback when the database copy is shorter.
-    // Keep database identity and timestamps for existing published records.
-    if ((editorial.content || "").length > (post.content || "").length) {
-      return {
-        ...post,
-        title: editorial.title,
-        category: editorial.category,
-        excerpt: editorial.excerpt,
-        content: editorial.content,
-        metaTitle: editorial.metaTitle,
-        metaDescription: editorial.metaDescription
-      };
-    }
-    return post;
+    // MongoDB is the admin-managed source of truth. Editorial starter content
+    // may fill genuinely missing fields, but must never overwrite an editor's work.
+    return {
+      ...editorial,
+      ...post,
+      title: post.title || editorial.title,
+      category: post.category || editorial.category,
+      excerpt: post.excerpt || editorial.excerpt,
+      content: post.content || editorial.content,
+      metaTitle: post.metaTitle || editorial.metaTitle,
+      metaDescription: post.metaDescription || editorial.metaDescription
+    };
   });
   const existingSlugs = new Set(merged.map((post) => post.slug));
   return [...merged, ...starterBlogPosts.filter((post) => !existingSlugs.has(post.slug))];
