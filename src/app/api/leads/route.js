@@ -64,11 +64,22 @@ export async function GET(req) {
     const search = (searchParams.get("search") || "").slice(0, 100);
     const service = (searchParams.get("service") || "").slice(0, MAX_SERVICE_LENGTH);
     const status = (searchParams.get("status") || "").slice(0, 20);
+    const followUp = (searchParams.get("followUp") || "").slice(0, 20);
+    const now = new Date();
     const query = {};
 
     if (service) query.serviceInterested = service;
     if (status === "new") query.$or = [{ status: "new" }, { status: { $exists: false } }];
     else if (LEAD_STATUSES.includes(status)) query.status = status;
+    if (followUp === "due") {
+      query.followUpAt = { $ne: null, $lte: now };
+      query.status = { $nin: ["converted", "lost"] };
+    } else if (followUp === "upcoming") {
+      const end = new Date(now);
+      end.setDate(end.getDate() + 7);
+      query.followUpAt = { $gt: now, $lte: end };
+      query.status = { $nin: ["converted", "lost"] };
+    }
 
     if (search) {
       const safeSearch = escapeRegex(search);
@@ -85,7 +96,8 @@ export async function GET(req) {
       }
     }
 
-    const leads = await Lead.find(query).sort({ createdAt: -1 }).limit(500).lean();
+    const sort = followUp ? { followUpAt: 1, createdAt: -1 } : { createdAt: -1 };
+    const leads = await Lead.find(query).sort(sort).limit(500).lean();
     return NextResponse.json({ leads });
   } catch (error) {
     console.error("Lead list failed:", error?.message || "Unknown error");
