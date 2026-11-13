@@ -33,7 +33,18 @@ const INTERNAL_LINKS = [
   { phrase: "GST input tax credit checklist", href: "/blog/gst-input-tax-credit-checklist" },
   { phrase: "GSTR-1 filing", href: "/services/gstr-1-filing" },
   { phrase: "GSTR-3B filing", href: "/services/gstr-3b-filing" },
-  { phrase: "ITR filing", href: "/services/itr-filing" }
+  { phrase: "ITR filing", href: "/services/itr-filing" },
+  { phrase: "GST ITC reconciliation", href: "/blog/gst-input-tax-credit-reconciliation-guide" },
+  { phrase: "LUT export compliance checklist", href: "/blog/lut-export-goods-services-gst-guide" },
+  { phrase: "exporting under LUT", href: "/blog/lut-export-goods-services-gst-guide" },
+  { phrase: "marketplace GST and TCS reconciliation", href: "/blog/ecommerce-marketplace-gst-tcs-reconciliation" },
+  { phrase: "e-commerce TCS reconciliation", href: "/blog/ecommerce-marketplace-gst-tcs-reconciliation" },
+  { phrase: "TDS on freelancer payments", href: "/blog/tds-freelancers-contractors-business-checklist" },
+  { phrase: "freelancer and contractor payments", href: "/blog/tds-freelancers-contractors-business-checklist" },
+  { phrase: "monthly accounting checklist", href: "/blog/small-business-month-end-accounting-checklist-india" },
+  { phrase: "month-end accounting close", href: "/blog/small-business-month-end-accounting-checklist-india" },
+  { phrase: "TDS return filing", href: "/services/tds-return-filing" },
+  { phrase: "accounting and bookkeeping", href: "/services/accounting-bookkeeping" }
 ];
 
 function toValidIsoDate(value) {
@@ -43,7 +54,7 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing)/gi;
+  const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping)/gi;
   return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
