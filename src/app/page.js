@@ -214,10 +214,11 @@ export default async function HomePage() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
             <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10">
-              Read Google reviews ↗
+              Read all Google reviews ↗
             </a>
           </div>
-          <p className="mt-3 text-sm text-white/65">Selected public feedback, attributed to Google. Visit the original listing to read the full review history.</p>
+          <p className="mt-3 text-sm text-white/65">Selected Google review highlights and published client feedback. Each Google excerpt links to the original listing.</p>
+          <p className="mt-2 text-xs text-white/55">These are selected excerpts, not a complete copy of every Google review.</p>
           {testimonials.length ? (
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {testimonials.slice(0, 6).map((t) => <TestimonialCard key={t._id} testimonial={t} />)}
