@@ -14,7 +14,7 @@ function filterServices(services, { category, featured } = {}) {
 function applyStarterPricing(service) {
   if (!service) return service;
   const fallback = starterServices.find((item) => item.slug === service.slug);
-  if (!fallback || service.offerPrice || !fallback.offerPrice) return service;
+  if (!fallback || service.offerPrice || service.regularPrice || service.pricingNote || (!fallback.offerPrice && !fallback.pricingNote)) return service;
   return {
     ...service,
     regularPrice: fallback.regularPrice,
