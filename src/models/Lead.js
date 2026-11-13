@@ -7,7 +7,13 @@ const LeadSchema = new mongoose.Schema(
     email: { type: String, default: "" },
     serviceInterested: { type: String, default: "" },
     message: { type: String, default: "" },
-    source: { type: String, default: "website" }
+    source: { type: String, default: "website" },
+    status: {
+      type: String,
+      enum: ["new", "contacted", "qualified", "converted", "lost"],
+      default: "new"
+    },
+    adminNote: { type: String, default: "", maxlength: 1000 }
   },
   { timestamps: true }
 );
