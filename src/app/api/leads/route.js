@@ -7,10 +7,15 @@ const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_SERVICE_LENGTH = 120;
 const MAX_MESSAGE_LENGTH = 2000;
+const LEAD_STATUSES = ["new", "contacted", "qualified", "converted", "lost"];
 
 function cleanText(value, maxLength) {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, maxLength);
+}
+
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 // Public: accept consultation requests without exposing stored lead records.
@@ -22,7 +27,6 @@ export async function POST(req) {
     return NextResponse.json({ error: "Please submit a valid form." }, { status: 400 });
   }
 
-  // Hidden honeypot helps filter simple automated spam submissions.
   if (cleanText(body?.website, 200)) {
     return NextResponse.json({ success: true }, { status: 201 });
   }
@@ -49,10 +53,11 @@ export async function POST(req) {
   }
 }
 
-// Admin only: view leads, with simple search + filter.
+// Admin only: search and filter lead records.
 export async function GET(req) {
   const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
     const { searchParams } = new URL(req.url);
@@ -60,27 +65,26 @@ export async function GET(req) {
     const service = (searchParams.get("service") || "").slice(0, MAX_SERVICE_LENGTH);
     const status = (searchParams.get("status") || "").slice(0, 20);
     const query = {};
+
     if (service) query.serviceInterested = service;
     if (status === "new") query.$or = [{ status: "new" }, { status: { $exists: false } }];
-    else if (["contacted", "qualified", "converted", "lost"].includes(status)) query.status = status;
+    else if (LEAD_STATUSES.includes(status)) query.status = status;
+
     if (search) {
-      const safeSearch = search.replace(/[^a-zA-Z0-9 @+._-]/g, "").replace(/[.+]/g, "\\    if (["new", "contacted", "qualified", "converted", "lost"].includes(status)) query.status = status;
-    if (search) {
-      const safeSearch = search.replace(/[^a-zA-Z0-9 @+._-]/g, "").replace(/[.+]/g, "\\$&");
-      query.$or = [
-        { name: { $regex: safeSearch, $options: "i" } },
-        { mobile: { $regex: safeSearch, $options: "i" } },
-        { email: { $regex: safeSearch, $options: "i" } }
-      ];
-    }");
+      const safeSearch = escapeRegex(search);
       const searchConditions = [
         { name: { $regex: safeSearch, $options: "i" } },
         { mobile: { $regex: safeSearch, $options: "i" } },
         { email: { $regex: safeSearch, $options: "i" } }
       ];
-      if (query.$or) query.$and = [{ $or: query.$or }, { $or: searchConditions }], delete query.$or;
-      else query.$or = searchConditions;
+      if (query.$or) {
+        query.$and = [{ $or: query.$or }, { $or: searchConditions }];
+        delete query.$or;
+      } else {
+        query.$or = searchConditions;
+      }
     }
+
     const leads = await Lead.find(query).sort({ createdAt: -1 }).limit(500).lean();
     return NextResponse.json({ leads });
   } catch (error) {
