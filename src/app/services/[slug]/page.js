@@ -207,8 +207,24 @@ export default async function ServiceDetailPage({ params }) {
             </Section>
           )}
 
-          <Section eyebrow="Pricing" title="Pricing">
-            <p className="text-sm text-navy/80">{service.pricingInfo}</p>
+          <Section eyebrow="Pricing" title="Professional Fees">
+            {service.offerPrice ? (
+              <div className="rounded-lg border border-gold/40 bg-[#fffaf0] p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-gold-dark">{service.offerLabel || "Introductory professional fee"}</p>
+                <div className="mt-2 flex flex-wrap items-baseline gap-3">
+                  <span className="font-display text-3xl font-semibold text-navy">₹{Number(service.offerPrice).toLocaleString("en-IN")}</span>
+                  {service.regularPrice ? <span className="text-sm text-navy/45 line-through">₹{Number(service.regularPrice).toLocaleString("en-IN")}</span> : null}
+                  {service.pricingUnit ? <span className="text-xs text-navy/60">{service.pricingUnit}</span> : null}
+                </div>
+                {service.pricingNote ? <p className="mt-3 text-sm leading-6 text-navy/70">{service.pricingNote}</p> : null}
+              </div>
+            ) : (
+              <div className="rounded-lg border border-silver/70 bg-slate-50 p-5">
+                <p className="font-display text-xl font-semibold text-navy">Custom quotation</p>
+                <p className="mt-2 text-sm leading-6 text-navy/70">{service.pricingNote || service.pricingInfo}</p>
+              </div>
+            )}
+            <p className="mt-3 text-xs leading-5 text-navy/55">Professional fees are confirmed after scope and document review. Government/statutory charges, third-party expenses and applicable GST are additional where relevant.</p>
           </Section>
 
           {service.faqs?.length > 0 && (
