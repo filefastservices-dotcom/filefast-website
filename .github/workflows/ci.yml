@@ -40,6 +40,9 @@ jobs:
       - name: Check internal routes
         run: pnpm run check:routes
 
+      - name: Check async dynamic route params compatibility
+        run: pnpm run check:async-route-params
+
       - name: Check public image size budgets
         run: pnpm run check:image-sizes
 
