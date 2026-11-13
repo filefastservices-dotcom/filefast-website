@@ -1,3 +1,5 @@
+import { createHmac, timingSafeEqual } from "node:crypto";
+
 const encoder = new TextEncoder();
 
 function base64UrlEncode(value) {
@@ -65,39 +67,32 @@ export async function signAdminToken(payload) {
   return `${unsignedToken}.${base64UrlEncode(signatureBytes)}`;
 }
 
-export async function verifyAdminToken(token) {
+// Synchronous verification keeps existing requireAdmin call sites safe:
+// callers must never treat an unresolved Promise as an authenticated payload.
+export function verifyAdminToken(token) {
   try {
-    if (!token) return null;
+    if (typeof token !== "string" || !token || token.length > 8192) return null;
 
     const parts = token.split(".");
-
     if (parts.length !== 3) return null;
 
-    const [header, body, signature] = parts;
-    const key = await getSigningKey();
+    const [headerPart, bodyPart, signaturePart] = parts;
+    const header = JSON.parse(Buffer.from(headerPart, "base64url").toString("utf8"));
+    if (header.alg !== "HS256" || header.typ !== "JWT") return null;
 
-    const signatureBytes = Uint8Array.from(
-      base64UrlDecode(signature),
-      (char) => char.charCodeAt(0)
-    );
+    const secret = process.env.JWT_SECRET;
+    if (!secret) return null;
 
-    const valid = await crypto.subtle.verify(
-      "HMAC",
-      key,
-      signatureBytes,
-      encoder.encode(`${header}.${body}`)
-    );
+    const expected = createHmac("sha256", secret)
+      .update(headerPart + "." + bodyPart)
+      .digest();
+    const received = Buffer.from(signaturePart, "base64url");
+    if (received.length !== expected.length || !timingSafeEqual(received, expected)) return null;
 
-    if (!valid) return null;
-
-    const payload = JSON.parse(base64UrlDecode(body));
-
-    if (
-      payload.exp &&
-      payload.exp < Math.floor(Date.now() / 1000)
-    ) {
-      return null;
-    }
+    const payload = JSON.parse(Buffer.from(bodyPart, "base64url").toString("utf8"));
+    const now = Math.floor(Date.now() / 1000);
+    if (!Number.isFinite(payload.exp) || payload.exp <= now) return null;
+    if (payload.iat !== undefined && (!Number.isFinite(payload.iat) || payload.iat > now + 60)) return null;
 
     return payload;
   } catch {
