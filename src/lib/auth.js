@@ -74,6 +74,8 @@ export async function verifyAdminToken(token) {
     if (parts.length !== 3) return null;
 
     const [header, body, signature] = parts;
+    const decodedHeader = JSON.parse(base64UrlDecode(header));
+    if (decodedHeader?.alg !== "HS256" || decodedHeader?.typ !== "JWT") return null;
     const key = await getSigningKey();
 
     const signatureBytes = Uint8Array.from(
@@ -91,10 +93,14 @@ export async function verifyAdminToken(token) {
     if (!valid) return null;
 
     const payload = JSON.parse(base64UrlDecode(body));
+    const now = Math.floor(Date.now() / 1000);
 
+    // Admin sessions must have an explicit, valid expiry.
     if (
-      payload.exp &&
-      payload.exp < Math.floor(Date.now() / 1000)
+      !payload ||
+      typeof payload !== "object" ||
+      !Number.isFinite(payload.exp) ||
+      payload.exp <= now
     ) {
       return null;
     }
