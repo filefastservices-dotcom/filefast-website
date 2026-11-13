@@ -32,5 +32,46 @@ export const googleReviewFallbacks = [
     quote: "Great customer service and affordable prices.",
     sourceUrl: googleReviewUrl,
     source: "Google"
+  }  ,
+  {
+    _id: "google-review-highlight-4",
+    clientName: "Google reviewer",
+    clientRole: "Google review highlight",
+    serviceUsed: "GST return filing",
+    rating: 5,
+    quote: "My GST filing was completed accurately and on time. The process was smooth, and my queries were answered clearly and professionally.",
+    sourceUrl: googleReviewUrl,
+    source: "Google"
+  },
+  {
+    _id: "google-review-highlight-5",
+    clientName: "Google reviewer",
+    clientRole: "Google review highlight",
+    serviceUsed: "GST registration",
+    rating: 5,
+    quote: "They guided me through GST registration for my new business and made the process very simple. Good consultancy and affordable fees.",
+    sourceUrl: googleReviewUrl,
+    source: "Google"
+  },
+  {
+    _id: "google-review-highlight-6",
+    clientName: "Google reviewer",
+    clientRole: "Google review highlight",
+    serviceUsed: "Pending GST returns",
+    rating: 5,
+    quote: "Advi helped me complete my pending GST returns without any hassle and clearly explained the late fees and penalties.",
+    sourceUrl: googleReviewUrl,
+    source: "Google"
+  },
+  {
+    _id: "google-review-highlight-7",
+    clientName: "Google reviewer",
+    clientRole: "Google review highlight",
+    serviceUsed: "Tax compliance support",
+    rating: 5,
+    quote: "Their service is very prompt, accurate, and they handle everything professionally.",
+    sourceUrl: googleReviewUrl,
+    source: "Google"
   }
+
 ];
