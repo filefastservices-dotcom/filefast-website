@@ -16,6 +16,7 @@ export default async function sitemap() {
   const staticRoutes = [
     "",
     "/services",
+    "/chennai-tax-compliance",
     "/about",
     "/testimonials",
     "/blog",
