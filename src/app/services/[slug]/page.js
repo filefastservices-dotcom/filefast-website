@@ -5,7 +5,8 @@ import ServiceCard from "@/components/ServiceCard";
 import { getServiceBySlug, getServices } from "@/lib/data";
 
 export async function generateMetadata({ params }) {
-  const service = await getServiceBySlug(params.slug);
+  const { slug } = await params;
+  const service = await getServiceBySlug(slug);
   if (!service) return {};
   const rawTitle = service.metaTitle || service.name;
   const pageTitle = rawTitle.replace(/\s*\|\s*FileFast(?: Global)?$/i, "");
@@ -36,7 +37,8 @@ function Section({ eyebrow, title, children }) {
 }
 
 export default async function ServiceDetailPage({ params }) {
-  const service = await getServiceBySlug(params.slug);
+  const { slug } = await params;
+  const service = await getServiceBySlug(slug);
   if (!service) notFound();
 
   let relatedServices = [];
