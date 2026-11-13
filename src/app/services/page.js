@@ -9,7 +9,7 @@ export const metadata = {
   },
   alternates: { canonical: "/services" },
   title: "GST, Income Tax, Accounting & Business Compliance Services",
-  description: "Browse all GST, Income Tax, Registration, Compliance and Accounting services offered by FileFast."
+  description: "Explore GST filing, income tax returns, business registration, licensing, accounting, TDS/TCS and global VAT coordination from FileFast Global in Chennai, India."
 };
 
 const CATEGORIES = [
