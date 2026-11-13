@@ -76,6 +76,7 @@ export default async function HomePage() {
     getBlogPosts({ limit: 3 }),
     getHomepageContent()
   ]);
+  const featuredServices = allServices.filter((service) => service.isFeatured).slice(0, 6);
 
   return (
     <>
@@ -116,6 +117,20 @@ export default async function HomePage() {
       {homeContent.announcementEnabled && homeContent.announcementText ? (
         <section aria-label="Website announcement" className="border-b border-[#d9bd78]/40 bg-[#fff9e9]">
           <div className="container-page py-3 text-center text-sm font-medium text-[#081b35]">{homeContent.announcementText}</div>
+        </section>
+      ) : null}
+
+      {featuredServices.length > 0 ? (
+        <section className="bg-white py-12 sm:py-16" aria-labelledby="featured-services-heading">
+          <div className="container-page">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div><p className="eyebrow">Featured services</p><h2 id="featured-services-heading" className="mt-2 font-display text-2xl font-semibold text-navy sm:text-3xl">Popular ways we can help</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-navy/65">Our team can help you understand the scope, documents and next steps for these services.</p></div>
+              <Link href="/services" className="text-sm font-semibold text-gold-dark underline underline-offset-4">View all services →</Link>
+            </div>
+            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredServices.map((service) => <ServiceCard key={service._id || service.slug} service={service} />)}
+            </div>
+          </div>
         </section>
       ) : null}
 
