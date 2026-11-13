@@ -7,7 +7,14 @@ const LeadSchema = new mongoose.Schema(
     email: { type: String, default: "" },
     serviceInterested: { type: String, default: "" },
     message: { type: String, default: "" },
-    source: { type: String, default: "website" }
+    source: { type: String, default: "website" },
+    utmSource: { type: String, default: "" },
+    utmMedium: { type: String, default: "" },
+    utmCampaign: { type: String, default: "" },
+    utmContent: { type: String, default: "" },
+    utmTerm: { type: String, default: "" },
+    landingPage: { type: String, default: "" },
+    referrerHost: { type: String, default: "" }
   },
   { timestamps: true }
 );

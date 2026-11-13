@@ -32,13 +32,27 @@ export default function LeadForm({ defaultService = "" }) {
         .filter(([, value]) => value)
         .map(([key, value]) => `${key}=${value}`);
       let source = campaign.length ? campaign.join(" | ") : "direct / website";
-      if (!campaign.length && document.referrer) {
-        try { source = new URL(document.referrer).hostname || source; } catch {}
+      let referrerHost = "";
+      if (document.referrer) {
+        try {
+          const referrerUrl = new URL(document.referrer);
+          referrerHost = referrerUrl.hostname.slice(0, 120);
+          if (!campaign.length) source = referrerHost || source;
+        } catch {}
       }
+      const attribution = {
+        utmSource: params.get("utm_source") || "",
+        utmMedium: params.get("utm_medium") || "",
+        utmCampaign: params.get("utm_campaign") || "",
+        utmContent: params.get("utm_content") || "",
+        utmTerm: params.get("utm_term") || "",
+        landingPage: window.location.pathname,
+        referrerHost
+      };
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, website: honeypot, source })
+        body: JSON.stringify({ ...form, ...attribution, website: honeypot, source })
       });
       if (!res.ok) {
         const result = await res.json().catch(() => ({}));

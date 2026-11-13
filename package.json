@@ -9,7 +9,13 @@
     "seed": "node scripts/seed.js",
     "check:seo": "node scripts/check-seo.js",
     "check:routes": "node scripts/check-internal-routes.js",
-    "check:image-sizes": "node scripts/check-image-sizes.js"
+    "check:image-sizes": "node scripts/check-image-sizes.js",
+    "test:blog-validation": "node --test scripts/blog-validation.test.cjs",
+    "check:async-route-params": "node scripts/check-async-route-params.cjs",
+    "check:admin-middleware": "node scripts/check-admin-middleware.cjs",
+    "check:admin-login-security": "node scripts/check-admin-login-security.cjs",
+    "check:editorial-content": "node scripts/check-editorial-content.cjs",
+    "check:lead-attribution": "node scripts/check-lead-attribution.cjs"
   },
   "dependencies": {
     "next": "14.2.5",

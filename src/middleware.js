@@ -4,14 +4,14 @@ import { verifyAdminToken } from "@/lib/auth";
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
-  if (pathname.startsWith("/admin/login")) {
+  if (pathname === "/admin/login" || pathname === "/admin/login/") {
     return NextResponse.next();
   }
 
   const token = req.cookies.get("ff_admin_token")?.value;
   const payload = token ? await verifyAdminToken(token) : null;
 
-  if (!payload) {
+  if (!payload || payload.role !== "admin") {
     const loginUrl = new URL("/admin/login", req.url);
     return NextResponse.redirect(loginUrl);
   }

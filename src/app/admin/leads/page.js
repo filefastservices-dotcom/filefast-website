@@ -57,7 +57,7 @@ export default function AdminLeadsPage() {
         <p className="mt-6 text-sm text-navy/60">Loading...</p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-sm border border-silver/70 bg-white">
-          <table className="w-full min-w-[900px] text-left text-sm">
+          <table className="w-full min-w-[1120px] text-left text-sm">
             <thead className="border-b border-silver/70 bg-silver-light text-xs uppercase tracking-wide text-navy/60">
               <tr>
                 <th className="px-4 py-3">Name</th>
@@ -65,6 +65,8 @@ export default function AdminLeadsPage() {
                 <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Service</th>
                 <th className="px-4 py-3">Source</th>
+                <th className="px-4 py-3">Campaign</th>
+                <th className="px-4 py-3">Landing page</th>
                 <th className="px-4 py-3">Message</th>
                 <th className="px-4 py-3">Date</th>
               </tr>
@@ -78,7 +80,9 @@ export default function AdminLeadsPage() {
                   </td>
                   <td className="px-4 py-3 text-navy/70">{l.email || "—"}</td>
                   <td className="px-4 py-3 text-navy/70">{l.serviceInterested || "—"}</td>
-                  <td className="px-4 py-3 text-navy/70">{l.source || "website"}</td>
+                  <td className="px-4 py-3 text-navy/70">{l.source || "website"}{l.referrerHost ? ` · ${l.referrerHost}` : ""}</td>
+                  <td className="px-4 py-3 text-navy/70">{l.utmCampaign || l.utmSource || "—"}{l.utmMedium ? ` / ${l.utmMedium}` : ""}</td>
+                  <td className="px-4 py-3 text-navy/70">{l.landingPage || "—"}</td>
                   <td className="px-4 py-3 text-navy/70">{l.message || "—"}</td>
                   <td className="px-4 py-3 text-navy/60">
                     {new Date(l.createdAt).toLocaleDateString("en-IN")}
@@ -87,7 +91,7 @@ export default function AdminLeadsPage() {
               ))}
               {leads.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-6 text-center text-navy/60">
+                  <td colSpan={9} className="px-4 py-6 text-center text-navy/60">
                     No leads found.
                   </td>
                 </tr>
