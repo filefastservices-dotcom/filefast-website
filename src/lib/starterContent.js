@@ -15,7 +15,7 @@ const baseService = (data) => ({
   ...data
 });
 
-export const starterServices = [
+const starterServicesData = [
   baseService({
     name: "GST Registration",
     slug: "gst-registration",
@@ -914,5 +914,350 @@ export const starterBlogPosts = [
     "metaTitle":"UK VAT for Indian Businesses: Registration & Returns Guide",
     "metaDescription":"Learn when an Indian business selling into the UK may need VAT registration, what records to keep and how UK VAT returns work.",
     "content":"## Why UK VAT needs early attention\nAn Indian business selling goods or services to UK customers should assess UK VAT before launching a sales channel. The treatment depends on what is supplied, where goods are located, who imports them, the customer type, the sales channel and whether a marketplace is involved. A single turnover rule should not be applied to every overseas seller.\n\n## Registration is fact-specific\nA business not established in the UK may be required to register when it makes taxable supplies in the UK, and the normal domestic registration threshold may not protect a non-established taxable person in the same way it protects a UK-established business. However, the place and nature of the supply must first be established. Goods located outside the UK, goods stored in the UK, imports, marketplace deemed-supplier rules and B2B/B2C services can produce different outcomes.\n\n## Goods and services are not the same\nFor goods, review the location of goods at the time of sale, import arrangements, Incoterms, importer of record, fulfilment warehouse and marketplace role. For services, determine the service category, customer status and place-of-supply rule. Digital services, consulting and electronically supplied services may have different VAT analysis.\n\n## Records to prepare\nKeep customer invoices, contracts, product/service descriptions, customer VAT numbers where relevant, order and dispatch records, import declarations, marketplace statements, shipping evidence, credit notes and accounting ledgers. Maintain a clear audit trail between sales channels and VAT return figures.\n\n## VAT returns and ongoing controls\nIf registered, follow the HMRC filing and payment schedule assigned to the business. Reconcile output VAT, input VAT, credit notes, imports and marketplace transactions. Retain records in the format and for the period required by HMRC, including digital records where Making Tax Digital applies. Do not assume Indian GST returns satisfy UK VAT obligations.\n\n## Questions to answer before selling\n1. Are goods stored in the UK before sale?\n2. Who is importer of record?\n3. Is the sale through an online marketplace, and does a deemed-supplier rule apply?\n4. Is the customer a consumer or a VAT-registered business?\n5. Is the supply goods, consulting, digital or another service?\n6. Is the Indian business established or has it created a fixed establishment in the UK?\n\n## How FileFast Global can help\nFileFast Global can help Indian founders identify UK VAT questions, organise sales and import records and coordinate compliance support. UK VAT registration and filing should be confirmed with an appropriately qualified UK VAT professional based on the exact business model.\n\n## Official references\nHMRC VAT registration guidance: https://www.gov.uk/vat-registration\nHMRC VAT for overseas businesses: https://www.gov.uk/guidance/vat-registration-for-non-established-taxable-persons-non-ets\nMaking Tax Digital for VAT: https://www.gov.uk/guidance/sign-up-for-making-tax-digital-for-vat\n\nThis article is general information, not UK tax advice. Check current HMRC guidance and obtain professional advice before making a registration decision."
-  }
+  },
+  {
+    "_id":"starter-blog-2026-gst-cancellation",
+    "slug":"gst-registration-cancellation-gstr-10-final-return-guide",
+    "category":"GST Services",
+    "title":"GST Registration Cancellation: Process, Documents and GSTR-10 Final Return",
+    "excerpt":"A practical checklist for businesses closing or discontinuing GST registration, including cancellation grounds, pending returns, stock liability and final return checks.",
+    "metaTitle":"GST Cancellation & GSTR-10 Final Return: Complete Checklist",
+    "metaDescription":"Understand GST registration cancellation, REG-16 application, pending return checks, stock liability and GSTR-10 final return requirements in India.",
+    "content":"## When might GST registration be cancelled?\nA registered person may need to apply for cancellation when the business is discontinued, transferred, no longer liable to register or otherwise meets a ground permitted under GST law. The proper officer may also initiate cancellation in specified circumstances. The correct route depends on the facts and the applicable CGST Rules.\n\n## Check these items before applying\n- Identify the reason and effective date for cancellation.\n- Review all pending GSTR-1, GSTR-3B and other applicable returns.\n- Reconcile output tax, input tax credit and electronic ledgers.\n- Review stock, inputs, capital goods and any tax liability arising on cancellation.\n- Collect registration details, authorised signatory information and supporting evidence.\n- Check whether the business has multiple GST registrations or state-specific obligations.\n\n## Application and department communication\nThe cancellation application is generally made electronically in the prescribed form and workflow. Keep the acknowledgement and monitor portal notices. If the department issues a notice or asks for clarification, respond within the stated period with evidence and a consistent explanation. A cancellation application does not automatically remove liabilities already due.\n\n## What is GSTR-10?\nWhere applicable, the final return is furnished by a taxpayer whose registration has been cancelled or surrendered, subject to statutory exceptions. The due date and applicability should be checked against the cancellation order and current rules. Do not assume that filing the cancellation application itself completes the final return obligation.\n\n## Common mistakes\n- Applying without checking pending returns and tax dues.\n- Ignoring stock or capital-goods tax implications.\n- Missing notices or clarification deadlines.\n- Assuming cancellation is effective from the date the business stopped trading without confirming the legally relevant date.\n- Forgetting the final return and post-cancellation records.\n\n## How FileFast Global can help\nFileFast Global can review the GST registration profile, organise supporting documents, assist with the cancellation application and help identify pending return and final-return requirements. The final tax treatment depends on the taxpayer's records and applicable law.\n\n## Official references\nGST Portal: https://www.gst.gov.in/\nCBIC GST law and rules: https://cbic-gst.gov.in/\n\nThis guide is general information, not legal or tax advice. Verify the current statutory forms, exceptions, deadlines and portal instructions before applying."
+  },
+  {
+    "_id":"starter-blog-2026-fssai",
+    "slug":"fssai-registration-basic-state-central-food-business-guide",
+    "category":"Business Registration",
+    "title":"FSSAI Registration in India: Basic, State or Central Licence?",
+    "excerpt":"Understand which FSSAI authorisation may apply to a food business, the information to prepare and the key checks before applying or renewing.",
+    "metaTitle":"FSSAI Registration: Basic, State & Central Licence Guide",
+    "metaDescription":"A practical FSSAI guide for food businesses in India. Learn about Basic Registration, State and Central licences, documents and application checks.",
+    "content":"## Why food businesses need the correct FSSAI authorisation\nFood businesses must assess the registration or licence required for their activity under the Food Safety and Standards framework. The correct category is not chosen only by business size: activity type, capacity, turnover, premises and other eligibility criteria can matter. Confirm the current FoSCoS eligibility criteria before applying.\n\n## Basic Registration, State Licence or Central Licence?\nBasic Registration is intended for eligible petty food businesses under the prescribed criteria. State and Central licences apply to different categories of food business operators and activities. Manufacturing, import, multi-state operations, transport, storage, catering and other activities may have specific rules. Do not select a category based only on a competitor's package or a turnover assumption.\n\n## Information to prepare\n- Legal name and constitution of the business.\n- Address and details of each food premises.\n- Nature of food business activity and product categories.\n- Capacity, turnover or other eligibility details required by the portal.\n- Identity and contact details of the proprietor or authorised signatory.\n- Premises and supporting business documents requested for the licence category.\n- Any additional technical or product information applicable to the activity.\n\n## Application checklist\n1. Identify every activity carried out by the food business.\n2. Check the correct licence category and eligibility on FoSCoS.\n3. Match the premises address and entity details across supporting records.\n4. Prepare product and activity details accurately.\n5. Submit through the official FoSCoS portal and monitor application status.\n6. Display and use the licence details as required after approval.\n7. Track renewal and modification requirements.\n\n## Common mistakes\n- Selecting Basic Registration when a State or Central licence is required.\n- Omitting a food activity or additional premises.\n- Providing inconsistent address or entity details.\n- Treating the professional service fee as the government licence fee.\n- Forgetting licence conditions, renewal and ongoing food-safety obligations.\n\n## How FileFast Global can help\nFileFast Global can help identify the information needed, organise application documents and support the online application process. Government fees depend on the licence category and validity period and are separate from professional assistance fees. Approval is subject to the competent authority.\n\n## Official source\nFood Safety Compliance System (FoSCoS): https://foscos.fssai.gov.in/\nFSSAI: https://www.fssai.gov.in/\n\nThis article is general information. Check the current FoSCoS eligibility criteria, fee schedule and licence conditions before applying."
+  },
+  {
+    "_id":"starter-blog-2026-itr-capital-gains",
+    "slug":"itr-filing-capital-gains-mutual-funds-stocks-documents-checklist",
+    "category":"Income Tax",
+    "title":"ITR Filing for Stock and Mutual Fund Capital Gains: Documents Checklist",
+    "excerpt":"A practical guide to organising broker statements, capital-gains reports, dividends, bank interest and tax records before filing an individual income-tax return.",
+    "metaTitle":"ITR for Stocks & Mutual Funds: Capital Gains Documents Checklist",
+    "metaDescription":"Prepare your Indian ITR for stocks and mutual funds with a checklist for broker P&L, capital gains, dividends, bank interest and tax records.",
+    "content":"## Why investment records matter when filing an ITR\nAn investor's tax return may include salary or business income, interest, dividends and gains or losses from listed shares, mutual funds and other assets. A broker's profit-and-loss report is useful, but it may not by itself contain every item needed for the tax computation or return schedules.\n\n## Documents to collect\n- Annual tax P&L or capital-gains statement from each broker/platform.\n- Contract notes or transaction-level reports where needed for verification.\n- Mutual fund capital-gains statement, including switches and redemptions.\n- Dividend statements and bank interest certificates.\n- Form 16, Form 16A and Form 26AS/AIS/TIS information, as applicable.\n- Details of brought-forward losses and previously filed returns.\n- Purchase cost and supporting records for off-market or corporate-action transactions.\n- Details of foreign assets, foreign income or overseas investments, where applicable.\n\n## Reconcile before computing tax\nCompare broker reports with AIS and other available tax information. Review corporate actions, bonus/split adjustments, delisted securities, intraday trades, derivatives, mutual-fund switches and transactions across multiple platforms. Classify transactions under the applicable tax provisions rather than assuming every broker-reported profit has the same tax treatment.\n\n## Select the correct return and schedules\nThe appropriate ITR form depends on the taxpayer's residential status, income sources, business or professional activity and other eligibility conditions for that assessment year. Capital gains, trading activity and foreign income can affect the form and schedules. Confirm the current notified form and instructions before filing.\n\n## Common mistakes\n- Reporting only net broker profit without reviewing transaction classification.\n- Missing dividends or bank interest.\n- Ignoring AIS differences or incorrectly assuming AIS is always complete.\n- Failing to adjust cost for corporate actions.\n- Omitting brought-forward losses or foreign asset disclosures where required.\n- Selecting an ITR form without checking all income sources and residential status.\n\n## How FileFast Global can help\nFileFast Global can help organise investment statements, reconcile available tax information and prepare an ITR filing checklist. Tax treatment depends on transaction dates, asset type, taxpayer status and the law applicable to the relevant year.\n\n## Official resources\nIncome Tax e-Filing portal: https://www.incometax.gov.in/\nAnnual Information Statement (AIS): available through the Income Tax e-Filing portal.\n\nThis guide is general information, not individual tax advice. Verify the current Finance Act, notified ITR forms and instructions for the relevant assessment year."
+  },
+  baseService({
+    name: "GST Registration Cancellation",
+    slug: "gst-registration-cancellation",
+    category: "GST Services",
+    sortOrder: 20,
+    shortDescription: "Support for eligible GST registration cancellation, pending compliance review and final-return planning.",
+    fullDescription: "Assistance with reviewing the cancellation reason, effective date, pending returns, tax liabilities and supporting records before preparing the prescribed online application. Cancellation is subject to GST law and department processing.",
+    benefits: ["Review cancellation eligibility and grounds", "Identify pending returns and ledger issues", "Organise supporting documents", "Plan applicable final-return compliance"],
+    requiredDocuments: ["GSTIN and registration certificate", "Reason and proposed effective date", "Latest returns and electronic ledger details", "Stock and capital-goods information where relevant", "Business closure or transfer evidence where applicable"],
+    pricingInfo: "Professional assistance fee from ₹799. Final scope depends on pending returns, liabilities and department notices.",
+    metaTitle: "GST Registration Cancellation Online | FileFast Global",
+    metaDescription: "Get GST cancellation assistance with pending return checks, supporting documents and GSTR-10 final-return guidance in India."
+  }),
+  baseService({
+    name: "GST Notice Reply & REG-17 Response",
+    slug: "gst-notice-reply",
+    category: "GST Services",
+    sortOrder: 21,
+    shortDescription: "Document-led assistance for GST notices, REG-17 cancellation notices and portal clarification replies.",
+    fullDescription: "We review the notice, relevant return periods, registration details and supporting evidence before preparing a response for client review. Complex disputes, hearings and legal representation require a separately agreed specialist scope.",
+    benefits: ["Understand the notice and response deadline", "Prepare a document checklist", "Organise supporting reconciliations", "Draft a factual response for approval"],
+    requiredDocuments: ["Complete notice and annexures", "GST registration and return copies", "Relevant invoices and ledgers", "Previous replies and acknowledgements", "Supporting evidence for the facts stated"],
+    pricingInfo: "Custom quotation after reviewing the notice, deadline, tax period and complexity.",
+    metaTitle: "GST Notice Reply & REG-17 Response Assistance | FileFast",
+    metaDescription: "Get help reviewing GST notices and preparing evidence-based REG-17 or portal clarification responses."
+  }),
+  baseService({
+    name: "QRMP Scheme & GST Return Support",
+    slug: "qrmp-scheme-support",
+    category: "GST Services",
+    sortOrder: 22,
+    shortDescription: "Eligibility review and assistance for QRMP scheme selection, quarterly returns and monthly tax payment workflows.",
+    fullDescription: "Support to assess whether the QRMP scheme may be available, review business needs and organise the prescribed portal election and return/payment process. Eligibility and due dates must be verified for the relevant period.",
+    benefits: ["Review scheme eligibility", "Understand monthly payment options", "Plan quarterly GSTR-1 and GSTR-3B", "Organise invoice furnishing and records"],
+    requiredDocuments: ["GSTIN", "Recent turnover and return details", "Sales and purchase records", "Existing scheme status"],
+    pricingInfo: "Professional assistance from ₹299; return filing is charged separately where applicable.",
+    metaTitle: "GST QRMP Scheme Support & Quarterly Return Filing | FileFast",
+    metaDescription: "Understand QRMP eligibility, quarterly GST returns and monthly tax payment compliance with FileFast Global."
+  }),
+  baseService({
+    name: "CMP-08 & Composition Scheme Returns",
+    slug: "cmp-08-composition-return",
+    category: "GST Services",
+    sortOrder: 23,
+    shortDescription: "CMP-08 statement preparation and composition-scheme compliance support.",
+    fullDescription: "Assistance for eligible composition taxpayers to organise turnover, tax payable and applicable records for CMP-08 and related annual compliance. Confirm scheme eligibility and current rules before filing.",
+    benefits: ["Organise quarterly turnover", "Review applicable tax calculation", "Check composition scheme records", "Prepare filing working papers"],
+    requiredDocuments: ["GSTIN and composition status", "Sales register", "Purchase records", "Previous CMP-08 and annual return"],
+    pricingInfo: "Professional fee from ₹299 per statement for basic records; additional work quoted separately.",
+    metaTitle: "CMP-08 Filing & Composition Scheme GST Returns | FileFast",
+    metaDescription: "Get CMP-08 filing support and composition scheme GST compliance assistance for eligible businesses."
+  }),
+  baseService({
+    name: "GSTR-4 Annual Return",
+    slug: "gstr-4-annual-return",
+    category: "GST Services",
+    sortOrder: 24,
+    shortDescription: "Annual GSTR-4 preparation and filing assistance for eligible composition taxpayers.",
+    fullDescription: "Support to organise annual composition turnover, inward supplies, tax paid and related details for the applicable GSTR-4 annual return. Final reporting depends on the taxpayer's records and current form instructions.",
+    benefits: ["Compile annual composition records", "Reconcile CMP-08 statements", "Review tax and inward supply details", "Prepare filing checklist"],
+    requiredDocuments: ["GSTIN and financial year", "Sales and purchase summaries", "CMP-08 acknowledgements", "Books and tax payment details"],
+    pricingInfo: "Professional fee from ₹499 for basic records; complex reconciliation is quoted separately.",
+    metaTitle: "GSTR-4 Annual Return Filing for Composition Dealers | FileFast",
+    metaDescription: "Prepare GSTR-4 annual return with CMP-08 reconciliation and document review for eligible composition taxpayers."
+  }),
+  baseService({
+    name: "GSTR-10 Final Return",
+    slug: "gstr-10-final-return",
+    category: "GST Services",
+    sortOrder: 25,
+    shortDescription: "GSTR-10 final return preparation support after eligible GST registration cancellation.",
+    fullDescription: "Assistance with reviewing cancellation details, stock and capital-goods information, tax liability and records needed for the final return. Applicability and due date depend on the cancellation order and current GST rules.",
+    benefits: ["Review cancellation order and date", "Check pending returns and liability", "Organise stock and capital-goods records", "Prepare final-return working papers"],
+    requiredDocuments: ["GST cancellation order", "GSTIN and last filed returns", "Stock and capital-goods statement", "Tax payment and ledger details"],
+    pricingInfo: "Professional fee from ₹999 for basic records; additional reconciliation and notice work is separate.",
+    metaTitle: "GSTR-10 Final Return Filing Assistance | FileFast Global",
+    metaDescription: "Get GSTR-10 final return assistance after GST cancellation, including stock and liability document checks."
+  }),
+  baseService({
+    name: "GST Annual Return GSTR-9",
+    slug: "gstr-9-annual-return",
+    category: "GST Services",
+    sortOrder: 26,
+    shortDescription: "Annual GST return preparation and reconciliation support for eligible registered taxpayers.",
+    fullDescription: "Assistance with annual turnover, tax paid, ITC and return-to-books reconciliation for GSTR-9 where applicable. Applicability, exemptions and reporting requirements should be checked for the financial year.",
+    benefits: ["Compare annual books and GST returns", "Review outward supply and ITC summaries", "Identify differences for client review", "Prepare annual return working papers"],
+    requiredDocuments: ["GSTR-1 and GSTR-3B for the year", "Audited or final books where available", "GSTR-2B and purchase register", "Credit/debit notes and adjustments"],
+    pricingInfo: "Professional fee from ₹1,499 for basic scope; reconciliation complexity and turnover affect the final quote.",
+    metaTitle: "GSTR-9 Annual GST Return Filing & Reconciliation | FileFast",
+    metaDescription: "GSTR-9 annual return assistance with turnover, ITC and GST return reconciliation for eligible businesses."
+  }),
+  baseService({
+    name: "TCS Return Filing & Reconciliation",
+    slug: "tcs-return-filing",
+    category: "Income Tax Services",
+    sortOrder: 27,
+    shortDescription: "Quarterly TCS statement preparation and reconciliation support for eligible collectors.",
+    fullDescription: "Assistance to organise collection records, challans, buyer details and applicable TCS sections before preparing the relevant quarterly statement. Applicability and rates depend on transaction type and current income-tax law.",
+    benefits: ["Review TCS applicability", "Reconcile collections and challans", "Validate buyer and PAN details", "Prepare quarterly statement records"],
+    requiredDocuments: ["TAN and collector details", "Collection ledger and invoices", "Challan details", "Buyer PAN and transaction information", "Prior statements and correction history"],
+    pricingInfo: "Professional fee from ₹999 per basic quarterly statement; deductee volume and correction work affect the quote.",
+    metaTitle: "TCS Return Filing & Reconciliation Services | FileFast",
+    metaDescription: "Get TCS return preparation and challan reconciliation support for eligible businesses in India."
+  }),
+  baseService({
+    name: "Trade Licence Assistance",
+    slug: "trade-licence-assistance",
+    category: "Licenses",
+    sortOrder: 28,
+    shortDescription: "Application support for applicable municipal trade licences and local business permissions.",
+    fullDescription: "We help identify the relevant local authority workflow, organise premises and business information and prepare application documents. Requirements and fees vary by municipality, activity and premises.",
+    benefits: ["Identify local licence requirements", "Prepare business and premises details", "Organise supporting documents", "Track application status where available"],
+    requiredDocuments: ["Business constitution and PAN", "Premises address proof", "Owner consent or lease where relevant", "Business activity and premises details", "Local authority forms and declarations"],
+    pricingInfo: "Professional assistance from ₹1,499; municipal/statutory charges are additional and depend on location and activity.",
+    metaTitle: "Trade Licence Application Assistance in Chennai | FileFast",
+    metaDescription: "Get trade licence application support in Chennai with premises document checks and local authority requirements."
+  }),
+  baseService({
+    name: "Payroll & Salary Compliance",
+    slug: "payroll-compliance",
+    category: "Accounting Services",
+    sortOrder: 29,
+    shortDescription: "Monthly payroll processing coordination, payslip records and agreed statutory compliance support.",
+    fullDescription: "Support for payroll data collation, salary calculations based on approved inputs, payslip preparation and coordination of applicable TDS, PF, ESI and professional-tax workflows. Final scope depends on employee count, state and registrations.",
+    benefits: ["Monthly payroll data organisation", "Payslip and salary register preparation", "Coordinate applicable statutory deductions", "Monthly payroll summary"],
+    requiredDocuments: ["Employee master and joining details", "Salary structure and attendance", "Leave and reimbursement data", "Prior payroll and statutory registration details"],
+    pricingInfo: "Starter monthly support from ₹1,499; employee count and statutory filing scope affect the final fee.",
+    metaTitle: "Payroll Processing & Salary Compliance Support | FileFast",
+    metaDescription: "Payroll processing support for businesses, including salary records, payslips and statutory compliance coordination."
+  }),
+  baseService({
+    name: "ROC Annual Compliance Support",
+    slug: "roc-annual-compliance",
+    category: "Compliance Services",
+    sortOrder: 30,
+    shortDescription: "Annual ROC filing coordination and document preparation support for eligible companies and LLPs.",
+    fullDescription: "Assistance with collecting annual financial and corporate records, preparing filing checklists and coordinating applicable MCA annual forms with the appropriate authorised professional. Fees depend on entity type, filing status and overdue events.",
+    benefits: ["Annual compliance checklist", "Collect financial and board records", "Identify applicable MCA forms", "Coordinate filing and acknowledgement records"],
+    requiredDocuments: ["Company/LLP master data", "Financial statements and audit reports", "Board and shareholder/partner records", "Director/partner KYC", "Prior MCA filing acknowledgements"],
+    pricingInfo: "Professional assistance from ₹4,999 for basic annual scope; government fees, additional forms and overdue work are extra.",
+    metaTitle: "ROC Annual Filing & MCA Compliance Support | FileFast",
+    metaDescription: "Get ROC annual filing coordination and MCA compliance document support for companies and LLPs."
+  }),
+  baseService({
+    name: "Quick Commerce & Marketplace Seller Onboarding",
+    slug: "quick-commerce-seller-onboarding",
+    category: "Digital Business Services",
+    sortOrder: 31,
+    shortDescription: "Document and catalogue preparation support for eligible sellers onboarding to online marketplaces and quick-commerce platforms.",
+    fullDescription: "Support to organise business, tax, bank, product and catalogue information for seller onboarding. Platform eligibility, category approvals and account activation are controlled by each marketplace and cannot be guaranteed.",
+    benefits: ["Seller document checklist", "GST and bank detail review", "Product and catalogue data organisation", "Application follow-up support within agreed scope"],
+    requiredDocuments: ["PAN and business constitution", "GSTIN where applicable", "Bank proof and cancelled cheque", "Brand authorisation where applicable", "Product catalogue, images and category details"],
+    pricingInfo: "Custom quote based on platform, product count, catalogue readiness and onboarding scope.",
+    metaTitle: "Amazon, Marketplace & Quick Commerce Seller Onboarding | FileFast",
+    metaDescription: "Get seller onboarding support for marketplace and quick-commerce platforms, including document and catalogue preparation."
+  })
 ];
+
+// Transparent competitive professional-fee guide. Introductory prices have defined scope;
+// the site does not use artificial expiry dates or false urgency.
+const starterPricing = {
+  "gst-registration": {
+    "regularPrice": "499",
+    "offerPrice": "299",
+    "pricingUnit": "per application",
+    "offerLabel": "New-client price",
+    "pricingNote": "Professional assistance fee. GST registration application on the government portal has no government fee. Clarification replies, complex premises cases and statutory or third-party costs, if any, are quoted separately."
+  },
+  "gstr-1-filing": {
+    "regularPrice": "499",
+    "offerPrice": "99",
+    "pricingUnit": "per return",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Introductory fee applies to one basic eligible return; the ₹49 nil-return starter offer is limited to one eligible nil GSTR-1 or GSTR-3B form. Transaction volume, amendments and marketplace data may change the quote."
+  },
+  "gstr-3b-filing": {
+    "regularPrice": "499",
+    "offerPrice": "99",
+    "pricingUnit": "per return",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Basic return preparation. ITC reconciliation, multiple registrations and complex adjustments are quoted based on records."
+  },
+  "itr-filing": {
+    "regularPrice": "999",
+    "offerPrice": "399",
+    "pricingUnit": "simple individual return",
+    "offerLabel": "Individual ITR offer",
+    "pricingNote": "For eligible straightforward individual cases. Capital gains, F&O, foreign income, business books, notices and audit cases are quoted separately."
+  },
+  "msme-registration": {
+    "regularPrice": "499",
+    "offerPrice": "199",
+    "pricingUnit": "per application",
+    "offerLabel": "New-client price",
+    "pricingNote": "Udyam government registration is free on the official portal. This is a professional assistance fee; no government benefit or approval is guaranteed."
+  },
+  "fssai-registration": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "basic application assistance",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Government licence fee depends on licence type and tenure and is additional. State/Central licences and manufacturing cases require a separate quote."
+  },
+  "tds-return-filing": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "per quarter / basic statement",
+    "offerLabel": "Introductory price",
+    "pricingNote": "For a basic statement within an agreed deductee volume. Multiple forms, corrections, salary certificates and high-volume data are quoted separately."
+  },
+  "iec-registration": {
+    "regularPrice": "1999",
+    "offerPrice": "999",
+    "pricingUnit": "per application",
+    "offerLabel": "New-client price",
+    "pricingNote": "Professional assistance fee. DGFT requirements, DSC, bank validation and additional documentation may affect the final scope."
+  },
+  "gem-registration": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "seller onboarding support",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Basic seller profile assistance only. Product catalogue, category approvals, OEM authorisation and ongoing bid support are separate."
+  },
+  "uk-vat-compliance": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote after reviewing goods location, fulfilment, marketplace model, customer type, registration position and filing frequency."
+  },
+  "eu-vat-oss-ioss": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote after reviewing countries, goods movement, marketplace role, OSS/IOSS eligibility and local representative requirements."
+  },
+  "uae-vat-compliance": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote after reviewing UAE taxable supplies, registration position, tax periods and local representation requirements."
+  },
+  "us-tax-sales-tax": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote based on states, nexus, entity type, federal/state filings and required licensed local tax support."
+  },
+  "company-registration": {
+    "regularPrice": "4999",
+    "offerPrice": "2999",
+    "pricingUnit": "basic professional assistance",
+    "offerLabel": "Startup offer",
+    "pricingNote": "Government/MCA fees, stamp duty, DSC, name reservation and other statutory or third-party costs are additional. Final fee depends on entity type and authorised capital."
+  },
+  "compliance-services": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Scope-based quotation after reviewing the notice, return period, entity type, records and deadlines."
+  },
+  "global-expansion-advisory": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom scope and fee after a discovery call. Country-specific tax/legal opinions and local filing fees are separately agreed."
+  },
+  "ecommerce-tax-compliance": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "per month, basic seller package",
+    "offerLabel": "Introductory monthly package",
+    "pricingNote": "Subject to marketplace count, order volume, states, return frequency and reconciliation scope. TCS, accounting and complex reconciliations may be additional."
+  },
+  "accounting-bookkeeping": {
+    "regularPrice": "2499",
+    "offerPrice": "1499",
+    "pricingUnit": "per month, starter volume",
+    "offerLabel": "Starter monthly offer",
+    "pricingNote": "Final fee depends on monthly transaction count, bank accounts, GST registrations, payroll and reporting requirements."
+  },
+  "gst-registration-cancellation": { "regularPrice":"999", "offerPrice":"799", "pricingUnit":"per application", "offerLabel":"Introductory price", "pricingNote":"Professional fee only. Pending returns, stock liability, notices and statutory issues may change the scope." },
+  "gst-notice-reply": { "regularPrice":"", "offerPrice":"", "pricingUnit":"", "offerLabel":"", "pricingNote":"Custom quotation after reviewing notice type, tax period, deadline and evidence. Hearing or litigation support is separate." },
+  "qrmp-scheme-support": { "regularPrice":"499", "offerPrice":"299", "pricingUnit":"scheme election assistance", "offerLabel":"Introductory price", "pricingNote":"Professional fee for eligibility review and portal assistance; return filing is charged separately." },
+  "cmp-08-composition-return": { "regularPrice":"499", "offerPrice":"299", "pricingUnit":"per statement", "offerLabel":"Introductory price", "pricingNote":"Basic records only. Reconciliation and corrections are separately quoted." },
+  "gstr-4-annual-return": { "regularPrice":"999", "offerPrice":"499", "pricingUnit":"per annual return", "offerLabel":"Introductory price", "pricingNote":"Basic composition records. Reconciliation and corrections are separately quoted." },
+  "gstr-10-final-return": { "regularPrice":"1499", "offerPrice":"999", "pricingUnit":"per final return", "offerLabel":"Introductory price", "pricingNote":"Basic case only. Stock liability, pending returns and notice work may require a separate quote." },
+  "gstr-9-annual-return": { "regularPrice":"2499", "offerPrice":"1499", "pricingUnit":"basic annual return", "offerLabel":"Introductory price", "pricingNote":"Final fee depends on turnover, books, ITC reconciliation and statutory applicability." },
+  "tcs-return-filing": { "regularPrice":"1499", "offerPrice":"999", "pricingUnit":"per basic quarterly statement", "offerLabel":"Introductory price", "pricingNote":"Deductee/collector volume, corrections and certificate generation may be additional." },
+  "trade-licence-assistance": { "regularPrice":"1999", "offerPrice":"1499", "pricingUnit":"basic application assistance", "offerLabel":"Introductory price", "pricingNote":"Municipal fees and local requirements vary by location and activity and are additional." },
+  "payroll-compliance": { "regularPrice":"2499", "offerPrice":"1499", "pricingUnit":"per month, starter scope", "offerLabel":"Starter monthly price", "pricingNote":"Employee count, PF/ESI/PT/TDS filings and payroll complexity affect the final fee." },
+  "roc-annual-compliance": { "regularPrice":"5999", "offerPrice":"4999", "pricingUnit":"basic annual compliance scope", "offerLabel":"Introductory price", "pricingNote":"MCA fees, additional forms, audit and overdue filings are separate." },
+  "quick-commerce-seller-onboarding": { "regularPrice":"", "offerPrice":"", "pricingUnit":"", "offerLabel":"", "pricingNote":"Custom quote based on platform, product count, category and catalogue readiness." },
+  "trademark-registration": {
+    "regularPrice": "2499",
+    "offerPrice": "799",
+    "pricingUnit": "professional filing assistance / one class",
+    "offerLabel": "New-client price",
+    "pricingNote": "Government trademark filing fee is additional and varies by applicant category and filing mode. Search, objections, hearings and additional classes are separate."
+  }
+};
+
+export const starterServices = starterServicesData.map((service) => {
+  const price = starterPricing[service.slug];
+  if (!price) return service;
+  const pricingInfo = price.offerPrice
+    ? `Introductory professional fee: ₹${price.offerPrice} ${price.pricingUnit}. ${price.pricingNote}`
+    : `Professional fee: custom quotation. ${price.pricingNote}`;
+  return { ...service, ...price, pricingInfo };
+});

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getBlogPostBySlug } from "@/lib/data";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/data";
 
 export async function generateMetadata({ params }) {
   const post = await getBlogPostBySlug(params.slug);
@@ -79,6 +79,8 @@ function renderContent(content) {
 export default async function BlogPostPage({ params }) {
   const post = await getBlogPostBySlug(params.slug);
   if (!post) notFound();
+  const allPosts = await getBlogPosts();
+  const relatedPosts = allPosts.filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
 
   const postUrl = "https://www.filefastglobal.com/blog/" + post.slug;
   const articleSchema = {
@@ -144,6 +146,30 @@ export default async function BlogPostPage({ params }) {
       <div className="mt-8">
         {renderContent(post.content)}
       </div>
+
+      {relatedPosts.length > 0 ? (
+        <section className="mt-12 border-t border-silver/70 pt-8" aria-labelledby="related-guides">
+          <p className="eyebrow">Continue learning</p>
+          <h2 id="related-guides" className="mt-2 font-display text-2xl font-semibold text-navy">Related guides</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            {relatedPosts.map((item) => (
+              <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-sm border border-silver/70 p-4 transition hover:border-gold hover:shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gold-dark">{item.category}</p>
+                <h3 className="mt-2 font-display text-base font-semibold text-navy">{item.title}</h3>
+                <p className="mt-2 text-xs leading-5 text-navy/65">{item.excerpt}</p>
+                <span className="mt-3 inline-block text-xs font-semibold text-gold-dark">Read guide →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mt-12 rounded-lg bg-navy p-6 text-white sm:p-8">
+        <p className="eyebrow text-gold">Need help with this?</p>
+        <h2 className="mt-2 font-display text-2xl font-semibold">Get help from FileFast Global</h2>
+        <p className="mt-2 text-sm leading-6 text-white/70">Share your requirement and we will help identify the relevant service, documents and next steps.</p>
+        <a href="https://wa.me/919444614182?text=I%20read%20a%20FileFast%20Global%20guide%20and%20need%20help%20with%20my%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex rounded-sm bg-[#e8c77c] px-5 py-3 text-sm font-semibold text-navy">Discuss your requirement</a>
+      </section>
     </article>
   );
 }

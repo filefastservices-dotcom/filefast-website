@@ -10,7 +10,8 @@ const CATEGORIES = [
   "Licenses",
   "Compliance Services",
   "Accounting Services",
-  "Digital Business Services"
+  "Digital Business Services",
+  "Global Tax & VAT"
 ];
 
 function linesToArray(text) {
@@ -61,6 +62,11 @@ export default function ServiceForm({ initialService, serviceKey }) {
     documentsText: arrayToLines(initialService?.requiredDocuments),
     processFlowText: processFlowToLines(initialService?.processFlow),
     pricingInfo: initialService?.pricingInfo || "",
+    regularPrice: initialService?.regularPrice || "",
+    offerPrice: initialService?.offerPrice || "",
+    pricingUnit: initialService?.pricingUnit || "",
+    offerLabel: initialService?.offerLabel || "",
+    pricingNote: initialService?.pricingNote || "",
     faqsText: faqsToLines(initialService?.faqs),
     relatedText: arrayToLines(initialService?.relatedServiceSlugs),
     metaTitle: initialService?.metaTitle || "",
@@ -101,6 +107,11 @@ export default function ServiceForm({ initialService, serviceKey }) {
       requiredDocuments: linesToArray(form.documentsText),
       processFlow: linesToProcessFlow(form.processFlowText),
       pricingInfo: form.pricingInfo,
+      regularPrice: form.regularPrice,
+      offerPrice: form.offerPrice,
+      pricingUnit: form.pricingUnit,
+      offerLabel: form.offerLabel,
+      pricingNote: form.pricingNote,
       faqs: linesToFaqs(form.faqsText),
       relatedServiceSlugs: linesToArray(form.relatedText),
       metaTitle: form.metaTitle,
@@ -220,6 +231,18 @@ export default function ServiceForm({ initialService, serviceKey }) {
       <div>
         <label className={label}>Pricing Information</label>
         <input value={form.pricingInfo} onChange={(e) => update("pricingInfo", e.target.value)} className={field} />
+      </div>
+
+      <div className="rounded-sm border border-gold/40 bg-amber-50/40 p-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-navy/70">Public pricing controls</p>
+        <p className="mt-1 text-xs leading-5 text-navy/60">Enter professional fees only. Keep statutory/government fees and GST treatment clear in the pricing note. Leave both price fields blank for a custom quote.</p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <div><label className={label}>Standard professional fee (₹)</label><input inputMode="decimal" value={form.regularPrice} onChange={(e) => update("regularPrice", e.target.value)} className={field} /></div>
+          <div><label className={label}>Introductory professional fee (₹)</label><input inputMode="decimal" value={form.offerPrice} onChange={(e) => update("offerPrice", e.target.value)} className={field} /></div>
+          <div><label className={label}>Price unit / scope</label><input placeholder="e.g. per return, per month" value={form.pricingUnit} onChange={(e) => update("pricingUnit", e.target.value)} className={field} /></div>
+          <div><label className={label}>Offer label</label><input placeholder="e.g. New-client price" value={form.offerLabel} onChange={(e) => update("offerLabel", e.target.value)} className={field} /></div>
+        </div>
+        <div className="mt-3"><label className={label}>Pricing conditions and exclusions</label><textarea rows={3} value={form.pricingNote} onChange={(e) => update("pricingNote", e.target.value)} className={field} /></div>
       </div>
 
       <div>

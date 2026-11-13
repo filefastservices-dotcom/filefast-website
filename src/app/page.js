@@ -126,14 +126,14 @@ export default async function HomePage() {
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {[
-              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, GSTR-1 sales returns and GSTR-3B summary returns.", slugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing"], filter: "GST Services" },
-              { name: "Income Tax & TDS", intro: "For individuals, freelancers, professionals and businesses.", examples: "Income Tax Return filing and TDS return filing.", slugs: ["itr-filing", "tds-return-filing"], filter: "Income Tax Services" },
+              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, GSTR-1 sales returns and GSTR-3B summary returns.", slugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing", "gst-registration-cancellation", "gst-notice-reply", "qrmp-scheme-support", "cmp-08-composition-return", "gstr-4-annual-return", "gstr-10-final-return", "gstr-9-annual-return"], filter: "GST Services" },
+              { name: "Income Tax & TDS", intro: "For individuals, freelancers, professionals and businesses.", examples: "Income Tax Return filing and TDS return filing.", slugs: ["itr-filing", "tds-return-filing", "tcs-return-filing"], filter: "Income Tax Services" },
               { name: "Start or Register a Business", intro: "For founders, new businesses and entrepreneurs.", examples: "Company registration and MSME/Udyam registration.", slugs: ["company-registration", "msme-registration"], filter: "Business Registration" },
-              { name: "Business Licences", intro: "For businesses that need licences or import-export permissions.", examples: "FSSAI registration and Import Export Code (IEC).", slugs: ["fssai-registration", "iec-registration"], filter: "Licenses" },
-              { name: "Online Seller & Marketplace Support", intro: "For sellers joining online marketplaces or managing e-commerce compliance.", examples: "GeM registration and e-commerce tax compliance.", slugs: ["gem-registration", "ecommerce-tax-compliance"], filter: "Digital Business Services" },
+              { name: "Business Licences", intro: "For businesses that need licences or import-export permissions.", examples: "FSSAI registration and Import Export Code (IEC).", slugs: ["fssai-registration", "iec-registration", "trade-licence-assistance"], filter: "Licenses" },
+              { name: "Online Seller & Marketplace Support", intro: "For sellers joining online marketplaces or managing e-commerce compliance.", examples: "GeM registration and e-commerce tax compliance.", slugs: ["gem-registration", "ecommerce-tax-compliance", "quick-commerce-seller-onboarding"], filter: "Digital Business Services" },
               { name: "International Tax & VAT", intro: "For businesses operating or selling across borders.", examples: "UK VAT, EU VAT/OSS/IOSS, UAE VAT, US tax coordination and global expansion advisory.", slugs: ["uk-vat-compliance", "eu-vat-oss-ioss", "uae-vat-compliance", "us-tax-sales-tax", "global-expansion-advisory"], filter: "Global Tax & VAT" },
-              { name: "Other Tax & Compliance Support", intro: "For businesses that need help understanding ongoing compliance requirements.", examples: "General tax and compliance support.", slugs: ["compliance-services"], filter: "Compliance Services" },
-              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial records.", examples: "Bookkeeping, ledger maintenance, bank reconciliation and agreed management reports.", slugs: ["accounting-bookkeeping"], filter: "Accounting Services" },
+              { name: "Other Tax & Compliance Support", intro: "For businesses that need help understanding ongoing compliance requirements.", examples: "General tax and compliance support.", slugs: ["compliance-services", "roc-annual-compliance"], filter: "Compliance Services" },
+              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial records.", examples: "Bookkeeping, ledger maintenance, bank reconciliation and agreed management reports.", slugs: ["accounting-bookkeeping", "payroll-compliance"], filter: "Accounting Services" },
               { name: "Trademark & Brand Protection", intro: "For businesses looking to protect their brand identity.", examples: "Trademark application support for brand names and logos.", slugs: ["trademark-registration"], filter: "Licenses" }
             ].map((category) => {
               const categoryServices = allServices.filter((service) => category.slugs.includes(service.slug));
@@ -175,7 +175,52 @@ export default async function HomePage() {
         </div>
       </section>
 
-            {/* Genuine client feedback only; never populate this area with invented reviews. */}
+            <section id="service-pricing" className="bg-white py-14 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">Transparent Professional Fees</p>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">Clear starting prices. No surprise scope.</h2>
+            <p className="mt-4 text-sm leading-7 text-navy/70">Compare our introductory professional fees across tax, registrations, accounting and global compliance. Final fees are confirmed after checking your documents, transaction volume and exact scope.</p>
+          </div>
+          <div className="mt-8 rounded-lg border border-gold/40 bg-[#fffaf0] p-5 sm:p-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[.14em] text-gold-dark">New-client GST starter offer</p>
+                <p className="mt-1 font-display text-2xl font-semibold text-navy">One eligible Nil GST return from ₹49</p>
+                <p className="mt-2 max-w-2xl text-xs leading-5 text-navy/65">Professional fee for one basic nil GSTR-1 or GSTR-3B return only, after eligibility and document checks. It does not cover both returns, transaction reporting, reconciliation, notices or additional work. Confirm the total fee before authorising filing.</p>
+              </div>
+              <a href="https://wa.me/919444614182?text=I%20want%20to%20check%20eligibility%20for%20the%20FileFast%20GST%20starter%20offer" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-md bg-[#081b35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#17375d]">Check offer eligibility</a>
+            </div>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {allServices.map((service) => {
+              const hasOffer = Boolean(service.offerPrice);
+              return (
+                <article key={service.slug} className="flex flex-col rounded-lg border border-silver/70 bg-white p-5 transition hover:border-gold hover:shadow-md">
+                  <p className="eyebrow">{service.category}</p>
+                  <h3 className="mt-2 font-display text-lg font-semibold text-navy">{service.name}</h3>
+                  <div className="mt-4">
+                    {hasOffer ? (
+                      <>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-green-700">{service.offerLabel || "Introductory professional fee"}</p>
+                        <div className="mt-1 flex flex-wrap items-baseline gap-2">
+                          <span className="font-display text-3xl font-semibold text-navy">₹{Number(service.offerPrice).toLocaleString("en-IN")}</span>
+                        </div>
+                        {service.pricingUnit ? <p className="mt-1 text-xs text-navy/60">{service.pricingUnit}</p> : null}
+                      </>
+                    ) : <p className="font-display text-xl font-semibold text-navy">Custom quotation</p>}
+                  </div>
+                  <p className="mt-3 flex-1 text-xs leading-5 text-navy/65">{service.pricingNote || service.shortDescription}</p>
+                  <Link href={`/services/${service.slug}`} className="mt-4 inline-flex text-sm font-semibold text-gold-dark underline underline-offset-4">View scope & pricing →</Link>
+                </article>
+              );
+            })}
+          </div>
+          <p className="mt-6 text-center text-xs leading-5 text-navy/55">All amounts are professional service fees in INR unless stated otherwise. Government/statutory fees, third-party charges and applicable GST are additional where relevant. Offer pricing applies only to the stated scope and eligible cases. No government approval or tax outcome is guaranteed.</p>
+        </div>
+      </section>
+
+      {/* Genuine client feedback only; never populate this area with invented reviews. */}
       <section className="bg-navy py-16 text-white sm:py-20">
         <div className="container-page">
           <p className="eyebrow text-gold">Client Testimonials</p>
