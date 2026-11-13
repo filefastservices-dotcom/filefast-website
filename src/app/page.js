@@ -190,8 +190,8 @@ export default async function HomePage() {
               { name: "Online Seller & Marketplace Support", intro: "For sellers joining online marketplaces or managing e-commerce compliance.", examples: "GeM registration and e-commerce tax compliance.", slugs: ["gem-registration", "ecommerce-tax-compliance"], filter: "Digital Business Services" },
               { name: "International Tax & VAT", intro: "For businesses operating or selling across borders.", examples: "UK VAT, EU VAT/OSS/IOSS, UAE VAT, US tax coordination and global expansion advisory.", slugs: ["uk-vat-compliance", "eu-vat-oss-ioss", "uae-vat-compliance", "us-tax-sales-tax", "global-expansion-advisory"], filter: "Global Tax & VAT" },
               { name: "Other Tax & Compliance Support", intro: "For businesses that need help understanding ongoing compliance requirements.", examples: "General tax and compliance support.", slugs: ["compliance-services"], filter: "Compliance Services" },
-              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial records.", examples: "Contact FileFast to confirm the accounting scope available for your business.", slugs: [], filter: "Accounting Services" },
-              { name: "Trademark & Brand Protection", intro: "For businesses looking to protect their brand identity.", examples: "Contact FileFast to confirm trademark application support and scope.", slugs: [], filter: "Licenses" }
+              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial records.", examples: "Bookkeeping, ledger maintenance, bank reconciliation and agreed management reports.", slugs: ["accounting-bookkeeping"], filter: "Accounting Services" },
+              { name: "Trademark & Brand Protection", intro: "For businesses looking to protect their brand identity.", examples: "Trademark application support for brand names and logos.", slugs: ["trademark-registration"], filter: "Licenses" }
             ].map((category) => {
               const categoryServices = allServices.filter((service) => category.slugs.includes(service.slug));
               return (
