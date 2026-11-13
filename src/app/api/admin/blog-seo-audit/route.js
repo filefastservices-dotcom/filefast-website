@@ -4,7 +4,7 @@ import Blog from "@/models/Blog";
 import { requireAdmin } from "@/lib/requireAdmin";
 
 function wordCount(value) {
-  return String(value || "").replace(/<[^>]*>/g, " ").trim().split(/\\s+/).filter(Boolean).length;
+  return String(value || "").replace(/<[^>]*>/g, " ").trim().split(/\s+/).filter(Boolean).length;
 }
 
 function auditPost(post) {
