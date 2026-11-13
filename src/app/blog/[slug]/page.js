@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getBlogPostBySlug } from "@/lib/data";
 
 export async function generateMetadata({ params }) {
@@ -62,32 +63,61 @@ export default async function BlogPostPage({ params }) {
   const post = await getBlogPostBySlug(params.slug);
   if (!post) notFound();
 
+  const postUrl = "https://www.filefastglobal.com/blog/" + post.slug;
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.metaDescription || post.excerpt,
-    mainEntityOfPage: "https://www.filefastglobal.com/blog/" + post.slug,
-    image: "https://www.filefastglobal.com/og-image.png",
-    author: {
-      "@type": "Organization",
-      name: "FileFast Global"
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "FileFast Global",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.filefastglobal.com/logo.png"
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": postUrl + "#article",
+        headline: post.title,
+        description: post.metaDescription || post.excerpt,
+        mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+        image: "https://www.filefastglobal.com/og-image.png",
+        author: {
+          "@type": "Organization",
+          name: "FileFast Global",
+          url: "https://www.filefastglobal.com/about"
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "FileFast Global",
+          url: "https://www.filefastglobal.com",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://www.filefastglobal.com/logo.png"
+          }
+        },
+        ...(toValidIsoDate(post.createdAt) ? { datePublished: toValidIsoDate(post.createdAt) } : {}),
+        ...(toValidIsoDate(post.updatedAt) ? { dateModified: toValidIsoDate(post.updatedAt) } : {}),
+        inLanguage: "en-IN"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": postUrl + "#breadcrumb",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.filefastglobal.com/" },
+          { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.filefastglobal.com/blog" },
+          { "@type": "ListItem", position: 3, name: post.title, item: postUrl }
+        ]
       }
-    },
-    datePublished: toValidIsoDate(post.createdAt),
-    dateModified: toValidIsoDate(post.updatedAt)
+    ]
   };
+  const serializedArticleSchema = JSON.stringify(articleSchema)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
 
   return (
     <article className="container-page max-w-3xl py-14 sm:py-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializedArticleSchema }} />
+      <nav aria-label="Breadcrumb" className="mb-6 text-xs text-navy/60">
+        <Link href="/" className="hover:text-gold-dark">Home</Link>
+        <span aria-hidden="true"> / </span>
+        <Link href="/blog" className="hover:text-gold-dark">Blog</Link>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page" className="text-navy/80">{post.title}</span>
+      </nav>
       <p className="eyebrow">{post.category}</p>
 
       <h1 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
