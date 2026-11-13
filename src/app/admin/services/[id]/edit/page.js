@@ -14,7 +14,8 @@ async function getService(id) {
 }
 
 export default async function EditServicePage({ params }) {
-  const service = await getService(params.id);
+  const { id } = await params;
+  const service = await getService(id);
   if (!service) notFound();
 
   return (
