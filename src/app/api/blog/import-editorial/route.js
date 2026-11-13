@@ -9,7 +9,15 @@ const editorialSlugs = [
   "lut-export-goods-services-gst-guide",
   "ecommerce-marketplace-gst-tcs-reconciliation",
   "tds-freelancers-contractors-business-checklist",
-  "small-business-month-end-accounting-checklist-india"
+  "small-business-month-end-accounting-checklist-india",
+  "gst-notice-response-document-checklist",
+  "gst-for-freelancers-consultants-india",
+  "b2b-tax-invoice-checklist-india",
+  "bank-reconciliation-small-business-month-end",
+  "gst-marketplace-settlement-reconciliation-guide",
+  "export-services-lut-documentation-checklist",
+  "small-business-accounting-records-checklist-india",
+  "gst-itc-monthly-review-checklist-business"
 ];
 
 export async function POST(req) {
