@@ -56,6 +56,8 @@ export default function AdminDashboardPage() {
       <div className="mt-6 rounded-sm border border-silver/70 bg-white p-6">
         <p className="font-semibold text-navy">Quick Actions</p>
         <div className="mt-3 flex flex-wrap gap-3">
+          <Link href="/admin/homepage" className="btn-gold text-xs">Edit Homepage</Link>
+          <Link href="/admin/blog" className="btn-navy-outline text-xs">Manage Blogs</Link>
           <Link href="/admin/services/new" className="btn-gold text-xs">
             Add New Service
           </Link>
