@@ -24,7 +24,7 @@ export async function PUT(req, { params }) {
 
   await connectDB();
   const body = await req.json();
-  const service = await findService(params.slug);
+  const service = await findService(slug);
   if (!service) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   Object.assign(service, body);
