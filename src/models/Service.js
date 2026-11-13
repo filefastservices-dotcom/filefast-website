@@ -30,7 +30,8 @@ const ServiceSchema = new mongoose.Schema(
         "Licenses",
         "Compliance Services",
         "Accounting Services",
-        "Digital Business Services"
+        "Digital Business Services",
+        "Global Tax & VAT"
       ]
     },
     shortDescription: { type: String, required: true },

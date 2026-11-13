@@ -7,6 +7,10 @@ export async function GET(req) {
   await connectDB();
   const { searchParams } = new URL(req.url);
   const all = searchParams.get("all") === "true";
+  if (all) {
+    const unauthorized = requireAdmin(req);
+    if (unauthorized) return unauthorized;
+  }
 
   const query = all ? {} : { isPublished: true };
   const testimonials = await Testimonial.find(query).sort({ createdAt: -1 });
