@@ -1232,6 +1232,18 @@ const starterPricing = {
     "offerLabel": "Starter monthly offer",
     "pricingNote": "Final fee depends on monthly transaction count, bank accounts, GST registrations, payroll and reporting requirements."
   },
+  "gst-registration-cancellation": { "regularPrice":"999", "offerPrice":"799", "pricingUnit":"per application", "offerLabel":"Introductory price", "pricingNote":"Professional fee only. Pending returns, stock liability, notices and statutory issues may change the scope." },
+  "gst-notice-reply": { "regularPrice":"", "offerPrice":"", "pricingUnit":"", "offerLabel":"", "pricingNote":"Custom quotation after reviewing notice type, tax period, deadline and evidence. Hearing or litigation support is separate." },
+  "qrmp-scheme-support": { "regularPrice":"499", "offerPrice":"299", "pricingUnit":"scheme election assistance", "offerLabel":"Introductory price", "pricingNote":"Professional fee for eligibility review and portal assistance; return filing is charged separately." },
+  "cmp-08-composition-return": { "regularPrice":"499", "offerPrice":"299", "pricingUnit":"per statement", "offerLabel":"Introductory price", "pricingNote":"Basic records only. Reconciliation and corrections are separately quoted." },
+  "gstr-4-annual-return": { "regularPrice":"999", "offerPrice":"499", "pricingUnit":"per annual return", "offerLabel":"Introductory price", "pricingNote":"Basic composition records. Reconciliation and corrections are separately quoted." },
+  "gstr-10-final-return": { "regularPrice":"1499", "offerPrice":"999", "pricingUnit":"per final return", "offerLabel":"Introductory price", "pricingNote":"Basic case only. Stock liability, pending returns and notice work may require a separate quote." },
+  "gstr-9-annual-return": { "regularPrice":"2499", "offerPrice":"1499", "pricingUnit":"basic annual return", "offerLabel":"Introductory price", "pricingNote":"Final fee depends on turnover, books, ITC reconciliation and statutory applicability." },
+  "tcs-return-filing": { "regularPrice":"1499", "offerPrice":"999", "pricingUnit":"per basic quarterly statement", "offerLabel":"Introductory price", "pricingNote":"Deductee/collector volume, corrections and certificate generation may be additional." },
+  "trade-licence-assistance": { "regularPrice":"1999", "offerPrice":"1499", "pricingUnit":"basic application assistance", "offerLabel":"Introductory price", "pricingNote":"Municipal fees and local requirements vary by location and activity and are additional." },
+  "payroll-compliance": { "regularPrice":"2499", "offerPrice":"1499", "pricingUnit":"per month, starter scope", "offerLabel":"Starter monthly price", "pricingNote":"Employee count, PF/ESI/PT/TDS filings and payroll complexity affect the final fee." },
+  "roc-annual-compliance": { "regularPrice":"5999", "offerPrice":"4999", "pricingUnit":"basic annual compliance scope", "offerLabel":"Introductory price", "pricingNote":"MCA fees, additional forms, audit and overdue filings are separate." },
+  "quick-commerce-seller-onboarding": { "regularPrice":"", "offerPrice":"", "pricingUnit":"", "offerLabel":"", "pricingNote":"Custom quote based on platform, product count, category and catalogue readiness." },
   "trademark-registration": {
     "regularPrice": "2499",
     "offerPrice": "799",
