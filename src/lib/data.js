@@ -35,10 +35,15 @@ export async function getServices({ category, featured } = {}) {
     const query = { isPublished: true };
     if (category) query.category = category;
     if (featured) query.isFeatured = true;
-    const services = await Service.find(query).sort({ sortOrder: 1, createdAt: -1 }).lean();
+    const [services, knownServices] = await Promise.all([
+      Service.find(query).sort({ sortOrder: 1, createdAt: -1 }).lean(),
+      Service.find({}, { slug: 1 }).lean()
+    ]);
     const result = JSON.parse(JSON.stringify(services));
-    const existingSlugs = new Set(result.map((service) => service.slug));
-    const missingStarterServices = starterServices.filter((service) => !existingSlugs.has(service.slug));
+    // A starter fallback is only for a service that has never been created in
+    // MongoDB. Do not re-publish an admin-hidden service through fallback data.
+    const knownSlugs = new Set(knownServices.map((service) => service.slug));
+    const missingStarterServices = starterServices.filter((service) => !knownSlugs.has(service.slug));
     return filterServices([...result.map(applyStarterPricing), ...missingStarterServices], { category, featured });
   } catch (err) {
     console.error("getServices failed:", err.message);
@@ -49,8 +54,12 @@ export async function getServices({ category, featured } = {}) {
 export async function getServiceBySlug(slug) {
   try {
     await connectDB();
-    const service = await Service.findOne({ slug, isPublished: true }).lean();
-    return service ? applyStarterPricing(JSON.parse(JSON.stringify(service))) : starterServices.find((item) => item.slug === slug) || null;
+    const storedService = await Service.findOne({ slug }).lean();
+    if (storedService) {
+      if (!storedService.isPublished) return null;
+      return applyStarterPricing(JSON.parse(JSON.stringify(storedService)));
+    }
+    return starterServices.find((item) => item.slug === slug) || null;
   } catch (err) {
     console.error("getServiceBySlug failed:", err.message);
     return starterServices.find((item) => item.slug === slug) || null;
