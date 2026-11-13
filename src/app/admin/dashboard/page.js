@@ -11,17 +11,20 @@ export default function AdminDashboardPage() {
       const [servicesRes, leadsRes, testimonialsRes, blogsRes] = await Promise.all([
         fetch("/api/services?all=true"),
         fetch("/api/leads"),
-        fetch("/api/testimonials?all=true")
+        fetch("/api/testimonials?all=true"),
+        fetch("/api/blog?all=true")
       ]);
-      const [servicesData, leadsData, testimonialsData] = await Promise.all([
-        servicesRes.json(), leadsRes.json(), testimonialsRes.json()
+      const [servicesData, leadsData, testimonialsData, blogsData] = await Promise.all([
+        servicesRes.json(), leadsRes.json(), testimonialsRes.json(), blogsRes.json()
       ]);
       const testimonials = testimonialsData.testimonials || [];
       setStats({
         services: servicesData.services?.length || 0,
         leads: leadsData.leads?.length || 0,
         testimonials: testimonials.length,
-        publishedTestimonials: testimonials.filter((item) => item.isPublished).length
+        publishedTestimonials: testimonials.filter((item) => item.isPublished).length,
+        blogs: blogsData.posts?.length || 0,
+        publishedBlogs: (blogsData.posts || []).filter((item) => item.isPublished).length
       });
     }
     load();
