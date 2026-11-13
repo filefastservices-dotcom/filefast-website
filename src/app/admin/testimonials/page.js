@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AdminTestimonialsPage() {
   const [testimonials, setTestimonials] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState("");
 
   async function load() {
     setLoading(true);
@@ -43,7 +43,7 @@ export default function AdminTestimonialsPage() {
         </Link>
       </div>
 
-      {loading ? (
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">\n        <div className="rounded-sm border border-silver/70 bg-white p-4"><p className="text-2xl font-semibold text-navy">{testimonials.length}</p><p className="text-xs text-navy/60">Total testimonials</p></div>\n        <div className="rounded-sm border border-silver/70 bg-white p-4"><p className="text-2xl font-semibold text-emerald-700">{testimonials.filter((t) => t.isPublished).length}</p><p className="text-xs text-navy/60">Visible on website</p></div>\n        <div className="rounded-sm border border-silver/70 bg-white p-4"><p className="text-2xl font-semibold text-navy">{testimonials.filter((t) => !t.isPublished).length}</p><p className="text-xs text-navy/60">Draft / unpublished</p></div>\n      </div>\n      {error && <p role="alert" className="mt-5 rounded-sm border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</p>}\n      {loading ? (
         <p className="mt-6 text-sm text-navy/60">Loading...</p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-sm border border-silver/70 bg-white">
