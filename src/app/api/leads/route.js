@@ -51,7 +51,7 @@ export async function POST(req) {
 
 // Admin only: view leads, with simple search + filter.
 export async function GET(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
   try {
     await connectDB();
