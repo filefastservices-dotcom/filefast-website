@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/data";
 
 export async function generateMetadata({ params }) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   if (!post) return {};
   const rawTitle = post.metaTitle || post.title;
   const pageTitle = rawTitle.replace(/\s*\|\s*FileFast(?: Global)?$/i, "");
@@ -24,6 +25,14 @@ export async function generateMetadata({ params }) {
 }
 
 const INTERNAL_LINKS = [
+  { phrase: "GST notice response checklist", href: "/blog/gst-notice-response-document-checklist" },
+  { phrase: "GST for freelancers", href: "/blog/gst-for-freelancers-consultants-india" },
+  { phrase: "GST tax invoice checklist", href: "/blog/b2b-tax-invoice-checklist-india" },
+  { phrase: "bank reconciliation for small businesses", href: "/blog/bank-reconciliation-small-business-month-end" },
+  { phrase: "marketplace settlement reconciliation", href: "/blog/gst-marketplace-settlement-reconciliation-guide" },
+  { phrase: "export of services under LUT", href: "/blog/export-services-lut-documentation-checklist" },
+  { phrase: "small business accounting records", href: "/blog/small-business-accounting-records-checklist-india" },
+  { phrase: "monthly ITC review checklist", href: "/blog/gst-itc-monthly-review-checklist-business" },
   { phrase: "GST Registration service", href: "/services/gst-registration" },
   { phrase: "GST registration documents checklist", href: "/blog/gst-registration-documents-checklist" },
   { phrase: "GST registration address proof", href: "/blog/gst-registration-address-proof" },
@@ -54,7 +63,7 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const phrasePattern = /(GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping)/gi;
+  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping)/gi;
   return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
@@ -88,7 +97,8 @@ function renderContent(content) {
 }
  
 export default async function BlogPostPage({ params }) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   if (!post) notFound();
   const allPosts = await getBlogPosts();
   const relatedPosts = allPosts.filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);

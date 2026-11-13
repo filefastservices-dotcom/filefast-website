@@ -14,7 +14,8 @@ async function getBlog(id) {
 }
 
 export default async function EditBlogPage({ params }) {
-  const blog = await getBlog(params.id);
+  const { id } = await params;
+  const blog = await getBlog(id);
   if (!blog) notFound();
 
   return (
