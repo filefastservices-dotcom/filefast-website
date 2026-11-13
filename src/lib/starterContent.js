@@ -1257,7 +1257,7 @@ export const starterServices = starterServicesData.map((service) => {
   const price = starterPricing[service.slug];
   if (!price) return service;
   const pricingInfo = price.offerPrice
-    ? `Professional fee: ₹${price.offerPrice} ${price.pricingUnit} (standard ₹${price.regularPrice}). ${price.pricingNote}`
+    ? `Introductory professional fee: ₹${price.offerPrice} ${price.pricingUnit}. ${price.pricingNote}`
     : `Professional fee: custom quotation. ${price.pricingNote}`;
   return { ...service, ...price, pricingInfo };
 });
