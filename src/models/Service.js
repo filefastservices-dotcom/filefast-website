@@ -41,6 +41,11 @@ const ServiceSchema = new mongoose.Schema(
     requiredDocuments: [{ type: String }],
     processFlow: [ProcessStepSchema],
     pricingInfo: { type: String, default: "Contact us for pricing" },
+    regularPrice: { type: String, default: "" },
+    offerPrice: { type: String, default: "" },
+    pricingUnit: { type: String, default: "" },
+    offerLabel: { type: String, default: "" },
+    pricingNote: { type: String, default: "" },
     faqs: [FaqSchema],
     relatedServiceSlugs: [{ type: String }],
 
