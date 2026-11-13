@@ -36,7 +36,14 @@ export function validateBlogPayload(input, { partial = false } = {}) {
     if (value.length > maxLength) {
       return { error: `${field} exceeds the ${maxLength}-character limit` };
     }
+    if (!partial && ["title", "slug", "content"].includes(field) && value.length === 0) {
+      return { error: `${field} cannot be empty` };
+    }
     payload[field] = value;
+  }
+
+  if (partial && Object.keys(payload).length === 0 && !("isPublished" in input)) {
+    return { error: "At least one supported field is required" };
   }
 
   if (payload.slug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.slug)) {
