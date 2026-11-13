@@ -56,7 +56,7 @@ function renderInline(text, keyPrefix) {
 }
 
 function renderContent(content) {
-  return content.split(/\\r?\\n/).map((line, index) => {
+  return content.split(/\r?\n/).map((line, index) => {
     const value = line.trim();
     if (!value) return null;
     if (value.startsWith("### ")) {
@@ -68,9 +68,9 @@ function renderContent(content) {
     if (value.startsWith("- ")) {
       return <div key={index} className="ml-5 flex gap-2 text-sm leading-7 text-navy/80"><span aria-hidden="true">•</span><span>{renderInline(value.slice(2), `li-${index}`)}</span></div>;
     }
-    const numbered = value.match(/^\\d+\\.\\s+(.*)$/);
+    const numbered = value.match(/^\d+\.\s+(.*)$/);
     if (numbered) {
-      return <div key={index} className="ml-5 flex gap-2 text-sm leading-7 text-navy/80"><span className="font-semibold">{value.match(/^\\d+/)[0]}.</span><span>{renderInline(numbered[1], `ol-${index}`)}</span></div>;
+      return <div key={index} className="ml-5 flex gap-2 text-sm leading-7 text-navy/80"><span className="font-semibold">{value.match(/^\d+/)[0]}.</span><span>{renderInline(numbered[1], `ol-${index}`)}</span></div>;
     }
     return <p key={index} className="mb-4 text-sm leading-7 text-navy/80">{renderInline(value, `p-${index}`)}</p>;
   });
