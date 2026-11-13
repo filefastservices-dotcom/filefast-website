@@ -10,13 +10,15 @@ async function findService(key) {
 }
 
 export async function GET(req, { params }) {
+  const { slug } = await params;
   await connectDB();
-  const service = await findService(params.slug);
+  const service = await findService(slug);
   if (!service) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json({ service });
 }
 
 export async function PUT(req, { params }) {
+  const { slug } = await params;
   const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
@@ -42,6 +44,7 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
+  const { slug } = await params;
   const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
