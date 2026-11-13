@@ -15,7 +15,7 @@ const baseService = (data) => ({
   ...data
 });
 
-export const starterServices = [
+const starterServicesData = [
   baseService({
     name: "GST Registration",
     slug: "gst-registration",
@@ -916,3 +916,150 @@ export const starterBlogPosts = [
     "content":"## Why UK VAT needs early attention\nAn Indian business selling goods or services to UK customers should assess UK VAT before launching a sales channel. The treatment depends on what is supplied, where goods are located, who imports them, the customer type, the sales channel and whether a marketplace is involved. A single turnover rule should not be applied to every overseas seller.\n\n## Registration is fact-specific\nA business not established in the UK may be required to register when it makes taxable supplies in the UK, and the normal domestic registration threshold may not protect a non-established taxable person in the same way it protects a UK-established business. However, the place and nature of the supply must first be established. Goods located outside the UK, goods stored in the UK, imports, marketplace deemed-supplier rules and B2B/B2C services can produce different outcomes.\n\n## Goods and services are not the same\nFor goods, review the location of goods at the time of sale, import arrangements, Incoterms, importer of record, fulfilment warehouse and marketplace role. For services, determine the service category, customer status and place-of-supply rule. Digital services, consulting and electronically supplied services may have different VAT analysis.\n\n## Records to prepare\nKeep customer invoices, contracts, product/service descriptions, customer VAT numbers where relevant, order and dispatch records, import declarations, marketplace statements, shipping evidence, credit notes and accounting ledgers. Maintain a clear audit trail between sales channels and VAT return figures.\n\n## VAT returns and ongoing controls\nIf registered, follow the HMRC filing and payment schedule assigned to the business. Reconcile output VAT, input VAT, credit notes, imports and marketplace transactions. Retain records in the format and for the period required by HMRC, including digital records where Making Tax Digital applies. Do not assume Indian GST returns satisfy UK VAT obligations.\n\n## Questions to answer before selling\n1. Are goods stored in the UK before sale?\n2. Who is importer of record?\n3. Is the sale through an online marketplace, and does a deemed-supplier rule apply?\n4. Is the customer a consumer or a VAT-registered business?\n5. Is the supply goods, consulting, digital or another service?\n6. Is the Indian business established or has it created a fixed establishment in the UK?\n\n## How FileFast Global can help\nFileFast Global can help Indian founders identify UK VAT questions, organise sales and import records and coordinate compliance support. UK VAT registration and filing should be confirmed with an appropriately qualified UK VAT professional based on the exact business model.\n\n## Official references\nHMRC VAT registration guidance: https://www.gov.uk/vat-registration\nHMRC VAT for overseas businesses: https://www.gov.uk/guidance/vat-registration-for-non-established-taxable-persons-non-ets\nMaking Tax Digital for VAT: https://www.gov.uk/guidance/sign-up-for-making-tax-digital-for-vat\n\nThis article is general information, not UK tax advice. Check current HMRC guidance and obtain professional advice before making a registration decision."
   }
 ];
+
+// Transparent competitive professional-fee guide. Introductory prices have defined scope;
+// the site does not use artificial expiry dates or false urgency.
+const starterPricing = {
+  "gst-registration": {
+    "regularPrice": "499",
+    "offerPrice": "299",
+    "pricingUnit": "per application",
+    "offerLabel": "New-client price",
+    "pricingNote": "Professional assistance fee. GST registration application on the government portal has no government fee. Clarification replies, complex premises cases and statutory or third-party costs, if any, are quoted separately."
+  },
+  "gstr-1-filing": {
+    "regularPrice": "499",
+    "offerPrice": "199",
+    "pricingUnit": "per return",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Nil/zero-transaction and low-volume cases only. Transaction volume, amendments and marketplace data may change the quote."
+  },
+  "gstr-3b-filing": {
+    "regularPrice": "499",
+    "offerPrice": "199",
+    "pricingUnit": "per return",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Basic return preparation. ITC reconciliation, multiple registrations and complex adjustments are quoted based on records."
+  },
+  "itr-filing": {
+    "regularPrice": "999",
+    "offerPrice": "499",
+    "pricingUnit": "simple individual return",
+    "offerLabel": "Individual ITR offer",
+    "pricingNote": "For eligible straightforward individual cases. Capital gains, F&O, foreign income, business books, notices and audit cases are quoted separately."
+  },
+  "msme-registration": {
+    "regularPrice": "499",
+    "offerPrice": "199",
+    "pricingUnit": "per application",
+    "offerLabel": "New-client price",
+    "pricingNote": "Udyam government registration is free on the official portal. This is a professional assistance fee; no government benefit or approval is guaranteed."
+  },
+  "fssai-registration": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "basic application assistance",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Government licence fee depends on licence type and tenure and is additional. State/Central licences and manufacturing cases require a separate quote."
+  },
+  "tds-return-filing": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "per quarter / basic statement",
+    "offerLabel": "Introductory price",
+    "pricingNote": "For a basic statement within an agreed deductee volume. Multiple forms, corrections, salary certificates and high-volume data are quoted separately."
+  },
+  "iec-registration": {
+    "regularPrice": "1999",
+    "offerPrice": "999",
+    "pricingUnit": "per application",
+    "offerLabel": "New-client price",
+    "pricingNote": "Professional assistance fee. DGFT requirements, DSC, bank validation and additional documentation may affect the final scope."
+  },
+  "gem-registration": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "seller onboarding support",
+    "offerLabel": "Introductory price",
+    "pricingNote": "Basic seller profile assistance only. Product catalogue, category approvals, OEM authorisation and ongoing bid support are separate."
+  },
+  "uk-vat-compliance": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote after reviewing goods location, fulfilment, marketplace model, customer type, registration position and filing frequency."
+  },
+  "eu-vat-oss-ioss": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote after reviewing countries, goods movement, marketplace role, OSS/IOSS eligibility and local representative requirements."
+  },
+  "uae-vat-compliance": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote after reviewing UAE taxable supplies, registration position, tax periods and local representation requirements."
+  },
+  "us-tax-sales-tax": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom quote based on states, nexus, entity type, federal/state filings and required licensed local tax support."
+  },
+  "company-registration": {
+    "regularPrice": "4999",
+    "offerPrice": "2999",
+    "pricingUnit": "basic professional assistance",
+    "offerLabel": "Startup offer",
+    "pricingNote": "Government/MCA fees, stamp duty, DSC, name reservation and other statutory or third-party costs are additional. Final fee depends on entity type and authorised capital."
+  },
+  "compliance-services": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Scope-based quotation after reviewing the notice, return period, entity type, records and deadlines."
+  },
+  "global-expansion-advisory": {
+    "regularPrice": "",
+    "offerPrice": "",
+    "pricingUnit": "",
+    "offerLabel": "",
+    "pricingNote": "Custom scope and fee after a discovery call. Country-specific tax/legal opinions and local filing fees are separately agreed."
+  },
+  "ecommerce-tax-compliance": {
+    "regularPrice": "1499",
+    "offerPrice": "999",
+    "pricingUnit": "per month, basic seller package",
+    "offerLabel": "Introductory monthly package",
+    "pricingNote": "Subject to marketplace count, order volume, states, return frequency and reconciliation scope. TCS, accounting and complex reconciliations may be additional."
+  },
+  "accounting-bookkeeping": {
+    "regularPrice": "2499",
+    "offerPrice": "1499",
+    "pricingUnit": "per month, starter volume",
+    "offerLabel": "Starter monthly offer",
+    "pricingNote": "Final fee depends on monthly transaction count, bank accounts, GST registrations, payroll and reporting requirements."
+  },
+  "trademark-registration": {
+    "regularPrice": "2499",
+    "offerPrice": "1499",
+    "pricingUnit": "professional filing assistance / one class",
+    "offerLabel": "New-client price",
+    "pricingNote": "Government trademark filing fee is additional and varies by applicant category and filing mode. Search, objections, hearings and additional classes are separate."
+  }
+};
+
+export const starterServices = starterServicesData.map((service) => {
+  const price = starterPricing[service.slug];
+  if (!price) return service;
+  const pricingInfo = price.offerPrice
+    ? `Professional fee: ₹${price.offerPrice} ${price.pricingUnit} (standard ₹${price.regularPrice}). ${price.pricingNote}`
+    : `Professional fee: custom quotation. ${price.pricingNote}`;
+  return { ...service, ...price, pricingInfo };
+});
