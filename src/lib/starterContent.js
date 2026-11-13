@@ -615,7 +615,103 @@ export const starterServices = [
   metaTitle: "E-commerce GST & Marketplace Tax Compliance",
   metaDescription: "Reconcile marketplace sales, refunds, settlements and TCS with GST return preparation support for Indian e-commerce sellers.",
   seoKeywords: "GST for e-commerce sellers, e-commerce GST compliance India, Amazon seller GST returns, Flipkart GST filing, Meesho TCS reconciliation"
-})
+}),
+  baseService({
+    name: "Accounting & Bookkeeping Services",
+    slug: "accounting-bookkeeping",
+    category: "Accounting Services",
+    sortOrder: 30,
+    shortDescription: "Practical bookkeeping and accounting support to help small businesses keep organised financial records.",
+    fullDescription: "FileFast Global provides accounting and bookkeeping support based on an agreed scope and transaction volume. Support may include recording sales, purchases and expenses; maintaining ledgers; bank and payment reconciliation; organising supporting documents; and preparing management summaries such as profit and loss or cash-flow reports where agreed. The exact deliverables, accounting method, reporting frequency and software workflow are confirmed before work starts. This service is not a statutory audit, independent assurance engagement or substitute for a regulated professional opinion.",
+    benefits: [
+      "Keep sales, purchase and expense records organised",
+      "Reconcile bank statements and payment-platform settlements within the agreed scope",
+      "Maintain clearer ledgers and supporting schedules",
+      "Prepare periodic management summaries where included in the engagement",
+      "Make information easier to use for GST, TDS and income-tax compliance"
+    ],
+    eligibility: [
+      "Small businesses and proprietors needing regular bookkeeping support",
+      "Startups and service providers that want organised monthly records",
+      "Online sellers needing marketplace settlement and payout reconciliation",
+      "Businesses that need a backlog review before regular bookkeeping begins"
+    ],
+    requiredDocuments: [
+      "Business constitution details and applicable PAN/GSTIN",
+      "Sales invoices, sales register and credit notes",
+      "Purchase invoices and expense records",
+      "Business bank statements for the agreed period",
+      "Payment gateway or marketplace settlement reports, where applicable",
+      "Existing ledgers, trial balance and opening balances, if available",
+      "Accounting software export or access arranged securely, if applicable"
+    ],
+    processFlow: [
+      { title: "Understand your business and scope", description: "Confirm the accounting period, transaction volume, software, accounts and required reports." },
+      { title: "Collect and organise records", description: "Use a document checklist to gather bank statements, invoices, expenses and platform reports." },
+      { title: "Record and reconcile", description: "Complete the agreed bookkeeping and reconciliation work, then flag missing information or differences." },
+      { title: "Review and deliver", description: "Share the agreed ledgers, reconciliation summary and management reports for your review." }
+    ],
+    pricingInfo: "Custom quotation based on monthly transaction volume, number of bank accounts, platforms, backlog, software and reporting requirements. FileFast will confirm the written scope and professional fee before work begins. Audit, certification, payroll and specialist services are not included unless separately agreed and appropriately provided.",
+    faqs: [
+      { question: "What is included in bookkeeping?", answer: "Depending on the agreed scope, it can include recording sales, purchases and expenses, maintaining ledgers, bank reconciliation and organising supporting records. The exact deliverables are confirmed in writing before work begins." },
+      { question: "Can you reconcile Amazon, Flipkart or other marketplace settlements?", answer: "Marketplace settlement reconciliation can be discussed as part of the engagement. The required reports, platforms, periods and transaction volume will be reviewed before confirming scope and fees." },
+      { question: "Will I receive profit and loss and balance sheet reports?", answer: "Periodic management reports may be included where specifically agreed. The reporting basis and information required will be confirmed before the engagement starts." },
+      { question: "Do you provide statutory audit or certification?", answer: "This service page describes bookkeeping and accounting support only. Statutory audit, independent assurance and regulated certification are not included. Where required, those services must be undertaken by an appropriately authorised professional." },
+      { question: "How much does bookkeeping cost?", answer: "Fees depend on transaction volume, bank accounts, platforms, backlog and reporting needs. Share a brief description of your business to receive a scope-based quotation." }
+    ],
+    relatedServiceSlugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing", "tds-return-filing", "itr-filing"],
+    metaTitle: "Accounting & Bookkeeping Services for Small Businesses | FileFast Global",
+    metaDescription: "Get bookkeeping, ledger maintenance, bank reconciliation and management reporting support for small businesses in India. Scope and fees confirmed before work starts.",
+    seoKeywords: "accounting services for small business India, bookkeeping services Chennai, bank reconciliation services, monthly bookkeeping, marketplace reconciliation"
+  }),
+  baseService({
+    name: "Trademark Registration Support",
+    slug: "trademark-registration",
+    category: "Licenses",
+    sortOrder: 31,
+    shortDescription: "Trademark application preparation and filing coordination to help businesses protect their brand name, logo or identity in India.",
+    fullDescription: "A trademark can help distinguish a business's goods or services from those of others. FileFast Global can help organise applicant details, identify the goods or services description to discuss, prepare an application document checklist and coordinate the filing process. A preliminary search can help identify potentially similar marks but cannot guarantee acceptance or registration. Examination, opposition, objections and final decisions are handled under the applicable Trade Marks law and by the Trade Marks Registry. Legal opinions and representation, where required, should be obtained from an appropriately qualified trademark professional or agent.",
+    benefits: [
+      "Understand the basic trademark application stages",
+      "Organise applicant, brand and usage details",
+      "Prepare a preliminary document checklist",
+      "Coordinate application filing support and status follow-up",
+      "Understand that objections or opposition may require separate professional work"
+    ],
+    eligibility: [
+      "Individuals, proprietors, partnerships and companies seeking to protect a brand",
+      "Businesses applying for a word mark, logo or other eligible mark",
+      "Applicants who can identify the owner and the goods or services associated with the mark"
+    ],
+    requiredDocuments: [
+      "Applicant name, address and legal constitution details",
+      "Brand name and/or clear logo image",
+      "Description of the goods or services associated with the brand",
+      "Proposed trademark class, subject to confirmation",
+      "Date of first use and supporting evidence, if claiming prior use",
+      "Authorisation or power of attorney, where required",
+      "Applicant identity and entity documents, as applicable"
+    ],
+    processFlow: [
+      { title: "Share the brand details", description: "Provide the proposed word mark or logo, applicant details and goods or services." },
+      { title: "Preliminary review", description: "Review the available details and identify search, classification and documentation questions. A search is not a guarantee of registration." },
+      { title: "Prepare the application", description: "Compile the application information and supporting documents for applicant review." },
+      { title: "Filing and status follow-up", description: "Coordinate the agreed filing steps and share available acknowledgements or status updates." },
+      { title: "Handle further examination separately", description: "If an objection, opposition or hearing arises, explain the next steps and confirm any additional professional scope." }
+    ],
+    pricingInfo: "Professional fees depend on the number of marks, classes, applicant type and work required. Government fees are separate and depend on the applicable applicant category and filing details. A written quotation will be shared before proceeding. Objection replies, hearings and opposition matters are separately scoped.",
+    faqs: [
+      { question: "Can I register a business name as a trademark?", answer: "A business or brand name may be eligible for trademark protection, subject to distinctiveness, conflicts with earlier marks and other legal requirements. A preliminary search does not guarantee acceptance." },
+      { question: "Can I register both a name and a logo?", answer: "A word mark and a logo/device mark are different forms of protection and may require separate applications. The suitable approach depends on the brand and intended protection." },
+      { question: "How long does trademark registration take?", answer: "There is no guaranteed completion time. The process depends on examination, registry workload, objections, publication and any opposition or other proceedings." },
+      { question: "Does filing mean my trademark is registered?", answer: "No. Filing creates an application record; it does not mean the mark has been accepted or registered. The application must proceed through the statutory process." },
+      { question: "Are government fees included in the professional fee?", answer: "Government fees are separate and depend on applicant category and application details. The quotation will identify professional fees and applicable government charges separately." }
+    ],
+    relatedServiceSlugs: ["company-registration", "msme-registration", "fssai-registration"],
+    metaTitle: "Trademark Registration Support in India | FileFast Global",
+    metaDescription: "Get support preparing and coordinating trademark applications for brand names and logos in India. Understand documents, classes, fees and filing stages.",
+    seoKeywords: "trademark registration India, trademark application support, brand name registration, logo trademark filing, trademark documents and fees"
+  })
 ];
 
 // Public reviews transcribed from FileFast's Google Business Profile (August 2026).
