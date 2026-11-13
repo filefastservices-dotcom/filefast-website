@@ -84,6 +84,7 @@ export default async function HomePage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a href="#service-categories" className="inline-flex min-h-12 items-center justify-center rounded-md bg-[#e8c77c] px-6 py-3 text-sm font-bold text-[#081b35] transition hover:bg-white" data-track="cta-explore-services">Explore all services <span className="ml-2">→</span></a>
               <a href="https://wa.me/919444614182?text=I%20would%20like%20to%20discuss%20a%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#e8c77c] hover:text-[#e8c77c]" data-track="cta-whatsapp">Discuss your requirement</a>
+              <Link href="/global-tax-quote" className="inline-flex min-h-12 items-center justify-center rounded-md border border-[#e8c77c]/70 px-6 py-3 text-sm font-semibold text-[#e8c77c] transition hover:bg-[#e8c77c] hover:text-[#081b35]" data-track="cta-global-tax-assessment">Get a global tax assessment</Link>
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/60"><span>India tax & compliance</span><span>•</span><span>Business registrations</span><span>•</span><span>Global VAT coordination</span></div>
           </div>
