@@ -4,7 +4,7 @@ import Appointment from "@/models/Appointment";
 import { requireAdmin } from "@/lib/requireAdmin";
 
 export async function PUT(req, { params }) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
@@ -15,7 +15,7 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   await connectDB();
