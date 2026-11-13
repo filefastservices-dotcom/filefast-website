@@ -19,7 +19,7 @@ export async function GET(req) {
     sixMonthsAgo.setMonth(now.getMonth() - 5, 1);
     sixMonthsAgo.setHours(0, 0, 0, 0);
 
-    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, blogStats] = await Promise.all([
+    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, blogStats, pipeline, followUpsDue, estimatedPipelineValue] = await Promise.all([
       Lead.countDocuments({}),
       Lead.countDocuments({ createdAt: { $gte: thirtyDaysAgo } }),
       Lead.countDocuments({ createdAt: { $gte: ninetyDaysAgo } }),
@@ -40,6 +40,15 @@ export async function GET(req) {
       ]),
       Blog.aggregate([
         { $group: { _id: null, total: { $sum: 1 }, published: { $sum: { $cond: ["$isPublished", 1, 0] } } } }
+      ]),
+      Lead.aggregate([
+        { $group: { _id: "$status", count: { $sum: 1 } } },
+        { $sort: { count: -1 } }
+      ]),
+      Lead.countDocuments({ followUpAt: { $ne: null, $lte: now }, status: { $nin: ["converted", "lost"] } }),
+      Lead.aggregate([
+        { $match: { status: { $in: ["qualified", "converted"] } } },
+        { $group: { _id: null, total: { $sum: "$estimatedValue" } } }
       ])
     ]);
 
@@ -49,7 +58,10 @@ export async function GET(req) {
       monthly: monthly.map((item) => ({ month: item._id, count: item.count })),
       byService: byService.map((item) => ({ label: item._id || "Not specified", count: item.count })),
       bySource: bySource.map((item) => ({ label: item._id || "website", count: item.count })),
-      blogs: blogStats[0] || { total: 0, published: 0 }
+      blogs: blogStats[0] || { total: 0, published: 0 },
+      pipeline: pipeline.map((item) => ({ status: item._id || "new", count: item.count })),
+      followUpsDue,
+      estimatedPipelineValue: estimatedPipelineValue[0]?.total || 0
     });
   } catch (error) {
     console.error("Admin analytics failed:", error?.message || "Unknown error");
