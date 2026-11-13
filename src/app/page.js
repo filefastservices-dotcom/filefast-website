@@ -3,6 +3,7 @@ import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
+import { googleReviewUrl } from "@/lib/googleReviews";
 
 export const metadata = {
   title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
@@ -210,7 +211,13 @@ export default async function HomePage() {
       <section className="bg-navy py-16 text-white sm:py-20">
         <div className="container-page">
           <p className="eyebrow text-gold">Client Testimonials</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
+            <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-sm border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10">
+              Read Google reviews ↗
+            </a>
+          </div>
+          <p className="mt-3 text-sm text-white/65">Selected public feedback, attributed to Google. Visit the original listing to read the full review history.</p>
           {testimonials.length ? (
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {testimonials.slice(0, 6).map((t) => <TestimonialCard key={t._id} testimonial={t} />)}
