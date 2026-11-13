@@ -72,6 +72,10 @@ export const metadata = {
   // including when Vercel builds preview deployments.
   metadataBase: new URL("https://www.filefastglobal.com"),
 
+  alternates: {
+    canonical: "/",
+  },
+
   title: {
     default: "FileFast Global | GST, Income Tax, Accounting & Global Tax Compliance",
     template: "%s | FileFast Global",
