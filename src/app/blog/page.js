@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/data";
+import BlogExplorer from "@/components/BlogExplorer";
 
 export const metadata = {
   openGraph: {
@@ -25,26 +26,7 @@ export default async function BlogPage() {
         Practical checklists and step-by-step explainers for GST registration, GST returns, input tax credit, income-tax return preparation, food-business compliance and cross-border expansion. Use each guide to organise your records and identify questions to verify against current official requirements.
       </p>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <Link
-              key={post._id}
-              href={`/blog/${post.slug}`}
-              className="block rounded-sm border border-silver/70 bg-white p-6 transition hover:border-gold"
-            >
-              <p className="eyebrow">{post.category}</p>
-              <h2 className="mt-2 font-display text-lg font-semibold text-navy">{post.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-navy/70">{post.excerpt}</p>
-              <span className="mt-4 inline-block text-sm font-medium text-blue-700 underline underline-offset-2">Read guide →</span>
-            </Link>
-          ))
-        ) : (
-          <p className="col-span-full text-center text-sm text-navy/60">
-            No articles published yet — check back soon.
-          </p>
-        )}
-      </div>
+      <BlogExplorer posts={posts} />
     </section>
   );
 }
