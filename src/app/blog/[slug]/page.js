@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/data";
 
 export async function generateMetadata({ params }) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   if (!post) return {};
   const rawTitle = post.metaTitle || post.title;
   const pageTitle = rawTitle.replace(/\s*\|\s*FileFast(?: Global)?$/i, "");
@@ -88,7 +89,8 @@ function renderContent(content) {
 }
  
 export default async function BlogPostPage({ params }) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   if (!post) notFound();
   const allPosts = await getBlogPosts();
   const relatedPosts = allPosts.filter((item) => item.slug !== post.slug && item.category === post.category).slice(0, 3);
