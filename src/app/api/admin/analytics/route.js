@@ -5,7 +5,7 @@ import Blog from "@/models/Blog";
 import { requireAdmin } from "@/lib/requireAdmin";
 
 export async function GET(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
 
   try {
