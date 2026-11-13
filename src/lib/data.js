@@ -52,7 +52,7 @@ export async function getTestimonials() {
     const verified = result.filter((item) =>
       item.clientName?.toLowerCase() !== "sample client" && !item.quote?.startsWith("Example feedback:")
     );
-    return verified.length ? verified : googleReviewFallbacks;
+    return [...verified, ...googleReviewFallbacks];
   } catch (err) {
     console.error("getTestimonials failed:", err.message);
     return googleReviewFallbacks;
