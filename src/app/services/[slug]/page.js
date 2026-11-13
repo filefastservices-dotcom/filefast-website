@@ -17,7 +17,16 @@ export async function generateMetadata({ params }) {
       canonical: `/services/${service.slug}`,
     },
     openGraph: {
+      type: "website",
+      siteName: "FileFast Global",
+      locale: "en_IN",
       url: "https://www.filefastglobal.com/services/" + service.slug,
+      title: pageTitle,
+      description: service.metaDescription || service.shortDescription,
+      images: service.ogImage ? [{ url: service.ogImage, alt: service.name }] : undefined
+    },
+    twitter: {
+      card: service.ogImage ? "summary_large_image" : "summary",
       title: pageTitle,
       description: service.metaDescription || service.shortDescription,
       images: service.ogImage ? [service.ogImage] : undefined
