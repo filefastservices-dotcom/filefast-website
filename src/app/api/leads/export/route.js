@@ -19,7 +19,7 @@ function toCSV(leads) {
 }
 
 export async function GET(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
   try {
     await connectDB();
