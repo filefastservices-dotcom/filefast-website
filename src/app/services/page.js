@@ -61,7 +61,7 @@ export default async function ServicesPage({ searchParams }) {
       }
     ]
   };
-  const serializedSchema = JSON.stringify(directorySchema).replace(/</g, "\\\\u003c").replace(/>/g, "\\\\u003e").replace(/&/g, "\\\\u0026");
+  const serializedSchema = JSON.stringify(directorySchema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
 
   return (
     <>
