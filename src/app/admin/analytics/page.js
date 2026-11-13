@@ -103,9 +103,11 @@ export default function AdminAnalyticsPage() {
             </section>
             <Breakdown title="Enquiries by service" rows={data.byService} />
             <Breakdown title="Enquiries by source" rows={data.bySource} />
+            <Breakdown title="Enquiries by campaign" rows={data.byCampaign || []} empty="Campaign-tagged enquiries will appear here." />
+            <Breakdown title="Top landing pages" rows={data.byLandingPage || []} empty="Landing-page attribution will appear here." />
             <section className="rounded-sm border border-silver/70 bg-white p-5">
               <h2 className="font-semibold text-navy">Next steps</h2>
-              <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which service categories are generating interest. Update lead source values consistently on website forms and record qualified and converted outcomes before calculating conversion rates.</p>
+              <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which services, campaigns and landing pages generate enquiries. Use consistent UTM tags on advertising links. Qualified-lead and paid-client conversion tracking can be added after the team records those outcomes.</p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link href="/admin/leads" className="btn-gold text-xs">Review leads</Link>
                 <Link href="/admin/blog" className="btn-navy-outline text-xs">Manage blogs</Link>
