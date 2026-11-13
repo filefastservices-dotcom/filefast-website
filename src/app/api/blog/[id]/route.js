@@ -4,6 +4,9 @@ import Blog from "@/models/Blog";
 import { requireAdmin } from "@/lib/requireAdmin";
 
 export async function GET(req, { params }) {
+  const unauthorized = await requireAdmin(req);
+  if (unauthorized) return unauthorized;
+
   await connectDB();
   const blog = await Blog.findById(params.id).lean();
   if (!blog) return NextResponse.json({ error: "Not found" }, { status: 404 });
