@@ -111,6 +111,13 @@ export default async function ServiceDetailPage({ params }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializedSchema }} />
+      <nav aria-label="Breadcrumb" className="container-page pt-6 text-xs text-navy/60">
+        <Link href="/" className="hover:text-gold-dark">Home</Link>
+        <span aria-hidden="true"> / </span>
+        <Link href="/services" className="hover:text-gold-dark">Services</Link>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page" className="text-navy/80">{service.name}</span>
+      </nav>
       {/* Hero */}
       <section className="bg-navy py-14 text-white sm:py-20">
         <div className="container-page">
