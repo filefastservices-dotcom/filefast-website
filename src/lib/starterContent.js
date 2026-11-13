@@ -1115,14 +1115,14 @@ const starterPricing = {
   },
   "gstr-1-filing": {
     "regularPrice": "499",
-    "offerPrice": "199",
+    "offerPrice": "99",
     "pricingUnit": "per return",
     "offerLabel": "Introductory price",
-    "pricingNote": "Nil/zero-transaction and low-volume cases only. Transaction volume, amendments and marketplace data may change the quote."
+    "pricingNote": "Introductory fee applies to one basic eligible return; the ₹49 nil-return starter offer is limited to one eligible nil GSTR-1 or GSTR-3B form. Transaction volume, amendments and marketplace data may change the quote."
   },
   "gstr-3b-filing": {
     "regularPrice": "499",
-    "offerPrice": "199",
+    "offerPrice": "99",
     "pricingUnit": "per return",
     "offerLabel": "Introductory price",
     "pricingNote": "Basic return preparation. ITC reconciliation, multiple registrations and complex adjustments are quoted based on records."
