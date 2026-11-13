@@ -75,16 +75,18 @@ export default function AdminLeadsPage() {
   const [leads, setLeads] = useState([]);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [followUpFilter, setFollowUpFilter] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  async function load(q = search, status = statusFilter) {
+  async function load(q = search, status = statusFilter, followUp = followUpFilter) {
     setLoading(true);
     setError("");
     try {
       const params = new URLSearchParams();
       if (q) params.set("search", q);
       if (status) params.set("status", status);
+      if (followUp) params.set("followUp", followUp);
       const res = await fetch(`/api/leads?${params.toString()}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Unable to load leads.");
@@ -101,7 +103,7 @@ export default function AdminLeadsPage() {
 
   function handleSearch(e) {
     e.preventDefault();
-    load(search, statusFilter);
+    load(search, statusFilter, followUpFilter);
   }
 
   function updateLead(updated) {
@@ -113,7 +115,7 @@ export default function AdminLeadsPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="font-display text-2xl font-semibold text-navy">Lead CRM</h1>
-          <p className="mt-1 text-sm text-navy/60">Track enquiries, follow-ups, pipeline status and estimated value.</p>
+          <p className="mt-1 text-sm text-navy/60">Track enquiries, pipeline stages, due follow-ups and estimated customer value.</p>
         </div>
         <a href="/api/leads/export" className="btn-gold text-xs">Export CSV</a>
       </div>
@@ -123,6 +125,11 @@ export default function AdminLeadsPage() {
         <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="rounded-sm border border-silver-dark/40 bg-white px-3 py-2 text-sm">
           <option value="">All statuses</option>
           {STATUSES.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+        </select>
+        <select value={followUpFilter} onChange={(e) => setFollowUpFilter(e.target.value)} className="rounded-sm border border-silver-dark/40 bg-white px-3 py-2 text-sm">
+          <option value="">All follow-ups</option>
+          <option value="due">Due / overdue</option>
+          <option value="upcoming">Next 7 days</option>
         </select>
         <button type="submit" className="btn-navy-outline text-xs">Apply filters</button>
       </form>
