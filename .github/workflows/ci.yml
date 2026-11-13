@@ -39,6 +39,9 @@ jobs:
       - name: Check lead attribution tracking
         run: pnpm run check:lead-attribution
 
+      - name: Check dynamic homepage and content management
+        run: pnpm run check:homepage-content
+
       - name: Test blog payload validation
         run: pnpm run test:blog-validation
 

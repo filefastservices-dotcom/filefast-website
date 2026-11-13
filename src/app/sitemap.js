@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getServices, getBlogPosts } from "@/lib/data";
 
 const SITE_URL = "https://www.filefastglobal.com";

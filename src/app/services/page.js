@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import ServiceCard from "@/components/ServiceCard";
 import { getServices } from "@/lib/data";
 

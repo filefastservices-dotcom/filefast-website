@@ -4,24 +4,27 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function AdminDashboardPage() {
-  const [stats, setStats] = useState({ services: 0, leads: 0, testimonials: 0, publishedTestimonials: 0 });
+  const [stats, setStats] = useState({ services: 0, leads: 0, testimonials: 0, publishedTestimonials: 0, blogs: 0, publishedBlogs: 0 });
 
   useEffect(() => {
     async function load() {
-      const [servicesRes, leadsRes, testimonialsRes] = await Promise.all([
+      const [servicesRes, leadsRes, testimonialsRes, blogsRes] = await Promise.all([
         fetch("/api/services?all=true"),
         fetch("/api/leads"),
-        fetch("/api/testimonials?all=true")
+        fetch("/api/testimonials?all=true"),
+        fetch("/api/blog?all=true")
       ]);
-      const [servicesData, leadsData, testimonialsData] = await Promise.all([
-        servicesRes.json(), leadsRes.json(), testimonialsRes.json()
+      const [servicesData, leadsData, testimonialsData, blogsData] = await Promise.all([
+        servicesRes.json(), leadsRes.json(), testimonialsRes.json(), blogsRes.json()
       ]);
       const testimonials = testimonialsData.testimonials || [];
       setStats({
         services: servicesData.services?.length || 0,
         leads: leadsData.leads?.length || 0,
         testimonials: testimonials.length,
-        publishedTestimonials: testimonials.filter((item) => item.isPublished).length
+        publishedTestimonials: testimonials.filter((item) => item.isPublished).length,
+        blogs: blogsData.posts?.length || 0,
+        publishedBlogs: (blogsData.posts || []).filter((item) => item.isPublished).length
       });
     }
     load();
@@ -53,9 +56,22 @@ export default function AdminDashboardPage() {
         </Link>
       </div>
 
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <Link href="/admin/blog" className="rounded-sm border border-silver/70 bg-white p-6 transition hover:border-gold">
+          <p className="text-3xl font-display font-semibold text-navy">{stats.publishedBlogs} <span className="text-base text-navy/40">/ {stats.blogs}</span></p>
+          <p className="mt-1 text-sm text-navy/60">Published Blogs — manage editorial content</p>
+        </Link>
+        <Link href="/admin/homepage" className="rounded-sm border border-silver/70 bg-white p-6 transition hover:border-gold">
+          <p className="text-lg font-semibold text-navy">Homepage Editor</p>
+          <p className="mt-1 text-sm text-navy/60">Update hero text, announcement and SEO snippet</p>
+        </Link>
+      </div>
+
       <div className="mt-6 rounded-sm border border-silver/70 bg-white p-6">
         <p className="font-semibold text-navy">Quick Actions</p>
         <div className="mt-3 flex flex-wrap gap-3">
+          <Link href="/admin/homepage" className="btn-gold text-xs">Edit Homepage</Link>
+          <Link href="/admin/blog" className="btn-navy-outline text-xs">Manage Blogs</Link>
           <Link href="/admin/services/new" className="btn-gold text-xs">
             Add New Service
           </Link>

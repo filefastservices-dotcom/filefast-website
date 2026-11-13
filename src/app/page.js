@@ -4,17 +4,23 @@ import TestimonialCard from "@/components/TestimonialCard";
 import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials, getBlogPosts } from "@/lib/data";
 import { googleReviewUrl } from "@/lib/googleReviews";
+import { getHomepageContent } from "@/lib/homepageContent";
 
-export const metadata = {
-  title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
-  description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
-  openGraph: {
-    url: "https://www.filefastglobal.com/",
-    title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
-    description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
-  },
-  alternates: { canonical: "/" },
-};
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata() {
+  const content = await getHomepageContent();
+  return {
+    title: content.metaTitle,
+    description: content.metaDescription,
+    openGraph: {
+      url: "https://www.filefastglobal.com/",
+      title: content.metaTitle,
+      description: content.metaDescription,
+    },
+    alternates: { canonical: "/" },
+  };
+}
 
 const WHY = [
   { title: "Professional Service", text: "Work handled by experienced tax and compliance professionals." },
@@ -64,11 +70,13 @@ const homeFaqSchema = {
 };
 
 export default async function HomePage() {
-  const [allServices, testimonials, blogPosts] = await Promise.all([
+  const [allServices, testimonials, blogPosts, homeContent] = await Promise.all([
     getServices(),
     getTestimonials(),
-    getBlogPosts({ limit: 3 })
+    getBlogPosts({ limit: 3 }),
+    getHomepageContent()
   ]);
+  const featuredServices = allServices.filter((service) => service.isFeatured).slice(0, 6);
 
   return (
     <>
@@ -77,13 +85,13 @@ export default async function HomePage() {
         <div className="absolute inset-0 opacity-30" aria-hidden="true" style={{backgroundImage:"radial-gradient(circle at 78% 18%, rgba(214,170,69,.35), transparent 28%), radial-gradient(circle at 10% 90%, rgba(34,104,170,.45), transparent 34%)"}} />
         <div className="container-page relative grid min-h-[590px] items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.1fr_.9fr] lg:py-24">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.16em] text-[#f2d48d]">FileFast – Global Tax Compliance</p>
-            <h1 className="mt-7 max-w-3xl font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.8rem]">Make business compliance clearer. <span className="text-[#e8c77c]">Move forward with confidence.</span></h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">GST, income tax, business registrations, licences, bookkeeping and international tax coordination — organised around what your business needs next.</p>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-white/60">Chennai-based support for individuals, founders, online sellers and businesses across India, with cross-border coordination for selected UK, EU, UAE and US tax workflows.</p>
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.16em] text-[#f2d48d]">{homeContent.heroEyebrow}</p>
+            <h1 className="mt-7 max-w-3xl font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.8rem]">{homeContent.heroTitle} <span className="text-[#e8c77c]">{homeContent.heroHighlight}</span></h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">{homeContent.heroDescription}</p>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-white/60">{homeContent.heroLocation}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#service-categories" className="inline-flex min-h-12 items-center justify-center rounded-md bg-[#e8c77c] px-6 py-3 text-sm font-bold text-[#081b35] transition hover:bg-white" data-track="cta-explore-services">Explore all services <span className="ml-2">→</span></a>
-              <a href="https://wa.me/919444614182?text=I%20would%20like%20to%20discuss%20a%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#e8c77c] hover:text-[#e8c77c]" data-track="cta-whatsapp">Discuss your requirement</a>
+              <a href="#service-categories" className="inline-flex min-h-12 items-center justify-center rounded-md bg-[#e8c77c] px-6 py-3 text-sm font-bold text-[#081b35] transition hover:bg-white" data-track="cta-explore-services">{homeContent.primaryCtaLabel} <span className="ml-2">→</span></a>
+              <a href="https://wa.me/919444614182?text=I%20would%20like%20to%20discuss%20a%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#e8c77c] hover:text-[#e8c77c]" data-track="cta-whatsapp">{homeContent.secondaryCtaLabel}</a>
               <Link href="/global-tax-quote" className="inline-flex min-h-12 items-center justify-center rounded-md border border-[#e8c77c]/70 px-6 py-3 text-sm font-semibold text-[#e8c77c] transition hover:bg-[#e8c77c] hover:text-[#081b35]" data-track="cta-global-tax-assessment">Get a global tax assessment</Link>
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/60"><span>India tax & compliance</span><span>•</span><span>Business registrations</span><span>•</span><span>Global VAT coordination</span></div>
@@ -105,6 +113,26 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {homeContent.announcementEnabled && homeContent.announcementText ? (
+        <section aria-label="Website announcement" className="border-b border-[#d9bd78]/40 bg-[#fff9e9]">
+          <div className="container-page py-3 text-center text-sm font-medium text-[#081b35]">{homeContent.announcementText}</div>
+        </section>
+      ) : null}
+
+      {featuredServices.length > 0 ? (
+        <section className="bg-white py-12 sm:py-16" aria-labelledby="featured-services-heading">
+          <div className="container-page">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div><p className="eyebrow">Featured services</p><h2 id="featured-services-heading" className="mt-2 font-display text-2xl font-semibold text-navy sm:text-3xl">Popular ways we can help</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-navy/65">Our team can help you understand the scope, documents and next steps for these services.</p></div>
+              <Link href="/services" className="text-sm font-semibold text-gold-dark underline underline-offset-4">View all services →</Link>
+            </div>
+            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredServices.map((service) => <ServiceCard key={service._id || service.slug} service={service} />)}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-b border-silver/70 bg-white">
         <div className="container-page grid gap-5 py-6 text-center sm:grid-cols-3 sm:text-left">

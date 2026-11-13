@@ -28,6 +28,19 @@ export default function AdminServicesPage() {
     load();
   }
 
+  async function toggleFeatured(service) {
+    const response = await fetch(`/api/services/${service.slug}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isFeatured: !service.isFeatured })
+    });
+    if (!response.ok) {
+      alert("Could not update featured status. Please sign in again and retry.");
+      return;
+    }
+    await load();
+  }
+
   async function deleteService(service) {
     if (!confirm(`Delete "${service.name}"? This cannot be undone.`)) return;
     await fetch(`/api/services/${service.slug}`, { method: "DELETE" });
@@ -72,7 +85,7 @@ export default function AdminServicesPage() {
                       {s.isPublished ? "Published" : "Unpublished"}
                     </button>
                   </td>
-                  <td className="px-4 py-3 text-navy/70">{s.isFeatured ? "Yes" : "—"}</td>
+                  <td className="px-4 py-3"><button type="button" onClick={() => toggleFeatured(s)} className={`rounded-sm px-2 py-1 text-xs font-semibold ${s.isFeatured ? "bg-gold/15 text-gold-dark" : "bg-silver-light text-navy/60"}`}>{s.isFeatured ? "Featured" : "Add to homepage"}</button></td>
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/admin/services/${s._id}/edit`}

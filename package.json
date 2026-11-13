@@ -15,7 +15,8 @@
     "check:admin-middleware": "node scripts/check-admin-middleware.cjs",
     "check:admin-login-security": "node scripts/check-admin-login-security.cjs",
     "check:editorial-content": "node scripts/check-editorial-content.cjs",
-    "check:lead-attribution": "node scripts/check-lead-attribution.cjs"
+    "check:lead-attribution": "node scripts/check-lead-attribution.cjs",
+    "check:homepage-content": "node scripts/check-homepage-content.cjs"
   },
   "dependencies": {
     "next": "14.2.5",
