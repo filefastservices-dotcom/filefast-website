@@ -13,7 +13,7 @@ export default function LeadForm({ defaultService = "" }) {
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [submitError, setSubmitError] = useState("");
   const contactMessage = encodeURIComponent(
-    `Hello FileFast, I would like a consultation.\n\nName: ${form.name}\nMobile: ${form.mobile}\nEmail: ${form.email}\nService: ${form.serviceInterested || "Not specified"}\nMessage: ${form.message || "Not specified"}`
+    `Hello FileFast, I would like a consultation.\n\nName: ${form.name}\nMobile: ${form.mobile}\nEmail: ${form.email || "Not provided"}\nService: ${form.serviceInterested || "Not specified"}\nMessage: ${form.message || "Not specified"}`
   );
 
   function update(field, value) {
@@ -98,7 +98,7 @@ export default function LeadForm({ defaultService = "" }) {
         type="email"
         required
         placeholder="Email Address"
-        aria-label="Email address"
+        aria-label="Email address (optional)"
         autoComplete="email"
         value={form.email}
         onChange={(e) => update("email", e.target.value)}
@@ -111,7 +111,7 @@ export default function LeadForm({ defaultService = "" }) {
         onChange={(e) => update("serviceInterested", e.target.value)}
         className="w-full rounded-sm border border-silver-dark/40 bg-white px-4 py-3 text-sm focus:border-gold focus:outline-none"
       >
-        <option value="">Select the service you need</option>
+        <option value="">Select a service (optional)</option>
         {form.serviceInterested &&
           ![
             "GST registration or return filing",
