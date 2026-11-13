@@ -973,7 +973,7 @@ const starterPricing = {
   },
   "itr-filing": {
     "regularPrice": "999",
-    "offerPrice": "499",
+    "offerPrice": "399",
     "pricingUnit": "simple individual return",
     "offerLabel": "Individual ITR offer",
     "pricingNote": "For eligible straightforward individual cases. Capital gains, F&O, foreign income, business books, notices and audit cases are quoted separately."
@@ -1078,7 +1078,7 @@ const starterPricing = {
   },
   "trademark-registration": {
     "regularPrice": "2499",
-    "offerPrice": "1499",
+    "offerPrice": "799",
     "pricingUnit": "professional filing assistance / one class",
     "offerLabel": "New-client price",
     "pricingNote": "Government trademark filing fee is additional and varies by applicant category and filing mode. Search, objections, hearings and additional classes are separate."
