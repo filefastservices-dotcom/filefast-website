@@ -4,7 +4,7 @@ import { verifyAdminToken } from "@/lib/auth";
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
-  if (pathname.startsWith("/admin/login")) {
+  if (pathname === "/admin/login" || pathname === "/admin/login/") {
     return NextResponse.next();
   }
 
