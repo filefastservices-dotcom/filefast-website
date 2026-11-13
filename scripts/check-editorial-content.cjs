@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const file = fs.readFileSync("src/lib/seoEditorialExpansion.js", "utf8");
 const start = file.indexOf("=");
 if (start < 0) throw new Error("Editorial export is missing an assignment");
-const source = file.slice(start + 1).trim().replace(/;\\s*$/, "");
+const source = file.slice(start + 1).trim().replace(/;\s*$/, "");
 const posts = JSON.parse(source);
 const failures = [];
 const slugs = new Set();
