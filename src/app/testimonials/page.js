@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import TestimonialCard from "@/components/TestimonialCard";
 import { getTestimonials } from "@/lib/data";
