@@ -170,39 +170,63 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* SERVICE DIRECTORY — visible immediately after the hero */}
-      <section id="service-categories" className="bg-white py-14 sm:py-18">
+      {/* SIMPLE SERVICE DIRECTORY — all available services grouped by customer need */}
+      <section id="service-categories" className="bg-slate-50 py-14 sm:py-20">
         <div className="container-page">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Explore FileFast Services</p>
-            <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">One place for your tax, finance &amp; business compliance needs</h2>
-            <p className="mt-4 text-sm leading-7 text-navy/70">Choose the area you need help with. From individual tax returns and GST to registrations, licences, accounting and international tax coordination.</p>
+          <div className="max-w-3xl">
+            <p className="eyebrow">FileFast Services</p>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">What do you need help with?</h2>
+            <p className="mt-4 text-sm leading-7 text-navy/70 sm:text-base">
+              Browse the services below in simple categories. Select a service to understand what it includes, who it is for and how to get started. Not sure what you need? Contact us and explain your situation.
+            </p>
           </div>
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
             {[
-              ["GST Services", "GST registration, returns, notices, ITC and marketplace reconciliation", "01"],
-              ["Income Tax Services", "ITR filing, capital gains, tax planning support and tax notices", "02"],
-              ["Business Registration", "MSME/Udyam, company setup and business identity registrations", "03"],
-              ["Licenses", "FSSAI, IEC, trade licence and other business permissions", "04"],
-              ["Compliance Services", "TDS/TCS, annual filings and recurring statutory compliance", "05"],
-              ["Accounting Services", "Bookkeeping, accounts review and financial reporting support", "06"],
-              ["Digital Business Services", "Marketplace onboarding and digital business enablement", "07"],
-              ["Global Tax & VAT", "UK/EU VAT, UAE VAT and US tax workflow coordination", "08"]
-            ].map(([name, description, number]) => (
-              <Link key={name} href={`/services?category=${encodeURIComponent(name)}`} className="group rounded-sm border border-silver/80 bg-white p-5 transition hover:-translate-y-1 hover:border-gold hover:shadow-lg">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold tracking-[0.18em] text-gold-dark">{number}</span>
-                  <span className="text-lg text-gold-dark transition group-hover:translate-x-1" aria-hidden="true">↗</span>
+              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, monthly and quarterly returns, annual returns, ITC review, GST notices and cancellation." },
+              { name: "Income Tax & TDS", intro: "For individuals, freelancers, professionals and businesses.", examples: "Income tax return (ITR) filing, capital gains reporting, tax notices, TDS and TCS returns." },
+              { name: "Start or Register a Business", intro: "For new businesses, founders, sellers and entrepreneurs.", examples: "MSME/Udyam registration, business setup support and other applicable registrations." },
+              { name: "Business Licences", intro: "For businesses that need operating permissions or product licences.", examples: "FSSAI registration, trade licence, Import Export Code (IEC) and other licence application support." },
+              { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial information.", examples: "Bookkeeping, accounting support, transaction review and financial reporting assistance." },
+              { name: "Business & Marketplace Support", intro: "For online sellers and businesses building their digital presence.", examples: "Marketplace onboarding support, seller compliance and e-commerce tax reporting." },
+              { name: "Trademark & Brand Protection", intro: "For businesses and founders protecting a brand name or identity.", examples: "Trademark application preparation and filing coordination." },
+              { name: "International Tax & VAT Support", intro: "For businesses selling or operating across borders.", examples: "UK and EU VAT workflow coordination, UAE VAT support and US tax compliance coordination, subject to local specialist requirements." }
+            ].map((category) => {
+              const categoryServices = allServices.filter((service) => service.category === category.name || (category.name === "Income Tax & TDS" && ["Income Tax Services", "Compliance Services"].includes(service.category)) || (category.name === "Business & Marketplace Support" && service.category === "Digital Business Services") || (category.name === "Trademark & Brand Protection" && ["Licenses", "Business Registration"].includes(service.category)) || (category.name === "Business Licences" && service.category === "Licenses") || (category.name === "Start or Register a Business" && service.category === "Business Registration") || (category.name === "Accounting & Bookkeeping" && service.category === "Accounting Services") || (category.name === "International Tax & VAT Support" && service.category === "Global Tax & VAT"));
+              return (
+                <div key={category.name} className="rounded-lg border border-silver bg-white p-5 shadow-sm sm:p-6">
+                  <h3 className="font-display text-xl font-semibold text-navy">{category.name}</h3>
+                  <p className="mt-2 text-sm font-medium text-navy/80">{category.intro}</p>
+                  <p className="mt-2 text-sm leading-6 text-navy/65">{category.examples}</p>
+                  {categoryServices.length > 0 ? (
+                    <ul className="mt-4 space-y-2 border-t border-silver/70 pt-4">
+                      {categoryServices.map((service) => (
+                        <li key={service._id || service.slug}>
+                          <Link href={`/services/${service.slug}`} className="group flex items-start justify-between gap-3 text-sm text-navy hover:text-gold-dark">
+                            <span><span className="font-medium">{service.name}</span>{service.shortDescription ? <span className="mt-0.5 block text-xs leading-5 text-navy/55">{service.shortDescription}</span> : null}</span>
+                            <span className="shrink-0 text-gold-dark" aria-hidden="true">→</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-4 border-t border-silver/70 pt-4 text-xs leading-5 text-navy/55">Contact us to discuss availability and the right professional support for this requirement.</p>
+                  )}
+                  <Link href={`/services?category=${encodeURIComponent(category.name === "Income Tax & TDS" ? "Income Tax Services" : category.name === "Start or Register a Business" ? "Business Registration" : category.name === "Business Licences" ? "Licenses" : category.name === "Accounting & Bookkeeping" ? "Accounting Services" : category.name === "Business & Marketplace Support" ? "Digital Business Services" : category.name === "International Tax & VAT Support" ? "Global Tax & VAT" : category.name === "Trademark & Brand Protection" ? "Licenses" : category.name)}`} className="mt-5 inline-flex text-xs font-semibold text-gold-dark hover:underline">View category details →</Link>
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-navy">{name}</h3>
-                <p className="mt-2 text-sm leading-6 text-navy/65">{description}</p>
-                <p className="mt-4 text-xs font-semibold text-gold-dark">Explore services →</p>
-              </Link>
-            ))}
+              );
+            })}
           </div>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/services" className="btn-gold">View Complete Service Directory</Link>
-            <a href="https://wa.me/919444614182?text=I%20need%20help%20choosing%20a%20FileFast%20service" target="_blank" rel="noopener noreferrer" className="btn-navy-outline">Ask Which Service I Need</a>
+
+          <div className="mt-8 flex flex-col items-start gap-3 rounded-lg bg-navy p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="font-display text-xl font-semibold">Not sure which service you need?</h3>
+              <p className="mt-1 text-sm text-white/70">Tell us what you are trying to do. We will help identify the relevant service and document checklist.</p>
+            </div>
+            <a href="https://wa.me/919444614182?text=I%20need%20help%20choosing%20a%20FileFast%20service" target="_blank" rel="noopener noreferrer" className="btn-gold shrink-0">Ask on WhatsApp</a>
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/services" className="text-sm font-semibold text-navy underline decoration-gold underline-offset-4">View the complete service directory</Link>
           </div>
         </div>
       </section>
