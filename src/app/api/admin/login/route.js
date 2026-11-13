@@ -1,16 +1,45 @@
 import { NextResponse } from "next/server";
 import { signAdminToken } from "@/lib/auth";
 
+const MAX_LOGIN_BODY_BYTES = 8 * 1024;
+
 export async function POST(req) {
-  const { email, password } = await req.json();
+  const contentType = req.headers.get("content-type") || "";
+  if (!contentType.toLowerCase().includes("application/json")) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 415 });
+  }
+
+  const rawBody = await req.text();
+  if (new TextEncoder().encode(rawBody).byteLength > MAX_LOGIN_BODY_BYTES) {
+    return NextResponse.json({ error: "Request too large" }, { status: 413 });
+  }
+
+  let body;
+  try {
+    body = JSON.parse(rawBody);
+  } catch {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+
+  const { email, password } = body || {};
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    email.length === 0 ||
+    email.length > 254 ||
+    password.length === 0 ||
+    password.length > 1024
+  ) {
+    return NextResponse.json({ error: "Invalid email or password" }, { status: 400 });
+  }
 
   const validEmail = process.env.ADMIN_EMAIL;
   const validPassword = process.env.ADMIN_PASSWORD;
 
   if (!validEmail || !validPassword) {
     return NextResponse.json(
-      { error: "Admin credentials are not configured on the server" },
-      { status: 500 }
+      { error: "Admin authentication is temporarily unavailable" },
+      { status: 503 }
     );
   }
 
