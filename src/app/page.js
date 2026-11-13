@@ -2,7 +2,7 @@ import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import LeadForm from "@/components/LeadForm";
-import { getServices, getTestimonials } from "@/lib/data";
+import { getServices, getTestimonials, getBlogPosts } from "@/lib/data";
 import { googleReviewUrl } from "@/lib/googleReviews";
 
 export const metadata = {
@@ -64,100 +64,43 @@ const homeFaqSchema = {
 };
 
 export default async function HomePage() {
-  const [allServices, testimonials] = await Promise.all([
+  const [allServices, testimonials, blogPosts] = await Promise.all([
     getServices(),
-    getTestimonials()
+    getTestimonials(),
+    getBlogPosts({ limit: 3 })
   ]);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
-      <section className="hero-section relative overflow-hidden">
-        <div className="hero-orb hero-orb--one" aria-hidden="true" />
-        <div className="hero-orb hero-orb--two" aria-hidden="true" />
-        <div className="container-page relative grid min-h-[620px] items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-8 lg:py-24">
-          <div className="hero-copy relative z-10">
-            <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/80 px-4 py-2 text-gold-dark">
-              <span className="hero-live-dot" aria-hidden="true" />
-              Tax, GST, ITR & global business compliance
-            </p>
-            <h1 className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.12] tracking-tight text-navy sm:text-5xl lg:text-[3.65rem]">
-              One partner for tax, compliance &amp; business services
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-navy/75 sm:text-lg sm:leading-8">
-              From GST and income tax to registrations, accounting and international VAT coordination, explore practical support for your business.
-            </p>
-            <p className="mt-3 max-w-xl text-sm leading-7 text-navy/65 sm:text-base">
-              Serving businesses across India from Chennai, with cross-border coordination for founders operating in the UK, EU, UAE and US.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="#service-categories" className="hero-primary-cta" data-track="cta-start">
-                Explore All Services <span aria-hidden="true">→</span>
-              </a>
-              <Link href="/services" className="hero-secondary-cta" data-track="cta-learn">
-                Browse Services
-              </Link>
+      <section className="relative overflow-hidden bg-[#081b35] text-white">
+        <div className="absolute inset-0 opacity-30" aria-hidden="true" style={{backgroundImage:"radial-gradient(circle at 78% 18%, rgba(214,170,69,.35), transparent 28%), radial-gradient(circle at 10% 90%, rgba(34,104,170,.45), transparent 34%)"}} />
+        <div className="container-page relative grid min-h-[590px] items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.1fr_.9fr] lg:py-24">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.16em] text-[#f2d48d]">FileFast – Global Tax Compliance</p>
+            <h1 className="mt-7 max-w-3xl font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.8rem]">Make business compliance clearer. <span className="text-[#e8c77c]">Move forward with confidence.</span></h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">GST, income tax, business registrations, licences, bookkeeping and international tax coordination — organised around what your business needs next.</p>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-white/60">Chennai-based support for individuals, founders, online sellers and businesses across India, with cross-border coordination for selected UK, EU, UAE and US tax workflows.</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#service-categories" className="inline-flex min-h-12 items-center justify-center rounded-md bg-[#e8c77c] px-6 py-3 text-sm font-bold text-[#081b35] transition hover:bg-white" data-track="cta-explore-services">Explore all services <span className="ml-2">→</span></a>
+              <a href="https://wa.me/919444614182?text=I%20would%20like%20to%20discuss%20a%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#e8c77c] hover:text-[#e8c77c]" data-track="cta-whatsapp">Discuss your requirement</a>
             </div>
-            <p className="mt-5 text-xs leading-6 text-navy/60">
-              Chennai-based support <span aria-hidden="true">·</span> Services across India <span aria-hidden="true">·</span> Clear document and process guidance
-            </p>
+            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/60"><span>India tax & compliance</span><span>•</span><span>Business registrations</span><span>•</span><span>Global VAT coordination</span></div>
           </div>
-
-          <div className="hero-visual mx-auto w-full max-w-[540px]" aria-hidden="true">
-            <div className="hero-visual__halo" />
-            <div className="hero-orbit hero-orbit--outer" />
-            <div className="hero-orbit hero-orbit--inner" />
-            <div className="hero-panel hero-panel--main">
-              <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="hero-doc-icon"><span /></div>
-                  <div>
-                    <p className="text-sm font-semibold text-navy">Your business compliance checklist</p>
-                    <p className="mt-1 text-xs text-slate-500">A clear place to start</p>
-                  </div>
-                </div>
-                <span className="hero-panel-dots" aria-hidden="true">•••</span>
+          <div className="relative mx-auto w-full max-w-lg">
+            <div className="absolute -inset-6 rounded-[2rem] border border-white/10" />
+            <div className="relative rounded-2xl border border-white/15 bg-white/[.08] p-6 shadow-2xl backdrop-blur-sm sm:p-8">
+              <div className="flex items-center justify-between border-b border-white/15 pb-5"><div><p className="text-xs uppercase tracking-[.18em] text-[#e8c77c]">Your next step</p><h2 className="mt-2 font-display text-2xl font-semibold">Start with the right service</h2></div><span className="grid h-11 w-11 place-items-center rounded-xl bg-[#e8c77c] text-xl font-bold text-[#081b35]">F</span></div>
+              <div className="mt-5 space-y-3">
+                {[
+                  ["01","GST & income tax","Returns, registrations, ITC and TDS"],
+                  ["02","Business setup","Registrations, licences and trademarks"],
+                  ["03","Accounting support","Bookkeeping and reconciliations"],
+                  ["04","International tax","UK, EU, UAE and US coordination"]
+                ].map(([number,title,desc]) => <div key={number} className="flex gap-4 rounded-xl border border-white/10 bg-[#06162c]/55 p-4"><span className="pt-0.5 text-sm font-semibold text-[#e8c77c]">{number}</span><div><p className="text-sm font-semibold text-white">{title}</p><p className="mt-1 text-xs leading-5 text-white/60">{desc}</p></div></div>)}
               </div>
-              <div className="space-y-3 p-5 sm:p-6">
-                <div className="hero-task">
-                  <span className="hero-task__icon hero-task__icon--blue"><span /></span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-navy">Share your requirements</p>
-                    <p className="mt-1 text-xs text-slate-500">Tell us about your business</p>
-                  </div>
-                  <span className="hero-task__tag">Step 1</span>
-                </div>
-                <div className="hero-task hero-task--float">
-                  <span className="hero-task__icon hero-task__icon--gold"><span /></span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-navy">Check your documents</p>
-                    <p className="mt-1 text-xs text-slate-500">Identify the relevant requirements</p>
-                  </div>
-                  <span className="hero-task__tag">Step 2</span>
-                </div>
-                <div className="hero-task">
-                  <span className="hero-task__icon hero-task__icon--teal"><span /></span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-navy">Prepare the next steps</p>
-                    <p className="mt-1 text-xs text-slate-500">Understand the scope before work begins</p>
-                  </div>
-                  <span className="hero-task__tag">Step 3</span>
-                </div>
-              </div>
-              <div className="mx-5 mb-5 flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 sm:mx-6">
-                <span className="hero-secure-mark" />
-                <p className="text-xs leading-5 text-slate-600">Document guidance and clear next steps.</p>
-              </div>
+              <p className="mt-5 text-xs leading-5 text-white/50">Tell us what you are trying to do. We will help identify the relevant service, documents and next steps.</p>
             </div>
-            <div className="hero-floating-note hero-floating-note--top">
-              <span className="hero-note-icon" aria-hidden="true">₹</span>
-              <span><strong>GST &amp; tax support</strong><small>GST · ITR · TDS</small></span>
-            </div>
-            <div className="hero-floating-note hero-floating-note--bottom">
-              <span className="hero-globe-icon" aria-hidden="true">◎</span>
-              <span><strong>Cross-border support</strong><small>VAT · Global workflows</small></span>
-            </div>
-            <div className="hero-visual-caption">Illustrative workflow · Actual scope depends on your requirements</div>
           </div>
         </div>
       </section>
@@ -301,56 +244,23 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ALL SERVICES — grouped by the live service catalogue */}
-      <section id="all-services" className="bg-silver-light py-16 sm:py-20">
+      <section className="bg-[#f5f7fa] py-16 sm:py-20">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="eyebrow">Our Services</p>
-              <h2 className="mt-2 max-w-2xl font-display text-3xl font-semibold text-navy">Complete tax, business &amp; compliance support</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-navy/70">Browse services for individuals, startups, established businesses and cross-border sellers.</p>
-            </div>
-            <Link href="/services" className="text-sm font-semibold text-gold-dark">View Service Directory →</Link>
+            <div><p className="eyebrow">Knowledge Centre</p><h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">Practical guides for better business decisions</h2><p className="mt-3 max-w-2xl text-sm leading-7 text-navy/70">Understand filing requirements, documents, tax treatment and compliance workflows through clear, regularly reviewed articles.</p></div>
+            <Link href="/blog" className="text-sm font-semibold text-gold-dark underline underline-offset-4">Explore all articles →</Link>
           </div>
-          {CATEGORIES.map((category) => {
-            const categoryServices = allServices.filter((service) => service.category === category);
-            if (!categoryServices.length) return null;
-            return (
-              <div key={category} className="mt-10">
-                <div className="mb-5 flex items-center justify-between gap-3">
-                  <h3 className="font-display text-xl font-semibold text-navy">{category}</h3>
-                  <Link href={`/services?category=${encodeURIComponent(category)}`} className="text-xs font-semibold text-gold-dark">Explore category →</Link>
-                </div>
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {categoryServices.map((service) => <ServiceCard key={service._id || service.slug} service={service} />)}
-                </div>
-              </div>
-            );
-          })}
-          {!allServices.length && <p className="mt-8 rounded-lg border border-silver bg-white p-6 text-sm text-navy/70">Service information is being updated. Contact FileFast for assistance.</p>}
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {blogPosts.map((post) => <article key={post._id || post.slug} className="flex h-full flex-col rounded-xl border border-silver/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <p className="eyebrow">{post.category || "Business & Compliance"}</p>
+              <h3 className="mt-3 font-display text-xl font-semibold leading-snug text-navy">{post.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-7 text-navy/70">{post.excerpt}</p>
+              <Link href={`/blog/${post.slug}`} className="mt-5 inline-flex text-sm font-semibold text-gold-dark">Read the guide →</Link>
+            </article>)}
+          </div>
+          {!blogPosts.length && <p className="mt-6 text-sm text-navy/65">New practical guides are being prepared. Contact FileFast for help with your requirement.</p>}
         </div>
       </section>
-
-      {/* SERVICE CATEGORIES */}
-      <section className="container-page py-16 sm:py-20">
-        <p className="eyebrow text-center">Service Categories</p>
-        <h2 className="mt-2 text-center font-display text-3xl font-semibold text-navy">
-          Explore Our Tax and Business Compliance Services
-        </h2>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {CATEGORIES.map((cat) => (
-            <Link
-              key={cat}
-              href={`/services?category=${encodeURIComponent(cat)}`}
-              className="rounded-sm border border-silver/70 px-5 py-6 text-center text-sm font-semibold text-navy transition hover:border-gold hover:text-gold-dark"
-            >
-              {cat}
-            </Link>
-          ))}
-        </div>
-      </section>
-
-
 
       {/* FAQ */}
       <section className="container-page py-16 sm:py-20">
