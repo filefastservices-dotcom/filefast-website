@@ -7,7 +7,7 @@ const checks = [
   ["src/app/api/leads/route.js", ["utmSource", "utmMedium", "utmCampaign", "startsWith(\"//\")", "referrerHost"]],
   ["src/models/Lead.js", ["utmSource", "utmMedium", "utmCampaign", "utmContent", "utmTerm", "landingPage", "referrerHost"]],
   ["src/app/admin/leads/page.js", ["Campaign", "Landing page", "l.utmCampaign", "l.landingPage"]],
-  ["src/app/admin/analytics/route.js", ["await requireAdmin(req)", "byCampaign", "byLandingPage", "utmCampaign", "landingPage"]],
+  ["src/app/api/admin/analytics/route.js", ["await requireAdmin(req)", "byCampaign", "byLandingPage", "utmCampaign", "landingPage"]],
   ["src/app/admin/analytics/page.js", ["Enquiries by campaign", "Top landing pages"]],
   ["src/app/api/leads/export/route.js", ["UTM Source", "UTM Campaign", "Landing Page", "Referrer Host", "l.utmCampaign"]]
 ];
