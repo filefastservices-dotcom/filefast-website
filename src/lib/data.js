@@ -11,6 +11,21 @@ function filterServices(services, { category, featured } = {}) {
   );
 }
 
+function applyStarterPricing(service) {
+  if (!service) return service;
+  const fallback = starterServices.find((item) => item.slug === service.slug);
+  if (!fallback || service.offerPrice || !fallback.offerPrice) return service;
+  return {
+    ...service,
+    regularPrice: fallback.regularPrice,
+    offerPrice: fallback.offerPrice,
+    pricingUnit: fallback.pricingUnit,
+    offerLabel: fallback.offerLabel,
+    pricingNote: fallback.pricingNote,
+    pricingInfo: fallback.pricingInfo
+  };
+}
+
 // These helpers are used directly inside Server Components. They fall back to
 // bundled starter content so public pages remain available before MongoDB is ready.
 
@@ -24,7 +39,7 @@ export async function getServices({ category, featured } = {}) {
     const result = JSON.parse(JSON.stringify(services));
     const existingSlugs = new Set(result.map((service) => service.slug));
     const missingStarterServices = starterServices.filter((service) => !existingSlugs.has(service.slug));
-    return filterServices([...result, ...missingStarterServices], { category, featured });
+    return filterServices([...result.map(applyStarterPricing), ...missingStarterServices], { category, featured });
   } catch (err) {
     console.error("getServices failed:", err.message);
     return filterServices(starterServices, { category, featured });
@@ -35,7 +50,7 @@ export async function getServiceBySlug(slug) {
   try {
     await connectDB();
     const service = await Service.findOne({ slug, isPublished: true }).lean();
-    return service ? JSON.parse(JSON.stringify(service)) : starterServices.find((item) => item.slug === slug) || null;
+    return service ? applyStarterPricing(JSON.parse(JSON.stringify(service))) : starterServices.find((item) => item.slug === slug) || null;
   } catch (err) {
     console.error("getServiceBySlug failed:", err.message);
     return starterServices.find((item) => item.slug === slug) || null;
