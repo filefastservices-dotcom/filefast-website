@@ -22,7 +22,7 @@ export default function TestimonialCard({ testimonial }) {
             rel="noopener noreferrer"
             className="mt-2 inline-block text-xs font-semibold text-gold-dark hover:underline"
           >
-            Verified Google review ↗
+            View on Google Maps ↗
           </a>
         )}
       </div>

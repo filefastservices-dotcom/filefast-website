@@ -3,6 +3,7 @@ import Service from "@/models/Service";
 import Testimonial from "@/models/Testimonial";
 import Blog from "@/models/Blog";
 import { starterBlogPosts, starterServices } from "@/lib/starterContent";
+import { googleReviewFallbacks } from "@/lib/googleReviews";
 
 function filterServices(services, { category, featured } = {}) {
   return services.filter((service) =>
@@ -51,10 +52,10 @@ export async function getTestimonials() {
     const verified = result.filter((item) =>
       item.clientName?.toLowerCase() !== "sample client" && !item.quote?.startsWith("Example feedback:")
     );
-    return verified;
+    return verified.length ? verified : googleReviewFallbacks;
   } catch (err) {
     console.error("getTestimonials failed:", err.message);
-    return [];
+    return googleReviewFallbacks;
   }
 }
 
