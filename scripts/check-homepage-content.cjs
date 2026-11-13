@@ -13,6 +13,8 @@ const checks = [
   ["src/app/blog/page.js", ["export const dynamic = \"force-dynamic\""]],
   ["src/app/blog/[slug]/page.js", ["export const dynamic = \"force-dynamic\""]],
   ["src/app/testimonials/page.js", ["export const dynamic = \"force-dynamic\""]],
+  ["src/app/sitemap.js", ["export const dynamic = \"force-dynamic\""]],
+  ["src/app/admin/dashboard/page.js", ["publishedBlogs", "Homepage Editor", "/api/blog?all=true"]],
   ["src/app/admin/services/page.js", ["toggleFeatured", "Add to homepage"]],
   ["src/app/api/blog/import-editorial/route.js", ["editorialSlugs", "$setOnInsert", "isPublished: true"]]
 ];
