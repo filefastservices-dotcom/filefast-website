@@ -26,8 +26,46 @@ const CATEGORIES = [
 export default async function ServicesPage({ searchParams }) {
   const activeCategory = searchParams?.category || "";
   const services = await getServices(activeCategory ? { category: activeCategory } : {});
+  const siteUrl = "https://www.filefastglobal.com";
+  const directorySchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${siteUrl}/services#webpage`,
+        name: activeCategory || "Tax, Accounting & Compliance Services",
+        url: `${siteUrl}/services`,
+        description: "Browse FileFast Global tax, accounting, business registration and compliance services.",
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        mainEntity: { "@id": `${siteUrl}/services#service-list` }
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${siteUrl}/services#service-list`,
+        name: activeCategory || "FileFast Global Services",
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: services.length,
+        itemListElement: services.map((service, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: service.name,
+          url: `${siteUrl}/services/${encodeURIComponent(service.slug)}`
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+          { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` }
+        ]
+      }
+    ]
+  };
+  const serializedSchema = JSON.stringify(directorySchema).replace(/</g, "\\\\u003c").replace(/>/g, "\\\\u003e").replace(/&/g, "\\\\u0026");
 
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializedSchema }} />
     <section className="container-page py-14 sm:py-20">
       <p className="eyebrow">Our Services</p>
       <h1 className="mt-2 font-display text-4xl font-semibold text-navy">
@@ -71,5 +109,6 @@ export default async function ServicesPage({ searchParams }) {
         )}
       </div>
     </section>
+    </>
   );
 }
