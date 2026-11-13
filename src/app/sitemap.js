@@ -23,7 +23,6 @@ export default async function sitemap() {
     "/contact",
     "/global",
     "/global-tax-quote",
-    "/appointments",
     "/privacy-policy"
   ].map((path) => ({ url: `${SITE_URL}${path}` }));
 
