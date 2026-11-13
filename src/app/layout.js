@@ -42,7 +42,8 @@ const organizationSchema = {
   },
 
   sameAs: [
-    "https://www.instagram.com/filefastglobal"
+    "https://www.instagram.com/file_fast/",
+    "https://www.google.com/maps/search/?api=1&query=FileFast&query_place_id=ChIJ_fs-e95nUjoRqme2a-4Babg"
   ]
 };
 
@@ -52,12 +53,12 @@ export const metadata = {
   metadataBase: new URL("https://www.filefastglobal.com"),
 
   title: {
-    default: "FileFast Global – Tax, VAT & Compliance Services",
+    default: "FileFast Global | GST, Income Tax, Accounting & Global Tax Compliance",
     template: "%s | FileFast Global",
   },
 
   description:
-    "FileFast Global provides GST, income tax, VAT coordination, business registration, accounting and compliance support for Indian businesses and internationally expanding founders.",
+    "FileFast Global provides GST filing, income tax returns, business registrations, licences, bookkeeping, accounting, TDS and cross-border VAT coordination from Chennai, India.",
 
   keywords: [
     "global tax consultant",
@@ -77,7 +78,7 @@ export const metadata = {
     siteName: "FileFast Global",
     type: "website",
     url: "https://www.filefastglobal.com",
-    title: "FileFast Global | Tax, VAT & Compliance Services",
+    title: "FileFast Global | GST, Income Tax, Accounting & Global Tax Compliance",
     description:
       "Practical GST, tax, VAT and compliance support for India and cross-border business.",
 
