@@ -35,7 +35,7 @@ export default function BlogForm({ initialBlog, blogId }) {
     featuredImageUrl: initialBlog?.featuredImageUrl || "",
     metaTitle: initialBlog?.metaTitle || "",
     metaDescription: initialBlog?.metaDescription || "",
-    isPublished: initialBlog?.isPublished ?? true
+    isPublished: initialBlog?.isPublished ?? false
   });
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
