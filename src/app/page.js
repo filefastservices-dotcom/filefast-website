@@ -169,6 +169,61 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* SERVICE DIRECTORY — visible immediately after the hero */}
+      <section id="all-services" className="bg-white py-14 sm:py-18">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">Explore FileFast Services</p>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">One place for your tax, finance &amp; business compliance needs</h2>
+            <p className="mt-4 text-sm leading-7 text-navy/70">Choose the area you need help with. From individual tax returns and GST to registrations, licences, accounting and international tax coordination.</p>
+          </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["GST Services", "GST registration, returns, notices, ITC and marketplace reconciliation", "01"],
+              ["Income Tax Services", "ITR filing, capital gains, tax planning support and tax notices", "02"],
+              ["Business Registration", "MSME/Udyam, company setup and business identity registrations", "03"],
+              ["Licenses", "FSSAI, IEC, trade licence and other business permissions", "04"],
+              ["Compliance Services", "TDS/TCS, annual filings and recurring statutory compliance", "05"],
+              ["Accounting Services", "Bookkeeping, accounts review and financial reporting support", "06"],
+              ["Digital Business Services", "Marketplace onboarding and digital business enablement", "07"],
+              ["Global Tax & VAT", "UK/EU VAT, UAE VAT and US tax workflow coordination", "08"]
+            ].map(([name, description, number]) => (
+              <Link key={name} href={`/services?category=${encodeURIComponent(name)}`} className="group rounded-sm border border-silver/80 bg-white p-5 transition hover:-translate-y-1 hover:border-gold hover:shadow-lg">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold tracking-[0.18em] text-gold-dark">{number}</span>
+                  <span className="text-lg text-gold-dark transition group-hover:translate-x-1" aria-hidden="true">↗</span>
+                </div>
+                <h3 className="mt-5 font-display text-lg font-semibold text-navy">{name}</h3>
+                <p className="mt-2 text-sm leading-6 text-navy/65">{description}</p>
+                <p className="mt-4 text-xs font-semibold text-gold-dark">Explore services →</p>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <Link href="/services" className="btn-gold">View Complete Service Directory</Link>
+            <a href="https://wa.me/919444614182?text=I%20need%20help%20choosing%20a%20FileFast%20service" target="_blank" rel="noopener noreferrer" className="btn-navy-outline">Ask Which Service I Need</a>
+          </div>
+        </div>
+      </section>
+
+            {/* Genuine client feedback only; never populate this area with invented reviews. */}
+      <section className="bg-navy py-16 text-white sm:py-20">
+        <div className="container-page">
+          <p className="eyebrow text-gold">Client Testimonials</p>
+          <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
+          {testimonials.length ? (
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {testimonials.slice(0, 6).map((t) => <TestimonialCard key={t._id} testimonial={t} />)}
+            </div>
+          ) : (
+            <div className="mt-8 max-w-2xl rounded-lg border border-white/15 bg-white/5 p-6">
+              <p className="text-sm leading-7 text-white/80">This space is reserved for genuine client feedback. Reviews will appear here after they are added and published by the FileFast team.</p>
+              <p className="mt-3 text-xs text-white/55">We do not publish sample or invented reviews.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* WHY CHOOSE US */}
       <section className="container-page py-16 sm:py-20">
         <p className="eyebrow text-center">Why Choose FileFast</p>
@@ -262,23 +317,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Genuine client feedback only; never populate this area with invented reviews. */}
-      <section className="bg-navy py-16 text-white sm:py-20">
-        <div className="container-page">
-          <p className="eyebrow text-gold">Client Testimonials</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
-          {testimonials.length ? (
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {testimonials.slice(0, 6).map((t) => <TestimonialCard key={t._id} testimonial={t} />)}
-            </div>
-          ) : (
-            <div className="mt-8 max-w-2xl rounded-lg border border-white/15 bg-white/5 p-6">
-              <p className="text-sm leading-7 text-white/80">This space is reserved for genuine client feedback. Reviews will appear here after they are added and published by the FileFast team.</p>
-              <p className="mt-3 text-xs text-white/55">We do not publish sample or invented reviews.</p>
-            </div>
-          )}
-        </div>
-      </section>
+
 
       {/* FAQ */}
       <section className="container-page py-16 sm:py-20">
