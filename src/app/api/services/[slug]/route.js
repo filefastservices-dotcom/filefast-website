@@ -49,7 +49,7 @@ export async function DELETE(req, { params }) {
   if (unauthorized) return unauthorized;
 
   await connectDB();
-  const service = await findService(params.slug);
+  const service = await findService(slug);
   if (!service) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   await service.deleteOne();
