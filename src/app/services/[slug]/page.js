@@ -48,6 +48,22 @@ export default async function ServiceDetailPage({ params }) {
   const whatsappMsg = `Hi FileFast, I'm interested in ${service.name}`;
   const serviceUrl = "https://www.filefastglobal.com/services/" + service.slug;
   const internationalService = service.category === "Global Tax & VAT";
+  const marketByServiceSlug = {
+    "uk-vat-compliance": { "@type": "Country", name: "United Kingdom" },
+    "eu-vat-oss-ioss": { "@type": "Place", name: "European Union" },
+    "uae-vat-compliance": { "@type": "Country", name: "United Arab Emirates" },
+    "us-tax-sales-tax": { "@type": "Country", name: "United States" }
+  };
+  const serviceArea = marketByServiceSlug[service.slug]
+    || (internationalService
+      ? [
+          { "@type": "Country", name: "India" },
+          { "@type": "Country", name: "United Kingdom" },
+          { "@type": "Place", name: "European Union" },
+          { "@type": "Country", name: "United Arab Emirates" },
+          { "@type": "Country", name: "United States" }
+        ]
+      : { "@type": "Country", name: "India" });
   const faqItems = service.faqs?.length
     ? service.faqs.map((faq) => ({
         "@type": "Question",
@@ -64,15 +80,7 @@ export default async function ServiceDetailPage({ params }) {
       description: service.shortDescription,
       url: serviceUrl,
       serviceType: service.category,
-      areaServed: internationalService
-        ? [
-            { "@type": "Country", name: "India" },
-            { "@type": "Country", name: "United Kingdom" },
-            { "@type": "Place", name: "European Union" },
-            { "@type": "Country", name: "United Arab Emirates" },
-            { "@type": "Country", name: "United States" }
-          ]
-        : { "@type": "Country", name: "India" },
+      areaServed: serviceArea,
       provider: {
         "@type": "ProfessionalService",
         name: "FileFast Global",
