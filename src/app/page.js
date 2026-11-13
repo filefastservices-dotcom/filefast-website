@@ -5,12 +5,12 @@ import LeadForm from "@/components/LeadForm";
 import { getServices, getTestimonials } from "@/lib/data";
 
 export const metadata = {
-  title: "GST Registration & Tax Compliance in Chennai | FileFast Global",
-  description: "Get support with GST registration, document checks, GST returns and business compliance from Chennai, serving businesses across India.",
+  title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
+  description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
-    title: "GST Registration & Tax Compliance in Chennai | FileFast Global",
-    description: "Practical support for GST registration, document checks, GST returns and ongoing business compliance across India.",
+    title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
+    description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
   },
   alternates: { canonical: "/" },
 };
@@ -63,8 +63,8 @@ const homeFaqSchema = {
 };
 
 export default async function HomePage() {
-  const [featuredServices, testimonials] = await Promise.all([
-    getServices({ featured: true }),
+  const [allServices, testimonials] = await Promise.all([
+    getServices(),
     getTestimonials()
   ]);
 
@@ -78,23 +78,23 @@ export default async function HomePage() {
           <div className="hero-copy relative z-10">
             <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/80 px-4 py-2 text-gold-dark">
               <span className="hero-live-dot" aria-hidden="true" />
-              GST registration & business compliance
+              Tax, GST, ITR & global business compliance
             </p>
             <h1 className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.12] tracking-tight text-navy sm:text-5xl lg:text-[3.65rem]">
-              GST Registration Support for Startups &amp; SMEs
+              One partner for tax, compliance &amp; business services
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-navy/75 sm:text-lg sm:leading-8">
-              Get help with document checks, application preparation and GST portal submission from Chennai-based compliance support.
+              From GST and income tax to registrations, accounting and international VAT coordination, explore practical support for your business.
             </p>
             <p className="mt-3 max-w-xl text-sm leading-7 text-navy/65 sm:text-base">
-              Share your requirements to receive a relevant document checklist and clear next steps. Registration timelines depend on document completeness and GST department processing.
+              Serving businesses across India from Chennai, with cross-border coordination for founders operating in the UK, EU, UAE and US.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="#consultation" className="hero-primary-cta" data-track="cta-start">
-                Get GST Registration Help <span aria-hidden="true">→</span>
+              <a href="#all-services" className="hero-primary-cta" data-track="cta-start">
+                Explore All Services <span aria-hidden="true">→</span>
               </a>
-              <Link href="/services/gst-registration" className="hero-secondary-cta" data-track="cta-learn">
-                How It Works
+              <Link href="/services" className="hero-secondary-cta" data-track="cta-learn">
+                Browse Services
               </Link>
             </div>
             <p className="mt-5 text-xs leading-6 text-navy/60">
@@ -111,7 +111,7 @@ export default async function HomePage() {
                 <div className="flex items-center gap-3">
                   <div className="hero-doc-icon"><span /></div>
                   <div>
-                    <p className="text-sm font-semibold text-navy">GST registration checklist</p>
+                    <p className="text-sm font-semibold text-navy">Your business compliance checklist</p>
                     <p className="mt-1 text-xs text-slate-500">A clear place to start</p>
                   </div>
                 </div>
@@ -213,30 +213,33 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED SERVICES (dynamic) */}
-      <section className="bg-silver-light py-16 sm:py-20">
+      {/* ALL SERVICES — grouped by the live service catalogue */}
+      <section id="all-services" className="bg-silver-light py-16 sm:py-20">
         <div className="container-page">
-          <div className="flex items-end justify-between">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="eyebrow">Featured Services</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold text-navy">
-                GST, ITR, Business and Global Tax Services
-              </h2>
+              <p className="eyebrow">Our Services</p>
+              <h2 className="mt-2 max-w-2xl font-display text-3xl font-semibold text-navy">Complete tax, business &amp; compliance support</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-navy/70">Browse services for individuals, startups, established businesses and cross-border sellers.</p>
             </div>
-            <Link href="/services" className="hidden text-sm font-semibold text-gold-dark sm:block">
-              View All Services →
-            </Link>
+            <Link href="/services" className="text-sm font-semibold text-gold-dark">View Service Directory →</Link>
           </div>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredServices.length > 0 ? (
-              featuredServices.map((s) => <ServiceCard key={s._id} service={s} />)
-            ) : (
-              <p className="col-span-full text-sm text-navy/60">
-                No services published yet — add some from the admin dashboard.
-              </p>
-            )}
-          </div>
+          {CATEGORIES.map((category) => {
+            const categoryServices = allServices.filter((service) => service.category === category);
+            if (!categoryServices.length) return null;
+            return (
+              <div key={category} className="mt-10">
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <h3 className="font-display text-xl font-semibold text-navy">{category}</h3>
+                  <Link href={`/services?category=${encodeURIComponent(category)}`} className="text-xs font-semibold text-gold-dark">Explore category →</Link>
+                </div>
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {categoryServices.map((service) => <ServiceCard key={service._id || service.slug} service={service} />)}
+                </div>
+              </div>
+            );
+          })}
+          {!allServices.length && <p className="mt-8 rounded-lg border border-silver bg-white p-6 text-sm text-navy/70">Service information is being updated. Contact FileFast for assistance.</p>}
         </div>
       </section>
 
@@ -259,20 +262,23 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      {testimonials.length > 0 && (
-        <section className="bg-navy py-16 text-white sm:py-20">
-          <div className="container-page">
-            <p className="eyebrow text-gold">Client Testimonials</p>
-            <h2 className="mt-2 font-display text-3xl font-semibold">What Our Clients Say</h2>
+      {/* Genuine client feedback only; never populate this area with invented reviews. */}
+      <section className="bg-navy py-16 text-white sm:py-20">
+        <div className="container-page">
+          <p className="eyebrow text-gold">Client Testimonials</p>
+          <h2 className="mt-2 font-display text-3xl font-semibold">Feedback from our clients</h2>
+          {testimonials.length ? (
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {testimonials.slice(0, 6).map((t) => (
-                <TestimonialCard key={t._id} testimonial={t} />
-              ))}
+              {testimonials.slice(0, 6).map((t) => <TestimonialCard key={t._id} testimonial={t} />)}
             </div>
-          </div>
-        </section>
-      )}
+          ) : (
+            <div className="mt-8 max-w-2xl rounded-lg border border-white/15 bg-white/5 p-6">
+              <p className="text-sm leading-7 text-white/80">This space is reserved for genuine client feedback. Reviews will appear here after they are added and published by the FileFast team.</p>
+              <p className="mt-3 text-xs text-white/55">We do not publish sample or invented reviews.</p>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* FAQ */}
       <section className="container-page py-16 sm:py-20">
