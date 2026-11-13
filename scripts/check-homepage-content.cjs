@@ -7,7 +7,9 @@ const checks = [
   ["src/app/api/admin/homepage/route.js", ["requireAdmin(req)", "TEXT_LIMITS", "revalidatePath(\"/\")", "findOneAndUpdate"]],
   ["src/app/admin/homepage/page.js", ["Save Homepage Changes", "/api/admin/homepage", "announcementEnabled", "metaDescription"]],
   ["src/app/page.js", ["export const dynamic = \"force-dynamic\"", "getHomepageContent()", "homeContent.heroTitle", "homeContent.heroHighlight", "homeContent.announcementEnabled"]],
-  ["src/app/layout.js", ["/admin/homepage", "Homepage"]]
+  ["src/app/admin/layout.js", ["/admin/homepage", "Homepage"]],
+  ["src/app/admin/services/page.js", ["toggleFeatured", "Add to homepage"]],
+  ["src/app/api/blog/import-editorial/route.js", ["editorialSlugs", "$setOnInsert", "isPublished: true"]]
 ];
 const failures = [];
 for (const [path, tokens] of checks) {
