@@ -32,7 +32,7 @@ export const googleReviewFallbacks = [
     quote: "Great customer service and affordable prices.",
     sourceUrl: googleReviewUrl,
     source: "Google"
-  }  ,
+  },
   {
     _id: "google-review-highlight-4",
     clientName: "Google reviewer",
