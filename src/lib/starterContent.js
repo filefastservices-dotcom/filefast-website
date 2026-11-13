@@ -711,6 +711,357 @@ const starterServicesData = [
     metaTitle: "Trademark Registration Support in India | FileFast Global",
     metaDescription: "Get support preparing and coordinating trademark applications for brand names and logos in India. Understand documents, classes, fees and filing stages.",
     seoKeywords: "trademark registration India, trademark application support, brand name registration, logo trademark filing, trademark documents and fees"
+  }),
+  baseService({
+      "name": "Virtual CFO & MIS Reporting",
+      "slug": "virtual-cfo-mis-reporting",
+      "category": "Accounting Services",
+      "sortOrder": 40,
+      "shortDescription": "Monthly management reporting, cash-flow visibility, budgeting and finance operations support for growing businesses.",
+      "fullDescription": "Virtual CFO and MIS support helps founders and small businesses move beyond basic bookkeeping to understand profitability, liquidity and operating performance. FileFast Global can help organise management accounts, monthly reporting packs, cash-flow forecasts, budgets, receivable and payable ageing, and finance review routines. The exact engagement depends on the quality of source records, reporting frequency and decision-support requirements. Statutory audit, assurance, certification, investment advice and regulated professional opinions are not included unless separately provided by an appropriately qualified professional.",
+      "benefits": [
+          "Monthly profit and loss, balance-sheet and cash-flow reporting support",
+          "Receivables, payables and working-capital visibility",
+          "Budgeting, forecasting and variance analysis",
+          "Business performance dashboards and review meetings",
+          "Finance-process and month-end close improvements"
+      ],
+      "eligibility": [
+          "Startups and growing businesses without a full-time finance head",
+          "MSMEs needing regular MIS and cash-flow reporting",
+          "E-commerce businesses managing multiple sales channels",
+          "Businesses preparing management information for lenders or investors"
+      ],
+      "requiredDocuments": [
+          "Latest trial balance and general ledger",
+          "Bank statements and bank reconciliations",
+          "Sales, purchase and expense registers",
+          "Debtor and creditor ageing reports",
+          "Inventory and payroll summaries, where applicable",
+          "Existing budgets, targets and reporting formats"
+      ],
+      "processFlow": [
+          {
+              "title": "Understand your business",
+              "description": "Review entity structure, transaction volume, systems, reporting needs and business objectives."
+          },
+          {
+              "title": "Agree reporting scope",
+              "description": "Define deliverables, monthly close dates, data owners and review frequency in writing."
+          },
+          {
+              "title": "Prepare management reports",
+              "description": "Organise financial data and prepare agreed MIS, cash-flow and variance schedules."
+          },
+          {
+              "title": "Review and improve",
+              "description": "Discuss trends, exceptions and follow-up actions with management."
+          }
+      ],
+      "pricingInfo": "Custom monthly quotation based on transaction volume, number of entities, reporting complexity, systems and review frequency. A written scope and fee will be shared before engagement.",
+      "faqs": [
+          {
+              "question": "Is a Virtual CFO the same as bookkeeping?",
+              "answer": "No. Bookkeeping records transactions. Virtual CFO support adds management reporting, cash-flow planning, budgets and decision-support processes."
+          },
+          {
+              "question": "Can you prepare monthly MIS reports?",
+              "answer": "Yes, subject to receiving complete and timely accounting records and agreeing the reporting format and delivery calendar."
+          },
+          {
+              "question": "Do you provide statutory audit or certification?",
+              "answer": "Those services are not implied by this engagement. Where statutory audit, assurance or certification is required, it must be handled by an appropriately qualified and authorised professional."
+          }
+      ],
+      "relatedServiceSlugs": [
+          "accounting-bookkeeping",
+          "payroll-compliance",
+          "roc-annual-compliance"
+      ],
+      "metaTitle": "Virtual CFO & MIS Reporting Services for Indian SMEs | FileFast Global",
+      "metaDescription": "Virtual CFO support for Indian startups and SMEs: monthly MIS, cash-flow forecasts, budgeting, variance analysis and finance operations coordination.",
+      "seoKeywords": "virtual CFO services India, outsourced CFO for MSME, monthly MIS reporting, cash flow forecasting, startup financial reporting"
+  }),
+  baseService({
+      "name": "EPF, ESI & Payroll Compliance Support",
+      "slug": "epf-esi-payroll-compliance",
+      "category": "Compliance Services",
+      "sortOrder": 41,
+      "shortDescription": "Payroll process support and EPF, ESI and related statutory compliance coordination for eligible employers.",
+      "fullDescription": "Employers may have payroll, employee-record and social-security compliance obligations depending on establishment type, employee strength, wage levels and applicable law. FileFast Global helps businesses organise employee master data, payroll inputs, contribution workings, challan records and periodic compliance calendars. Applicability and final filings must be checked against current central and state rules and the employer's facts. Where a filing, representation or certification requires a licensed or specifically authorised professional, the engagement will be referred or coordinated accordingly.",
+      "benefits": [
+          "Employee master and payroll input organisation",
+          "EPF and ESI applicability checklist support",
+          "Monthly contribution and challan reconciliation schedules",
+          "Payroll register and statutory record coordination",
+          "Compliance calendar and exception tracking"
+      ],
+      "eligibility": [
+          "Employers reviewing EPF or ESI registration requirements",
+          "Small businesses outsourcing payroll administration",
+          "Companies needing payroll and statutory record reconciliation",
+          "Businesses onboarding employees across locations"
+      ],
+      "requiredDocuments": [
+          "Entity PAN and incorporation or registration details",
+          "Establishment address and business activity",
+          "Employee list with joining dates and wage components",
+          "Existing EPF and ESI establishment codes, if any",
+          "Previous payroll registers and challans",
+          "Attendance, leave and salary inputs"
+      ],
+      "processFlow": [
+          {
+              "title": "Review establishment details",
+              "description": "Collect employee, wage and establishment information for an applicability assessment."
+          },
+          {
+              "title": "Set up payroll records",
+              "description": "Organise employee master data, salary components and monthly input templates."
+          },
+          {
+              "title": "Prepare monthly workings",
+              "description": "Reconcile payroll inputs and prepare agreed contribution and challan schedules."
+          },
+          {
+              "title": "Track compliance",
+              "description": "Maintain acknowledgements, payment evidence and a period-wise exception list."
+          }
+      ],
+      "pricingInfo": "Custom quotation based on employee headcount, number of locations, payroll frequency and statutory filing scope. Government charges and specialist fees, if applicable, are separate.",
+      "faqs": [
+          {
+              "question": "Does every business need EPF and ESI registration?",
+              "answer": "Applicability depends on the establishment, employee strength, wages, notified coverage and current law. A fact-specific review is required."
+          },
+          {
+              "question": "Can you process monthly payroll?",
+              "answer": "Payroll processing and record coordination can be scoped based on employee count, salary structure, attendance inputs and required reports."
+          },
+          {
+              "question": "Are statutory contributions included in your service fee?",
+              "answer": "No. Employer and employee contributions, statutory payments and professional fees are separate. The quotation will distinguish them."
+          }
+      ],
+      "relatedServiceSlugs": [
+          "payroll-compliance",
+          "tds-return-filing",
+          "accounting-bookkeeping"
+      ],
+      "metaTitle": "EPF, ESI & Payroll Compliance Support in India | FileFast Global",
+      "metaDescription": "Organise payroll, EPF and ESI compliance with employee records, contribution workings, challan reconciliation and monthly compliance tracking.",
+      "seoKeywords": "EPF compliance services India, ESI compliance support, payroll compliance for employers, PF ESI payroll outsourcing"
+  }),
+  baseService({
+      "name": "E-Invoicing & E-Way Bill Compliance",
+      "slug": "einvoicing-eway-bill-compliance",
+      "category": "GST Services",
+      "sortOrder": 42,
+      "shortDescription": "E-invoice readiness, invoice data checks and e-way bill documentation support for businesses covered by GST rules.",
+      "fullDescription": "E-invoicing and e-way bill requirements can affect invoice workflows, dispatch operations and GST reconciliations. Applicability depends on the taxpayer's turnover history, transaction type, notified exemptions and current GST rules. FileFast Global helps businesses review process readiness, organise invoice data, identify common validation issues and reconcile relevant records. The business remains responsible for accurate source information and timely generation through the authorised GST systems or approved tools.",
+      "benefits": [
+          "Review e-invoice applicability and process readiness",
+          "Check GSTIN, document type, invoice values and required fields",
+          "Organise e-way bill dispatch data and supporting records",
+          "Reconcile invoice data with GSTR-1 and books",
+          "Create an exception checklist for failed or amended documents"
+      ],
+      "eligibility": [
+          "GST-registered businesses subject to e-invoicing provisions",
+          "Manufacturers, wholesalers and distributors moving goods",
+          "Businesses with recurring inter-state or intra-state dispatches",
+          "Accounts teams seeking better invoice-to-return reconciliation"
+      ],
+      "requiredDocuments": [
+          "GSTIN and business constitution details",
+          "Turnover information for relevant preceding financial years",
+          "Sample tax invoices and credit/debit notes",
+          "Product HSN and tax-rate master",
+          "Dispatch, transporter and vehicle information where relevant",
+          "Existing e-invoice and e-way bill error reports"
+      ],
+      "processFlow": [
+          {
+              "title": "Check applicability",
+              "description": "Review turnover, transaction type, exemptions and current notifications."
+          },
+          {
+              "title": "Review invoice master",
+              "description": "Check GSTIN, HSN, document numbering and mandatory invoice data."
+          },
+          {
+              "title": "Map dispatch workflow",
+              "description": "Document the information needed for e-way bill generation and movement records."
+          },
+          {
+              "title": "Reconcile and resolve exceptions",
+              "description": "Compare invoice records with books and return data and track corrections."
+          }
+      ],
+      "pricingInfo": "Custom quotation based on invoice and dispatch volume, number of GSTINs, integrations and monthly support requirements.",
+      "faqs": [
+          {
+              "question": "Is e-invoicing mandatory for every GST taxpayer?",
+              "answer": "No. Applicability depends on the prescribed turnover threshold, relevant periods, transaction type and notified exemptions. Verify current GST notifications before deciding."
+          },
+          {
+              "question": "Is an e-way bill required for every goods movement?",
+              "answer": "Not in every case. Requirements and exemptions depend on consignment value, movement, goods and applicable rules."
+          },
+          {
+              "question": "Can you fix errors in our invoice data?",
+              "answer": "We can review source data, identify common validation issues and guide corrections. The taxpayer must confirm the commercial facts and authorised portal actions."
+          }
+      ],
+      "relatedServiceSlugs": [
+          "gstr-1-filing",
+          "gstr-3b-filing",
+          "gst-input-tax-credit-reconciliation-guide"
+      ],
+      "metaTitle": "GST E-Invoicing & E-Way Bill Compliance Support | FileFast Global",
+      "metaDescription": "E-invoice and e-way bill readiness, GST invoice data checks, dispatch documentation and reconciliation support for eligible Indian businesses.",
+      "seoKeywords": "GST e-invoice compliance India, e-way bill support, e-invoice applicability, GST invoice reconciliation"
+  }),
+  baseService({
+      "name": "Income Tax Notice & Response Support",
+      "slug": "income-tax-notice-response",
+      "category": "Income Tax Services",
+      "sortOrder": 43,
+      "shortDescription": "Understand income-tax notices, organise supporting records and coordinate a timely, fact-based response.",
+      "fullDescription": "An income-tax notice should be read carefully before responding. The notice section, assessment year, DIN, response deadline, issue raised and documents requested determine the next steps. FileFast Global can help organise the notice, compare the issue with available return and tax records, prepare a document checklist and coordinate response preparation within the agreed scope. Complex assessments, appeals, legal opinions, representation or matters requiring a chartered accountant, advocate or other authorised professional must be handled by the appropriately qualified person.",
+      "benefits": [
+          "Notice type and deadline checklist",
+          "Review of return, AIS, TIS and Form 26AS information supplied by the client",
+          "Document and transaction reconciliation support",
+          "Drafting coordination for factual explanations and evidence",
+          "Response status and acknowledgement tracking"
+      ],
+      "eligibility": [
+          "Individuals and businesses who have received an income-tax communication",
+          "Taxpayers with AIS, TDS or reported-income mismatches",
+          "Businesses seeking help organising assessment records",
+          "Clients needing a coordinated document response"
+      ],
+      "requiredDocuments": [
+          "Complete notice or communication PDF",
+          "Assessment year and response deadline",
+          "Filed ITR and computation",
+          "Form 26AS, AIS and TIS downloads",
+          "Relevant bank statements and transaction evidence",
+          "Invoices, agreements and supporting explanations"
+      ],
+      "processFlow": [
+          {
+              "title": "Read and classify the notice",
+              "description": "Identify the issuing authority, section, DIN, issue, assessment year and deadline."
+          },
+          {
+              "title": "Collect supporting records",
+              "description": "Prepare a document list linked to each point raised in the communication."
+          },
+          {
+              "title": "Reconcile and prepare",
+              "description": "Compare the notice with the filed return and records and prepare factual working papers."
+          },
+          {
+              "title": "Review and submit through the proper channel",
+              "description": "The taxpayer or authorised professional reviews and submits the response, then retains the acknowledgement."
+          }
+      ],
+      "pricingInfo": "Custom quotation based on notice type, number of issues, assessment year, document volume, urgency and whether authorised professional representation is required.",
+      "faqs": [
+          {
+              "question": "Can I ignore an income-tax notice if I have already filed my ITR?",
+              "answer": "No. Read the communication and deadline carefully. Filing a return does not automatically resolve every notice or adjustment."
+          },
+          {
+              "question": "What should I share first?",
+              "answer": "Share the complete notice PDF, including DIN and annexures, along with the assessment year and response deadline. Do not share your portal password or OTP."
+          },
+          {
+              "question": "Do you represent clients in appeals or hearings?",
+              "answer": "Representation and legal or professional opinions are separately assessed and must be undertaken by a person legally qualified and authorised for the matter."
+          }
+      ],
+      "relatedServiceSlugs": [
+          "itr-filing",
+          "tds-return-filing",
+          "accounting-bookkeeping"
+      ],
+      "metaTitle": "Income Tax Notice Response Support in India | FileFast Global",
+      "metaDescription": "Get help understanding income-tax notices, organising ITR and AIS records, preparing evidence checklists and coordinating timely responses.",
+      "seoKeywords": "income tax notice response India, income tax notice help, AIS mismatch support, income tax assessment documents"
+  }),
+  baseService({
+      "name": "GST Refund & Export Refund Documentation Support",
+      "slug": "gst-refund-export-documentation",
+      "category": "GST Services",
+      "sortOrder": 44,
+      "shortDescription": "Refund eligibility document checks and reconciliation support for eligible exporters and GST-registered businesses.",
+      "fullDescription": "GST refund claims require a correct legal basis, accurate period-wise calculations and consistent supporting records. Exporters may need to reconcile invoices, shipping bills or export-of-service evidence, LUT details, bank realisation information, returns and input tax credit records. Other refund categories have their own conditions and documentary requirements. FileFast Global helps organise the records, prepare reconciliation schedules and coordinate the agreed application workflow. Refund eligibility and final claim amounts must be confirmed from the taxpayer's facts and current law; filing does not guarantee sanction.",
+      "benefits": [
+          "Identify the refund category and initial document checklist",
+          "Reconcile export invoices with shipping or service evidence",
+          "Organise LUT, return and bank realisation records where applicable",
+          "Prepare ITC and turnover working schedules for review",
+          "Track acknowledgements and clarification requirements"
+      ],
+      "eligibility": [
+          "Eligible exporters of goods or services",
+          "GST-registered businesses reviewing accumulated eligible ITC",
+          "Businesses assessing refund of tax paid under an eligible category",
+          "Taxpayers who can provide complete transaction and return records"
+      ],
+      "requiredDocuments": [
+          "GST registration and relevant LUT acknowledgement",
+          "GSTR-1 and GSTR-3B for relevant periods",
+          "Purchase register and GSTR-2B downloads",
+          "Export invoices and shipping bills or service contracts",
+          "Bank realisation or payment evidence, as applicable",
+          "Refund category details and previous application or notice records"
+      ],
+      "processFlow": [
+          {
+              "title": "Identify the refund route",
+              "description": "Review the transaction type, tax period, applicable refund category and statutory conditions."
+          },
+          {
+              "title": "Collect and reconcile records",
+              "description": "Match invoices, returns, export evidence, ITC and bank records as relevant."
+          },
+          {
+              "title": "Prepare working papers",
+              "description": "Prepare the agreed calculation and supporting document index for client and professional review."
+          },
+          {
+              "title": "Coordinate filing and follow-up",
+              "description": "Support the agreed portal workflow and track any acknowledgement or clarification."
+          }
+      ],
+      "pricingInfo": "Custom quotation based on refund category, number of tax periods, invoice volume, reconciliation complexity and clarification or follow-up scope. Government or specialist fees are separate.",
+      "faqs": [
+          {
+              "question": "Does LUT automatically mean I will receive a GST refund?",
+              "answer": "No. LUT is a route for eligible zero-rated supplies without payment of IGST; refund eligibility and calculation depend on the relevant statutory conditions and records."
+          },
+          {
+              "question": "Can every purchase invoice be included in a refund claim?",
+              "answer": "No. ITC eligibility, blocked credits, business use, apportionment and other conditions must be checked before inclusion."
+          },
+          {
+              "question": "Is refund sanction guaranteed after filing?",
+              "answer": "No. The proper officer reviews the claim and supporting records. Additional information, verification or rejection may arise depending on the facts and law."
+          }
+      ],
+      "relatedServiceSlugs": [
+          "lut-export-goods-services-gst-guide",
+          "gstr-1-filing",
+          "gstr-3b-filing",
+          "gst-input-tax-credit-reconciliation-guide"
+      ],
+      "metaTitle": "GST Refund & Export Refund Support in India | FileFast Global",
+      "metaDescription": "GST refund documentation and reconciliation support for eligible exporters and businesses, including LUT, invoices, returns, ITC and bank evidence.",
+      "seoKeywords": "GST refund support India, export GST refund documentation, LUT refund process, accumulated ITC refund assistance"
   })
 ];
 
