@@ -14,7 +14,8 @@ async function getTestimonial(id) {
 }
 
 export default async function EditTestimonialPage({ params }) {
-  const testimonial = await getTestimonial(params.id);
+  const { id } = await params;
+  const testimonial = await getTestimonial(id);
   if (!testimonial) notFound();
 
   return (

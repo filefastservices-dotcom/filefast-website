@@ -33,5 +33,25 @@ export const googleReviewFallbacks = [
     sourceUrl: googleReviewUrl,
     source: "Google"
   },
+  {
+    _id: "google-review-highlight-4",
+    clientName: "Google reviewer",
+    clientRole: "Google review",
+    serviceUsed: "GST filing",
+    rating: 5,
+    quote: "Their service is very prompt, accurate, and they handle everything professionally.",
+    sourceUrl: googleReviewUrl,
+    source: "Google"
+  },
+  {
+    _id: "google-review-highlight-5",
+    clientName: "Google reviewer",
+    clientRole: "Google review",
+    serviceUsed: "GST registration",
+    rating: 5,
+    quote: "Made the whole process very simple.",
+    sourceUrl: googleReviewUrl,
+    source: "Google"
+  },
 
 ];

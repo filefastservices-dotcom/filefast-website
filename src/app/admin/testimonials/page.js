@@ -7,6 +7,7 @@ export default function AdminTestimonialsPage() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [reviewLinkCopied, setReviewLinkCopied] = useState(false);
 
   async function load() {
     setLoading(true);
@@ -68,9 +69,17 @@ export default function AdminTestimonialsPage() {
         <div className="rounded-sm border border-silver/70 bg-white p-4"><p className="text-2xl font-semibold text-navy">{unpublished}</p><p className="text-xs text-navy/60">Unpublished records</p></div>
       </div>
       <div className="mt-5 rounded-sm border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
-        <p className="font-semibold">Google Business Profile connection</p>
-        <p className="mt-1">Live automatic review syncing is not connected yet. Google requires an authorised Business Profile OAuth connection and API access. The website currently uses clearly attributed public review excerpts as a fallback.</p>
-        <a className="mt-2 inline-block font-semibold underline" href="https://www.google.com/maps/search/?api=1&query=FileFast&query_place_id=ChIJ_fs-e95nUjoRqme2a-4Babg" target="_blank" rel="noopener noreferrer">Open FileFast on Google Maps ↗</a>
+        <p className="font-semibold">Google Business Profile review workflow</p>
+        <p className="mt-1">Automatic review syncing is not connected. Add only genuine reviews, preserve the exact wording and source link, and confirm permission before publishing direct client feedback.</p>
+        <div className="mt-3 flex flex-wrap gap-3">
+          <a className="inline-flex rounded-sm bg-white px-3 py-2 font-semibold underline" href="https://www.google.com/maps/search/?api=1&query=FileFast&query_place_id=ChIJ_fs-e95nUjoRqme2a-4Babg" target="_blank" rel="noopener noreferrer">Open Google listing ↗</a>
+          <button type="button" className="rounded-sm border border-blue-300 px-3 py-2 font-semibold" onClick={async () => {
+            const message = "Thank you for choosing FileFast Global. If you have a moment, we would appreciate your honest feedback about your experience. You can leave a review here: https://www.google.com/maps/search/?api=1&query=FileFast&query_place_id=ChIJ_fs-e95nUjoRqme2a-4Babg. Your feedback is entirely optional and there is no incentive or preferred rating.";
+            try { await navigator.clipboard.writeText(message); setReviewLinkCopied(true); }
+            catch { setError("Unable to copy automatically. Open the Google listing and share its review link manually."); }
+          }}>{reviewLinkCopied ? "Review request copied" : "Copy neutral review request"}</button>
+        </div>
+        <p className="mt-2 text-xs">Ask all customers neutrally. Do not offer discounts or gifts, request a specific star rating, or discourage negative feedback.</p>
       </div>
       {error && <p role="alert" className="mt-5 rounded-sm border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</p>}
       {loading ? <p className="mt-6 text-sm text-navy/60">Loading...</p> : (

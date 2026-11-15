@@ -14,6 +14,9 @@ export default function TestimonialForm({ initialTestimonial, testimonialId }) {
     rating: initialTestimonial?.rating || 5,
     quote: initialTestimonial?.quote || "",
     photoUrl: initialTestimonial?.photoUrl || "",
+    source: initialTestimonial?.source || "Client feedback",
+    sourceUrl: initialTestimonial?.sourceUrl || "",
+    publicationConsent: initialTestimonial?.publicationConsent ?? false,
     isPublished: initialTestimonial?.isPublished ?? true
   });
   const [error, setError] = useState("");
@@ -121,6 +124,40 @@ export default function TestimonialForm({ initialTestimonial, testimonialId }) {
           onChange={(e) => update("photoUrl", e.target.value)}
           className={field}
         />
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className={label}>Feedback Source</label>
+          <select value={form.source} onChange={(e) => update("source", e.target.value)} className={field}>
+            <option value="Client feedback">Direct client feedback</option>
+            <option value="Google Maps">Google Maps review</option>
+          </select>
+        </div>
+        <div>
+          <label className={label}>Original Source URL {form.source === "Google Maps" ? "(Required)" : "(Optional)"}</label>
+          <input
+            type="url"
+            required={form.source === "Google Maps"}
+            placeholder="https://www.google.com/maps/..."
+            value={form.sourceUrl}
+            onChange={(e) => update("sourceUrl", e.target.value)}
+            className={field}
+          />
+        </div>
+      </div>
+
+      <div className="rounded-sm border border-silver/70 bg-silver-light p-4">
+        <label className="flex items-start gap-3 text-sm text-navy">
+          <input
+            type="checkbox"
+            required
+            checked={form.publicationConsent}
+            onChange={(e) => update("publicationConsent", e.target.checked)}
+            className="mt-1"
+          />
+          <span>I confirm that this is genuine customer feedback and the customer has authorised FileFast to publish this text on its website. For Google Maps reviews, the quoted text and attribution must match the original public review.</span>
+        </label>
       </div>
 
       <div className="flex items-center gap-3">

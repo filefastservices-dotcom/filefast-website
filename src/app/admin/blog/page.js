@@ -56,9 +56,14 @@ export default function AdminBlogPage() {
     <div className="mx-auto max-w-5xl">
       <div className="flex items-center justify-between">
         <h1 className="font-display text-2xl font-semibold text-navy">Blog Posts</h1>
-        <Link href="/admin/blog/new" className="btn-gold text-xs">
-          + Write New Post
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" onClick={importEditorialPosts} disabled={importing} className="btn-navy-outline text-xs disabled:opacity-60">
+            {importing ? "Importing guides..." : "Import 13 Editorial Guides"}
+          </button>
+          <Link href="/admin/blog/new" className="btn-gold text-xs">
+            + Write New Post
+          </Link>
+        </div>
       </div>
 
       {notice && <p role="status" className="mt-4 rounded-sm bg-silver-light p-3 text-sm text-navy">{notice}</p>}\n\n      {loading ? (

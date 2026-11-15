@@ -33,6 +33,14 @@ export async function POST(req) {
   const serviceInterested = cleanText(body?.serviceInterested, MAX_SERVICE_LENGTH);
   const message = cleanText(body?.message, MAX_MESSAGE_LENGTH);
   const source = cleanText(body?.source, 300) || "website";
+  const utmSource = cleanText(body?.utmSource, 120);
+  const utmMedium = cleanText(body?.utmMedium, 120);
+  const utmCampaign = cleanText(body?.utmCampaign, 160);
+  const utmContent = cleanText(body?.utmContent, 160);
+  const utmTerm = cleanText(body?.utmTerm, 160);
+  const landingPageRaw = cleanText(body?.landingPage, 300);
+  const landingPage = landingPageRaw.startsWith("/") && !landingPageRaw.startsWith("//") ? landingPageRaw.split(/[?#]/)[0] : "";
+  const referrerHost = cleanText(body?.referrerHost, 120).replace(/[^a-zA-Z0-9.-]/g, "");
   const mobileDigits = mobile.replace(/\D/g, "");
 
   if (name.length < 2) return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
@@ -41,7 +49,7 @@ export async function POST(req) {
 
   try {
     await connectDB();
-    await Lead.create({ name, mobile, email, serviceInterested, message, source });
+    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, landingPage, referrerHost });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error?.message || "Unknown error");
@@ -51,7 +59,7 @@ export async function POST(req) {
 
 // Admin only: view leads, with simple search + filter.
 export async function GET(req) {
-  const unauthorized = requireAdmin(req);
+  const unauthorized = await requireAdmin(req);
   if (unauthorized) return unauthorized;
   try {
     await connectDB();

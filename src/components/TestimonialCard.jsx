@@ -14,6 +14,7 @@ export default function TestimonialCard({ testimonial }) {
         <p className="text-xs text-navy/60">
           {testimonial.clientRole}
           {testimonial.serviceUsed ? ` · ${testimonial.serviceUsed}` : ""}
+          {testimonial.source ? ` · ${testimonial.source}` : ""}
         </p>
         {testimonial.sourceUrl && (
           <a

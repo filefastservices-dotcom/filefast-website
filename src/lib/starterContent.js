@@ -1,3 +1,4 @@
+import { seoEditorialExpansion } from "@/lib/seoEditorialExpansion";
 // Public fallback content. It keeps the website useful before MongoDB is configured
 // or while the admin collection is empty. Database records take precedence.
 const baseService = (data) => ({
@@ -1541,6 +1542,9 @@ export const starterBlogPosts = [
 
 // Transparent competitive professional-fee guide. Introductory prices have defined scope;
 // the site does not use artificial expiry dates or false urgency.
+
+starterBlogPosts.push(...seoEditorialExpansion);
+
 const starterPricing = {
   "gst-registration": {
     "regularPrice": "499",
