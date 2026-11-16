@@ -18,7 +18,7 @@
     "check:lead-attribution": "node scripts/check-lead-attribution.cjs"
   },
   "dependencies": {
-    "next": "14.2.5",
+    "next": "16.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "mongoose": "^9.12.1",
