@@ -1,5 +1,22 @@
 "use client";
 
+function getCardTitle(post) {
+  const title = typeof post.title === "string" ? post.title.trim() : "";
+  if (title) return title;
+  const slug = typeof post.slug === "string" ? post.slug : "";
+  const readable = slug.replace(/[-_]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase()).trim();
+  return readable ? readable + " Guide" : "Tax & Compliance Guide";
+}
+
+function getCardExcerpt(post, category) {
+  const excerpt = typeof post.excerpt === "string" ? post.excerpt.trim() : "";
+  if (excerpt) return excerpt;
+  const content = typeof post.content === "string" ? post.content : "";
+  const firstParagraph = content.split(/\n\s*\n/).find((part) => part.trim() && !part.trim().startsWith("#"));
+  const plainText = (firstParagraph || "").replace(/[*_#>-]/g, "").trim();
+  if (plainText) return plainText.length > 180 ? plainText.slice(0, 177).trimEnd() + "..." : plainText;
+  return "Practical guidance, key requirements and next steps for " + (category || "tax and business compliance").toLowerCase() + ".";
+}
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
@@ -57,9 +74,9 @@ export default function BlogExplorer({ posts }) {
         <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredPosts.map((post) => (
             <article key={post.slug} className="flex h-full flex-col rounded-sm border border-silver/70 bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-gold hover:shadow-md">
-              <p className="eyebrow">{post.category}</p>
-              <h2 className="mt-2 font-display text-lg font-semibold leading-snug text-navy">{post.title}</h2>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-navy/70">{post.excerpt}</p>
+              <p className="eyebrow">{post.category || "Tax & Compliance"}</p>
+              <h2 className="mt-2 font-display text-lg font-semibold leading-snug text-navy">{getCardTitle(post)}</h2>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-navy/70">{getCardExcerpt(post, post.category)}</p>
               <Link href={`/blog/${post.slug}`} className="mt-5 inline-flex items-center text-sm font-semibold text-blue-700 underline underline-offset-4">
                 Read guide <span aria-hidden="true" className="ml-1">→</span>
               </Link>
