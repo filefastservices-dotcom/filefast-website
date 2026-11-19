@@ -11,19 +11,20 @@ function filterServices(services, { category, featured } = {}) {
   );
 }
 
-function applyStarterPricing(service) {
+function applyStarterContent(service) {
   if (!service) return service;
   const fallback = starterServices.find((item) => item.slug === service.slug);
-  if (!fallback || service.offerPrice || service.regularPrice || service.pricingNote || (!fallback.offerPrice && !fallback.pricingNote)) return service;
-  return {
-    ...service,
-    regularPrice: fallback.regularPrice,
-    offerPrice: fallback.offerPrice,
-    pricingUnit: fallback.pricingUnit,
-    offerLabel: fallback.offerLabel,
-    pricingNote: fallback.pricingNote,
-    pricingInfo: fallback.pricingInfo
-  };
+  if (!fallback) return service;
+  const merged = { ...service };
+  // Preserve richer admin copy; enrich only legacy fields that are shorter than reviewed starter content.
+  if ((merged.fullDescription || "").length < (fallback.fullDescription || "").length) merged.fullDescription = fallback.fullDescription;
+  for (const field of ["benefits", "eligibility", "requiredDocuments", "processFlow", "faqs"]) {
+    if ((merged[field] || []).length < (fallback[field] || []).length) merged[field] = fallback[field];
+  }
+  if (!merged.shortDescription || merged.shortDescription.length < 65) merged.shortDescription = fallback.shortDescription;
+  for (const field of ["metaTitle", "metaDescription", "seoKeywords"]) if (!merged[field]) merged[field] = fallback[field];
+  if (!merged.regularPrice && !merged.offerPrice && !merged.pricingNote && (fallback.offerPrice || fallback.pricingNote)) Object.assign(merged, {regularPrice:fallback.regularPrice,offerPrice:fallback.offerPrice,pricingUnit:fallback.pricingUnit,offerLabel:fallback.offerLabel,pricingNote:fallback.pricingNote,pricingInfo:fallback.pricingInfo});
+  return merged;
 }
 
 // These helpers are used directly inside Server Components. They fall back to
@@ -44,7 +45,7 @@ export async function getServices({ category, featured } = {}) {
     // MongoDB. Do not re-publish an admin-hidden service through fallback data.
     const knownSlugs = new Set(knownServices.map((service) => service.slug));
     const missingStarterServices = starterServices.filter((service) => !knownSlugs.has(service.slug));
-    return filterServices([...result.map(applyStarterPricing), ...missingStarterServices], { category, featured });
+    return filterServices([...result.map(applyStarterContent), ...missingStarterServices], { category, featured });
   } catch (err) {
     console.error("getServices failed:", err.message);
     return filterServices(starterServices, { category, featured });
@@ -57,7 +58,7 @@ export async function getServiceBySlug(slug) {
     const storedService = await Service.findOne({ slug }).lean();
     if (storedService) {
       if (!storedService.isPublished) return null;
-      return applyStarterPricing(JSON.parse(JSON.stringify(storedService)));
+      return applyStarterContent(JSON.parse(JSON.stringify(storedService)));
     }
     return starterServices.find((item) => item.slug === slug) || null;
   } catch (err) {
