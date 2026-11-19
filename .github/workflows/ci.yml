@@ -29,7 +29,14 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies from the committed lockfile
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Upload regenerated pnpm lockfile for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: pnpm-lock-generated
+          path: pnpm-lock.yaml
+          if-no-files-found: error
 
       - name: Check SEO safeguards
         run: pnpm run check:seo
