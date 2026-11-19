@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -5,9 +6,9 @@ export default function Footer() {
     <footer className="bg-navy-dark text-silver">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <p className="font-display text-lg font-semibold text-white">
-            File<span className="text-gold">Fast</span>
-          </p>
+          <Link href="/" aria-label="FileFast Global home" className="inline-flex rounded bg-white p-1">
+            <Image src="/logo.jpg" alt="FileFast Global – Global Tax Compliance" width={500} height={500} className="h-14 w-14 object-contain" />
+          </Link>
           <p className="mt-3 text-sm text-silver/80">
             Professional Service. Reasonable Pricing. Complete Satisfaction.
           </p>

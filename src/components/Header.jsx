@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV = [
@@ -15,8 +16,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-silver/60 bg-white/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="font-display text-xl font-semibold tracking-tight text-navy">
-          File<span className="text-gold-dark">Fast</span>
+        <Link href="/" aria-label="FileFast Global home" className="flex shrink-0 items-center">
+          <Image src="/logo.jpg" alt="FileFast Global – Global Tax Compliance" width={500} height={500} priority className="h-11 w-11 object-contain" />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">

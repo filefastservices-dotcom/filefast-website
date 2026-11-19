@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
@@ -91,7 +92,7 @@ export default async function HomePage() {
           <div className="relative mx-auto w-full max-w-lg">
             <div className="absolute -inset-6 rounded-[2rem] border border-white/10" />
             <div className="relative rounded-2xl border border-white/15 bg-white/[.08] p-6 shadow-2xl backdrop-blur-sm sm:p-8">
-              <div className="flex items-center justify-between border-b border-white/15 pb-5"><div><p className="text-xs uppercase tracking-[.18em] text-[#e8c77c]">Your next step</p><h2 className="mt-2 font-display text-2xl font-semibold">Start with the right service</h2></div><span className="grid h-11 w-11 place-items-center rounded-xl bg-[#e8c77c] text-xl font-bold text-[#081b35]">F</span></div>
+              <div className="flex items-center justify-between border-b border-white/15 pb-5"><div><p className="text-xs uppercase tracking-[.18em] text-[#e8c77c]">Your next step</p><h2 className="mt-2 font-display text-2xl font-semibold">Start with the right service</h2></div><span className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-xl bg-white p-1"><Image src="/logo.jpg" alt="FileFast Global" width={500} height={500} className="h-full w-full object-contain" /></span></div>
               <div className="mt-5 space-y-3">
                 {[
                   ["01","GST & income tax","Returns, registrations, ITC and TDS"],

@@ -12,7 +12,7 @@ const organizationSchema = {
 
   url: "https://www.filefastglobal.com",
 
-  logo: "https://www.filefastglobal.com/logo.png",
+  logo: "https://www.filefastglobal.com/logo.jpg",
 
   image: "https://www.filefastglobal.com/og-image.png",
 
@@ -122,6 +122,11 @@ export const metadata = {
     description:
       "GST, income tax, business registrations, accounting and cross-border tax coordination from Chennai, India.",
     images: ["/og-image.png"],
+  },
+
+  icons: {
+    icon: [{ url: "/logo.jpg", type: "image/jpeg", sizes: "500x500" }],
+    apple: [{ url: "/logo.jpg", type: "image/jpeg", sizes: "500x500" }],
   },
 
   robots: {
