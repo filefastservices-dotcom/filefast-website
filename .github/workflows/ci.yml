@@ -29,9 +29,6 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies from the committed lockfile
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Install dependencies from the committed lockfile
         run: pnpm install --frozen-lockfile
 
       - name: Check SEO safeguards
