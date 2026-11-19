@@ -53,7 +53,17 @@ const INTERNAL_LINKS = [
   { phrase: "monthly accounting checklist", href: "/blog/small-business-month-end-accounting-checklist-india" },
   { phrase: "month-end accounting close", href: "/blog/small-business-month-end-accounting-checklist-india" },
   { phrase: "TDS return filing", href: "/services/tds-return-filing" },
-  { phrase: "accounting and bookkeeping", href: "/services/accounting-bookkeeping" }
+  { phrase: "accounting and bookkeeping", href: "/services/accounting-bookkeeping" },
+  { phrase: "GST return filing in India", href: "/blog/gst-return-filing-guide-india-businesses" },
+  { phrase: "GST registration in India", href: "/blog/gst-registration-india-eligibility-documents-process" },
+  { phrase: "GST registration online", href: "/blog/gst-registration-india-eligibility-documents-process" },
+  { phrase: "TDS return filing", href: "/blog/tds-tcs-return-filing-india-compliance-guide" },
+  { phrase: "TCS return filing", href: "/blog/tds-tcs-return-filing-india-compliance-guide" },
+  { phrase: "income tax return filing", href: "/blog/income-tax-return-filing-india-complete-checklist" },
+  { phrase: "ITR filing online", href: "/blog/income-tax-return-filing-india-complete-checklist" },
+  { phrase: "GSTR-2B reconciliation", href: "/blog/gst-return-filing-guide-india-businesses" },
+  { phrase: "GST registration documents", href: "/blog/gst-registration-india-eligibility-documents-process" },
+  { phrase: "quarterly TDS statements", href: "/blog/tds-tcs-return-filing-india-compliance-guide" }
 ];
 
 function toValidIsoDate(value) {
@@ -63,7 +73,7 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping)/gi;
+  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements)/gi;
   return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
