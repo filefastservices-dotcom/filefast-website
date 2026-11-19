@@ -39,7 +39,7 @@ test("rejects a token with a tampered payload or signature", async () => {
   const [header, body, signature] = token.split(".");
   const changedBody = encode({ role: "admin", exp: Math.floor(Date.now() / 1000) + 3600 });
   assert.equal(await verifyAdminToken(`${header}.${changedBody}.${signature}`), null);
-  const changedSignature = `${signature.slice(0, -1)}${signature.endsWith("A") ? "B" : "A"}`;
+  const changedSignature = `${signature[0] === "A" ? "B" : "A"}${signature.slice(1)}`;
   assert.equal(await verifyAdminToken(`${header}.${body}.${changedSignature}`), null);
 });
 
