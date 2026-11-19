@@ -2,6 +2,9 @@ name: Mobile UX Demo CI
 on:
   pull_request:
     branches: [main]
+    paths:
+      - "mobile-ux-demo/**"
+      - ".github/workflows/mobile-ux-demo-ci.yml"
   workflow_dispatch:
 jobs:
   checks:

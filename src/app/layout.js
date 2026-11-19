@@ -76,6 +76,12 @@ export const metadata = {
     canonical: "/",
   },
 
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: ["/logo.png"],
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
+
   title: {
     default: "FileFast Global | GST, Income Tax, Accounting & Global Tax Compliance",
     template: "%s | FileFast Global",
