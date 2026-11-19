@@ -44,6 +44,8 @@ jobs:
           git add pnpm-lock.yaml
           if ! git diff --cached --quiet; then
             git commit -m "chore(deps): sync pnpm lockfile"
+            git fetch origin "${BRANCH_NAME}"
+            git rebase "origin/${BRANCH_NAME}"
             git push origin "HEAD:${BRANCH_NAME}"
           fi
       - name: Upload regenerated pnpm lockfile for review
