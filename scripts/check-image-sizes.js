@@ -5,7 +5,7 @@ const path = require("node:path");
 const PUBLIC_DIR = path.resolve(process.cwd(), "public");
 const TARGETS = {
   "og-image.png": 1_700_000,
-  "logo.png": 100_000,
+  "logo.jpg": 100_000,
 };
 
 let failed = false;
