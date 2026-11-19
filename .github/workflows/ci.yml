@@ -37,6 +37,9 @@ jobs:
       - name: Check editorial content quality
         run: pnpm run check:editorial-content
 
+      - name: Test admin JWT security
+        run: pnpm run test:admin-jwt-security
+
       - name: Check lead attribution tracking
         run: pnpm run check:lead-attribution
 
