@@ -5,12 +5,12 @@ import BlogExplorer from "@/components/BlogExplorer";
 export const metadata = {
   openGraph: {
     url: "https://www.filefastglobal.com/blog",
-    title: "Blog | FileFast Global",
-    description: "Latest articles on GST, Income Tax, MSME, FSSAI, Compliance and Accounting from FileFast.",
+    title: "GST, ITR, TDS & Business Tax Guides | FileFast Global",
+    description: "Practical India tax guides covering GST registration, GSTR-1, GSTR-3B, ITC reconciliation, income tax return filing, TDS, TCS, accounting and international VAT compliance.",
   },
   alternates: { canonical: "/blog" },
-  title: "Blog",
-  description: "Latest articles on GST, Income Tax, MSME, FSSAI, Compliance and Accounting from FileFast."
+  title: "GST, ITR, TDS & Business Tax Guides",
+  description: "Practical India tax guides covering GST registration, GSTR-1, GSTR-3B, ITC reconciliation, income tax return filing, TDS, TCS, accounting and international VAT compliance."
 };
 
 export default async function BlogPage() {
