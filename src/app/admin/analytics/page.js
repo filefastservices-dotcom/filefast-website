@@ -7,7 +7,7 @@ function Metric({ label, value, note }) {
   return (
     <div className="rounded-sm border border-silver/70 bg-white p-5">
       <p className="text-xs font-semibold uppercase tracking-wide text-navy/50">{label}</p>
-      <p className="mt-2 font-display text-3xl font-semibold text-navy">{Number(value || 0).toLocaleString("en-IN")}</p>
+      <p className="mt-2 font-display text-3xl font-semibold text-navy">{typeof value === "number" ? value.toLocaleString("en-IN") : value}</p>
       {note && <p className="mt-1 text-xs text-navy/50">{note}</p>}
     </div>
   );
