@@ -1,0 +1,7 @@
+import {NextResponse} from "next/server";
+import {connectDB} from "@/lib/mongodb";
+import Metric from "@/models/SearchConsoleMetric";
+import {requireAdmin} from "@/lib/requireAdmin";
+import {searchConsoleConfig,searchConsoleDateRange} from "@/lib/searchConsole";
+export const dynamic="force-dynamic";
+export async function GET(req){const denied=await requireAdmin(req);if(denied)return denied;const config=searchConsoleConfig();try{await connectDB();const range=searchConsoleDateRange();const [pages,queries,last]=await Promise.all([Metric.find({dimension:"page"}).sort({clicks:-1}).limit(100).lean(),Metric.find({dimension:"query"}).sort({clicks:-1}).limit(100).lean(),Metric.findOne({}).sort({updatedAt:-1}).select("updatedAt").lean()]);const sum=rows=>({clicks:rows.reduce((a,x)=>a+x.clicks,0),impressions:rows.reduce((a,x)=>a+x.impressions,0),ctr:rows.length?rows.reduce((a,x)=>a+x.ctr,0)/rows.length:0,position:rows.length?rows.reduce((a,x)=>a+x.position,0)/rows.length:0});return NextResponse.json({configured:config.configured,missing:config.missing,property:config.configured?process.env.GOOGLE_SEARCH_CONSOLE_PROPERTY:null,...range,lastSyncedAt:last?.updatedAt||null,summary:sum(pages),pages:pages.map(x=>({page:x.key,clicks:x.clicks,impressions:x.impressions,ctr:x.ctr,position:x.position})),queries:queries.map(x=>({query:x.key,clicks:x.clicks,impressions:x.impressions,ctr:x.ctr,position:x.position}))});}catch(e){console.error("Search Console report failed",e?.message);return NextResponse.json({error:"Unable to load Search Console report."},{status:503});}}
