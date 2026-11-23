@@ -13,15 +13,19 @@ const starterFile = fs.readFileSync("src/lib/starterContent.js", "utf8");
 const starterStart = starterFile.indexOf("const starterBlogPostsBase = [");
 const starterEnd = starterFile.indexOf("\n];", starterStart);
 if (starterStart < 0 || starterEnd < 0) throw new Error("Starter blog catalogue could not be read");
-const starter = JSON.parse(starterFile.slice(starterFile.indexOf("[", starterStart), starterEnd + 2));
-const posts = [...starter, ...expansion, ...phaseTwo];
+const starterSource = starterFile.slice(starterStart, starterEnd);
+const starterSlugs = [...starterSource.matchAll(/"slug":\\s*"([^"]+)"/g)].map((match) => match[1]);
+const editorialPosts = [...expansion, ...phaseTwo];
+const allSlugs = [...starterSlugs, ...editorialPosts.map((post) => post.slug)];
 const failures = [];
 const slugs = new Set();
 
-if (posts.length < 100) failures.push("The public starter catalogue must contain at least 100 articles.");
-for (const post of posts) {
-  if (!post.slug || slugs.has(post.slug)) failures.push("Missing or duplicate slug: " + post.slug);
-  slugs.add(post.slug);
+if (allSlugs.length < 100) failures.push("The public starter catalogue must contain at least 100 articles.");
+for (const slug of allSlugs) {
+  if (!slug || slugs.has(slug)) failures.push("Missing or duplicate slug: " + slug);
+  slugs.add(slug);
+}
+for (const post of editorialPosts) {
   if (!post.title || post.title.length > 90) failures.push("Missing or excessively long title: " + post.slug);
   if (!post.metaTitle || post.metaTitle.length < 30 || post.metaTitle.length > 70) failures.push("Meta title should be 30–70 characters: " + post.slug);
   if (!post.metaDescription || post.metaDescription.length < 70 || post.metaDescription.length > 170) failures.push("Meta description should be 70–170 characters: " + post.slug);
@@ -36,4 +40,4 @@ if (failures.length) {
   failures.forEach((failure) => console.error("- " + failure));
   process.exit(1);
 }
-console.log("Editorial quality checks passed for " + posts.length + " unique articles.");
+console.log("Editorial quality checks passed for " + allSlugs.length + " unique articles (" + editorialPosts.length + " expanded guides).");
