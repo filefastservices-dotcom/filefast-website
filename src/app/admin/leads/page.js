@@ -96,7 +96,7 @@ export default function AdminLeadsPage() {
           <h1 className="font-display text-2xl font-semibold text-navy">Lead pipeline</h1>
           <p className="mt-1 text-sm text-navy/60">Track every enquiry from first contact to conversion, with private notes and follow-up dates.</p>
         </div>
-        <a href="/api/leads/export" className="btn-gold text-xs">Export CSV</a>
+        <div className="flex flex-wrap gap-2"><a href="/api/leads/export" className="btn-navy-outline text-xs">Export leads CSV</a><a href="/api/leads/google-ads-export" className="btn-gold text-xs">Export opted-in ad conversions</a></div>
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-5">
@@ -114,7 +114,7 @@ export default function AdminLeadsPage() {
           <table className="w-full min-w-[1420px] text-left text-sm">
             <thead className="border-b border-silver/70 bg-silver-light text-xs uppercase tracking-wide text-navy/60">
               <tr>
-                <th className="px-4 py-3">Priority / score</th><th className="px-4 py-3">First response</th><th className="px-4 py-3">Name</th><th className="px-4 py-3">Mobile</th><th className="px-4 py-3">Email</th><th className="px-4 py-3">Service</th><th className="px-4 py-3">Source</th><th className="px-4 py-3">Campaign</th><th className="px-4 py-3">Landing page</th><th className="px-4 py-3">Message</th><th className="px-4 py-3">Date</th><th className="px-4 py-3">Enquiry consent</th><th className="px-4 py-3">Consent recorded</th><th className="px-4 py-3">Pipeline & follow-up</th>
+                <th className="px-4 py-3">Priority / score</th><th className="px-4 py-3">First response</th><th className="px-4 py-3">Name</th><th className="px-4 py-3">Mobile</th><th className="px-4 py-3">Email</th><th className="px-4 py-3">Service</th><th className="px-4 py-3">Source</th><th className="px-4 py-3">Campaign</th><th className="px-4 py-3">Landing page</th><th className="px-4 py-3">Message</th><th className="px-4 py-3">Date</th><th className="px-4 py-3">Ad measurement consent</th><th className="px-4 py-3">Enquiry consent</th><th className="px-4 py-3">Consent recorded</th><th className="px-4 py-3">Pipeline & follow-up</th>
               </tr>
             </thead>
             <tbody>
@@ -131,12 +131,13 @@ export default function AdminLeadsPage() {
                   <td className="px-4 py-3 text-navy/70">{lead.landingPage || "—"}</td>
                   <td className="px-4 py-3 text-navy/70">{lead.message || "—"}</td>
                   <td className="px-4 py-3 text-navy/60">{new Date(lead.createdAt).toLocaleDateString("en-IN")}</td>
+                  <td className="px-4 py-3 text-navy/70">{lead.adsMeasurementConsent === true ? "Opted in" : "No opt-in"}</td>
                   <td className="px-4 py-3 text-navy/70">{lead.consent === true ? "Recorded" : "Not captured"}</td>
                   <td className="px-4 py-3 text-navy/60">{lead.consentAt ? new Date(lead.consentAt).toLocaleString("en-IN") : "—"}</td>
                   <td className="px-4 py-3"><LeadPipelineEditor lead={lead} onSaved={updateLead} /></td>
                 </tr>
               ))}
-              {leads.length === 0 && <tr><td colSpan={14} className="px-4 py-6 text-center text-navy/60">No leads found.</td></tr>}
+              {leads.length === 0 && <tr><td colSpan={15} className="px-4 py-6 text-center text-navy/60">No leads found.</td></tr>}
             </tbody>
           </table>
         </div>
