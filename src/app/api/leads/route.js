@@ -84,3 +84,65 @@ export async function GET(req) {
     return NextResponse.json({ error: "Unable to load leads." }, { status: 503 });
   }
 }
+
+
+// Admin only: update a lead's pipeline status and internal follow-up details.
+export async function PATCH(req) {
+  const unauthorized = await requireAdmin(req);
+  if (unauthorized) return unauthorized;
+
+  let body;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Please submit a valid update." }, { status: 400 });
+  }
+
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return NextResponse.json({ error: "Please submit a valid update." }, { status: 400 });
+  }
+
+  const id = cleanText(body.id, 40);
+  if (!/^[a-f\\d]{24}$/i.test(id)) {
+    return NextResponse.json({ error: "Invalid lead reference." }, { status: 400 });
+  }
+
+  const allowedStatuses = ["new", "contacted", "qualified", "converted", "lost"];
+  const update = {};
+  if (Object.prototype.hasOwnProperty.call(body, "status")) {
+    if (!allowedStatuses.includes(body.status)) {
+      return NextResponse.json({ error: "Choose a valid lead status." }, { status: 400 });
+    }
+    update.status = body.status;
+    update.statusUpdatedAt = new Date();
+  }
+  if (Object.prototype.hasOwnProperty.call(body, "internalNote")) {
+    update.internalNote = cleanText(body.internalNote, 1200);
+  }
+  if (Object.prototype.hasOwnProperty.call(body, "followUpAt")) {
+    if (body.followUpAt === null || body.followUpAt === "") {
+      update.followUpAt = null;
+    } else if (typeof body.followUpAt === "string" && /^\\d{4}-\\d{2}-\\d{2}$/.test(body.followUpAt)) {
+      const parsed = new Date(body.followUpAt + "T00:00:00.000Z");
+      if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== body.followUpAt) {
+        return NextResponse.json({ error: "Enter a valid follow-up date." }, { status: 400 });
+      }
+      update.followUpAt = parsed;
+    } else {
+      return NextResponse.json({ error: "Enter a valid follow-up date." }, { status: 400 });
+    }
+  }
+  if (!Object.keys(update).length) {
+    return NextResponse.json({ error: "No changes were provided." }, { status: 400 });
+  }
+
+  try {
+    await connectDB();
+    const lead = await Lead.findByIdAndUpdate(id, { $set: update }, { new: true, runValidators: true }).lean();
+    if (!lead) return NextResponse.json({ error: "Lead not found." }, { status: 404 });
+    return NextResponse.json({ success: true, lead });
+  } catch (error) {
+    console.error("Lead update failed:", error?.message || "Unknown error");
+    return NextResponse.json({ error: "Unable to update this lead." }, { status: 503 });
+  }
+}
