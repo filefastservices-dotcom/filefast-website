@@ -10,6 +10,49 @@ export const metadata = {
   },
 };
 
+const founderSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Gnanavel M",
+  jobTitle: "Founder, FileFast Global",
+  url: "https://www.filefastglobal.com/about",
+  image: "https://www.filefastglobal.com/gnanavel-founder.jpg",
+  sameAs: ["https://www.linkedin.com/in/gnanavelm/"],
+  worksFor: {
+    "@type": "Organization",
+    name: "FileFast Global",
+    url: "https://www.filefastglobal.com",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+};
+
+const founderSnapshot = [
+  ["Role", "Founder, FileFast Global"],
+  ["Established", "2024"],
+  ["Based in", "Chennai, Tamil Nadu, India"],
+  ["Academic focus", "Commerce & Accounting"],
+  ["Professional focus", "Tax compliance, business formalities and digital operations"],
+];
+
+const clientJourney = [
+  ["01", "Understand the requirement", "Clarify the service needed, relevant period, jurisdiction and available documents."],
+  ["02", "Review and confirm scope", "Review the information provided, identify missing details and confirm the applicable work and fee before proceeding."],
+  ["03", "Prepare and coordinate", "Organise the documents, prepare the required filing or application information and coordinate any necessary specialist input."],
+  ["04", "Share progress and next steps", "Keep the client informed about submission status, dependencies, acknowledgements and any follow-up requirements."],
+];
+
+const founderFaqs = [
+  ["What is FileFast Global?", "FileFast Global is a Chennai-based tax and business-compliance support practice founded in 2024 by Gnanavel M."],
+  ["Which areas does FileFast support?", "Its service areas include GST and income-tax filing support, business registrations, TDS and TCS coordination, e-commerce seller compliance and selected cross-border compliance coordination."],
+  ["Does FileFast provide regulated legal, audit or overseas tax advice?", "Regulated advice is handled only by appropriately licensed professionals where required. FileFast can provide administrative support and coordination within the agreed scope."],
+  ["How can I contact the founder?", "Use the official FileFast WhatsApp channel, the LinkedIn profile or the website contact options shown on this page."],
+];
+
 const expertise = [
   ["GST Compliance", "GST registration, periodic returns, reconciliations, notices and compliance support."],
   ["Income Tax", "Individual income-tax return preparation, filing support and tax-document coordination."],
@@ -57,6 +100,7 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="bg-[#f7f8fa] text-[#14243b]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema).replace(/</g, "\\u003c") }} />
       <section className="relative overflow-hidden bg-[#07172d] text-white">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 80% 15%, #d5ad62 0, transparent 32%), radial-gradient(circle at 10% 90%, #31557b 0, transparent 36%)" }} />
         <div className="container-page relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.1fr_.9fr]">
@@ -81,6 +125,24 @@ export default function AboutPage() {
             </div>
             <p className="mt-3 text-center text-xs tracking-wide text-white/55">Founder · FileFast Global</p>
           </div>
+        </div>
+      </section>
+
+      <section className="container-page py-12 sm:py-16">
+        <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#9b7637]">Founder at a glance</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">A clear profile of the person behind FileFast</h2>
+            <p className="mt-4 leading-8 text-slate-600">A concise overview of Gnanavel’s role, business, location and professional focus.</p>
+          </div>
+          <dl className="grid gap-3 sm:grid-cols-2">
+            {founderSnapshot.map(([label, value]) => (
+              <div key={label} className="rounded-xl border border-slate-200 bg-white p-5">
+                <dt className="text-xs font-semibold uppercase tracking-[.16em] text-[#9b7637]">{label}</dt>
+                <dd className="mt-2 text-sm font-medium leading-6 text-slate-800">{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -126,6 +188,23 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="container-page py-14 sm:py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#9b7637]">Client experience</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">A straightforward process, from enquiry to follow-up</h2>
+          <p className="mt-4 leading-7 text-slate-600">Each engagement begins with understanding the requirement and confirming the scope. The steps below describe the intended service approach; exact requirements vary by assignment.</p>
+        </div>
+        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {clientJourney.map(([number, title, body]) => (
+            <article key={number} className="rounded-xl border border-slate-200 bg-white p-5">
+              <p className="text-xs font-bold tracking-[.18em] text-[#a17b3b]">{number}</p>
+              <h3 className="mt-3 font-display text-lg font-semibold">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -230,6 +309,21 @@ export default function AboutPage() {
             <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#9b7637]">Vision</p>
             <h2 className="mt-3 font-display text-3xl font-semibold">Build a trusted global service brand</h2>
             <p className="mt-4 leading-8 text-slate-600">To grow FileFast Global into a trusted digital-first compliance partner for individuals, entrepreneurs and businesses, while building responsible cross-border service capabilities.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page py-14 sm:py-20">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#9b7637]">Frequently asked questions</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">About Gnanavel and FileFast Global</h2>
+          <div className="mt-8 divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white px-6">
+            {founderFaqs.map(([question, answer]) => (
+              <details key={question} className="py-5">
+                <summary className="cursor-pointer list-none pr-6 font-semibold text-slate-800 marker:hidden">{question}</summary>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
