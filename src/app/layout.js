@@ -2,6 +2,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AnalyticsConsent from "@/components/AnalyticsConsent";
+import Script from "next/script";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -142,6 +144,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-body antialiased">
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
+          <>
+            <Script id="filefast-google-consent-default" strategy="beforeInteractive">{`window.dataLayer = window.dataLayer || []; window.gtag = function(){window.dataLayer.push(arguments);}; window.gtag("consent", "default", {analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", wait_for_update: 500});`}</Script>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
+            <Script id="filefast-google-analytics-init" strategy="afterInteractive">{`window.gtag("js", new Date()); window.gtag("config", "${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}", {send_page_view: true});`}</Script>
+            <AnalyticsConsent />
+          </>
+        ) : null}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         <Header />
         <main>{children}</main>
