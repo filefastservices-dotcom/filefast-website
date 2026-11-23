@@ -10,7 +10,8 @@ export default function LeadForm({ defaultService = "" }) {
     email: "",
     serviceInterested: defaultService,
     message: "",
-    consent: false
+    consent: false,
+    adsMeasurementConsent: false
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [submitError, setSubmitError] = useState("");
@@ -48,13 +49,17 @@ export default function LeadForm({ defaultService = "" }) {
         utmCampaign: params.get("utm_campaign") || "",
         utmContent: params.get("utm_content") || "",
         utmTerm: params.get("utm_term") || "",
+        gclid: params.get("gclid") || "",
+        gbraid: params.get("gbraid") || "",
+        wbraid: params.get("wbraid") || "",
+        msclkid: params.get("msclkid") || "",
         landingPage: window.location.pathname,
         referrerHost
       };
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, ...attribution, website: honeypot, source, consent: form.consent })
+        body: JSON.stringify({ ...form, ...attribution, website: honeypot, source, consent: form.consent, adsMeasurementConsent: form.adsMeasurementConsent })
       });
       if (!res.ok) {
         const result = await res.json().catch(() => ({}));
@@ -154,6 +159,7 @@ export default function LeadForm({ defaultService = "" }) {
         className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
       />
       <label className="flex items-start gap-3 text-xs leading-5 text-navy/65"><input type="checkbox" required checked={form.consent} onChange={(e) => update("consent", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-[#b68a36]" /><span>I agree that FileFast Global may use the details I submit to review and respond to this enquiry. This is not consent to unrelated marketing. See the <a className="underline underline-offset-2" href="/privacy-policy">Privacy Policy</a>. Do not send passwords, OTPs or sensitive account credentials.</span></label>
+      <label className="flex items-start gap-3 text-xs leading-5 text-navy/65"><input type="checkbox" checked={form.adsMeasurementConsent} onChange={(e) => update("adsMeasurementConsent", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-[#b68a36]" /><span>Optional: I agree that FileFast may use my email address or phone number in a privacy-protective, hashed form and relevant ad-click identifiers to measure whether advertising leads become qualified customers. This is optional and does not affect my enquiry. I can still request a consultation if I leave this unchecked. See the <a className="underline underline-offset-2" href="/privacy-policy">Privacy Policy</a>.</span></label>
       <button type="submit" disabled={status === "sending"} className="btn-gold w-full sm:w-auto">
         {status === "sending" ? "Sending..." : "Request a consultation"}
       </button>
