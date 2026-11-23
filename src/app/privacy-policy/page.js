@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
       </section>
       <section className="mt-7 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Enquiry consent</h2>
-        <p className="text-sm leading-6 text-navy/75">Before an enquiry form is submitted, you are asked to confirm that FileFast Global may use the details you provide to review and respond to that specific enquiry. The form records the consent status, time and notice version with the enquiry record. This enquiry consent is not permission to send unrelated marketing messages.</p>
+        <p className="text-sm leading-6 text-navy/75">Before an enquiry or appointment form is submitted, you are asked to confirm that FileFast Global may use the details you provide to review and respond to that specific request. The form records the consent status, time and notice version with the request record. This request-specific consent is not permission to send unrelated marketing messages.</p>
       </section>
       <section className="mt-7 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Sharing and security</h2>
