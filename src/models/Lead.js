@@ -15,6 +15,10 @@ const LeadSchema = new mongoose.Schema(
     utmTerm: { type: String, default: "" },
     landingPage: { type: String, default: "" },
     referrerHost: { type: String, default: "" },
+    status: { type: String, enum: ["new", "contacted", "qualified", "converted", "lost"], default: "new", index: true },
+    internalNote: { type: String, default: "" },
+    followUpAt: { type: Date, default: null },
+    statusUpdatedAt: { type: Date, default: null },
     consent: { type: Boolean, default: false },
     consentAt: { type: Date, default: null },
     consentVersion: { type: String, default: "" }
