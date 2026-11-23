@@ -6,13 +6,14 @@ import { getServices, getTestimonials, getBlogPosts } from "@/lib/data";
 import { googleReviewUrl } from "@/lib/googleReviews";
 
 export const metadata = {
-  title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
-  description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
+  title: "GST, ITR & Business Compliance in Chennai & India | FileFast Global",
+  description: "GST returns, IMS and ITC reconciliation, ITR, TDS/TCS, exporter refunds, marketplace compliance and business services from FileFast Global, Chennai.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
-    title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
-    description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
+    title: "GST, ITR & Business Compliance in Chennai & India | FileFast Global",
+    description: "GST returns, IMS and ITC reconciliation, ITR, TDS/TCS, exporter refunds, marketplace compliance and business services from FileFast Global, Chennai.",
   },
+  keywords: ["GST filing Chennai", "GST return filing India", "GST IMS reconciliation", "ITC reconciliation", "income tax return filing", "TDS TCS return filing", "GST refund for exporters", "marketplace GST reconciliation", "UK VAT", "EU VAT OSS IOSS", "UAE VAT"],
   alternates: { canonical: "/" },
 };
 
@@ -49,7 +50,15 @@ const FAQS = [
   },
   {
     q: "What documents do I need to get started?",
-    a: "This varies by service. Reach out on WhatsApp and we'll send you the exact checklist."
+    a: "This varies by service. Reach out on WhatsApp and we can send you the exact checklist."
+  },
+  {
+    q: "Can FileFast help with GST IMS and ITC reconciliation?",
+    a: "FileFast can help organise purchase records, compare available GST portal data and prepare supplier-wise reconciliation exceptions. The taxpayer approves the final ITC treatment."
+  },
+  {
+    q: "Can marketplace payouts be used as the sales figure?",
+    a: "Not without reconciliation. Marketplace payouts may be net of refunds, platform fees, TCS and timing adjustments, so order and invoice records should be reviewed separately."
   }
 ];
 
@@ -128,11 +137,11 @@ export default async function HomePage() {
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {[
-              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, return filing, e-invoicing, e-way bills, ITC reconciliation and eligible refund documentation.", slugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing", "gst-registration-cancellation", "gst-notice-reply", "qrmp-scheme-support", "cmp-08-composition-return", "gstr-4-annual-return", "gstr-10-final-return", "gstr-9-annual-return", "einvoicing-eway-bill-compliance", "gst-refund-export-documentation"], filter: "GST Services" },
+              { name: "GST Services", intro: "For businesses registered or planning to register under GST.", examples: "GST registration, return filing, e-invoicing, e-way bills, ITC reconciliation and eligible refund documentation.", slugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing", "gst-registration-cancellation", "gst-notice-reply", "qrmp-scheme-support", "cmp-08-composition-return", "gstr-4-annual-return", "gstr-10-final-return", "gstr-9-annual-return", "gst-ims-itc-reconciliation", "gst-refund-documentation-support", "gst-einvoice-ewaybill-assistance", "gst-lut-filing"], filter: "GST Services" },
               { name: "Income Tax & TDS", intro: "For individuals, freelancers, professionals and businesses.", examples: "Income Tax Return filing, TDS/TCS returns and income-tax notice response support.", slugs: ["itr-filing", "tds-return-filing", "tcs-return-filing", "income-tax-notice-response"], filter: "Income Tax Services" },
               { name: "Start or Register a Business", intro: "For founders, new businesses and entrepreneurs.", examples: "Company registration and MSME/Udyam registration.", slugs: ["company-registration", "msme-registration"], filter: "Business Registration" },
               { name: "Business Licences", intro: "For businesses that need licences or import-export permissions.", examples: "FSSAI registration and Import Export Code (IEC).", slugs: ["fssai-registration", "iec-registration", "trade-licence-assistance"], filter: "Licenses" },
-              { name: "Online Seller & Marketplace Support", intro: "For sellers joining online marketplaces or managing e-commerce compliance.", examples: "GeM registration and e-commerce tax compliance.", slugs: ["gem-registration", "ecommerce-tax-compliance", "quick-commerce-seller-onboarding"], filter: "Digital Business Services" },
+              { name: "Online Seller & Marketplace Support", intro: "For sellers joining online marketplaces or managing e-commerce compliance.", examples: "GeM registration and e-commerce tax compliance.", slugs: ["gem-registration", "ecommerce-tax-compliance", "quick-commerce-seller-onboarding", "marketplace-settlement-tcs-reconciliation"], filter: "Digital Business Services" },
               { name: "International Tax & VAT", intro: "For businesses operating or selling across borders.", examples: "UK VAT, EU VAT/OSS/IOSS, UAE VAT, US tax coordination and global expansion advisory.", slugs: ["uk-vat-compliance", "eu-vat-oss-ioss", "uae-vat-compliance", "us-tax-sales-tax", "global-expansion-advisory"], filter: "Global Tax & VAT" },
               { name: "Other Tax & Compliance Support", intro: "For businesses that need help understanding ongoing compliance requirements.", examples: "General compliance, ROC/MCA annual filings and employer statutory compliance coordination.", slugs: ["compliance-services", "roc-annual-compliance", "epf-esi-payroll-compliance"], filter: "Compliance Services" },
               { name: "Accounting & Bookkeeping", intro: "For businesses that need organised books and financial records.", examples: "Bookkeeping, payroll coordination, Virtual CFO, monthly MIS and cash-flow reporting.", slugs: ["accounting-bookkeeping", "payroll-compliance", "virtual-cfo-mis-reporting"], filter: "Accounting Services" },
