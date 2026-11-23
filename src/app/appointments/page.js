@@ -10,7 +10,8 @@ export default function AppointmentBookingPage() {
     serviceRequired: "",
     preferredDate: "",
     preferredTime: "",
-    notes: ""
+    notes: "",
+    consent: false
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const appointmentMessage = encodeURIComponent(
@@ -41,9 +42,9 @@ export default function AppointmentBookingPage() {
     return (
       <section className="container-page py-14 sm:py-20">
         <div className="mx-auto max-w-2xl rounded-sm border border-gold/40 bg-gold/10 p-8 text-center">
-          <p className="font-display text-lg font-semibold text-navy">Appointment Booked!</p>
+          <p className="font-display text-lg font-semibold text-navy">Appointment request received</p>
           <p className="mt-2 text-sm text-navy/70">
-            Thank you! We've received your appointment request. For the fastest confirmation, send the same details to our team directly.
+            Thank you! Your preferred date and time have been received. We will confirm availability before the appointment is booked.
           </p>
           <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
             <a className="btn-gold" href={`https://wa.me/919444614182?text=${appointmentMessage}`}>Confirm on WhatsApp</a>
@@ -111,7 +112,7 @@ export default function AppointmentBookingPage() {
             <input
               required
               type="date"
-              min={new Date().toISOString().slice(0, 10)}
+              min={new Date(Date.now() + 330 * 60 * 1000).toISOString().slice(0, 10)}
               value={form.preferredDate}
               onChange={(e) => update("preferredDate", e.target.value)}
               className="rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
@@ -133,6 +134,8 @@ export default function AppointmentBookingPage() {
             onChange={(e) => update("notes", e.target.value)}
             className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
           />
+
+          <label className="flex items-start gap-3 text-xs leading-5 text-navy/65"><input type="checkbox" required checked={form.consent} onChange={(e) => update("consent", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-[#b68a36]" /><span>I agree that FileFast Global may use the details I submit to review and respond to this appointment request. This is not consent to unrelated marketing. See the <a className="underline underline-offset-2" href="/privacy-policy">Privacy Policy</a>. Do not include passwords, OTPs or sensitive account credentials.</span></label>
 
           <button type="submit" disabled={status === "sending"} className="btn-gold w-full">
             {status === "sending" ? "Sending..." : "Request appointment"}

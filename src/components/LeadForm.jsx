@@ -8,7 +8,8 @@ export default function LeadForm({ defaultService = "" }) {
     mobile: "",
     email: "",
     serviceInterested: defaultService,
-    message: ""
+    message: "",
+    consent: false
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [submitError, setSubmitError] = useState("");
@@ -52,7 +53,7 @@ export default function LeadForm({ defaultService = "" }) {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, ...attribution, website: honeypot, source })
+        body: JSON.stringify({ ...form, ...attribution, website: honeypot, source, consent: form.consent })
       });
       if (!res.ok) {
         const result = await res.json().catch(() => ({}));
@@ -110,8 +111,7 @@ export default function LeadForm({ defaultService = "" }) {
       </div>
       <input
         type="email"
-        required
-        placeholder="Email Address"
+        placeholder="Email Address (optional)"
         aria-label="Email address (optional)"
         autoComplete="email"
         value={form.email}
@@ -120,7 +120,6 @@ export default function LeadForm({ defaultService = "" }) {
       />
       <select
         aria-label="Service you need"
-        required
         value={form.serviceInterested}
         onChange={(e) => update("serviceInterested", e.target.value)}
         className="w-full rounded-sm border border-silver-dark/40 bg-white px-4 py-3 text-sm focus:border-gold focus:outline-none"
@@ -152,7 +151,7 @@ export default function LeadForm({ defaultService = "" }) {
         onChange={(e) => update("message", e.target.value)}
         className="w-full rounded-sm border border-silver-dark/40 px-4 py-3 text-sm focus:border-gold focus:outline-none"
       />
-      <p className="text-xs leading-5 text-navy/60">By submitting, you agree that FileFast may use these details to respond to your enquiry. Please do not send passwords, OTPs or sensitive account credentials. See our <a className="underline underline-offset-2" href="/privacy-policy">Privacy Policy</a>.</p>
+      <label className="flex items-start gap-3 text-xs leading-5 text-navy/65"><input type="checkbox" required checked={form.consent} onChange={(e) => update("consent", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-[#b68a36]" /><span>I agree that FileFast Global may use the details I submit to review and respond to this enquiry. This is not consent to unrelated marketing. See the <a className="underline underline-offset-2" href="/privacy-policy">Privacy Policy</a>. Do not send passwords, OTPs or sensitive account credentials.</span></label>
       <button type="submit" disabled={status === "sending"} className="btn-gold w-full sm:w-auto">
         {status === "sending" ? "Sending..." : "Request a consultation"}
       </button>

@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Privacy Policy",
-  description: "Learn how FileFast Global uses information submitted through its website enquiry forms.",
+  description: "Learn how FileFast Global uses information submitted through its website enquiry and appointment forms.",
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
     url: "https://www.filefastglobal.com/privacy-policy",
@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
     <article className="container-page max-w-3xl py-14 sm:py-20">
       <p className="eyebrow">Privacy</p>
       <h1 className="mt-2 font-display text-4xl font-semibold text-navy">Privacy Policy</h1>
-      <p className="mt-2 text-xs text-navy/50">Last updated: October 14, 2026</p>
+      <p className="mt-2 text-xs text-navy/50">Last updated: November 23, 2026</p>
       <p className="mt-4 text-sm leading-6 text-navy/70">This page explains how FileFast Global handles information you submit through this website. It is a practical summary for website enquiries and does not replace any separate engagement terms that may apply when you become a client.</p>
       <section className="mt-10 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Information you provide</h2>
@@ -23,6 +23,10 @@ export default function PrivacyPolicyPage() {
       <section className="mt-7 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">How we use it</h2>
         <p className="text-sm leading-6 text-navy/75">We use enquiry details to understand your request, contact you, explain possible next steps and provide requested tax or compliance services. Service providers may help operate the website or store enquiry records.</p>
+      </section>
+      <section className="mt-7 space-y-3">
+        <h2 className="font-display text-xl font-semibold text-navy">Enquiry consent</h2>
+        <p className="text-sm leading-6 text-navy/75">Before an enquiry or appointment form is submitted, you are asked to confirm that FileFast Global may use the details you provide to review and respond to that specific request. The form records the consent status, time and notice version with the request record. This request-specific consent is not permission to send unrelated marketing messages.</p>
       </section>
       <section className="mt-7 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Sharing and security</h2>

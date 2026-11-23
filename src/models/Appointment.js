@@ -9,6 +9,9 @@ const AppointmentSchema = new mongoose.Schema(
     preferredDate: { type: Date, required: true },
     preferredTime: { type: String, default: "" },
     notes: { type: String, default: "" },
+    consent: { type: Boolean, default: false },
+    consentAt: { type: Date, default: null },
+    consentVersion: { type: String, default: "" },
     status: {
       type: String,
       enum: ["pending", "confirmed", "completed", "cancelled"],

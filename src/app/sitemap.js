@@ -21,6 +21,7 @@ export default async function sitemap() {
     "/testimonials",
     "/blog",
     "/contact",
+    "/appointments",
     "/global",
     "/global-tax-quote",
     "/privacy-policy"

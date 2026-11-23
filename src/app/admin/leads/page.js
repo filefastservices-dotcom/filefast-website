@@ -69,6 +69,8 @@ export default function AdminLeadsPage() {
                 <th className="px-4 py-3">Landing page</th>
                 <th className="px-4 py-3">Message</th>
                 <th className="px-4 py-3">Date</th>
+                <th className="px-4 py-3">Enquiry consent</th>
+                <th className="px-4 py-3">Consent recorded</th>
               </tr>
             </thead>
             <tbody>
@@ -87,11 +89,13 @@ export default function AdminLeadsPage() {
                   <td className="px-4 py-3 text-navy/60">
                     {new Date(l.createdAt).toLocaleDateString("en-IN")}
                   </td>
+                  <td className="px-4 py-3 text-navy/70">{l.consent === true ? "Recorded" : "Not captured"}</td>
+                  <td className="px-4 py-3 text-navy/60">{l.consentAt ? new Date(l.consentAt).toLocaleString("en-IN") : "—"}</td>
                 </tr>
               ))}
               {leads.length === 0 && (
                 <tr>
-                  <td colSpan={9} className="px-4 py-6 text-center text-navy/60">
+                  <td colSpan={11} className="px-4 py-6 text-center text-navy/60">
                     No leads found.
                   </td>
                 </tr>
