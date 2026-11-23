@@ -45,11 +45,12 @@ export async function POST(req) {
 
   if (name.length < 2) return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
   if (mobileDigits.length < 7 || mobileDigits.length > 15) return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
+  if (body?.consent !== true) return NextResponse.json({ error: "Please confirm that FileFast may use your details to respond to this enquiry." }, { status: 400 });
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Please enter a valid email address or leave it blank." }, { status: 400 });
 
   try {
     await connectDB();
-    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, landingPage, referrerHost });
+    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, landingPage, referrerHost, consent: true, consentAt: new Date(), consentVersion: "2026-11-23-v1" });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error?.message || "Unknown error");
