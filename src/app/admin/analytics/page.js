@@ -105,6 +105,7 @@ export default function AdminAnalyticsPage() {
             <Breakdown title="Enquiries by source" rows={data.bySource} />
             <Breakdown title="Enquiries by campaign" rows={data.byCampaign || []} empty="Campaign-tagged enquiries will appear here." />
             <Breakdown title="Top landing pages" rows={data.byLandingPage || []} empty="Landing-page attribution will appear here." />
+            <Breakdown title="Lead pipeline status" rows={data.byStatus || []} empty="Lead statuses will appear here after the team updates enquiries." />
             <section className="rounded-sm border border-silver/70 bg-white p-5">
               <h2 className="font-semibold text-navy">Next steps</h2>
               <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which services, campaigns and landing pages generate enquiries. Use consistent UTM tags on advertising links. Qualified-lead and paid-client conversion tracking can be added after the team records those outcomes.</p>
