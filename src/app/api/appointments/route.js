@@ -53,7 +53,7 @@ export async function POST(req) {
   if (!emailIsValid) return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
   if (phoneDigits.length < 7 || phoneDigits.length > 15) return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
   if (!serviceRequired) return NextResponse.json({ error: "Please select the service you need." }, { status: 400 });
-  if (!dateIsValid || preferredDate < todayInIndia) return NextResponse.json({ error: "Please choose a valid future date." }, { status: 400 });
+  if (!dateIsValid || preferredDate < todayInIndia) return NextResponse.json({ error: "Please choose today or a future date." }, { status: 400 });
   if (preferredTime && !/^([01]\d|2[0-3]):[0-5]\d$/.test(preferredTime)) return NextResponse.json({ error: "Please choose a valid preferred time." }, { status: 400 });
   if (body.consent !== true) return NextResponse.json({ error: "Please confirm that FileFast may use your details to respond to this request." }, { status: 400 });
 
