@@ -14,7 +14,7 @@ const starterStart = starterFile.indexOf("const starterBlogPostsBase = [");
 const starterEnd = starterFile.indexOf("\n];", starterStart);
 if (starterStart < 0 || starterEnd < 0) throw new Error("Starter blog catalogue could not be read");
 const starterSource = starterFile.slice(starterStart, starterEnd);
-const starterSlugs = [...starterSource.matchAll(/"slug":\\s*"([^"]+)"/g)].map((match) => match[1]);
+const starterSlugs = [...starterSource.matchAll(/"slug":\s*"([^"]+)"/g)].map((match) => match[1]);
 const editorialPosts = [...expansion, ...phaseTwo];
 const allSlugs = [...starterSlugs, ...editorialPosts.map((post) => post.slug)];
 const failures = [];
