@@ -103,7 +103,7 @@ export async function PATCH(req) {
   }
 
   const id = cleanText(body.id, 40);
-  if (!/^[a-f\\d]{24}$/i.test(id)) {
+  if (!/^[a-f\d]{24}$/i.test(id)) {
     return NextResponse.json({ error: "Invalid lead reference." }, { status: 400 });
   }
 
@@ -122,7 +122,7 @@ export async function PATCH(req) {
   if (Object.prototype.hasOwnProperty.call(body, "followUpAt")) {
     if (body.followUpAt === null || body.followUpAt === "") {
       update.followUpAt = null;
-    } else if (typeof body.followUpAt === "string" && /^\\d{4}-\\d{2}-\\d{2}$/.test(body.followUpAt)) {
+    } else if (typeof body.followUpAt === "string" && /^\d{4}-\d{2}-\d{2}$/.test(body.followUpAt)) {
       const parsed = new Date(body.followUpAt + "T00:00:00.000Z");
       if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== body.followUpAt) {
         return NextResponse.json({ error: "Enter a valid follow-up date." }, { status: 400 });
