@@ -19,8 +19,8 @@ for (const [file, tokens] of checks) {
   }
 }
 const leadForm = read("src/components/LeadForm.jsx");
-const emailInput = leadForm.match(/<input\s+type="email"[\s\\S]*?\/>/);
-const serviceSelect = leadForm.match(/<select\s+aria-label="Service you need"[\s\\S]*?<\/select>/);
+const emailInput = leadForm.match(/<input\s+type="email"[\s\S]*?\/>/);
+const serviceSelect = leadForm.match(/<select\s+aria-label="Service you need"[\s\S]*?<\/select>/);
 if (!emailInput || /\brequired\b/.test(emailInput[0])) {
   failures.push("Standard enquiry email field should remain optional.");
 }
