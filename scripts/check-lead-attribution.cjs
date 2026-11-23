@@ -39,7 +39,8 @@ for (const [file, content, tokens] of [
   ["appointment page", appointmentPage, ["required checked={form.consent}", "Appointment request received", "Privacy Policy"]],
   ["appointment API", appointmentRoute, ["body.consent !== true", "clientPhone", "emailIsValid", "dateIsValid", "consentAt: new Date()", "consentVersion", "appointmentId"]],
   ["appointment model", appointmentModel, ["consent", "consentAt", "consentVersion"]],
-  ["sitemap", read("src/app/sitemap.js"), ["/appointments"]]
+  ["sitemap", read("src/app/sitemap.js"), ["/appointments"]],
+  ["appointment metadata", read("src/app/appointments/layout.js"), ["Book a Consultation", "canonical: "/appointments""]]
 ]) {
   for (const token of tokens) {
     if (!content.includes(token)) failures.push(file + " is missing expected safeguard: " + token);
