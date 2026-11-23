@@ -47,6 +47,7 @@ for (const [file, content, tokens] of [
     if (!content.includes(token)) failures.push(file + " is missing expected safeguard: " + token);
   }
 }
+const leadRoute = read("src/app/api/leads/route.js");
 const leadModel = read("src/models/Lead.js");
 for (const token of ['status: { type: String', 'internalNote:', 'followUpAt:', 'statusUpdatedAt:']) {
   if (!leadModel.includes(token)) failures.push("Lead model is missing pipeline field: " + token);
