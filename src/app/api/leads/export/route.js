@@ -10,11 +10,11 @@ function csvCell(value) {
 }
 
 function toCSV(leads) {
-  const headers = ["Name", "Mobile", "Email", "Service Interested", "Message", "Source", "UTM Source", "UTM Medium", "UTM Campaign", "UTM Content", "UTM Term", "Landing Page", "Referrer Host", "Date", "Enquiry Consent", "Consent Recorded At", "Consent Notice Version"];
+  const headers = ["Name", "Mobile", "Email", "Service Interested", "Message", "Source", "UTM Source", "UTM Medium", "UTM Campaign", "UTM Content", "UTM Term", "Landing Page", "Referrer Host", "Date", "Enquiry Consent", "Consent Recorded At", "Consent Notice Version", "Lead Status", "Follow-up Date", "Internal Note"];
   const rows = leads.map((l) => [
     l.name, l.mobile, l.email, l.serviceInterested, l.message, l.source,
     l.utmSource, l.utmMedium, l.utmCampaign, l.utmContent, l.utmTerm,
-    l.landingPage, l.referrerHost, new Date(l.createdAt).toLocaleString("en-IN"), l.consent === true ? "Recorded" : "Not captured", l.consentAt ? new Date(l.consentAt).toLocaleString("en-IN") : "", l.consentVersion
+    l.landingPage, l.referrerHost, new Date(l.createdAt).toLocaleString("en-IN"), l.consent === true ? "Recorded" : "Not captured", l.consentAt ? new Date(l.consentAt).toLocaleString("en-IN") : "", l.consentVersion, l.status || "new", l.followUpAt ? new Date(l.followUpAt).toLocaleDateString("en-IN") : "", l.internalNote
   ]);
   return [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
 }
