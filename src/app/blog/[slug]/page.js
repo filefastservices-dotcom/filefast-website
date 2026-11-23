@@ -107,7 +107,7 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const urlPattern = /(https:\/\/(?:www\\.)?(?:gst\\.gov\\.in|cbic-gst\\.gov\\.in|incometax\\.gov\\.in|mca\\.gov\\.in|dgft\\.gov\\.in|fssai\\.gov\\.in|udyamregistration\\.gov\\.in|services\\.gst\\.gov\\.in|www\\.gov\\.uk|www\\.gov\\.au|europa\\.eu|taxation-customs\\.ec\\.europa\\.eu|irs\\.gov|tax\\.gov\\.ae)(?:[^\\s)]+)?)/gi;
+  const urlPattern = /(https:\/\/(?:www\.)?(?:gst\.gov\.in|cbic-gst\.gov\.in|incometax\.gov\.in|mca\.gov\.in|dgft\.gov\.in|fssai\.gov\.in|udyamregistration\.gov\.in|services\.gst\.gov\.in|www\.gov\.uk|www\.gov\.au|europa\.eu|taxation-customs\.ec\.europa\.eu|irs\.gov|tax\.gov\.ae)(?:[^\\s)]+)?)/gi;
   const urlParts = text.split(urlPattern);
   return urlParts.map((part, urlIndex) => {
     if (/^https:\/\//i.test(part)) {
