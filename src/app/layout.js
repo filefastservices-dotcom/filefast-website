@@ -132,6 +132,8 @@ export const metadata = {
     images: ["/og-image.png"],
   },
 
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } } : {}),
+
   robots: {
     index: true,
     follow: true,
