@@ -114,3 +114,17 @@ if (failures.length) {
   process.exit(1);
 }
 console.log("Lead attribution checks passed.");
+
+const analyticsSource = read("src/app/api/admin/analytics/route.js");
+for (const token of ['import Payment from "@/models/Payment"', 'status: "success"', 'revenueByService', 'revenueMonthly', 'successfulPayments']) {
+  if (!analyticsSource.includes(token)) failures.push("Payment/revenue analytics missing: " + token);
+}
+const analyticsUI = read("src/app/admin/analytics/page.js");
+for (const token of ["Recorded revenue", "Revenue by service", "Monthly recorded revenue", "successful payment records"]) {
+  if (!analyticsUI.includes(token)) failures.push("Revenue analytics UI missing: " + token);
+}
+const commandCentre = read("src/app/admin/command-centre/page.js");
+for (const token of ["Marketing & sales command centre", "Campaign enquiry performance", "Revenue by service", "Campaign ROI is not calculated"]) {
+  if (!commandCentre.includes(token)) failures.push("Command centre missing feature or metric limitation: " + token);
+}
+if (!read("src/app/admin/layout.js").includes('href:"/admin/command-centre"')) failures.push("Admin navigation is missing the command centre.");
