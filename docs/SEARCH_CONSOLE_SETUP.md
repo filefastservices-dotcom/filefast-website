@@ -15,7 +15,8 @@ This integration is read-only. It requests the Search Console `webmasters.readon
 3. Configure the OAuth consent screen and add the Search Console account as an allowed user if the app is in testing.
 4. Create an OAuth 2.0 Client ID. A desktop or web client can be used with a controlled OAuth authorization flow.
 5. Authorize the read-only scope: `https://www.googleapis.com/auth/webmasters.readonly`.
-6. Request offline access and retain the refresh token securely. Google documents that refresh tokens can be revoked or expire; an External app left in Testing can issue refresh tokens that expire after seven days. Do not leave a production integration dependent on a short-lived testing token.
+6. Request offline access and retain the refresh token securely. Google documents that External OAuth apps left in Testing issue refresh tokens that expire after seven days. Move the integration to the appropriate production/published OAuth status and complete any required verification before relying on unattended access. Refresh tokens can also be revoked or expire for other reasons.
+7. Do not leave a production integration dependent on a short-lived testing token.
 
 Google OAuth documentation: https://developers.google.com/identity/protocols/oauth2
 
