@@ -42,7 +42,7 @@ export default function GlobalTaxEnquiryForm() {
       const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: details.name, mobile: details.mobile, email: details.email, serviceInterested: "Global Tax & VAT Enquiry", message, source: "global-tax-quote-calculator" })
+        body: JSON.stringify({ name: details.name, mobile: details.mobile, email: details.email, serviceInterested: "Global Tax & VAT Enquiry", message, source: "global-tax-quote-calculator", consent: details.consent })
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || "We could not submit your enquiry.");
