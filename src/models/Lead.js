@@ -14,7 +14,10 @@ const LeadSchema = new mongoose.Schema(
     utmContent: { type: String, default: "" },
     utmTerm: { type: String, default: "" },
     landingPage: { type: String, default: "" },
-    referrerHost: { type: String, default: "" }
+    referrerHost: { type: String, default: "" },
+    consent: { type: Boolean, default: false },
+    consentAt: { type: Date, default: null },
+    consentVersion: { type: String, default: "" }
   },
   { timestamps: true }
 );
