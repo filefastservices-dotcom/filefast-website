@@ -10,11 +10,11 @@ function csvCell(value) {
 }
 
 function toCSV(leads) {
-  const headers = ["Name", "Mobile", "Email", "Service Interested", "Message", "Source", "UTM Source", "UTM Medium", "UTM Campaign", "UTM Content", "UTM Term", "Landing Page", "Referrer Host", "Date", "Enquiry Consent", "Consent Recorded At", "Consent Notice Version", "Lead Status", "Follow-up Date", "Internal Note", "Lead Score", "Lead Priority", "First Response At"];
+  const headers = ["Name", "Mobile", "Email", "Service Interested", "Message", "Source", "UTM Source", "UTM Medium", "UTM Campaign", "UTM Content", "UTM Term", "Landing Page", "Referrer Host", "Date", "Enquiry Consent", "Consent Recorded At", "Consent Notice Version", "Lead Status", "Follow-up Date", "Internal Note", "Lead Score", "Lead Priority", "First Response At", "Google Click ID", "Google Braid ID", "Google Web Braid ID", "Microsoft Click ID", "Ad Measurement Consent", "Ad Measurement Consent At"];
   const rows = leads.map((l) => [
     l.name, l.mobile, l.email, l.serviceInterested, l.message, l.source,
     l.utmSource, l.utmMedium, l.utmCampaign, l.utmContent, l.utmTerm,
-    l.landingPage, l.referrerHost, new Date(l.createdAt).toLocaleString("en-IN"), l.consent === true ? "Recorded" : "Not captured", l.consentAt ? new Date(l.consentAt).toLocaleString("en-IN") : "", l.consentVersion, l.status || "new", l.followUpAt ? new Date(l.followUpAt).toLocaleDateString("en-IN") : "", l.internalNote, l.leadScore || 0, l.leadPriority || "standard", l.firstResponseAt ? new Date(l.firstResponseAt).toLocaleString("en-IN") : ""
+    l.landingPage, l.referrerHost, new Date(l.createdAt).toLocaleString("en-IN"), l.consent === true ? "Recorded" : "Not captured", l.consentAt ? new Date(l.consentAt).toLocaleString("en-IN") : "", l.consentVersion, l.status || "new", l.followUpAt ? new Date(l.followUpAt).toLocaleDateString("en-IN") : "", l.internalNote, l.leadScore || 0, l.leadPriority || "standard", l.firstResponseAt ? new Date(l.firstResponseAt).toLocaleString("en-IN") : "", l.gclid, l.gbraid, l.wbraid, l.msclkid, l.adsMeasurementConsent === true ? "Opted in" : "No opt-in", l.adsMeasurementConsentAt ? new Date(l.adsMeasurementConsentAt).toLocaleString("en-IN") : ""
   ]);
   return [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
 }
