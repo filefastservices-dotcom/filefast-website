@@ -4,14 +4,14 @@ function readEditorial(path, exportName) {
   const file = fs.readFileSync(path, "utf8");
   const start = file.indexOf("=");
   if (start < 0) throw new Error(exportName + " export is missing an assignment");
-  return JSON.parse(file.slice(start + 1).trim().replace(/;\\s*$/, ""));
+  return JSON.parse(file.slice(start + 1).trim().replace(/;\s*$/, ""));
 }
 
 const expansion = readEditorial("src/lib/seoEditorialExpansion.js", "seoEditorialExpansion");
 const phaseTwo = readEditorial("src/lib/phaseTwoEditorialPosts.js", "phaseTwoEditorialPosts");
 const starterFile = fs.readFileSync("src/lib/starterContent.js", "utf8");
 const starterStart = starterFile.indexOf("const starterBlogPostsBase = [");
-const starterEnd = starterFile.indexOf("\\n];", starterStart);
+const starterEnd = starterFile.indexOf("\n];", starterStart);
 if (starterStart < 0 || starterEnd < 0) throw new Error("Starter blog catalogue could not be read");
 const starter = JSON.parse(starterFile.slice(starterFile.indexOf("[", starterStart), starterEnd + 2));
 const posts = [...starter, ...expansion, ...phaseTwo];
