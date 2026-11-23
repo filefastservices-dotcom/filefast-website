@@ -19,7 +19,7 @@ export async function GET(req) {
     sixMonthsAgo.setMonth(now.getMonth() - 5, 1);
     sixMonthsAgo.setHours(0, 0, 0, 0);
 
-    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, byCampaign, byLandingPage, blogStats] = await Promise.all([
+    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, byCampaign, byLandingPage, byStatus, blogStats] = await Promise.all([
       Lead.countDocuments({}),
       Lead.countDocuments({ createdAt: { $gte: thirtyDaysAgo } }),
       Lead.countDocuments({ createdAt: { $gte: ninetyDaysAgo } }),
@@ -50,6 +50,10 @@ export async function GET(req) {
         { $sort: { count: -1 } },
         { $limit: 10 }
       ]),
+      Lead.aggregate([
+        { $group: { _id: { $ifNull: ["$status", "new"] }, count: { $sum: 1 } } },
+        { $sort: { count: -1 } }
+      ]),
       Blog.aggregate([
         { $group: { _id: null, total: { $sum: 1 }, published: { $sum: { $cond: ["$isPublished", 1, 0] } } } }
       ])
@@ -63,6 +67,7 @@ export async function GET(req) {
       bySource: bySource.map((item) => ({ label: item._id || "website", count: item.count })),
       byCampaign: byCampaign.map((item) => ({ label: item._id, count: item.count })),
       byLandingPage: byLandingPage.map((item) => ({ label: item._id, count: item.count })),
+      byStatus: byStatus.map((item) => ({ label: item._id, count: item.count })),
       blogs: blogStats[0] || { total: 0, published: 0 }
     });
   } catch (error) {
