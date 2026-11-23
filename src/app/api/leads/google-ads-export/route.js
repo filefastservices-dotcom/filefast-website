@@ -9,6 +9,12 @@ function hash(value) {
   return normalized ? createHash("sha256").update(normalized, "utf8").digest("hex") : "";
 }
 
+function hashE164Phone(value) {
+  const raw = String(value || "").trim();
+  if (!/^\\+[1-9]\\d{7,14}$/.test(raw)) return "";
+  return createHash("sha256").update(raw, "utf8").digest("hex");
+}
+
 function cell(value) {
   let text = String(value ?? "").replace(/[\r\n]/g, " ");
   if (/^[\t ]*[=+@-]/.test(text)) text = "'" + text;
@@ -35,7 +41,7 @@ export async function GET(req) {
       lead.status === "converted" ? "Converted Lead" : "Qualified Lead",
       new Date(lead.statusUpdatedAt).toISOString().replace("T", " ").replace("Z", "+00:00"),
       "", "INR", String(lead._id), lead.gclid || "", lead.gbraid || "", lead.wbraid || "",
-      hash(lead.email), hash(lead.mobile), lead.status, lead.serviceInterested || ""
+      hash(lead.email), hashE164Phone(lead.mobile), lead.status, lead.serviceInterested || ""
     ]);
     const csv = [headers, ...rows].map((row) => row.map(cell).join(",")).join("\n");
     return new NextResponse(csv, {
