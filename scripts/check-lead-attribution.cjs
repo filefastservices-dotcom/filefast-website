@@ -79,8 +79,8 @@ for (const token of ["analytics_storage: granted ? \"granted\" : \"denied\"", "w
   if (!analyticsConsent.includes(token)) failures.push("Analytics consent component is missing safeguard or event: " + token);
 }
 const rootLayout = read("src/app/layout.js");
-for (const token of ["NEXT_PUBLIC_GA_MEASUREMENT_ID", "filefast-google-consent-default", "ad_storage: \"denied\"", "AnalyticsConsent"]) {
-  if (!rootLayout.includes(token)) failures.push("Root layout is missing analytics consent setup: " + token);
+for (const token of ["NEXT_PUBLIC_GA_MEASUREMENT_ID", "filefast-google-consent-default", "ad_storage: \"denied\"", "AnalyticsConsent", "NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"]) {
+  if (!rootLayout.includes(token)) failures.push("Root layout is missing analytics or Search Console configuration: " + token);
 }
 const privacyPolicy = read("src/app/privacy-policy/page.js");
 if (!privacyPolicy.includes("Optional website analytics") || !privacyPolicy.includes("not required to submit an enquiry")) {
