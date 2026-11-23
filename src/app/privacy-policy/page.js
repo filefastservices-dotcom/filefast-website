@@ -29,6 +29,10 @@ export default function PrivacyPolicyPage() {
         <p className="text-sm leading-6 text-navy/75">Before an enquiry or appointment form is submitted, you are asked to confirm that FileFast Global may use the details you provide to review and respond to that specific request. The form records the consent status, time and notice version with the request record. This request-specific consent is not permission to send unrelated marketing messages.</p>
       </section>
       <section className="mt-7 space-y-3">
+        <h2 className="font-display text-xl font-semibold text-navy">Optional website analytics</h2>
+        <p className="text-sm leading-6 text-navy/75">If Google Analytics is configured, it is used only after you choose to accept analytics in the website privacy banner. If you reject analytics, the analytics storage setting remains denied. Analytics is not required to submit an enquiry or receive a response. You can clear your browser's site data to see the choice prompt again. Analytics events do not include your name, phone number, email address or enquiry message.</p>
+      </section>
+      <section className="mt-7 space-y-3">
         <h2 className="font-display text-xl font-semibold text-navy">Sharing and security</h2>
         <p className="text-sm leading-6 text-navy/75">We do not ask for passwords or one-time passcodes through this website. Please do not submit them in a form. Access to enquiry information should be limited to people who need it to respond to your request. No internet transmission or storage method can be guaranteed to be completely secure.</p>
       </section>
