@@ -69,7 +69,16 @@ const INTERNAL_LINKS = [
   { phrase: "GST refund documentation", href: "/services/gst-refund-documentation-support" },
   { phrase: "GST refund for exporters", href: "/blog/gst-refund-exporters-documentation-checklist" },
   { phrase: "marketplace settlement and TCS reconciliation", href: "/services/marketplace-settlement-tcs-reconciliation" },
-  { phrase: "marketplace settlement reconciliation guide", href: "/blog/marketplace-settlement-gst-tcs-reconciliation-online-sellers" }
+  { phrase: "marketplace settlement reconciliation guide", href: "/blog/marketplace-settlement-gst-tcs-reconciliation-online-sellers" },
+  { phrase: "GSTR-10 final return format", href: "/blog/gstr-10-final-return-format-filing-due-date-checklist" },
+  { phrase: "GSTR-10 due date", href: "/services/gstr-10-final-return" },
+  { phrase: "change GST returns from monthly to quarterly", href: "/blog/gst-qrmp-scheme-change-monthly-quarterly-returns-guide" },
+  { phrase: "QRMP scheme support", href: "/services/qrmp-scheme-support" },
+  { phrase: "UK company registration from India", href: "/services/uk-company-registration-from-india" },
+  { phrase: "register a UK company from India", href: "/blog/uk-company-registration-from-india-guide-indian-founders" },
+  { phrase: "TikTok Shop settlement report reconciliation", href: "/blog/tiktok-shop-settlement-report-reconciliation-guide" },
+  { phrase: "TikTok Shop payout reconciliation", href: "/services/tiktok-shop-settlement-reconciliation" },
+  { phrase: "month-end reporting for small businesses", href: "/services/accounting-bookkeeping" }
 ];
 
 function toValidIsoDate(value) {
@@ -79,7 +88,7 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements|GST IMS and ITC reconciliation|Invoice Management System|GST refund documentation|GST refund for exporters|marketplace settlement and TCS reconciliation|marketplace settlement reconciliation guide)/gi;
+  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements|GST IMS and ITC reconciliation|Invoice Management System|GST refund documentation|GST refund for exporters|marketplace settlement and TCS reconciliation|marketplace settlement reconciliation guide|GSTR-10 final return format|GSTR-10 due date|change GST returns from monthly to quarterly|QRMP scheme support|UK company registration from India|register a UK company from India|TikTok Shop settlement report reconciliation|TikTok Shop payout reconciliation|month-end reporting for small businesses)/gi;
   return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
