@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Privacy Policy",
-  description: "Learn how FileFast Global uses information submitted through its website enquiry forms.",
+  description: "Learn how FileFast Global uses information submitted through its website enquiry and appointment forms.",
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
     url: "https://www.filefastglobal.com/privacy-policy",
