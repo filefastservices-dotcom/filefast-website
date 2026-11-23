@@ -30,11 +30,13 @@ export function trackLeadGenerated(service) {
 
 export default function AnalyticsConsent() {
   const [visible, setVisible] = useState(false);
+  const [hasChoice, setHasChoice] = useState(false);
 
   useEffect(() => {
     try {
       const choice = window.localStorage.getItem(CONSENT_KEY);
       updateGoogleConsent(choice === "accepted");
+      setHasChoice(Boolean(choice));
       if (!choice) setVisible(true);
     } catch {
       setVisible(true);
@@ -49,10 +51,15 @@ export default function AnalyticsConsent() {
       granted = false;
     }
     updateGoogleConsent(granted);
+    setHasChoice(true);
     setVisible(false);
   }
 
-  if (!visible) return null;
+  if (!visible) {
+    return hasChoice ? (
+      <button type="button" onClick={() => setVisible(true)} className="fixed bottom-3 left-3 z-[90] rounded-full border border-silver-dark/40 bg-white px-3 py-2 text-[11px] font-semibold text-navy shadow-lg">Privacy settings</button>
+    ) : null;
+  }
 
   return (
     <aside aria-label="Analytics preferences" className="fixed inset-x-3 bottom-3 z-[100] mx-auto max-w-3xl rounded-lg border border-silver-dark/30 bg-white p-4 shadow-2xl sm:inset-x-6 sm:bottom-5 sm:p-5">
