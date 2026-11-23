@@ -47,6 +47,27 @@ for (const [file, content, tokens] of [
     if (!content.includes(token)) failures.push(file + " is missing expected safeguard: " + token);
   }
 }
+const leadModel = read("src/models/Lead.js");
+for (const token of ['status: { type: String', 'internalNote:', 'followUpAt:', 'statusUpdatedAt:']) {
+  if (!leadModel.includes(token)) failures.push("Lead model is missing pipeline field: " + token);
+}
+for (const token of ['export async function PATCH(req)', 'await requireAdmin(req)', 'allowedStatuses', 'findByIdAndUpdate', 'update.status', 'update.followUpAt']) {
+  if (!leadRoute.includes(token)) failures.push("Lead pipeline API is missing safeguard or update: " + token);
+}
+const leadAdmin = read("src/app/admin/leads/page.js");
+for (const token of ['Lead pipeline', 'Qualified', 'Converted', 'Private team note', 'Save update', 'followUpAt']) {
+  if (!leadAdmin.includes(token)) failures.push("Admin lead pipeline is missing feature: " + token);
+}
+const analyticsRoute = read("src/app/api/admin/analytics/route.js");
+const analyticsPage = read("src/app/admin/analytics/page.js");
+if (!analyticsRoute.includes("byStatus") || !analyticsPage.includes("Lead pipeline status")) {
+  failures.push("Admin analytics must report lead pipeline stages.");
+}
+const exportRoute = read("src/app/api/leads/export/route.js");
+for (const token of ['"Lead Status"', '"Follow-up Date"', '"Internal Note"', 'l.status || "new"', 'l.internalNote']) {
+  if (!exportRoute.includes(token)) failures.push("Lead CSV export is missing pipeline data: " + token);
+}
+
 const leadRoute = read("src/app/api/leads/route.js");
 if (/document\.referrer|req\.headers\.get\(["']referer/i.test(leadRoute)) {
   failures.push("Server route must not store a full referrer URL.");
