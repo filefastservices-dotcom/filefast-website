@@ -32,6 +32,19 @@ for (const token of ["Enquiry consent", "l.consentAt", "l.consent === true"]) {
   if (!adminLeads.includes(token)) failures.push("Admin leads page is missing consent audit display: " + token);
 }
 
+const appointmentPage = read("src/app/appointments/page.js");
+const appointmentRoute = read("src/app/api/appointments/route.js");
+const appointmentModel = read("src/models/Appointment.js");
+for (const [file, content, tokens] of [
+  ["appointment page", appointmentPage, ["required checked={form.consent}", "Appointment request received", "Privacy Policy"]],
+  ["appointment API", appointmentRoute, ["body.consent !== true", "clientPhone", "emailIsValid", "dateIsValid", "consentAt: new Date()", "consentVersion", "appointmentId"]],
+  ["appointment model", appointmentModel, ["consent", "consentAt", "consentVersion"]],
+  ["sitemap", read("src/app/sitemap.js"), ["/appointments"]]
+]) {
+  for (const token of tokens) {
+    if (!content.includes(token)) failures.push(file + " is missing expected safeguard: " + token);
+  }
+}
 const leadRoute = read("src/app/api/leads/route.js");
 if (/document\.referrer|req\.headers\.get\(["']referer/i.test(leadRoute)) {
   failures.push("Server route must not store a full referrer URL.");
