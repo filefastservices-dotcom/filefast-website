@@ -661,8 +661,8 @@ const starterServicesData = [
       { question: "How much does bookkeeping cost?", answer: "Fees depend on transaction volume, bank accounts, platforms, backlog and reporting needs. Share a brief description of your business to receive a scope-based quotation." }
     ],
     relatedServiceSlugs: ["gst-registration", "gstr-1-filing", "gstr-3b-filing", "tds-return-filing", "itr-filing"],
-    metaTitle: "Monthly Bookkeeping Services India from ₹1,499 | FileFast Global",
-    metaDescription: "Outsource monthly bookkeeping from ₹1,499 for up to 50 transactions. Get sales, purchase and expense entries, ledger maintenance and bank reconciliation support.",
+    metaTitle: "Monthly Bookkeeping & Month-End Reporting Services | FileFast",
+    metaDescription: "Outsource monthly bookkeeping, bank reconciliation, receivables, payables and month-end management reports for Indian small businesses with FileFast Global.",
     seoKeywords: "monthly bookkeeping services India, affordable bookkeeping services, outsourced accounting for small business, bookkeeping Chennai, bank reconciliation, monthly accounts maintenance, Tally bookkeeping"
   }),
   baseService({
@@ -1452,13 +1452,13 @@ export const starterBlogPosts = [
     slug: "qrmp-scheme-support",
     category: "GST Services",
     sortOrder: 22,
-    shortDescription: "Eligibility review and assistance for QRMP scheme selection, quarterly returns and monthly tax payment workflows.",
+    shortDescription: "Check QRMP eligibility, switch from monthly to quarterly GSTR-1 and GSTR-3B where permitted, and plan monthly tax payments.",
     fullDescription: "Support to assess whether the QRMP scheme may be available, review business needs and organise the prescribed portal election and return/payment process. Eligibility and due dates must be verified for the relevant period.",
     benefits: ["Review scheme eligibility", "Understand monthly payment options", "Plan quarterly GSTR-1 and GSTR-3B", "Organise invoice furnishing and records"],
     requiredDocuments: ["GSTIN", "Recent turnover and return details", "Sales and purchase records", "Existing scheme status"],
     pricingInfo: "Professional assistance from ₹299; return filing is charged separately where applicable.",
     metaTitle: "GST QRMP Scheme Support & Quarterly Return Filing | FileFast",
-    metaDescription: "Understand QRMP eligibility, quarterly GST returns and monthly tax payment compliance with FileFast Global."
+    metaDescription: "Switch eligible GST returns from monthly to quarterly with QRMP guidance. Review the ₹5 crore PAN-based limit, portal opt-in window, IFF and monthly payments.",
   }),
   baseService({
     name: "CMP-08 & Composition Scheme Returns",
@@ -1491,13 +1491,13 @@ export const starterBlogPosts = [
     slug: "gstr-10-final-return",
     category: "GST Services",
     sortOrder: 25,
-    shortDescription: "GSTR-10 final return preparation support after eligible GST registration cancellation.",
+    shortDescription: "GSTR-10 final return assistance after GST cancellation, including due-date review, closing stock, capital-goods and liability reconciliation.",
     fullDescription: "Assistance with reviewing cancellation details, stock and capital-goods information, tax liability and records needed for the final return. Applicability and due date depend on the cancellation order and current GST rules.",
     benefits: ["Review cancellation order and date", "Check pending returns and liability", "Organise stock and capital-goods records", "Prepare final-return working papers"],
     requiredDocuments: ["GST cancellation order", "GSTIN and last filed returns", "Stock and capital-goods statement", "Tax payment and ledger details"],
     pricingInfo: "Professional fee from ₹999 for basic records; additional reconciliation and notice work is separate.",
     metaTitle: "GSTR-10 Final Return Filing Assistance | FileFast Global",
-    metaDescription: "Get GSTR-10 final return assistance after GST cancellation, including stock and liability document checks."
+    metaDescription: "Prepare GSTR-10 after GST cancellation. Review the three-month due-date rule, closing stock, capital goods, ledgers and final-return documents with FileFast.",
   }),
   baseService({
     name: "GST Annual Return GSTR-9",
