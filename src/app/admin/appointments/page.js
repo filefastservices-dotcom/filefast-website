@@ -77,6 +77,8 @@ export default function AdminAppointmentsPage() {
                 <th className="px-4 py-3">Phone</th>
                 <th className="px-4 py-3">Service</th>
                 <th className="px-4 py-3">Date</th>
+                <th className="px-4 py-3">Consent</th>
+                <th className="px-4 py-3">Consent recorded</th>
                 <th className="px-4 py-3">Status</th>
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
@@ -94,6 +96,8 @@ export default function AdminAppointmentsPage() {
                   <td className="px-4 py-3 text-navy/70">
                     {new Date(apt.preferredDate).toLocaleDateString("en-IN")}
                   </td>
+                  <td className="px-4 py-3 text-navy/70">{apt.consent === true ? "Recorded" : "Not captured"}</td>
+                  <td className="px-4 py-3 text-navy/60">{apt.consentAt ? new Date(apt.consentAt).toLocaleString("en-IN") : "—"}</td>
                   <td className="px-4 py-3">
                     <select
                       value={apt.status}
@@ -119,7 +123,7 @@ export default function AdminAppointmentsPage() {
               ))}
               {appointments.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-4 py-6 text-center text-navy/60">
+                  <td colSpan={8} className="px-4 py-6 text-center text-navy/60">
                     No appointments found.
                   </td>
                 </tr>
