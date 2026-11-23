@@ -120,7 +120,6 @@ export default function LeadForm({ defaultService = "" }) {
       />
       <select
         aria-label="Service you need"
-        required
         value={form.serviceInterested}
         onChange={(e) => update("serviceInterested", e.target.value)}
         className="w-full rounded-sm border border-silver-dark/40 bg-white px-4 py-3 text-sm focus:border-gold focus:outline-none"
