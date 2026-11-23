@@ -1131,6 +1131,43 @@ const starterServicesData = [
   }),
 
 
+  baseService({
+    name: "UK Company Registration Readiness for Indian Founders",
+    slug: "uk-company-registration-from-india",
+    category: "Global Tax & VAT",
+    sortOrder: 44,
+    shortDescription: "Documentation, structure and India-side tax-readiness support for Indian founders exploring a UK private limited company.",
+    fullDescription: "FileFast Global helps India-based founders organise the information needed to evaluate a UK private limited company and understand the India-side tax and compliance questions that should be addressed before incorporation. Support can include an initial business-activity and ownership information checklist, director and person-with-significant-control data collation, a review of the UK registered-office requirement, a coordination checklist for a UK-based registered-office or incorporation provider, and a discussion of India tax-residency, foreign asset, remittance and reporting questions that may need advice from appropriately qualified professionals. This is not a Companies House filing service, legal opinion, registered-office service or identity-verification service. UK incorporation, registered-office provision and any Companies House identity verification must be completed through the relevant official channel or an appropriately authorised UK provider. A UK company does not by itself create UK immigration or residence rights.",
+    benefits: ["Understand the information and decisions needed before a UK company application", "Organise director, shareholder and PSC details for the chosen provider", "Identify UK registered-office and identity-verification requirements early", "Prepare an India-side tax and cross-border compliance question list"],
+    eligibility: ["Indian residents and founders considering a UK private limited company", "Indian businesses evaluating a UK subsidiary or overseas operating structure", "Founders who need a coordinated document and compliance-readiness checklist"],
+    requiredDocuments: ["Founder and proposed director identity details", "Proposed ownership and shareholding structure", "Business activity and proposed SIC code", "Proposed company name and business plan summary", "Details of any existing Indian entity and ownership", "Expected funding, remittances and business flows"],
+    processFlow: [{title:"Understand the proposed structure",description:"Collect the business model, ownership, director and intended UK activity details."},{title:"Prepare the readiness checklist",description:"Identify information required by Companies House and a UK registered-office or incorporation provider."},{title:"Review India-side implications",description:"Prepare cross-border tax and reporting questions and identify matters requiring specialist UK or Indian advice."}],
+    pricingInfo: "Fixed-scope consultation or documentation support quoted after reviewing the proposed structure. UK provider, registered-office, Companies House and legal/accounting fees are separate.",
+    faqs: [{question:"Can an Indian resident be a director of a UK private limited company?",answer:"UK government guidance says directors do not have to live in the UK, but the company must have a registered office in the relevant UK jurisdiction. Other filing and identity-verification requirements apply."},{question:"Does FileFast provide a UK registered office or act as a Companies House agent?",answer:"No. Those services must be provided by an eligible UK provider. FileFast can help prepare information and coordinate the India-side compliance checklist."},{question:"Does registering a UK company give the founder a UK visa?",answer:"No. Company incorporation does not itself grant immigration, work or residence rights."}],
+    relatedServiceSlugs:["uk-vat-compliance","international-tax-advisory","accounting-bookkeeping"],
+    metaTitle:"UK Company Registration from India | Founder Readiness Support",
+    metaDescription:"Indian founders: organise UK company formation documents, director and PSC details, registered-office requirements and India-side tax readiness.",
+    seoKeywords:"UK company registration from India, register UK company from India, UK limited company Indian resident, UK company setup India founder, Companies House identity verification"
+  }),
+  baseService({
+    name: "TikTok Shop Settlement & Payout Reconciliation",
+    slug: "tiktok-shop-settlement-reconciliation",
+    category: "Digital Business Services",
+    sortOrder: 45,
+    shortDescription: "Order-to-payout reconciliation for TikTok Shop sellers, including net sales, refunds, fees, adjustments, reserves and bank receipts.",
+    fullDescription: "TikTok Shop settlement statements are prepared around settlement cycles, not simply the date an order is placed. The settlement amount can include net sales, shipping, platform fees and adjustments, while payout records may also reflect reserve movements and timing differences. FileFast Global helps sellers and cross-border operators organise statement exports, order-level detail, refunds, fee records, adjustments, reserve movements and bank receipts into a repeatable reconciliation. The service is limited to the seller's available market, account and report formats. TikTok Shop availability, fees, payout rules, taxes and seller eligibility vary by country and can change; the seller must confirm local platform access and statutory obligations.",
+    benefits: ["Reconcile order-level settlement data to statement totals", "Separate net sales, shipping, fees and adjustments", "Track reserve movements and differences between statement and payout", "Match payout IDs and bank credits with settlement periods", "Prepare monthly exception and profitability schedules"],
+    eligibility: ["TikTok Shop sellers operating in markets where the service is available", "Agencies and finance teams managing seller settlement records", "Cross-border e-commerce businesses needing payout reconciliation"],
+    requiredDocuments: ["TikTok Shop settlement statement exports", "Order detail and adjustment reports", "Payout and reserve records", "Platform fee invoices or fee schedules", "Refund, return and dispute reports", "Bank statements and accounting ledger"],
+    processFlow: [{title:"Collect source exports",description:"Obtain settlement statements, order details, adjustments, payout and reserve data for the agreed period."},{title:"Reconcile settlement components",description:"Map net sales, shipping, fees and adjustments and explain timing or reserve differences."},{title:"Match cash and report exceptions",description:"Tie payout references to bank credits and prepare unresolved-item and monthly close schedules."}],
+    pricingInfo: "Monthly quotation based on shop count, order volume, currencies, report formats and number of settlement periods.",
+    faqs: [{question:"Why does a TikTok Shop payout differ from the settlement statement?",answer:"Platform guidance explains that reserves and timing can cause a difference. Reconcile statement totals, payout records and reserve movements rather than treating every difference as an error."},{question:"Is the settlement amount the same as daily sales?",answer:"No. Settlement reports are based on the settlement cycle and can include orders from different order dates, refunds, fees and adjustments."},{question:"Can FileFast support every TikTok Shop country?",answer:"The work depends on the seller's country, platform access, report availability and applicable local rules. Scope is confirmed before onboarding."}],
+    relatedServiceSlugs:["marketplace-settlement-tcs-reconciliation","ecommerce-tax-compliance","accounting-bookkeeping"],
+    metaTitle:"TikTok Shop Settlement Reconciliation | FileFast Global",
+    metaDescription:"Reconcile TikTok Shop statements, net sales, fees, refunds, adjustments, reserves, payouts and bank receipts with FileFast Global.",
+    seoKeywords:"TikTok Shop settlement report reconciliation, TikTok Shop payout reconciliation, TikTok Shop fees and refunds, TikTok Shop accounting"
+  }),
+
 ];
 
 // Public reviews transcribed from FileFast's Google Business Profile (August 2026).
