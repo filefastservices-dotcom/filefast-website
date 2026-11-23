@@ -69,7 +69,7 @@ for (const token of ['"Lead Status"', '"Follow-up Date"', '"Internal Note"', 'l.
   if (!exportRoute.includes(token)) failures.push("Lead CSV export is missing pipeline data: " + token);
 }
 
-const leadRoute = read("src/app/api/leads/route.js");
+
 if (/document\.referrer|req\.headers\.get\(["']referer/i.test(leadRoute)) {
   failures.push("Server route must not store a full referrer URL.");
 }
