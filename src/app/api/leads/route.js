@@ -48,9 +48,14 @@ export async function POST(req) {
   if (body?.consent !== true) return NextResponse.json({ error: "Please confirm that FileFast may use your details to respond to this enquiry." }, { status: 400 });
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Please enter a valid email address or leave it blank." }, { status: 400 });
 
+  const intentText = (serviceInterested + " " + message).toLowerCase();
+  const highIntent = /urgent|notice|suspended|cancelled|registration|monthly|regular filing|consultation|quotation|quote|deadline|penalty|appeal|refund/.test(intentText);
+  const leadScore = Math.min(100, (serviceInterested ? 35 : 0) + (message.length >= 50 ? 20 : message.length >= 15 ? 10 : 0) + (email ? 10 : 0) + (highIntent ? 35 : 0));
+  const leadPriority = leadScore >= 65 ? "high" : "standard";
+
   try {
     await connectDB();
-    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, landingPage, referrerHost, consent: true, consentAt: new Date(), consentVersion: "2026-11-23-v1" });
+    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, landingPage, referrerHost, leadScore, leadPriority, consent: true, consentAt: new Date(), consentVersion: "2026-11-23-v1" });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error?.message || "Unknown error");
@@ -138,6 +143,9 @@ export async function PATCH(req) {
 
   try {
     await connectDB();
+    const currentLead = await Lead.findById(id).select("firstResponseAt").lean();
+    if (!currentLead) return NextResponse.json({ error: "Lead not found." }, { status: 404 });
+    if (body.status === "contacted" && !currentLead.firstResponseAt) update.firstResponseAt = new Date();
     const lead = await Lead.findByIdAndUpdate(id, { $set: update }, { new: true, runValidators: true }).lean();
     if (!lead) return NextResponse.json({ error: "Lead not found." }, { status: 404 });
     return NextResponse.json({ success: true, lead });
