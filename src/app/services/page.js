@@ -8,8 +8,8 @@ export const metadata = {
     description: "Explore GST returns, GST IMS and ITC reconciliation, exporter refund support, marketplace TCS reconciliation, ITR, TDS/TCS, accounting and global VAT coordination from Chennai, India.",
   },
   alternates: { canonical: "/services" },
-  title: "GST, Income Tax, Accounting & Business Compliance Services",
-  description: "Explore GST filing, income tax returns, business registration, licensing, accounting, TDS/TCS and global VAT coordination from FileFast Global in Chennai, India."
+  title: "GST, ITR, GSTR-10, QRMP & Global Business Services | FileFast",
+  description: "Explore GST filing, GSTR-10, QRMP, IMS and ITC reconciliation, UK company setup readiness, TikTok Shop settlement reconciliation, bookkeeping and global VAT support."
 };
 
 const CATEGORIES = [
