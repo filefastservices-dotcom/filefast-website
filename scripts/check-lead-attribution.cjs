@@ -9,7 +9,7 @@ const checks = [
   ["src/app/admin/leads/page.js", ["Campaign", "Landing page", "l.utmCampaign", "l.landingPage"]],
   ["src/app/api/admin/analytics/route.js", ["await requireAdmin(req)", "byCampaign", "byLandingPage", "utmCampaign", "landingPage"]],
   ["src/app/admin/analytics/page.js", ["fetch(\"/api/admin/analytics\")", "Enquiries by campaign", "Top landing pages"]],
-  ["src/app/api/leads/export/route.js", ["UTM Source", "UTM Campaign", "Landing Page", "Referrer Host", "l.utmCampaign"]]
+  ["src/app/api/leads/export/route.js", ["UTM Source", "UTM Campaign", "Landing Page", "Referrer Host", "l.utmCampaign", "Enquiry Consent", "Consent Recorded At", "l.consentVersion"]]
 ];
 const failures = [];
 for (const [file, tokens] of checks) {
