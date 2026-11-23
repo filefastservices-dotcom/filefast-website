@@ -19,12 +19,12 @@ for (const [file, tokens] of checks) {
   }
 }
 const leadForm = read("src/components/LeadForm.jsx");
-const emailInput = leadForm.match(/<input\\s+type="email"[\\s\\S]*?\\/>/);
-const serviceSelect = leadForm.match(/<select\\s+aria-label="Service you need"[\\s\\S]*?<\\/select>/);
-if (!emailInput || /\\brequired\\b/.test(emailInput[0])) {
+const emailInput = leadForm.match(/<input\s+type="email"[\s\\S]*?\/>/);
+const serviceSelect = leadForm.match(/<select\s+aria-label="Service you need"[\s\\S]*?<\/select>/);
+if (!emailInput || /\brequired\b/.test(emailInput[0])) {
   failures.push("Standard enquiry email field should remain optional.");
 }
-if (!serviceSelect || /\\brequired\\b/.test(serviceSelect[0])) {
+if (!serviceSelect || /\brequired\b/.test(serviceSelect[0])) {
   failures.push("Standard enquiry service selector should remain optional.");
 }
 const adminLeads = read("src/app/admin/leads/page.js");
