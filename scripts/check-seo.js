@@ -34,6 +34,15 @@ const checks = [
       content.includes('text: faq.answer')
   },
   {
+    file: "src/app/blog/[slug]/page.js",
+    description: "Blog posts identify the editorial publisher and link recognised official tax references",
+    test: (content) => content.includes("FileFast Global Editorial Team") &&
+      content.includes("urlPattern") &&
+      content.includes('target="_blank"') &&
+      content.includes('rel="noopener noreferrer"') &&
+      content.includes("General educational information")
+  },
+  {
     file: "src/app/testimonials/page.js",
     description: "Testimonials page does not promise fabricated review verification",
     test: (content) => !/verified Google reviews|100% genuine reviews|guaranteed reviews/i.test(content)
