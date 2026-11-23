@@ -19,7 +19,7 @@ export async function GET(req) {
     sixMonthsAgo.setMonth(now.getMonth() - 5, 1);
     sixMonthsAgo.setHours(0, 0, 0, 0);
 
-    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, byCampaign, byLandingPage, byStatus, blogStats] = await Promise.all([
+    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, byCampaign, byLandingPage, byStatus, priorityStats, responseStats, blogStats] = await Promise.all([
       Lead.countDocuments({}),
       Lead.countDocuments({ createdAt: { $gte: thirtyDaysAgo } }),
       Lead.countDocuments({ createdAt: { $gte: ninetyDaysAgo } }),
@@ -54,6 +54,15 @@ export async function GET(req) {
         { $group: { _id: { $ifNull: ["$status", "new"] }, count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ]),
+      Lead.aggregate([
+        { $group: { _id: { $ifNull: ["$leadPriority", "standard"] }, count: { $sum: 1 } } },
+        { $sort: { count: -1 } }
+      ]),
+      Lead.aggregate([
+        { $match: { firstResponseAt: { $ne: null }, createdAt: { $ne: null } } },
+        { $project: { responseMinutes: { $divide: [{ $subtract: ["$firstResponseAt", "$createdAt"] }, 60000] } } },
+        { $group: { _id: null, averageMinutes: { $avg: "$responseMinutes" }, responded: { $sum: 1 } } }
+      ]),
       Blog.aggregate([
         { $group: { _id: null, total: { $sum: 1 }, published: { $sum: { $cond: ["$isPublished", 1, 0] } } } }
       ])
@@ -68,6 +77,8 @@ export async function GET(req) {
       byCampaign: byCampaign.map((item) => ({ label: item._id, count: item.count })),
       byLandingPage: byLandingPage.map((item) => ({ label: item._id, count: item.count })),
       byStatus: byStatus.map((item) => ({ label: item._id, count: item.count })),
+      byPriority: priorityStats.map((item) => ({ label: item._id, count: item.count })),
+      response: responseStats[0] ? { averageMinutes: Math.round(responseStats[0].averageMinutes), responded: responseStats[0].responded } : { averageMinutes: null, responded: 0 },
       blogs: blogStats[0] || { total: 0, published: 0 }
     });
   } catch (error) {
