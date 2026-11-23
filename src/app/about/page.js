@@ -99,7 +99,8 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="bg-[#f7f8fa] text-[#14243b]">\n      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema).replace(/</g, "\\u003c") }} />
+    <main className="bg-[#f7f8fa] text-[#14243b]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema).replace(/</g, "\\u003c") }} />
       <section className="relative overflow-hidden bg-[#07172d] text-white">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 80% 15%, #d5ad62 0, transparent 32%), radial-gradient(circle at 10% 90%, #31557b 0, transparent 36%)" }} />
         <div className="container-page relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.1fr_.9fr]">
