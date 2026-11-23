@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { trackLeadStage } from "@/components/AnalyticsConsent";
 
 const STATUSES = [
   { value: "new", label: "New" },
@@ -28,6 +29,7 @@ function LeadPipelineEditor({ lead, onSaved }) {
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Unable to save changes.");
+      if (result.lead.status !== (lead.status || "new")) trackLeadStage(result.lead.status, result.lead.serviceInterested);
       onSaved(result.lead);
       setMessage("Saved");
     } catch (error) {
