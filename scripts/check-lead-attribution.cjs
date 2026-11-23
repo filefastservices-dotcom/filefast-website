@@ -73,6 +73,20 @@ for (const token of ['"Lead Status"', '"Follow-up Date"', '"Internal Note"', 'l.
 if (/document\.referrer|req\.headers\.get\(["']referer/i.test(leadRoute)) {
   failures.push("Server route must not store a full referrer URL.");
 }
+
+const analyticsConsent = read("src/components/AnalyticsConsent.jsx");
+for (const token of ["analytics_storage: granted ? \"granted\" : \"denied\"", "window.localStorage.getItem(CONSENT_KEY) !== \"accepted\"", "generate_lead", "Reject analytics", "Accept analytics"]) {
+  if (!analyticsConsent.includes(token)) failures.push("Analytics consent component is missing safeguard or event: " + token);
+}
+const rootLayout = read("src/app/layout.js");
+for (const token of ["NEXT_PUBLIC_GA_MEASUREMENT_ID", "filefast-google-consent-default", "ad_storage: \"denied\"", "AnalyticsConsent"]) {
+  if (!rootLayout.includes(token)) failures.push("Root layout is missing analytics consent setup: " + token);
+}
+const privacyPolicy = read("src/app/privacy-policy/page.js");
+if (!privacyPolicy.includes("Optional website analytics") || !privacyPolicy.includes("not required to submit an enquiry")) {
+  failures.push("Privacy policy must explain optional analytics separately from enquiry consent.");
+}
+
 if (failures.length) {
   console.error("Lead attribution checks failed:");
   failures.forEach((failure) => console.error("- " + failure));
