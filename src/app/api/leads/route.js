@@ -38,6 +38,11 @@ export async function POST(req) {
   const utmCampaign = cleanText(body?.utmCampaign, 160);
   const utmContent = cleanText(body?.utmContent, 160);
   const utmTerm = cleanText(body?.utmTerm, 160);
+  const gclid = cleanText(body?.gclid, 200);
+  const gbraid = cleanText(body?.gbraid, 200);
+  const wbraid = cleanText(body?.wbraid, 200);
+  const msclkid = cleanText(body?.msclkid, 200);
+  const adsMeasurementConsent = body?.adsMeasurementConsent === true;
   const landingPageRaw = cleanText(body?.landingPage, 300);
   const landingPage = landingPageRaw.startsWith("/") && !landingPageRaw.startsWith("//") ? landingPageRaw.split(/[?#]/)[0] : "";
   const referrerHost = cleanText(body?.referrerHost, 120).replace(/[^a-zA-Z0-9.-]/g, "");
@@ -55,7 +60,7 @@ export async function POST(req) {
 
   try {
     await connectDB();
-    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, landingPage, referrerHost, leadScore, leadPriority, consent: true, consentAt: new Date(), consentVersion: "2026-11-23-v1" });
+    await Lead.create({ name, mobile, email, serviceInterested, message, source, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, gclid, gbraid, wbraid, msclkid, adsMeasurementConsent, adsMeasurementConsentAt: adsMeasurementConsent ? new Date() : null, landingPage, referrerHost, leadScore, leadPriority, consent: true, consentAt: new Date(), consentVersion: "2026-11-23-v1" });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error?.message || "Unknown error");
