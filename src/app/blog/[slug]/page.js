@@ -88,7 +88,7 @@ const INTERNAL_LINKS = [
   { phrase: "IOSS registration", href: "/services/eu-vat-oss-ioss" },
   { phrase: "FSSAI registration in Tamil Nadu", href: "/blog/fssai-registration-tamil-nadu-food-business-documents-process" },
   { phrase: "FSSAI application in Tamil Nadu", href: "/services/fssai-registration" },
-  { phrase: "professional tax compliance", href: "/services/epf-esi-payroll-compliance" },
+  { phrase: "professional tax compliance", href: "/services/compliance-services" },
   { phrase: "GST ITC on hotel and travel expenses", href: "/blog/gst-itc-on-travel-hotel-food-and-client-meetings" },
   { phrase: "GST input tax credit on hotel bills", href: "/blog/gst-itc-on-travel-hotel-food-and-client-meetings" },
   { phrase: "monthly to quarterly GST filing", href: "/blog/gst-return-filing-frequency-monthly-quarterly-qrmp" },
