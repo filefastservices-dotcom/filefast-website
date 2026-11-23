@@ -6,13 +6,14 @@ import { getServices, getTestimonials, getBlogPosts } from "@/lib/data";
 import { googleReviewUrl } from "@/lib/googleReviews";
 
 export const metadata = {
-  title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
-  description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
+  title: "GST, ITR & Business Compliance in Chennai & India | FileFast Global",
+  description: "GST returns, IMS and ITC reconciliation, ITR, TDS/TCS, exporter refunds, marketplace compliance and business services from FileFast Global, Chennai.",
   openGraph: {
     url: "https://www.filefastglobal.com/",
-    title: "Tax, GST, ITR, Business & Global Compliance Services | FileFast Global",
-    description: "Explore GST, income tax, business registration, licensing, accounting, compliance and global VAT support from FileFast Global.",
+    title: "GST, ITR & Business Compliance in Chennai & India | FileFast Global",
+    description: "GST returns, IMS and ITC reconciliation, ITR, TDS/TCS, exporter refunds, marketplace compliance and business services from FileFast Global, Chennai.",
   },
+  keywords: ["GST filing Chennai", "GST return filing India", "GST IMS reconciliation", "ITC reconciliation", "income tax return filing", "TDS TCS return filing", "GST refund for exporters", "marketplace GST reconciliation", "UK VAT", "EU VAT OSS IOSS", "UAE VAT"],
   alternates: { canonical: "/" },
 };
 
@@ -49,7 +50,15 @@ const FAQS = [
   },
   {
     q: "What documents do I need to get started?",
-    a: "This varies by service. Reach out on WhatsApp and we'll send you the exact checklist."
+    a: "This varies by service. Reach out on WhatsApp and we can send you the exact checklist."
+  },
+  {
+    q: "Can FileFast help with GST IMS and ITC reconciliation?",
+    a: "FileFast can help organise purchase records, compare available GST portal data and prepare supplier-wise reconciliation exceptions. The taxpayer approves the final ITC treatment."
+  },
+  {
+    q: "Can marketplace payouts be used as the sales figure?",
+    a: "Not without reconciliation. Marketplace payouts may be net of refunds, platform fees, TCS and timing adjustments, so order and invoice records should be reviewed separately."
   }
 ];
 
