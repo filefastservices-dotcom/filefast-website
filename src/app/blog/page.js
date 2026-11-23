@@ -5,8 +5,8 @@ import BlogExplorer from "@/components/BlogExplorer";
 export const metadata = {
   openGraph: {
     url: "https://www.filefastglobal.com/blog",
-    title: "GST, ITR, TDS & Business Tax Guides | FileFast Global",
-    description: "Practical India tax guides covering GST registration, GSTR-1, GSTR-3B, ITC reconciliation, income tax return filing, TDS, TCS, accounting and international VAT compliance.",
+    title: "GST, IMS, ITC, ITR & Business Tax Guides | FileFast Global",
+    description: "Practical guides on GST registration and returns, IMS, ITC reconciliation, exporter refunds, marketplace TCS, ITR, TDS, accounting and international VAT compliance.",
   },
   alternates: { canonical: "/blog" },
   title: "GST, ITR, TDS & Business Tax Guides",
@@ -23,7 +23,7 @@ export default async function BlogPage() {
         Tax, GST &amp; Business Compliance Guides
       </h1>
       <p className="mx-auto mt-4 max-w-3xl text-center leading-relaxed text-navy/70">
-        Practical checklists and step-by-step explainers for GST registration, GST returns, input tax credit, income-tax return preparation, food-business compliance and cross-border expansion. Use each guide to organise your records and identify questions to verify against current official requirements.
+        Practical checklists and explainers for GST returns, IMS and ITC reconciliation, exporter refunds, marketplace settlements, income-tax return preparation, TDS/TCS and cross-border expansion. Use each guide to organise your records and identify questions to verify against current official requirements.
       </p>
 
       <BlogExplorer posts={posts} />
