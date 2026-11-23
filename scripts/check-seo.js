@@ -42,6 +42,9 @@ const checks = [
       content.includes('rel="noopener noreferrer"') &&
       content.includes("General educational information")
   },
+  { file: "src/lib/searchConsole.js", description: "Search Console OAuth uses server-only refresh token credentials", test: (c) => c.includes("GOOGLE_SEARCH_CONSOLE_REFRESH_TOKEN") && c.includes("webmasters.readonly") && c.includes("oauth2.googleapis.com/token") },
+  { file: "src/app/api/admin/search-console/sync/route.js", description: "Search Console sync is admin protected and queries pages and queries", test: (c) => c.includes("await requireAdmin(req)") && c.includes('"page"') && c.includes('"query"') },
+  { file: "src/app/admin/seo/page.js", description: "SEO dashboard exposes Search Console metrics and sync control", test: (c) => c.includes("Google Search Console") && c.includes("Top search queries") && c.includes("Top landing pages") },
   {
     file: "src/app/testimonials/page.js",
     description: "Testimonials page does not promise fabricated review verification",
