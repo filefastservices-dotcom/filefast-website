@@ -28,6 +28,28 @@ export function trackLeadGenerated(service) {
   }
 }
 
+
+export function trackLeadStage(status, service) {
+  const events = {
+    contacted: "working_lead",
+    qualified: "qualify_lead",
+    converted: "close_convert_lead",
+    lost: "disqualify_lead"
+  };
+  const eventName = events[status];
+  if (!eventName || typeof window === "undefined" || typeof window.gtag !== "function") return;
+  try {
+    if (window.localStorage.getItem(CONSENT_KEY) !== "accepted") return;
+    window.gtag("event", eventName, {
+      currency: "INR",
+      service_category: String(service || "unspecified").slice(0, 100),
+      lead_source: "admin_pipeline"
+    });
+  } catch {
+    // Analytics must never block lead administration.
+  }
+}
+
 export default function AnalyticsConsent() {
   const [visible, setVisible] = useState(false);
   const [hasChoice, setHasChoice] = useState(false);
