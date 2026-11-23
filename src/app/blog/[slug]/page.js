@@ -233,7 +233,7 @@ export default async function BlogPostPage({ params }) {
         <p className="eyebrow text-gold">Need help with this?</p>
         <h2 className="mt-2 font-display text-2xl font-semibold">Get help from FileFast Global</h2>
         <p className="mt-2 text-sm leading-6 text-white/70">Share your requirement and we will help identify the relevant service, documents and next steps.</p>
-        <a href="https://wa.me/919444614182?text=I%20read%20a%20FileFast%20Global%20guide%20and%20need%20help%20with%20my%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex rounded-sm bg-[#e8c77c] px-5 py-3 text-sm font-semibold text-navy">Discuss your requirement</a>
+        <div className="mt-5 flex flex-wrap gap-3"><Link href="/business-compliance-review" className="inline-flex rounded-sm bg-[#e8c77c] px-5 py-3 text-sm font-semibold text-navy">Request a compliance review</Link><a href="https://wa.me/919444614182?text=I%20read%20a%20FileFast%20Global%20guide%20and%20need%20help%20with%20my%20tax%20or%20compliance%20requirement" target="_blank" rel="noopener noreferrer" className="inline-flex rounded-sm border border-white/40 px-5 py-3 text-sm font-semibold text-white">WhatsApp FileFast</a></div>
       </section>
     </article>
   );
