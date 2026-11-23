@@ -108,13 +108,6 @@ for (const token of ['contacted: "working_lead"', 'qualified: "qualify_lead"', '
 }
 
 
-if (failures.length) {
-  console.error("Lead attribution checks failed:");
-  failures.forEach((failure) => console.error("- " + failure));
-  process.exit(1);
-}
-console.log("Lead attribution checks passed.");
-
 const analyticsSource = read("src/app/api/admin/analytics/route.js");
 for (const token of ['import Payment from "@/models/Payment"', 'status: "success"', 'revenueByService', 'revenueMonthly', 'successfulPayments']) {
   if (!analyticsSource.includes(token)) failures.push("Payment/revenue analytics missing: " + token);
@@ -128,3 +121,12 @@ for (const token of ["Marketing & sales command centre", "Campaign enquiry perfo
   if (!commandCentre.includes(token)) failures.push("Command centre missing feature or metric limitation: " + token);
 }
 if (!read("src/app/admin/layout.js").includes('href:"/admin/command-centre"')) failures.push("Admin navigation is missing the command centre.");
+
+
+
+if (failures.length) {
+  console.error("Lead attribution checks failed:");
+  failures.forEach((failure) => console.error("- " + failure));
+  process.exit(1);
+}
+console.log("Lead attribution checks passed.");
