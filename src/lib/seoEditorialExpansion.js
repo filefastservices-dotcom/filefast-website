@@ -250,5 +250,316 @@ export const seoEditorialExpansion = [
     "metaTitle": "FSSAI Registration Tamil Nadu: Documents & Process | FileFast",
     "metaDescription": "Check FSSAI registration and licence requirements in Tamil Nadu, documents, FoSCoS application steps, business categories and renewal basics.",
     "content": "Food businesses in Tamil Nadu may need FSSAI registration or a licence before starting or continuing operations. The category depends on the food activity, scale, capacity, turnover and other criteria under the Food Safety and Standards framework. A home kitchen, restaurant, manufacturer, distributor and online food business should not assume the same category or checklist applies to all.\n\nThis guide explains preparation for an application through FoSCoS. Confirm current eligibility and portal requirements for the specific activity.\n\n## 10. Registration, State licence or Central licence?\nFSSAI has different registration and licensing categories. Basic registration is intended for eligible petty food businesses. State and Central licences apply where the activity, capacity, turnover, location or other prescribed criteria require them. Turnover alone is not the test for every business. Manufacturing capacity, import/export, multi-state operations and specified activities can change the category. Use the current FoSCoS eligibility tool rather than relying on an old chart copied from an unofficial website.\n\n## 11. Documents and premises information\nDepending on the applicant and activity, prepare identity and address proof, constitution documents, authorisation or board resolution, premises ownership/rent/consent evidence, food category and product details, equipment or capacity information, water analysis, layout and food safety management documents where required. The portal's exact checklist varies by business category. Upload legible evidence that responds to the requested field.\n\n## 12. Application workflow through FoSCoS\nSelect the State, district and food business activity. Review the eligibility result and choose the applicable category. Complete the application, upload the requested documents, pay the official fee and save the reference number. Track the application and respond to clarification or inspection requests within the stated time. Do not assume that payment alone means a licence has been granted.\n\n## 13. Tamil Nadu operating checks\nConfirm the actual operating address and local jurisdiction. A residential kitchen, commercial unit, rented premises, shared facility and multiple locations may require different supporting details. Check local trade or municipal permissions separately where applicable. If selling through food-delivery platforms, make sure the FSSAI details match the legal entity and operating premises used for onboarding.\n\n## 14. Ongoing food safety duties\nMaintain hygienic premises, safe sourcing, suitable storage, pest control, cleaning schedules, staff hygiene, traceability, complaint handling and records appropriate to the activity. Manufacturers and larger operations may have additional food safety management or testing requirements. Display and use the correct FSSAI number wherever required.\n\n## 15. Renewal, modification and closure\nMonitor licence validity and renewal timelines. If the business changes name, constitution, address, activity or capacity, check whether modification or another licence is required. If the food activity permanently stops, review the surrender or closure process. Keep the acknowledgement, licence and supporting documents in a compliance folder.\n\n## 1. Map the business model first\nRecord the legal entity, registrations, premises, products or services, customers, sales channels and locations involved. Compliance depends on the actual activity and transaction flow, not simply the business name or the software used. If the business has multiple branches, GSTINs, warehouses, platforms or legal entities, map each separately before preparing a return or application.\n\n## 2. Identify the governing registration and reporting route\nRead the current official eligibility criteria and identify which registration, return or declaration applies. Do not copy a checklist from an unrelated business type. Thresholds, exemptions, activity-specific rules and portal procedures can change. Where the law distinguishes goods from services, domestic from cross-border transactions, or an operator from an independent seller, preserve those distinctions in the working papers.\n\n## 3. Prepare a document and data register\nMaintain a checklist with the document name, period, issuing party, legal entity, registration number, file date and reviewer. Source documents should be legible, complete and consistent with the application or return. Keep the original file as well as the prepared working copy. Where a portal has a file-size or format limit, follow the current portal instructions rather than compressing documents until details become unreadable.\n\n## 4. Reconcile source records before filing\nCompare the underlying invoices, statements, ledgers and bank records with the figures proposed for filing. Identify missing documents, duplicate entries, cancelled transactions, credit notes, refunds, tax-rate differences and period mismatches. Record the reason for every adjustment. A total that agrees arithmetically may still be wrong if it is mapped to the wrong entity, state, customer category or tax period.\n\n## 5. Keep a defensible audit trail\nSave the source export, the date it was downloaded, the calculation or reconciliation file, the review notes, the approval and the final acknowledgement. Use consistent file names and restrict access to sensitive tax and identity records. Never share portal passwords or one-time passcodes with a third party. Use official delegated access mechanisms where they are available.\n\n## 6. Avoid common shortcuts\nDo not treat a marketplace payout as gross sales, assume a bank credit is taxable turnover, claim every tax amount appearing in a statement, use an outdated registration checklist, or submit an application with a mismatched legal name or address. Do not rely on a search snippet for a legal conclusion. Read the current Act, rules, notification, circular or official portal manual that applies to the facts.\n\n## 7. Build a monthly compliance calendar\nSet an owner and internal deadline for collecting records, reconciling balances, reviewing exceptions, approving figures and filing. Schedule work before statutory due dates. If the business is on a quarterly return scheme, maintain monthly accounting records and payment controls; quarterly filing does not remove the need for monthly monitoring.\n\n## 8. Define professional support clearly\nBefore outsourcing, agree the registrations and periods covered, transaction limits, deliverables, source-data responsibilities, review process, filing authorisation, government fees, late fees, third-party costs and exclusions. Specify whether the service includes bookkeeping, reconciliations, notices, amendments, representation or only routine return preparation. A clear scope protects both the business and the service provider.\n\n## 9. Review the result after filing\nConfirm that the portal acknowledgement is saved, the filed period and return type are correct, payment references are retained and any follow-up action is assigned. Filing confirmation does not prove that every underlying figure was correct. Review notices, ledger postings and subsequent statements, and document corrections through the proper process.\n\n## How FileFast Global can help\nFileFast Global can help eligible businesses organise records, prepare scoped compliance checklists, reconcile relevant data and coordinate agreed registration or return-preparation work. Scope and fees depend on the entity, jurisdiction, activity, transaction volume and source-document quality. The taxpayer or business owner remains responsible for complete information and approval of the final statutory position.\n\n## Frequently asked questions\n### Can I use the same checklist for every business?\nNo. Requirements depend on the legal constitution, activity, premises, registrations, locations and transaction model.\n\n### Is an acknowledgement proof that everything is correct?\nIt confirms that a submission was received or filed. It does not replace a review of the source records and legal eligibility.\n\n### Should I send passwords or OTPs to an adviser?\nNo. Do not share passwords or OTPs. Use secure document sharing and authorised portal access methods.\n\n### When should I ask for professional review?\nSeek review when the facts involve multiple registrations, cross-border transactions, disputed tax credit, platform settlements, notices, complex classifications or uncertainty about current rules.\n\nOfficial references: https://foscos.fssai.gov.in/ and https://www.fssai.gov.in/"
+  },
+  {
+    slug: "gst-registration-documents-checklist-by-business-type",
+    category: "GST Registration",
+    title: "GST Registration Documents Required in India: Complete Checklist by Business Type",
+    excerpt: "A practical GST REG-01 preparation checklist for proprietors, partnership firms, LLPs, companies and online sellers, including premises proof and authorised signatory records.",
+    metaTitle: "GST Registration Documents Required: Complete Checklist | FileFast",
+    metaDescription: "Check GST registration documents for proprietorship, partnership, LLP and private limited company. Understand PAN, constitution, address proof and authorisation records.",
+    content: `Preparing documents before starting a GST registration application can reduce avoidable errors. The correct document set depends on the constitution of the applicant, the principal place of business, the authorised signatory and the reason for registration. A proprietorship does not use the same constitution documents as a company, and rented premises require a different address-proof review from owned premises.
+
+This guide is a practical preparation checklist for Form GST REG-01. It is not a substitute for checking the live GST Portal document fields and the rules applicable to the applicant's facts.
+
+## 1. Common information to prepare first
+
+Before collecting files, write down the legal name as per PAN, trade name if any, constitution of business, date of commencement, nature of activity, state and district, principal place of business, additional places of business, contact details and the reason for registration. Make sure the spelling and address are consistent across the application and supporting documents.
+
+Keep these common items ready where applicable:
+- PAN details of the applicant or entity.
+- Details of proprietor, partners, directors, members or other stakeholders, as relevant.
+- Photograph files for the relevant stakeholders and authorised signatory, as required by the portal.
+- Mobile number and email address for OTP and portal communication.
+- Proof of appointment or authorisation of the primary authorised signatory.
+- Principal place of business proof and additional place proof, if any.
+- Bank account information or supporting bank document when required in the application workflow.
+- Details of goods or services, HSN/SAC information and business activity.
+
+Do not assume that every applicant must upload every item in this list. Follow the current portal checklist for the selected constitution and registration type.
+
+## 2. Proprietorship or individual business
+
+For a sole proprietorship, the proprietor's PAN is central to the application. Prepare the proprietor's identity and contact information, photograph and business address proof. The trade name may differ from the proprietor's legal name, so enter each in the correct field and ensure the business evidence supports the declared trade name where the portal asks for it.
+
+A proprietorship does not have a separate certificate of incorporation like a company. Do not create or upload a partnership deed or company document for a proprietorship. If the business uses a trade name, keep relevant business records such as invoices, bank records or applicable local registrations available if they are relevant to a portal query.
+
+## 3. Partnership firm
+
+Prepare the partnership deed and the PAN details required for the firm and relevant persons. Identify the partner who will act as the primary authorised signatory and keep the authorisation and photograph details requested by the portal. Names and partner details should agree with the deed and the application.
+
+CBIC Instruction No. 03/2025-GST specifically addresses constitution proof and states that the partnership deed is the proof of constitution to be uploaded for a partnership applicant. It also says that additional documents such as Udyam/MSME certificate, shop establishment certificate or trade licence should not be demanded as extra proof of constitution in that context. Read the instruction and the portal's current fields together; do not confuse optional business registrations with the core constitution document.
+
+## 4. LLP and private limited company
+
+For an LLP or company, prepare the incorporation/registration evidence and the entity PAN information. Keep the LLP agreement or constitutional records available where relevant to the entity and the portal's requested fields. Identify the authorised signatory and prepare the board resolution, letter of authorisation or other appointment evidence required for the signatory. A company or LLP should not nominate a person informally without the entity's proper authority.
+
+Check that the registered legal name, PAN, incorporation details and signatory information are consistent. Where a director, designated partner or employee is authorised to act, the supporting resolution or authorisation should clearly identify that person and the scope of authority.
+
+## 5. Principal place of business: owned premises
+
+For owned premises, the official registration document list includes examples such as a latest property tax receipt, municipal khata copy or electricity bill. CBIC Instruction No. 03/2025-GST explains that one appropriate ownership document from the prescribed/indicative list, or a similar document under local law that clearly establishes ownership, should generally suffice for this purpose.
+
+Check that the document shows the full address and can reasonably be matched with the address entered in REG-01. If the document uses an abbreviated street name, old door number or different unit reference, prepare a clear explanation and supporting record rather than changing the address inaccurately.
+
+## 6. Rented or leased premises
+
+For rented premises, prepare the valid rent or lease agreement and an ownership-support document for the lessor, such as the applicable property tax receipt, municipal khata or electricity bill. The treatment of lessor identity proof can differ depending on whether the agreement is registered. Instruction No. 03/2025-GST says that for an unregistered agreement, the agreement together with one ownership document and lessor identity proof should suffice; for a registered agreement, the agreement and one ownership document should suffice without seeking lessor identity proof. It also addresses cases where the utility connection is in the tenant applicant's name.
+
+Do not upload a fabricated rent agreement or use a property address without permission. If the occupancy arrangement is unusual, obtain advice on the appropriate declaration and supporting records before applying.
+
+## 7. Premises used with consent or shared premises
+
+Where the property belongs to a spouse, relative or another person and the applicant is not the owner or tenant under a conventional lease, the consent route may be relevant. The instruction describes a plain-paper consent letter from the owner, the owner's identity proof and one ownership-support document. Shared premises and cases without a rent/lease agreement have specific evidence routes described in the instruction.
+
+The correct selection in the portal matters. Do not select "owned" merely because a family member owns the property. The application should reflect the applicant's actual right to use the premises and the evidence should support that declaration.
+
+## 8. Online sellers and e-commerce businesses
+
+An online seller should first identify the actual business model: selling goods through a marketplace, supplying services, operating a marketplace, or using a platform that collects tax under a particular provision. Registration rules are not identical for every platform arrangement. Prepare the entity/proprietor documents, principal place proof, product or service activity details and platform information. Keep seller onboarding details, marketplace agreements and settlement reports available where relevant to the facts.
+
+Do not assume that marketplace registration automatically completes GST registration or that every online seller has an identical registration obligation. Check the applicable provisions and current notifications for the supply type and marketplace model.
+
+## 9. File quality and upload preparation
+
+Use complete, legible scans. Avoid cut-off edges, glare, unreadable utility bill details, password-protected files that the portal cannot read, and documents with inconsistent names or addresses. Keep files within the file type and size limits shown on the live portal; limits can change and the official portal checklist should control.
+
+Use clear file names such as "Partnership-Deed.pdf", "Principal-Place-Electricity-Bill.pdf" and "Authorised-Signatory-Resolution.pdf". Keep a local copy of every submitted document and the application acknowledgement.
+
+## 10. Final pre-submission review
+
+- Applicant constitution and PAN are correct.
+- Legal name and trade name are entered in the correct fields.
+- Stakeholder and authorised signatory details match the supporting records.
+- Constitution proof is appropriate for the entity type.
+- Premises type selected in the portal matches the actual arrangement.
+- Address proof supports the full declared address.
+- All mandatory portal fields and uploads are complete.
+- Business activity and goods/services information are accurate.
+- Contact details are active for portal communication.
+- The applicant is ready to complete Aadhaar authentication or any other verification required by the portal.
+
+## How FileFast can help
+
+FileFast Global provides GST registration document review and application-preparation assistance for eligible applicants in Chennai and across India. We can help organise the constitution, address-proof and signatory checklist, identify inconsistencies and prepare the information for portal submission. The applicant must provide genuine records and complete required authentication. Approval, processing time and any additional verification are determined by the GST authorities.
+
+Official references:
+- GST Portal document checklist: https://tutorial.gst.gov.in/cbt/registration/gstregistration/course/story_content/external_files/GST_Registration_Document_Checklist.pdf
+- CBIC Instruction No. 03/2025-GST: https://upload.indiacode.nic.in/showfile?actid=AC_UP_88_448_00001_00001_1601884306960&filename=circular_no_201624-25gst.pdf&type=circular
+- GST Portal registration guide: https://tutorial.gst.gov.in/userguide/registration/Apply_for_Registration_Normal_Taxpayer.htm
+
+Disclaimer: This article is general information, not legal or tax advice for a specific applicant. Check the current GST Portal instructions and applicable law before filing.`
+  },
+  {
+    slug: "gst-registration-address-proof-owned-rented-consent-premises",
+    category: "GST Registration",
+    title: "GST Registration Address Proof: Owned, Rented, Shared and Consent Premises Explained",
+    excerpt: "Understand the premises documents used for GST registration, including electricity bills, property tax receipts, rent agreements, consent letters and no-agreement cases.",
+    metaTitle: "GST Registration Address Proof: Complete Premises Guide | FileFast",
+    metaDescription: "GST address proof explained for owned, rented, leased, family-owned and shared premises. Review the CBIC document guidance before submitting REG-01.",
+    content: `Address proof is one of the most common areas where GST registration applications need careful preparation. The document should support the principal place of business declared in Form GST REG-01. The correct evidence depends on whether the premises are owned, rented, leased, shared or used with the owner's consent.
+
+The key is to declare the actual occupancy arrangement and upload documents that match it. Do not select an incorrect premises category just because it appears to require fewer documents.
+
+## 1. First identify the premises category
+
+Ask these questions before uploading anything:
+- Is the property owned by the applicant entity or proprietor?
+- Is there a rent or lease agreement?
+- Is the agreement registered or unregistered?
+- Is the electricity or water connection in the applicant's name?
+- Does a family member or another person own the property?
+- Is the applicant using a shared office, coworking space or a portion of a building?
+- Is there no written rent agreement even though the applicant occupies the premises?
+
+The answer determines the supporting document route.
+
+## 2. Owned premises
+
+The indicative GST registration list includes a latest property tax receipt, municipal khata copy or electricity bill as ownership support. CBIC Instruction No. 03/2025-GST explains that one suitable document from the listed category, or a similar document under local law that clearly establishes ownership, should generally be sufficient.
+
+Before uploading:
+- Check the complete property address.
+- Confirm the document is current enough to identify the premises.
+- Ensure the name and ownership connection can be explained.
+- Match door number, floor, unit and locality with the application.
+- Scan all pages needed to understand the evidence.
+
+A document that only shows a person's name but does not connect that person to the declared property may not adequately establish the premises.
+
+## 3. Rented or leased premises
+
+For rented or leased premises, prepare the valid rent/lease agreement and one ownership-support document of the lessor from the indicative list, such as property tax receipt, municipal khata or electricity bill.
+
+The instruction distinguishes registered and unregistered agreements. For an unregistered rent/lease agreement, it describes the agreement along with one ownership document and a copy of the lessor's identity proof. For a registered agreement, it describes the agreement plus one ownership document without requiring lessor identity proof. If the electricity or water connection is in the tenant applicant's name, the instruction recognises the agreement together with that utility document as valid proof in the stated circumstances.
+
+Read the actual instruction and current portal requirements before applying; do not assume that every landlord document is always required or that every case follows the same pattern.
+
+## 4. Premises owned by a parent, spouse or relative
+
+If the property belongs to a family member and the applicant does not own it, the applicant should not simply mark the premises as owned by the applicant. The consent route may be relevant.
+
+Instruction No. 03/2025-GST describes a plain-paper consent letter from the owner, the identity proof of the person granting consent and one ownership-support document such as a property tax receipt, municipal khata or electricity bill. The consent should be genuine and should identify the premises and the person receiving permission to use it.
+
+Keep the consent letter, owner identity proof and ownership record together as a set. The declared address should match the supporting document. Where there are co-owners or unusual ownership arrangements, obtain specific advice on whose consent and evidence are required.
+
+## 5. Shared office and coworking space
+
+A shared office can involve a direct rent agreement, a membership agreement, a service agreement or a consent arrangement. Do not assume that a coworking invoice alone will always establish the applicant's right to use the premises as its principal place of business.
+
+Collect the agreement or membership document, identify the exact desk/cabin/unit or address allocation, and ask the provider for the ownership or occupancy evidence appropriate to the arrangement. The portal's current document list and the applicable CBIC instruction should be reviewed for the actual facts.
+
+## 6. No rent agreement available
+
+A rented/leased arrangement without a written agreement needs special care. Instruction No. 03/2025-GST describes an affidavit to that effect along with a document prescribed in the REG-01 list supporting the applicant's possession, such as an electricity bill in the applicant's name. It specifies execution on non-judicial stamp paper of the minimum value in the presence of a First-Class Judicial Magistrate, Executive Magistrate or Notary Public.
+
+Do not create a backdated agreement or upload a false consent letter to bypass the correct route. Confirm the current prescribed declaration and local requirements before executing an affidavit.
+
+## 7. Common address mismatch problems
+
+Applications can be delayed when:
+- The application has a different door number from the utility bill.
+- The floor, unit or building name is omitted.
+- The agreement names a tenant that does not match the applicant.
+- The electricity bill belongs to a different property.
+- The consent letter does not identify the owner or premises clearly.
+- The uploaded scan is blurred, incomplete or missing a relevant page.
+- The applicant selects owned premises even though another person owns the property.
+
+Prepare a short address mapping note where the property is known by more than one name or the official records use an older door number. Do not alter the source document.
+
+## 8. What if a clarification notice is issued?
+
+Read FORM GST REG-03 carefully and note the specific point, form, tax portal message and reply deadline. The instruction says clarification may be sought where a document is incomplete or illegible, the address does not match or the proof does not appear valid, or the address is incomplete or vague. Prepare a point-by-point reply with the relevant evidence and submit it through the prescribed portal process.
+
+Keep the filed FORM GST REG-04 reply and acknowledgement. If the notice raises a legal or factual issue beyond a simple document mismatch, obtain professional review.
+
+## 9. Address-proof preparation checklist
+
+- Correct premises category selected.
+- Full address entered consistently.
+- Ownership, rent, lease or consent evidence matches the arrangement.
+- Supporting utility/property record relates to the same premises.
+- Required owner/lessor identity evidence included where applicable.
+- All pages are legible and complete.
+- Current portal file-size and format rules checked.
+- Genuine documents retained for future verification.
+
+## How FileFast can help
+
+FileFast Global can review the GST registration address-proof set, identify obvious mismatches and organise the supporting documents before portal submission. We do not recommend using a borrowed address without genuine permission or making declarations that do not reflect the actual occupancy arrangement.
+
+Official reference: CBIC Instruction No. 03/2025-GST, 17 April 2025: https://upload.indiacode.nic.in/showfile?actid=AC_UP_88_448_00001_00001_1601884306960&filename=circular_no_201624-25gst.pdf&type=circular
+
+Disclaimer: General information only. Premises documentation and portal requirements should be checked against the applicant's actual facts and current official instructions.`
+  },
+  {
+    slug: "gst-registration-documents-proprietorship-partnership-llp-company",
+    category: "GST Registration",
+    title: "GST Registration Documents for Proprietorship, Partnership, LLP and Private Limited Company",
+    excerpt: "Compare GST registration preparation for four common business structures, including constitution proof, PAN, stakeholder details and authorised signatory records.",
+    metaTitle: "GST Documents: Proprietorship, Partnership, LLP & Company | FileFast",
+    metaDescription: "Compare GST registration documents for proprietors, partnership firms, LLPs and private limited companies, with practical constitution and signatory checklists.",
+    content: `The GST registration document checklist changes with the legal constitution of the applicant. A proprietor, partnership firm, limited liability partnership and private limited company should not prepare the same constitution evidence. The applicant should first confirm the legal entity and PAN to be used in the application.
+
+This guide compares the common preparation points for four business structures. The live GST Portal Form REG-01 fields and the document list for the selected applicant remain the final reference.
+
+## 1. Proprietorship
+
+A proprietorship is not a separate incorporated legal person in the same way as a company or LLP. Prepare:
+- Proprietor's PAN details.
+- Proprietor's identity/contact details and photograph as requested.
+- Business trade name, if different from the proprietor's legal name.
+- Principal place of business proof.
+- Additional place proof, if any.
+- Authorised signatory details where someone other than the proprietor is appointed.
+- Bank account information or supporting record when required by the portal.
+
+Check the legal name carefully. Do not enter the trade name in the PAN legal-name field. If the business operates under a shop name, use the relevant trade-name field and keep supporting business records available.
+
+## 2. Partnership firm
+
+Prepare:
+- Firm PAN and relevant partner details.
+- Partnership deed.
+- Details and photograph of the relevant partners/stakeholders as requested.
+- Primary authorised signatory details.
+- Authorisation/appointment evidence where required.
+- Principal and additional place of business proof.
+- Bank account information where required.
+
+The partnership deed is the key constitution document. CBIC Instruction No. 03/2025-GST specifically says the partnership deed is to be uploaded as proof of constitution and says additional documents such as Udyam/MSME certificate, shop establishment certificate or trade licence should not be sought as additional proof of constitution in this context.
+
+Before applying, verify the firm name, partner names, date and deed details. If the deed has been amended, make sure the current version and partner information are consistent with the application.
+
+## 3. Limited Liability Partnership
+
+For an LLP, prepare the LLP's PAN and incorporation/registration evidence. Keep the LLP agreement and relevant designated partner details available. The person acting as authorised signatory should be properly appointed or authorised, and the supporting resolution or authorisation should be available where applicable.
+
+Check that the LLP's legal name and identification details match its official incorporation records. Do not use a partner's personal PAN in place of the entity PAN where the application is for the LLP itself. Confirm the current portal requirements for DSC, Aadhaar authentication and signatory verification.
+
+## 4. Private limited company
+
+For a private limited company, prepare:
+- Company PAN details.
+- Certificate of incorporation.
+- Company legal name and registered details.
+- Director/stakeholder details requested in the application.
+- Photograph and identity/contact information for relevant persons as required.
+- Board resolution or authorisation letter for the authorised signatory, as applicable.
+- Principal and additional place of business proof.
+- Bank account information when required by the portal.
+
+The authorised signatory should be supported by a proper company authorisation. Check that the board resolution or letter names the same person who is entered in the GST application. Keep the relevant corporate records in a readable format.
+
+## 5. Address proof applies to every constitution
+
+The legal structure does not remove the need to establish the principal place of business. Owned premises, rented premises, premises used with consent and shared premises follow different document routes.
+
+For owned premises, the indicative list includes property tax receipt, municipal khata or electricity bill. For rented premises, prepare the agreement and ownership-support evidence. For premises owned by a relative or another person, review the consent route. CBIC Instruction No. 03/2025-GST explains these distinctions, including the treatment of registered and unregistered rent agreements.
+
+The address entered in REG-01 should be complete and consistent with the supporting records. A company registered office and a separate operating location may require the applicant to review which premises are being declared as principal or additional places of business.
+
+## 6. Authorised signatory: do not leave this to the last minute
+
+The authorised signatory is the person who will act on the GST Portal for the applicant. Confirm the correct individual, contact details and authorisation before beginning the application. For a partnership, confirm the partner/signatory arrangement. For a company or LLP, make sure the authorisation is supported by the appropriate entity record.
+
+If an employee, consultant or other representative is intended to act, do not assume that access to an email inbox alone creates legal authority. Follow the portal's signatory appointment and verification process.
+
+## 7. Common mistakes by entity type
+
+**Proprietorship:** using a trade name where the PAN legal name is required; treating a family-owned premises as the proprietor's own property.
+
+**Partnership:** uploading an outdated deed; partner details not matching the current deed; unclear signatory authority.
+
+**LLP:** using partner details inconsistently with LLP records; missing or unclear authorised signatory appointment.
+
+**Private limited company:** mismatched company name or PAN; incomplete board authorisation; using an individual's PAN instead of the company's PAN for an entity application.
+
+**All applicants:** incomplete address, illegible scans, mismatched contact details, missing additional-place evidence or failure to complete portal authentication.
+
+## 8. Before clicking submit
+
+Use this final comparison:
+- Entity constitution and PAN are correct.
+- The constitution document belongs to the applicant.
+- Stakeholder details match official records.
+- Authorised signatory is correctly identified and authorised.
+- Principal place proof matches the actual premises arrangement.
+- Additional place details are complete, if applicable.
+- Uploaded files are legible and within current portal limits.
+- Contact details are active and accessible.
+- The applicant understands the authentication and verification steps.
+
+## How FileFast can help
+
+FileFast Global supports GST registration document preparation and application assistance for proprietors, partnerships, LLPs and companies. We can help identify the constitution-specific checklist, review address evidence and organise signatory documents before submission. The applicant remains responsible for accurate declarations, genuine documents and completing the required authentication.
+
+Official references:
+- GST Portal document checklist: https://tutorial.gst.gov.in/cbt/registration/gstregistration/course/story_content/external_files/GST_Registration_Document_Checklist.pdf
+- CBIC Instruction No. 03/2025-GST: https://upload.indiacode.nic.in/showfile?actid=AC_UP_88_448_00001_00001_1601884306960&filename=circular_no_201624-25gst.pdf&type=circular
+- GST Portal registration guide: https://tutorial.gst.gov.in/userguide/registration/Apply_for_Registration_Normal_Taxpayer.htm
+
+Disclaimer: This is general information, not case-specific legal or tax advice. Always verify the latest portal checklist and applicable law before submitting an application.`
   }
 ];
