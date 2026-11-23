@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
 import Blog from "@/models/Blog";
+import Payment from "@/models/Payment";
 import { requireAdmin } from "@/lib/requireAdmin";
 
 export async function GET(req) {
@@ -19,7 +20,7 @@ export async function GET(req) {
     sixMonthsAgo.setMonth(now.getMonth() - 5, 1);
     sixMonthsAgo.setHours(0, 0, 0, 0);
 
-    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, byCampaign, byLandingPage, byStatus, priorityStats, responseStats, blogStats] = await Promise.all([
+    const [totalLeads, last30Days, last90Days, monthly, byService, bySource, byCampaign, byLandingPage, byStatus, priorityStats, responseStats, paymentStats, paymentByService, paymentMonthly, blogStats] = await Promise.all([
       Lead.countDocuments({}),
       Lead.countDocuments({ createdAt: { $gte: thirtyDaysAgo } }),
       Lead.countDocuments({ createdAt: { $gte: ninetyDaysAgo } }),
@@ -63,6 +64,21 @@ export async function GET(req) {
         { $project: { responseMinutes: { $divide: [{ $subtract: ["$firstResponseAt", "$createdAt"] }, 60000] } } },
         { $group: { _id: null, averageMinutes: { $avg: "$responseMinutes" }, responded: { $sum: 1 } } }
       ]),
+      Payment.aggregate([
+        { $match: { status: "success" } },
+        { $group: { _id: null, revenue: { $sum: "$amount" }, successfulPayments: { $sum: 1 }, averagePayment: { $avg: "$amount" } } }
+      ]),
+      Payment.aggregate([
+        { $match: { status: "success" } },
+        { $group: { _id: { $ifNull: ["$service", "Not specified"] }, revenue: { $sum: "$amount" }, payments: { $sum: 1 } } },
+        { $sort: { revenue: -1 } },
+        { $limit: 10 }
+      ]),
+      Payment.aggregate([
+        { $match: { status: "success", createdAt: { $gte: sixMonthsAgo } } },
+        { $group: { _id: { $dateToString: { format: "%Y-%m", date: "$createdAt", timezone: "Asia/Kolkata" } }, revenue: { $sum: "$amount" }, payments: { $sum: 1 } } },
+        { $sort: { _id: 1 } }
+      ]),
       Blog.aggregate([
         { $group: { _id: null, total: { $sum: 1 }, published: { $sum: { $cond: ["$isPublished", 1, 0] } } } }
       ])
@@ -79,6 +95,9 @@ export async function GET(req) {
       byStatus: byStatus.map((item) => ({ label: item._id, count: item.count })),
       byPriority: priorityStats.map((item) => ({ label: item._id, count: item.count })),
       response: responseStats[0] ? { averageMinutes: Math.round(responseStats[0].averageMinutes), responded: responseStats[0].responded } : { averageMinutes: null, responded: 0 },
+      payments: { revenue: paymentStats[0]?.revenue || 0, successful: paymentStats[0]?.successfulPayments || 0, average: paymentStats[0]?.averagePayment || 0 },
+      revenueByService: paymentByService.map((item) => ({ label: item._id, revenue: item.revenue, payments: item.payments })),
+      revenueMonthly: paymentMonthly.map((item) => ({ month: item._id, revenue: item.revenue, payments: item.payments })),
       blogs: blogStats[0] || { total: 0, published: 0 }
     });
   } catch (error) {
