@@ -81,6 +81,8 @@ export default function AdminAnalyticsPage() {
             <Metric label="Last 30 days" value={data.leads.last30Days} note="New enquiries" />
             <Metric label="Last 90 days" value={data.leads.last90Days} note="New enquiries" />
             <Metric label="Published blogs" value={data.blogs.published} note={`${data.blogs.total} total articles`} />
+            <Metric label="High-priority leads" value={(data.byPriority || []).find((item) => item.label === "high")?.count || 0} note="Rule-based enquiry score" />
+            <Metric label="Average first response" value={data.response?.averageMinutes == null ? "—" : `${data.response.averageMinutes} min`} note={`${data.response?.responded || 0} leads with recorded response`} />
           </div>
 
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
@@ -106,6 +108,7 @@ export default function AdminAnalyticsPage() {
             <Breakdown title="Enquiries by campaign" rows={data.byCampaign || []} empty="Campaign-tagged enquiries will appear here." />
             <Breakdown title="Top landing pages" rows={data.byLandingPage || []} empty="Landing-page attribution will appear here." />
             <Breakdown title="Lead pipeline status" rows={data.byStatus || []} empty="Lead statuses will appear here after the team updates enquiries." />
+            <Breakdown title="Lead priority" rows={data.byPriority || []} empty="Priority levels will appear as enquiries arrive." />
             <section className="rounded-sm border border-silver/70 bg-white p-5">
               <h2 className="font-semibold text-navy">Next steps</h2>
               <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which services, campaigns and landing pages generate enquiries. Use consistent UTM tags on advertising links. Qualified-lead and paid-client conversion tracking can be added after the team records those outcomes.</p>
