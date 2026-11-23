@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackLeadGenerated } from "@/components/AnalyticsConsent";
 
 export default function LeadForm({ defaultService = "" }) {
   const [form, setForm] = useState({
@@ -59,6 +60,7 @@ export default function LeadForm({ defaultService = "" }) {
         const result = await res.json().catch(() => ({}));
         throw new Error(result.error || "We could not send your request.");
       }
+      trackLeadGenerated(form.serviceInterested);
       setStatus("success");
     } catch (error) {
       setSubmitError(error.message || "Please try again or contact us on WhatsApp.");
