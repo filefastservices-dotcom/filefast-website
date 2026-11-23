@@ -3,9 +3,9 @@ const path = require("node:path");
 const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const checks = [
-  ["src/components/LeadForm.jsx", ["utm_source", "utm_medium", "utm_campaign", "landingPage: window.location.pathname", "referrerHost", "required checked={form.consent}", "consent: form.consent"]],
-  ["src/app/api/leads/route.js", ["utmSource", "utmMedium", "utmCampaign", "startsWith(\"//\")", "referrerHost", "body?.consent !== true", "consentAt: new Date()", "consentVersion"]],
-  ["src/models/Lead.js", ["utmSource", "utmMedium", "utmCampaign", "utmContent", "utmTerm", "landingPage", "referrerHost", "consent", "consentAt", "consentVersion"]],
+  ["src/components/LeadForm.jsx", ["utm_source", "utm_medium", "utm_campaign", "landingPage: window.location.pathname", "referrerHost", "required checked={form.consent}", "adsMeasurementConsent: form.adsMeasurementConsent", "consent: form.consent"]],
+  ["src/app/api/leads/route.js", ["utmSource", "utmMedium", "utmCampaign", "startsWith(\"//\")", "referrerHost", "body?.consent !== true", "adsMeasurementConsent", "adsMeasurementConsentAt", "consentAt: new Date()", "consentVersion"]],
+  ["src/models/Lead.js", ["utmSource", "utmMedium", "utmCampaign", "utmContent", "utmTerm", "gclid", "gbraid", "wbraid", "msclkid", "adsMeasurementConsent", "adsMeasurementConsentAt", "landingPage", "referrerHost", "consent", "consentAt", "consentVersion"]],
   ["src/app/admin/leads/page.js", ["Campaign", "Landing page", "l.utmCampaign", "l.landingPage"]],
   ["src/app/api/admin/analytics/route.js", ["await requireAdmin(req)", "byCampaign", "byLandingPage", "utmCampaign", "landingPage"]],
   ["src/app/admin/analytics/page.js", ["fetch(\"/api/admin/analytics\")", "Enquiries by campaign", "Top landing pages"]],
@@ -108,6 +108,8 @@ for (const token of ['contacted: "working_lead"', 'qualified: "qualify_lead"', '
 }
 
 
+const googleAdsExport = read("src/app/api/leads/google-ads-export/route.js");
+for (const token of ["await requireAdmin(req)", "adsMeasurementConsent: true", "createHash(\"sha256\")", "gclid", "gbraid", "wbraid", "conversion_action", "transaction_id"]) if (!googleAdsExport.includes(token)) failures.push("Google Ads export is missing privacy/security or mapping: " + token);
 const analyticsSource = read("src/app/api/admin/analytics/route.js");
 for (const token of ['import Payment from "@/models/Payment"', 'status: "success"', 'revenueByService', 'revenueMonthly', 'successfulPayments']) {
   if (!analyticsSource.includes(token)) failures.push("Payment/revenue analytics missing: " + token);
