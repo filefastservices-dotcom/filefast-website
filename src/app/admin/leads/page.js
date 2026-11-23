@@ -114,12 +114,14 @@ export default function AdminLeadsPage() {
           <table className="w-full min-w-[1420px] text-left text-sm">
             <thead className="border-b border-silver/70 bg-silver-light text-xs uppercase tracking-wide text-navy/60">
               <tr>
-                <th className="px-4 py-3">Name</th><th className="px-4 py-3">Mobile</th><th className="px-4 py-3">Email</th><th className="px-4 py-3">Service</th><th className="px-4 py-3">Source</th><th className="px-4 py-3">Campaign</th><th className="px-4 py-3">Landing page</th><th className="px-4 py-3">Message</th><th className="px-4 py-3">Date</th><th className="px-4 py-3">Enquiry consent</th><th className="px-4 py-3">Consent recorded</th><th className="px-4 py-3">Pipeline & follow-up</th>
+                <th className="px-4 py-3">Priority / score</th><th className="px-4 py-3">First response</th><th className="px-4 py-3">Name</th><th className="px-4 py-3">Mobile</th><th className="px-4 py-3">Email</th><th className="px-4 py-3">Service</th><th className="px-4 py-3">Source</th><th className="px-4 py-3">Campaign</th><th className="px-4 py-3">Landing page</th><th className="px-4 py-3">Message</th><th className="px-4 py-3">Date</th><th className="px-4 py-3">Enquiry consent</th><th className="px-4 py-3">Consent recorded</th><th className="px-4 py-3">Pipeline & follow-up</th>
               </tr>
             </thead>
             <tbody>
               {leads.map((lead) => (
                 <tr key={lead._id} className="border-b border-silver/50 align-top last:border-0">
+                  <td className="px-4 py-3"><span className={`rounded-full px-2 py-1 text-[10px] font-bold uppercase ${lead.leadPriority === "high" ? "bg-amber-50 text-amber-800" : "bg-silver-light text-navy/60"}`}>{lead.leadPriority || "standard"}</span><p className="mt-1 text-xs text-navy/55">{lead.leadScore || 0}/100</p></td>
+                  <td className="px-4 py-3 text-xs text-navy/60">{lead.firstResponseAt ? new Date(lead.firstResponseAt).toLocaleString("en-IN") : "Not contacted"}</td>
                   <td className="px-4 py-3 font-medium text-navy">{lead.name}</td>
                   <td className="px-4 py-3 text-navy/70"><a href={`tel:${lead.mobile}`} className="hover:text-gold-dark">{lead.mobile}</a></td>
                   <td className="px-4 py-3 text-navy/70">{lead.email || "—"}</td>
@@ -134,7 +136,7 @@ export default function AdminLeadsPage() {
                   <td className="px-4 py-3"><LeadPipelineEditor lead={lead} onSaved={updateLead} /></td>
                 </tr>
               ))}
-              {leads.length === 0 && <tr><td colSpan={12} className="px-4 py-6 text-center text-navy/60">No leads found.</td></tr>}
+              {leads.length === 0 && <tr><td colSpan={14} className="px-4 py-6 text-center text-navy/60">No leads found.</td></tr>}
             </tbody>
           </table>
         </div>
