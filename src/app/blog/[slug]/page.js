@@ -107,7 +107,13 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements|GST IMS and ITC reconciliation|Invoice Management System|GST refund documentation|GST refund for exporters|marketplace settlement and TCS reconciliation|marketplace settlement reconciliation guide|GSTR-10 final return format|GSTR-10 due date|change GST returns from monthly to quarterly|QRMP scheme support|UK company registration from India|register a UK company from India|TikTok Shop settlement report reconciliation|TikTok Shop payout reconciliation|month-end reporting for small businesses|tax preparation software quote|outsourced tax preparation|e-commerce marketplace GST compliance|marketplace seller invoicing and TCS|EU OSS and IOSS VAT|IOSS registration|FSSAI registration in Tamil Nadu|FSSAI application in Tamil Nadu|professional tax compliance|GST ITC on hotel and travel expenses|GST input tax credit on hotel bills|monthly to quarterly GST filing|quarterly to monthly GST filing|GST registration documents for proprietorship|business tax compliance health check|GST registration document checklist by business type|GST address proof for rented premises|GST documents for partnership and LLP|GST registration documents for private limited company)/gi;
+  const urlPattern = /(https:\/\/(?:www\\.)?(?:gst\\.gov\\.in|cbic-gst\\.gov\\.in|incometax\\.gov\\.in|mca\\.gov\\.in|dgft\\.gov\\.in|fssai\\.gov\\.in|udyamregistration\\.gov\\.in|services\\.gst\\.gov\\.in|www\\.gov\\.uk|www\\.gov\\.au|europa\\.eu|taxation-customs\\.ec\\.europa\\.eu|irs\\.gov|tax\\.gov\\.ae)(?:[^\\s)]+)?)/gi;
+  const urlParts = text.split(urlPattern);
+  return urlParts.map((part, urlIndex) => {
+    if (/^https:\/\//i.test(part)) {
+      return <a key={`${keyPrefix}-official-${urlIndex}`} href={part} target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">Official source</a>;
+    }
+    const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements|GST IMS and ITC reconciliation|Invoice Management System|GST refund documentation|GST refund for exporters|marketplace settlement and TCS reconciliation|marketplace settlement reconciliation guide|GSTR-10 final return format|GSTR-10 due date|change GST returns from monthly to quarterly|QRMP scheme support|UK company registration from India|register a UK company from India|TikTok Shop settlement report reconciliation|TikTok Shop payout reconciliation|month-end reporting for small businesses|tax preparation software quote|outsourced tax preparation|e-commerce marketplace GST compliance|marketplace seller invoicing and TCS|EU OSS and IOSS VAT|IOSS registration|FSSAI registration in Tamil Nadu|FSSAI application in Tamil Nadu|professional tax compliance|GST ITC on hotel and travel expenses|GST input tax credit on hotel bills|monthly to quarterly GST filing|quarterly to monthly GST filing|GST registration documents for proprietorship|business tax compliance health check|GST registration document checklist by business type|GST address proof for rented premises|GST documents for partnership and LLP|GST registration documents for private limited company)/gi;
   return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
@@ -116,6 +122,7 @@ function renderInline(text, keyPrefix) {
         {part}
       </a>
     );
+  });
   });
 }
 
@@ -160,7 +167,7 @@ export default async function BlogPostPage({ params }) {
         image: "https://www.filefastglobal.com/og-image.png",
         author: {
           "@type": "Organization",
-          name: "FileFast Global",
+          name: "FileFast Global Editorial Team",
           url: "https://www.filefastglobal.com/about"
         },
         publisher: {
@@ -208,6 +215,12 @@ export default async function BlogPostPage({ params }) {
         {post.title}
       </h1>
 
+      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-silver/60 pb-5 text-xs text-navy/55">
+        <span className="font-semibold text-navy/75">FileFast Global Editorial Team</span>
+        <span aria-hidden="true">·</span>
+        <span>General educational information</span>
+        {(toValidIsoDate(post.updatedAt) || toValidIsoDate(post.createdAt)) ? <><span aria-hidden="true">·</span><time dateTime={toValidIsoDate(post.updatedAt) || toValidIsoDate(post.createdAt)}>Updated {new Date(toValidIsoDate(post.updatedAt) || toValidIsoDate(post.createdAt)).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" })}</time></> : null}
+      </div>
       <div className="mt-8">
         {renderContent(post.content)}
       </div>
