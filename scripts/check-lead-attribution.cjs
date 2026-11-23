@@ -18,6 +18,20 @@ for (const [file, tokens] of checks) {
     if (!content.includes(token)) failures.push(file + " is missing expected attribution safeguard: " + token);
   }
 }
+const leadForm = read("src/components/LeadForm.jsx");
+const emailInput = leadForm.match(/<input\\s+type="email"[\\s\\S]*?\\/>/);
+const serviceSelect = leadForm.match(/<select\\s+aria-label="Service you need"[\\s\\S]*?<\\/select>/);
+if (!emailInput || /\\brequired\\b/.test(emailInput[0])) {
+  failures.push("Standard enquiry email field should remain optional.");
+}
+if (!serviceSelect || /\\brequired\\b/.test(serviceSelect[0])) {
+  failures.push("Standard enquiry service selector should remain optional.");
+}
+const adminLeads = read("src/app/admin/leads/page.js");
+for (const token of ["Enquiry consent", "l.consentAt", "l.consent === true"]) {
+  if (!adminLeads.includes(token)) failures.push("Admin leads page is missing consent audit display: " + token);
+}
+
 const leadRoute = read("src/app/api/leads/route.js");
 if (/document\.referrer|req\.headers\.get\(["']referer/i.test(leadRoute)) {
   failures.push("Server route must not store a full referrer URL.");
