@@ -81,7 +81,19 @@ const INTERNAL_LINKS = [
   { phrase: "month-end reporting for small businesses", href: "/services/accounting-bookkeeping" },
   { phrase: "tax preparation software quote", href: "/blog/tax-preparation-software-quote-vs-outsourced-tax-compliance-india" },
   { phrase: "outsourced tax preparation", href: "/services/compliance-services" },
-  { phrase: "business tax compliance health check", href: "/services/business-compliance-health-check" }
+  { phrase: "business tax compliance health check", href: "/services/business-compliance-health-check" },
+  { phrase: "e-commerce marketplace GST compliance", href: "/blog/ecommerce-marketplace-gst-compliance-seller-invoicing-tcs-reconciliation" },
+  { phrase: "marketplace seller invoicing and TCS", href: "/blog/ecommerce-marketplace-gst-compliance-seller-invoicing-tcs-reconciliation" },
+  { phrase: "EU OSS and IOSS VAT", href: "/blog/eu-oss-ioss-vat-registration-returns-indian-sellers-guide" },
+  { phrase: "IOSS registration", href: "/services/eu-vat-oss-ioss" },
+  { phrase: "FSSAI registration in Tamil Nadu", href: "/blog/fssai-registration-tamil-nadu-food-business-documents-process" },
+  { phrase: "FSSAI application in Tamil Nadu", href: "/services/fssai-registration" },
+  { phrase: "professional tax compliance", href: "/services/payroll-compliance" },
+  { phrase: "GST ITC on hotel and travel expenses", href: "/blog/gst-itc-on-travel-hotel-food-client-meetings" },
+  { phrase: "GST input tax credit on hotel bills", href: "/blog/gst-itc-on-travel-hotel-food-client-meetings" },
+  { phrase: "monthly to quarterly GST filing", href: "/blog/gst-return-filing-frequency-monthly-quarterly-qrmp" },
+  { phrase: "quarterly to monthly GST filing", href: "/blog/gst-return-filing-frequency-monthly-quarterly-qrmp" },
+  { phrase: "GST registration documents for proprietorship", href: "/blog/gst-registration-documents-checklist" }
 ];
 
 function toValidIsoDate(value) {
@@ -91,7 +103,7 @@ function toValidIsoDate(value) {
 }
 
 function renderInline(text, keyPrefix) {
-  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements|GST IMS and ITC reconciliation|Invoice Management System|GST refund documentation|GST refund for exporters|marketplace settlement and TCS reconciliation|marketplace settlement reconciliation guide|GSTR-10 final return format|GSTR-10 due date|change GST returns from monthly to quarterly|QRMP scheme support|UK company registration from India|register a UK company from India|TikTok Shop settlement report reconciliation|TikTok Shop payout reconciliation|month-end reporting for small businesses|tax preparation software quote|outsourced tax preparation|business tax compliance health check)/gi;
+  const phrasePattern = /(GST notice response checklist|GST for freelancers|GST tax invoice checklist|bank reconciliation for small businesses|marketplace settlement reconciliation|export of services under LUT|small business accounting records|monthly ITC review checklist|GST Registration service|GST registration documents checklist|GST registration address proof|documents required for GST return filing|GST for e-commerce sellers|GSTR-1 vs GSTR-3B|GST input tax credit checklist|GSTR-1 filing|GSTR-3B filing|ITR filing|GST ITC reconciliation|LUT export compliance checklist|exporting under LUT|marketplace GST and TCS reconciliation|e-commerce TCS reconciliation|TDS on freelancer payments|freelancer and contractor payments|monthly accounting checklist|month-end accounting close|TDS return filing|accounting and bookkeeping|GST return filing in India|GST registration in India|GST registration online|TCS return filing|income tax return filing|ITR filing online|GSTR-2B reconciliation|GST registration documents|quarterly TDS statements|GST IMS and ITC reconciliation|Invoice Management System|GST refund documentation|GST refund for exporters|marketplace settlement and TCS reconciliation|marketplace settlement reconciliation guide|GSTR-10 final return format|GSTR-10 due date|change GST returns from monthly to quarterly|QRMP scheme support|UK company registration from India|register a UK company from India|TikTok Shop settlement report reconciliation|TikTok Shop payout reconciliation|month-end reporting for small businesses|tax preparation software quote|outsourced tax preparation|e-commerce marketplace GST compliance|marketplace seller invoicing and TCS|EU OSS and IOSS VAT|IOSS registration|FSSAI registration in Tamil Nadu|FSSAI application in Tamil Nadu|professional tax compliance|GST ITC on hotel and travel expenses|GST input tax credit on hotel bills|monthly to quarterly GST filing|quarterly to monthly GST filing|GST registration documents for proprietorship|business tax compliance health check)/gi;
   return text.split(phrasePattern).map((part, index) => {
     const link = INTERNAL_LINKS.find((item) => item.phrase.toLowerCase() === part.toLowerCase());
     if (!link) return <span key={`${keyPrefix}-${index}`}>{part}</span>;
