@@ -56,6 +56,11 @@ for (const token of ['export async function PATCH(req)', 'await requireAdmin(req
   if (!leadRoute.includes(token)) failures.push("Lead pipeline API is missing safeguard or update: " + token);
 }
 const leadAdmin = read("src/app/admin/leads/page.js");
+for (const token of ["Priority / score", "First response", "leadScore", "leadPriority"]) if (!leadAdmin.includes(token)) failures.push("Admin leads view is missing prioritisation/response data: " + token);
+const analyticsMetrics = read("src/app/admin/analytics/page.js");
+for (const token of ["Average first response", "High-priority leads", "Lead priority"]) if (!analyticsMetrics.includes(token)) failures.push("Analytics page is missing response/priority metric: " + token);
+const analyticsApi = read("src/app/api/admin/analytics/route.js");
+for (const token of ["priorityStats", "responseStats", "averageMinutes", "byPriority"]) if (!analyticsApi.includes(token)) failures.push("Analytics API is missing response/priority metric: " + token);
 for (const token of ['Lead pipeline', 'Qualified', 'Converted', 'Private team note', 'Save update', 'followUpAt']) {
   if (!leadAdmin.includes(token)) failures.push("Admin lead pipeline is missing feature: " + token);
 }
@@ -87,13 +92,6 @@ if (!privacyPolicy.includes("Optional website analytics") || !privacyPolicy.incl
   failures.push("Privacy policy must explain optional analytics separately from enquiry consent.");
 }
 
-if (failures.length) {
-  console.error("Lead attribution checks failed:");
-  failures.forEach((failure) => console.error("- " + failure));
-  process.exit(1);
-}
-console.log("Lead attribution checks passed.");
-
 const followUpsApi = read("src/app/api/admin/follow-ups/route.js");
 for (const token of ["await requireAdmin(req)", "followUpAt: { $lt: startToday", "dueToday", "unscheduled", "limit(100)"]) {
   if (!followUpsApi.includes(token)) failures.push("Follow-up API is missing access control or task grouping: " + token);
@@ -108,3 +106,11 @@ const leadTracking = read("src/components/AnalyticsConsent.jsx");
 for (const token of ['contacted: "working_lead"', 'qualified: "qualify_lead"', 'converted: "close_convert_lead"', 'lost: "disqualify_lead"']) {
   if (!leadTracking.includes(token)) failures.push("GA4 lead-stage event mapping is missing: " + token);
 }
+
+
+if (failures.length) {
+  console.error("Lead attribution checks failed:");
+  failures.forEach((failure) => console.error("- " + failure));
+  process.exit(1);
+}
+console.log("Lead attribution checks passed.");
