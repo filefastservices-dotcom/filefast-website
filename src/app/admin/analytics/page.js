@@ -37,6 +37,22 @@ function Breakdown({ title, rows, empty }) {
   );
 }
 
+function RevenueBreakdown({ title, rows }) {
+  const max = Math.max(1, ...rows.map((row) => row.revenue || 0));
+  return (
+    <section className="rounded-sm border border-silver/70 bg-white p-5">
+      <h2 className="font-semibold text-navy">{title}</h2>
+      {rows.length ? <div className="mt-4 space-y-4">{rows.map((row) => (
+        <div key={row.label || row.month}>
+          <div className="mb-1 flex items-center justify-between gap-3 text-sm"><span className="truncate text-navy/80">{row.label || row.month}</span><strong className="shrink-0 text-navy">₹{Number(row.revenue || 0).toLocaleString("en-IN")}</strong></div>
+          <div className="h-2 overflow-hidden rounded-full bg-silver-light"><div className="h-full rounded-full bg-gold-dark" style={{ width: `${(row.revenue / max) * 100}%` }} /></div>
+          <p className="mt-1 text-[10px] text-navy/45">{row.payments} successful payments</p>
+        </div>
+      ))}</div> : <p className="mt-4 text-sm text-navy/50">No successful payment records yet.</p>}
+    </section>
+  );
+}
+
 export default function AdminAnalyticsPage() {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
@@ -83,6 +99,8 @@ export default function AdminAnalyticsPage() {
             <Metric label="Published blogs" value={data.blogs.published} note={`${data.blogs.total} total articles`} />
             <Metric label="High-priority leads" value={(data.byPriority || []).find((item) => item.label === "high")?.count || 0} note="Rule-based enquiry score" />
             <Metric label="Average first response" value={data.response?.averageMinutes == null ? "—" : `${data.response.averageMinutes} min`} note={`${data.response?.responded || 0} leads with recorded response`} />
+            <Metric label="Recorded revenue" value={`₹${Number(data.payments?.revenue || 0).toLocaleString("en-IN")}`} note={`${data.payments?.successful || 0} successful payment records`} />
+            <Metric label="Average payment" value={`₹${Math.round(data.payments?.average || 0).toLocaleString("en-IN")}`} note="Successful payments only" />
           </div>
 
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
@@ -109,6 +127,8 @@ export default function AdminAnalyticsPage() {
             <Breakdown title="Top landing pages" rows={data.byLandingPage || []} empty="Landing-page attribution will appear here." />
             <Breakdown title="Lead pipeline status" rows={data.byStatus || []} empty="Lead statuses will appear here after the team updates enquiries." />
             <Breakdown title="Lead priority" rows={data.byPriority || []} empty="Priority levels will appear as enquiries arrive." />
+            <RevenueBreakdown title="Revenue by service" rows={(data.revenueByService || []).map((item) => ({ ...item, label: item.label }))} />
+            <RevenueBreakdown title="Monthly recorded revenue" rows={data.revenueMonthly || []} />
             <section className="rounded-sm border border-silver/70 bg-white p-5">
               <h2 className="font-semibold text-navy">Next steps</h2>
               <p className="mt-2 text-sm leading-6 text-navy/70">Use these enquiry records to identify which services, campaigns and landing pages generate enquiries. Use consistent UTM tags on advertising links. Qualified-lead and paid-client conversion tracking can be added after the team records those outcomes.</p>
@@ -118,7 +138,7 @@ export default function AdminAnalyticsPage() {
               </div>
             </section>
           </div>
-          <p className="mt-5 text-xs leading-5 text-navy/50">Data source: FileFast website enquiry and blog databases. This dashboard does not yet measure total website visitors, search impressions, page views, advertising spend or customer revenue. Those require verified Google Analytics 4, Search Console and CRM/payment integrations.</p>
+          <p className="mt-5 text-xs leading-5 text-navy/50">Data source: FileFast website enquiry and blog databases. This dashboard reports successful payment records saved in FileFast. It does not measure profit, refunds not recorded in this database, invoices, advertising spend, or campaign ROI. Those require reconciled accounting, refund and ad-spend data.</p>
           <p className="mt-2 text-xs text-navy/40">Last refreshed: {new Date(data.generatedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</p>
         </>
       )}
