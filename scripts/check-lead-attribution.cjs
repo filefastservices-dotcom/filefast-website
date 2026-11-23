@@ -93,3 +93,18 @@ if (failures.length) {
   process.exit(1);
 }
 console.log("Lead attribution checks passed.");
+
+const followUpsApi = read("src/app/api/admin/follow-ups/route.js");
+for (const token of ["await requireAdmin(req)", "followUpAt: { $lt: startToday", "dueToday", "unscheduled", "limit(100)"]) {
+  if (!followUpsApi.includes(token)) failures.push("Follow-up API is missing access control or task grouping: " + token);
+}
+const followUpsPage = read("src/app/admin/follow-ups/page.js");
+for (const token of ["Daily follow-up desk", "Overdue follow-ups", "Due today", "Coming up", "No follow-up date", "does not send messages"]) {
+  if (!followUpsPage.includes(token)) failures.push("Follow-up dashboard is missing expected feature or limitation: " + token);
+}
+const adminNav = read("src/app/admin/layout.js");
+if (!adminNav.includes('href:"/admin/follow-ups"')) failures.push("Admin navigation must include the follow-up desk.");
+const leadTracking = read("src/components/AnalyticsConsent.jsx");
+for (const token of ['contacted: "working_lead"', 'qualified: "qualify_lead"', 'converted: "close_convert_lead"', 'lost: "disqualify_lead"']) {
+  if (!leadTracking.includes(token)) failures.push("GA4 lead-stage event mapping is missing: " + token);
+}
