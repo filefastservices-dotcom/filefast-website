@@ -1,11 +1,11 @@
 export const metadata = {
   title: "Founder | Gnanavel M — FileFast Global",
-  description: "Meet Gnanavel M, founder of FileFast Global, a Chennai-based tax compliance and business support firm serving individuals and growing businesses.",
+  description: "Meet Gnanavel M, founder of FileFast Global in Chennai. Explore his commerce education, tax and compliance experience, digital capabilities, professional focus and vision.",
   alternates: { canonical: "/about" },
   openGraph: {
     url: "https://www.filefastglobal.com/about",
     title: "Gnanavel M | Founder, FileFast Global",
-    description: "The story, education, professional focus and vision behind FileFast Global.",
+    description: "The founder story, education, experience, expertise and vision behind FileFast Global.",
     images: ["/gnanavel-founder.jpg"],
   },
 };
@@ -17,6 +17,23 @@ const expertise = [
   ["E-commerce Compliance", "Marketplace seller compliance support, including TCS-related reporting and reconciliations."],
   ["TDS & TCS", "Return preparation support, compliance tracking and related documentation."],
   ["Cross-border Tax Coordination", "Research-led coordination around UK VAT, EU VAT, sales tax and international compliance requirements, with regulated advice referred to appropriately qualified professionals."],
+];
+
+const experience = [
+  ["2024 — Present", "Founder, FileFast Global", "Established a digital-first tax and compliance support practice in Chennai, focused on individuals, small businesses, traders and online sellers."],
+  ["Tax & compliance practice", "GST and income-tax support", "Hands-on work across return preparation, filing workflows, reconciliations, registration processes, documentation and client coordination."],
+  ["Digital and research work", "Analytics, content and online growth", "Applied Excel, SPSS, SEO and digital-content tools to organise information, support research and communicate services clearly."],
+];
+
+const serviceAreas = [
+  "GST registration, returns and amendments",
+  "GST cancellation, final returns and notice-response documentation support",
+  "Income-tax return preparation and filing support",
+  "TDS and TCS compliance coordination",
+  "MSME, FSSAI, trade licence and trademark application coordination",
+  "E-commerce seller onboarding and marketplace reconciliation",
+  "Bookkeeping, reporting and Excel-based data support",
+  "UK VAT, EU VAT and sales-tax compliance coordination",
 ];
 
 const capabilities = [
@@ -89,6 +106,38 @@ export default function AboutPage() {
               continuous learning. His professional interests also extend to international
               tax and cross-border compliance coordination.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page py-14 sm:py-20">
+        <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#9b7637]">Professional journey</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Building experience through practical work</h2>
+            <p className="mt-5 leading-8 text-slate-600">The work is grounded in recurring compliance tasks, document-led processes and clear client communication. The focus is on making each step understandable and properly organised.</p>
+          </div>
+          <div className="space-y-5">
+            {experience.map(([period, role, body]) => (
+              <article key={period + role} className="rounded-xl border border-slate-200 bg-white p-6">
+                <p className="text-xs font-semibold uppercase tracking-[.16em] text-[#9b7637]">{period}</p>
+                <h3 className="mt-2 font-display text-xl font-semibold">{role}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#9b7637]">Service knowledge</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">Compliance areas supported through FileFast</h2>
+            <p className="mt-4 leading-7 text-slate-600">A broad operational scope across Indian compliance and selected cross-border coordination. The exact engagement depends on the client, jurisdiction and applicable professional requirements.</p>
+          </div>
+          <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {serviceAreas.map((item) => <div key={item} className="rounded-lg border border-slate-200 bg-[#fbfcfd] p-4 text-sm leading-6 text-slate-700">{item}</div>)}
           </div>
         </div>
       </section>
