@@ -4,8 +4,8 @@ import { getServices } from "@/lib/data";
 export const metadata = {
   openGraph: {
     url: "https://www.filefastglobal.com/services",
-    title: "GST, Income Tax, Accounting & Business Compliance Services | FileFast Global",
-    description: "Explore GST filing, income tax returns, business registration, licensing, accounting, TDS/TCS and global VAT coordination from FileFast Global in Chennai, India.",
+    title: "GST, ITR, IMS, ITC & Business Compliance Services | FileFast Global",
+    description: "Explore GST returns, GST IMS and ITC reconciliation, exporter refund support, marketplace TCS reconciliation, ITR, TDS/TCS, accounting and global VAT coordination from Chennai, India.",
   },
   alternates: { canonical: "/services" },
   title: "GST, Income Tax, Accounting & Business Compliance Services",
