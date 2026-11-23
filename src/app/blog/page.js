@@ -9,8 +9,8 @@ export const metadata = {
     description: "Practical guides on GST registration and returns, IMS, ITC reconciliation, exporter refunds, marketplace TCS, ITR, TDS, accounting and international VAT compliance.",
   },
   alternates: { canonical: "/blog" },
-  title: "GST, ITR, TDS & Business Tax Guides",
-  description: "Practical India tax guides covering GST registration, GSTR-1, GSTR-3B, ITC reconciliation, income tax return filing, TDS, TCS, accounting and international VAT compliance."
+  title: "GSTR-10, QRMP, UK Company & E-commerce Tax Guides",
+  description: "Practical guides on GSTR-10 final returns, QRMP monthly-to-quarterly filing, ITC reconciliation, UK company registration from India, TikTok Shop settlements, tax software quotes and month-end accounting."
 };
 
 export default async function BlogPage() {
